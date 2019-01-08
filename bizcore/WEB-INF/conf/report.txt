@@ -1,0 +1,775 @@
+
+
+
+=================Execute Report (Model Time 190108T1830) @Tue Jan 08 23:41:41 CST 2019, 32 objects and 232 fields===========================
+
+
+
+ processing: platform
+
+
+ processing: site
+
+
+ processing: site.platform.platform
+
+Info: Add virtual field [sites(es)] to <platform>
+	site.platform
+
+
+ processing: catalog
+
+
+ processing: catalog.site.site
+
+Info: Add virtual field [catalogs(es)] to <site>
+	catalog.site
+
+
+ processing: level_one_category
+
+
+ processing: level_one_category.catalog.catalog
+
+Info: Add virtual field [level_one_categorys(es)] to <catalog>
+	level_one_category.catalog
+
+
+ processing: level_two_category
+
+
+ processing: level_two_category.level_one_category.parent_category
+
+Info: Add virtual field [level_two_categorys(es)] to <level_one_category>
+	level_two_category.parent_category
+
+
+ processing: level_n_category
+
+
+ processing: level_n_category.level_two_category.parent_category
+
+Info: Add virtual field [level_n_categorys(es)] to <level_two_category>
+	level_n_category.parent_category
+
+
+ processing: brand
+
+
+ processing: product
+
+
+ processing: product.level_n_category.parent_category
+
+Info: Add virtual field [products(es)] to <level_n_category>
+	product.parent_category
+
+
+ processing: product.brand.brand
+
+Info: Add virtual field [products(es)] to <brand>
+	product.brand
+
+
+ processing: product.catalog.catalog
+
+Info: Add virtual field [products(es)] to <catalog>
+	product.catalog
+
+
+ processing: product_recommendation
+
+
+ processing: product_recommendation.brand.brand
+
+Info: Add virtual field [product_recommendations(es)] to <brand>
+	product_recommendation.brand
+
+
+ processing: product_recommendation.product.product
+
+Info: Add virtual field [product_recommendations(es)] to <product>
+	product_recommendation.product
+
+
+ processing: sku
+
+
+ processing: sku.product.product
+
+Info: Add virtual field [skus(es)] to <product>
+	sku.product
+
+
+ processing: profile
+
+
+ processing: profile.platform.platform
+
+Info: Add virtual field [profiles(es)] to <platform>
+	profile.platform
+
+
+ processing: shipping_address
+
+
+ processing: payment_method
+
+
+ processing: user_order
+
+
+ processing: user_order.profile.user
+
+Info: Add virtual field [user_orders(es)] to <profile>
+	user_order.user
+
+
+ processing: user_order.platform.platform
+
+Info: Add virtual field [user_orders(es)] to <platform>
+	user_order.platform
+
+
+ processing: line_item
+
+
+ processing: line_item.user_order.user_order
+
+Info: Add virtual field [line_items(es)] to <user_order>
+	line_item.user_order
+
+
+ processing: order_promotion
+
+
+ processing: order_promotion.user_order.user_order
+
+Info: Add virtual field [order_promotions(es)] to <user_order>
+	order_promotion.user_order
+
+
+ processing: manual_adjustment
+
+
+ processing: manual_adjustment.user_order.user_order
+
+Info: Add virtual field [manual_adjustments(es)] to <user_order>
+	manual_adjustment.user_order
+
+
+ processing: shipping_group
+
+
+ processing: shipping_group.user_order.user_order
+
+Info: Add virtual field [shipping_groups(es)] to <user_order>
+	shipping_group.user_order
+
+
+ processing: payment_group
+
+
+ processing: payment_group.user_order.user_order
+
+Info: Add virtual field [payment_groups(es)] to <user_order>
+	payment_group.user_order
+
+
+ processing: user_domain
+
+
+ processing: user_white_list
+
+
+ processing: user_white_list.user_domain.domain
+
+Info: Add virtual field [user_white_lists(es)] to <user_domain>
+	user_white_list.domain
+
+
+ processing: sec_user
+
+
+ processing: sec_user.user_domain.domain
+
+Info: Add virtual field [sec_users(es)] to <user_domain>
+	sec_user.domain
+
+
+ processing: sec_user.sec_user_blocking.blocking
+
+Info: Add virtual field [sec_users(es)] to <sec_user_blocking>
+	sec_user.blocking
+
+
+ processing: sec_user_blocking
+
+
+ processing: user_app
+
+
+ processing: user_app.sec_user.sec_user
+
+Info: Add virtual field [user_apps(es)] to <sec_user>
+	user_app.sec_user
+
+
+ processing: list_access
+
+
+ processing: list_access.user_app.app
+
+Info: Add virtual field [list_accesss(es)] to <user_app>
+	list_access.app
+
+
+ processing: object_access
+
+
+ processing: object_access.user_app.app
+
+Info: Add virtual field [object_accesss(es)] to <user_app>
+	object_access.app
+
+
+ processing: login_history
+
+
+ processing: login_history.sec_user.sec_user
+
+Info: Add virtual field [login_historys(es)] to <sec_user>
+	login_history.sec_user
+
+
+ processing: generic_form
+
+
+ processing: form_message
+
+
+ processing: form_message.generic_form.form
+
+Info: Add virtual field [form_messages(es)] to <generic_form>
+	form_message.form
+
+
+ processing: form_field_message
+
+
+ processing: form_field_message.generic_form.form
+
+Info: Add virtual field [form_field_messages(es)] to <generic_form>
+	form_field_message.form
+
+
+ processing: form_field
+
+
+ processing: form_field.generic_form.form
+
+Info: Add virtual field [form_fields(es)] to <generic_form>
+	form_field.form
+
+
+ processing: form_action
+
+
+ processing: form_action.generic_form.form
+
+Info: Add virtual field [form_actions(es)] to <generic_form>
+	form_action.form
+
+
+**************************************************
+
+platform{
+	fields(5){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	name('Chain eComerce Platform'), verb: false, required: true;
+		string	introduction('new generation of eCommerce platform based on opensource and modern tech'), verb: false, required: true;
+		string	current_version('V1.0'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(3){
+		siteList	platform(基本信息)--platform;
+		profileList	platform(基本信息)--platform;
+		userOrderList	platform(基本信息)--platform;
+	}
+} depth=0; isRoot = true
+
+site{
+	fields(6){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	name('The first customer site'), verb: false, required: true;
+		string	introduction('The primary site for show the concept'), verb: false, required: true;
+		platform	platform('$(object)'), verb: false, required: true, referenceBy: siteList;
+		string	last_update_time('lastUpdateTime()'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(1){
+		catalogList	site(基本信息)--site;
+	}
+} depth=1; isRoot = false
+
+catalog{
+	fields(5){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	display_name('Cloth'), verb: false, required: true;
+		string	seller_id('SC000001'), verb: false, required: true;
+		site	site('$(object)'), verb: false, required: true, referenceBy: catalogList;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(2){
+		levelOneCategoryList	catalog(基本信息)--catalog;
+		productList	catalog(基本信息)--catalog;
+	}
+} depth=2; isRoot = false
+
+level_one_category{
+	fields(4){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		catalog	catalog('$(object)'), verb: false, required: true, referenceBy: levelOneCategoryList;
+		string	display_name('Level One Cat'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(1){
+		levelTwoCategoryList	parent_category(基本信息)--parent_category;
+	}
+} depth=3; isRoot = false
+
+level_two_category{
+	fields(4){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		level_one_category	parent_category('$(object)'), verb: false, required: true, referenceBy: levelTwoCategoryList;
+		string	display_name('Level Two Cat'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(1){
+		levelNCategoryList	parent_category(基本信息)--parent_category;
+	}
+} depth=4; isRoot = false
+
+level_n_category{
+	fields(4){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		level_two_category	parent_category('$(object)'), verb: false, required: true, referenceBy: levelNCategoryList;
+		string	display_name('Level N Cat'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(1){
+		productList	parent_category(基本信息)--parent_category;
+	}
+} depth=5; isRoot = false
+
+brand{
+	fields(5){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	brand_name('Telsa Auto'), verb: false, required: true;
+		string_image	logo('logo.jpg'), verb: false, required: true;
+		string	remark('The brand a great that has Roadester, Model S and Model X, Model 3 is in development'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(2){
+		productList	brand(基本信息)--brand;
+		productRecommendationList	brand(基本信息)--brand;
+	}
+} depth=0; isRoot = true
+
+product{
+	fields(9){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	display_name('Jeans'), verb: false, required: true;
+		level_n_category	parent_category('$(object)'), verb: false, required: true, referenceBy: productList;
+		brand	brand('$(object)'), verb: false, required: true, referenceBy: productList;
+		string	origin('China|US|Japan|French'), verb: false, required: true;
+		catalog	catalog('$(object)'), verb: false, required: true, referenceBy: productList;
+		string	remark('The brand a great that has Roadester, Model S and Model X, Model 3 is in development'), verb: false, required: true;
+		string	last_update_time('lastUpdateTime()'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(2){
+		productRecommendationList	product(基本信息)--product;
+		skuList	product(基本信息)--product;
+	}
+} depth=6; isRoot = false
+
+product_recommendation{
+	fields(8){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	display_name('Jeans'), verb: false, required: true;
+		brand	brand('$(object)'), verb: false, required: true, referenceBy: productRecommendationList;
+		string	origin('China|US|Japan|French'), verb: false, required: true;
+		product	product('$(object)'), verb: false, required: true, referenceBy: productRecommendationList;
+		string	remark('The brand a great that has Roadester, Model S and Model X, Model 3 is in development'), verb: false, required: true;
+		string	last_update_time('lastUpdateTime()'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=7; isRoot = false
+
+sku{
+	fields(8){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	display_name('Jeans - Large'), verb: false, required: true;
+		string	size('Large|Small|Medium'), verb: false, required: true;
+		product	product('$(object)'), verb: false, required: true, referenceBy: skuList;
+		bool	active('true'), verb: false, required: true;
+		money	base_price('$103.21'), verb: false, required: true;
+		string	last_update_time('lastUpdateTime()'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=7; isRoot = false
+
+profile{
+	fields(7){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	name('Philip Zhang|Naveen Kumar R |VENKATESH GADUPUTI'), verb: false, required: true;
+		int	age('40'), verb: false, required: true;
+		string_gender	gender('male|female'), verb: false, required: true;
+		string	last_update_time('lastUpdateTime()'), verb: false, required: true;
+		platform	platform('$(object)'), verb: false, required: true, referenceBy: profileList;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(1){
+		userOrderList	user(基本信息)--user;
+	}
+} depth=1; isRoot = false
+
+shipping_address{
+	fields(8){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	name('Home|Office'), verb: false, required: true;
+		string	line1('1900 AVE OF THE STARTS - '), verb: false, required: true;
+		string	line2('Suite 555 - '), verb: false, required: true;
+		string	city('Century City - '), verb: false, required: true;
+		string	state('CA|VA|MA|PA|WA|LA'), verb: false, required: true;
+		int	zip_code('980087'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=0; isRoot = true
+
+payment_method{
+	fields(8){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	name('Credit Card|GiftCard'), verb: false, required: true;
+		string	number('4100987733939|4100987733939'), verb: false, required: true;
+		string	line1('1900 AVE OF THE STARTS'), verb: false, required: true;
+		string	line2('Suite 555 '), verb: false, required: true;
+		string	city('Century City'), verb: false, required: true;
+		date	expire_on('2019-08-08'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=0; isRoot = true
+
+user_order{
+	fields(8){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	title('a consumer order'), verb: false, required: true;
+		money	total_adjustment('$100.12'), verb: false, required: true;
+		money	total_amount('$10020.12'), verb: false, required: true;
+		profile	user('$(object)'), verb: false, required: true, referenceBy: userOrderList;
+		platform	platform('$(object)'), verb: false, required: true, referenceBy: userOrderList;
+		string	last_update_time('lastUpdateTime()'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(5){
+		lineItemList	user_order(基本信息)--user_order;
+		orderPromotionList	user_order(基本信息)--user_order;
+		manualAdjustmentList	user_order(基本信息)--user_order;
+		shippingGroupList	user_order(基本信息)--user_order;
+		paymentGroupList	user_order(基本信息)--user_order;
+	}
+} depth=2; isRoot = false
+
+line_item{
+	fields(7){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	name('Jeans - Large'), verb: false, required: true;
+		int	quantity('12'), verb: false, required: true;
+		money	price('$102.99'), verb: false, required: true;
+		money	discount_price('$11.03'), verb: false, required: true;
+		user_order	user_order('$(object)'), verb: false, required: true, referenceBy: lineItemList;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=3; isRoot = false
+
+order_promotion{
+	fields(7){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	name('Promo For Total'), verb: false, required: true;
+		int	amount('1231'), verb: false, required: true;
+		int	thread_hold('1230'), verb: false, required: true;
+		string	type('PERCENT_OFF|FIX_PRICE'), verb: false, required: true;
+		user_order	user_order('$(object)'), verb: false, required: true, referenceBy: orderPromotionList;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=3; isRoot = false
+
+manual_adjustment{
+	fields(7){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	name('Promo For Total'), verb: false, required: true;
+		int	amount('1231'), verb: false, required: true;
+		int	thread_hold('1230'), verb: false, required: true;
+		string	type('OFF|FIX_PRICE'), verb: false, required: true;
+		user_order	user_order('$(object)'), verb: false, required: true, referenceBy: manualAdjustmentList;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=3; isRoot = false
+
+shipping_group{
+	fields(10){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	name('Ship To Home'), verb: false, required: true;
+		string	line1('1900 AVE OF THE STARTS - '), verb: false, required: true;
+		string	line2('Suite 555 - '), verb: false, required: true;
+		string	city('Century City - '), verb: false, required: true;
+		string	state('CA|VA|MA|PA|WA|LA'), verb: false, required: true;
+		int	zip_code('980087'), verb: false, required: true;
+		string_country_code	country('US'), verb: false, required: true;
+		user_order	user_order('$(object)'), verb: false, required: true, referenceBy: shippingGroupList;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=3; isRoot = false
+
+payment_group{
+	fields(6){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	name('Pay for order'), verb: false, required: true;
+		money	amount('$123.00'), verb: false, required: true;
+		user_order	user_order('$(object)'), verb: false, required: true, referenceBy: paymentGroupList;
+		string	status('PAID|PENDING|FAIL'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=3; isRoot = false
+
+user_domain{
+	fields(3){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	name('用户区域'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(2){
+		userWhiteListList	domain(基本信息)--domain;
+		secUserList	domain(基本信息)--domain;
+	}
+} depth=0; isRoot = true
+
+user_white_list{
+	fields(5){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	user_identity('clariones|13808188512'), verb: false, required: true;
+		string	user_special_functions('tester;ios-spokesperson'), verb: false, required: true;
+		user_domain	domain('$(object)'), verb: false, required: true, referenceBy: userWhiteListList;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=1; isRoot = false
+
+sec_user{
+	fields(12){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	login('login'), verb: false, required: true;
+		string_china_mobile_phone	mobile('13900000001'), verb: false, required: true;
+		string	email('|suddy_chang@163.com'), verb: false, required: false;
+		string_password	pwd('*******'), verb: false, required: true;
+		int	verification_code('0|9999999'), verb: false, required: true;
+		date_time	verification_code_expire('2099-12-31T09:09:09'), verb: false, required: true;
+		date_time	last_login_time('2099-12-31T09:09:09'), verb: false, required: true;
+		user_domain	domain('$(object)'), verb: false, required: true, referenceBy: secUserList;
+		sec_user_blocking	blocking('$(object)'), verb: true, required: true, referenceBy: secUserList;
+		string	current_status('BLOCKED'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(2){
+		userAppList	sec_user(基本信息)--sec_user;
+		loginHistoryList	sec_user(基本信息)--sec_user;
+	}
+} depth=1; isRoot = false
+
+sec_user_blocking{
+	fields(5){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	who('currentUser()'), verb: false, required: true;
+		date_time_create	block_time('createTime()'), verb: false, required: true;
+		string	comments('这个用户多次发送违反社区的帖子，现在把他给屏蔽了'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(1){
+		secUserList	blocking(基本信息)--blocking;
+	}
+} depth=0; isRoot = true
+
+user_app{
+	fields(10){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	title('审车平台|账户管理|接车公司|审车公司|维修公司|顾客'), verb: false, required: true;
+		sec_user	sec_user('$(object)'), verb: false, required: true, referenceBy: userAppList;
+		string	app_icon('users|bank|wechat|bar-chart|user|users'), verb: false, required: true;
+		bool	full_access('true'), verb: false, required: true;
+		string	permission('MXWR|MXWR'), verb: false, required: true;
+		string	object_type('CarInspectionPlatform|UserDomain|CarReceivingServiceCompany|CarInspectionServiceCompany|CarRepairingServiceCompany|CustomerInfo'), verb: false, required: true;
+		string	object_id('CIP000001|UD000001|CRSC000001|CISC000001|CRSC000001|CI000001'), verb: false, required: true;
+		string	location('/link/to/app'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(2){
+		listAccessList	app(基本信息)--app;
+		objectAccessList	app(基本信息)--app;
+	}
+} depth=2; isRoot = false
+
+list_access{
+	fields(10){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	name('列表'), verb: false, required: true;
+		string	internal_name('levelOneCategoryList'), verb: false, required: true;
+		bool	read_permission('true'), verb: false, required: true;
+		bool	create_permission('true'), verb: false, required: true;
+		bool	delete_permission('true'), verb: false, required: true;
+		bool	update_permission('true'), verb: false, required: true;
+		bool	execution_permission('true'), verb: false, required: true;
+		user_app	app('$(object)'), verb: false, required: true, referenceBy: listAccessList;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=3; isRoot = false
+
+object_access{
+	fields(14){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	name('控制访问列表1'), verb: false, required: true;
+		string	object_type('FranchiseeStoreCountryCenter|AccountSet'), verb: false, required: true;
+		string	list1('catalogList|levelOneCategoryList'), verb: false, required: true;
+		string	list2('catalogList|levelOneCategoryList'), verb: false, required: true;
+		string	list3('catalogList|levelOneCategoryList'), verb: false, required: true;
+		string	list4('catalogList|levelOneCategoryList'), verb: false, required: true;
+		string	list5('catalogList|levelOneCategoryList'), verb: false, required: true;
+		string	list6('catalogList|levelOneCategoryList'), verb: false, required: true;
+		string	list7('catalogList|levelOneCategoryList'), verb: false, required: true;
+		string	list8('catalogList|levelOneCategoryList'), verb: false, required: true;
+		string	list9('catalogList|levelOneCategoryList'), verb: false, required: true;
+		user_app	app('$(object)'), verb: false, required: true, referenceBy: objectAccessList;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=3; isRoot = false
+
+login_history{
+	fields(6){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		date_time_create	login_time('createTime()'), verb: false, required: true;
+		string	from_ip('192.168.1.1|192.168.1.2'), verb: false, required: true;
+		string	description('登陆成功'), verb: false, required: true;
+		sec_user	sec_user('$(object)'), verb: false, required: true, referenceBy: loginHistoryList;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=2; isRoot = false
+
+generic_form{
+	fields(4){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	title('登记输入单'), verb: false, required: true;
+		string	description('姓名就是你身份证上的名字'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(4){
+		formMessageList	form(基本信息)--form;
+		formFieldMessageList	form(基本信息)--form;
+		formFieldList	form(基本信息)--form;
+		formActionList	form(基本信息)--form;
+	}
+} depth=0; isRoot = true
+
+form_message{
+	fields(5){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	title('字段组合错误'), verb: false, required: true;
+		generic_form	form('$(object)'), verb: false, required: true, referenceBy: formMessageList;
+		string	level('success|info|warning|danger'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=1; isRoot = false
+
+form_field_message{
+	fields(6){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	title('输入错误'), verb: false, required: true;
+		string	parameter_name('name'), verb: false, required: true;
+		generic_form	form('$(object)'), verb: false, required: true, referenceBy: formFieldMessageList;
+		string	level('success|info|warning|danger'), verb: false, required: true;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=1; isRoot = false
+
+form_field{
+	fields(18){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	label('姓名|年龄|出生地|国籍'), verb: false, required: true;
+		string	locale_key('name|age|birth_place|country'), verb: false, required: true;
+		string	parameter_name('name'), verb: false, required: true;
+		string	type('text|longtext|date|date_time|money|url|image|password|number|switch|vcode'), verb: false, required: true;
+		generic_form	form('$(object)'), verb: false, required: true, referenceBy: formFieldList;
+		string	placeholder('姓名就是你身份证上的名字'), verb: false, required: true;
+		string	default_value('李一一'), verb: false, required: true;
+		string	description('姓名就是你身份证上的名字'), verb: false, required: true;
+		string	field_group('基础信息|扩展信息'), verb: false, required: true;
+		string	minimum_value('maybe any value'), verb: false, required: true;
+		string	maximum_value('a value expression'), verb: false, required: true;
+		bool	required('true|false'), verb: false, required: true;
+		bool	disabled('true|false'), verb: false, required: true;
+		bool	custom_rendering('false'), verb: false, required: true;
+		string	candidate_values('|||男,女|高,矮'), verb: false, required: false;
+		string	suggest_values('|||男,女|高,矮'), verb: false, required: false;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=1; isRoot = false
+
+form_action{
+	fields(8){
+		string	id('ABCDEFGIJK000001'), verb: false, required: true;
+		string	label('功能'), verb: false, required: true;
+		string	locale_key('name'), verb: false, required: true;
+		string	action_key('save|update|remove'), verb: false, required: true;
+		string	level('default|warning|danger|primary'), verb: false, required: true;
+		string	url('genericFormManager/name/name0002/name0003/'), verb: false, required: true;
+		generic_form	form('$(object)'), verb: false, required: true, referenceBy: formActionList;
+		int	version('2147483647'), verb: false, required: true;
+	}
+	references field(0){
+	}
+} depth=1; isRoot = false
+
+
+
+
+=================================End Report=================================
