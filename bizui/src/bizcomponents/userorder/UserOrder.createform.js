@@ -18,8 +18,8 @@ const testValues = {};
 /*
 const testValues = {
   title: 'a consumer order',
-  totalAdjustment: '72.61',
-  totalAmount: '7037.99',
+  totalAdjustment: '99.05',
+  totalAmount: '8630.59',
   lastUpdateTime: 'lastUpdateTime()',
   userId: 'P000001',
   platformId: 'P000001',

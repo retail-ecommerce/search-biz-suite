@@ -22,7 +22,7 @@ const testValues = {
   line2: 'Suite 555 - ',
   city: 'Century City - ',
   state: 'CA',
-  zipCode: '804344',
+  zipCode: '882078',
   country: 'US',
   userOrderId: 'UO000001',
 }

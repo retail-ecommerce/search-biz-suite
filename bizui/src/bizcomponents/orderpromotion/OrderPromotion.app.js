@@ -189,7 +189,7 @@ class OrderPromotionBizApp extends React.PureComponent {
   getPageTitle = () => {
     // const { location } = this.props
     // const { pathname } = location
-    const title = 'null'
+    const title = 'Search Services'
     return title
   }
  
