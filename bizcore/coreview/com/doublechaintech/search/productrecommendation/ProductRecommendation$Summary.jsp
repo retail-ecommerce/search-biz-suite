@@ -37,8 +37,8 @@
 <span >${result.id}</span>
 </div>
 <div class="col-xs-12 col-md-3 summary-section">
-<span class="summary-label">${userContext.localeMap['product_recommendation.display_name']}</span>
-<span >${result.displayName}</span>
+<span class="summary-label">${userContext.localeMap['product_recommendation.name']}</span>
+<span >${result.name}</span>
 </div>
 <div class="col-xs-12 col-md-3 summary-section">
 <span class="summary-label">${userContext.localeMap['product_recommendation.origin']}</span>

@@ -20,7 +20,7 @@ public class LevelOneCategory extends BaseEntity implements  java.io.Serializabl
 	
 	public static final String ID_PROPERTY                    = "id"                ;
 	public static final String CATALOG_PROPERTY               = "catalog"           ;
-	public static final String DISPLAY_NAME_PROPERTY          = "displayName"       ;
+	public static final String NAME_PROPERTY                  = "name"              ;
 	public static final String VERSION_PROPERTY               = "version"           ;
 
 	public static final String LEVEL_TWO_CATEGORY_LIST                  = "levelTwoCategoryList";
@@ -32,7 +32,7 @@ public class LevelOneCategory extends BaseEntity implements  java.io.Serializabl
 	
 	public String getDisplayName(){
 	
-		String displayName = getDisplayName();
+		String displayName = getName();
 		if(displayName!=null){
 			return displayName;
 		}
@@ -46,7 +46,7 @@ public class LevelOneCategory extends BaseEntity implements  java.io.Serializabl
 
 	protected		String              	mId                 ;
 	protected		Catalog             	mCatalog            ;
-	protected		String              	mDisplayName        ;
+	protected		String              	mName               ;
 	protected		int                 	mVersion            ;
 	
 	
@@ -63,10 +63,10 @@ public class LevelOneCategory extends BaseEntity implements  java.io.Serializabl
 		this.changed = true;
 	}
 	
-	public 	LevelOneCategory(Catalog catalog, String displayName)
+	public 	LevelOneCategory(Catalog catalog, String name)
 	{
 		setCatalog(catalog);
-		setDisplayName(displayName);
+		setName(name);
 
 		this.mLevelTwoCategoryList = new SmartList<LevelTwoCategory>();	
 	}
@@ -75,23 +75,23 @@ public class LevelOneCategory extends BaseEntity implements  java.io.Serializabl
 	
 	public void changeProperty(String property, String newValueExpr) {
      	
-		if(DISPLAY_NAME_PROPERTY.equals(property)){
-			changeDisplayNameProperty(newValueExpr);
+		if(NAME_PROPERTY.equals(property)){
+			changeNameProperty(newValueExpr);
 		}
 
       
 	}
     
     
-	protected void changeDisplayNameProperty(String newValueExpr){
-		String oldValue = getDisplayName();
+	protected void changeNameProperty(String newValueExpr){
+		String oldValue = getName();
 		String newValue = parseString(newValueExpr);
 		if(equalsString(oldValue , newValue)){
 			return;//they can be both null, or exact the same object, this is much faster than equals function
 		}
 		//they are surely different each other
-		updateDisplayName(newValue);
-		this.onChangeProperty(DISPLAY_NAME_PROPERTY, oldValue, newValue);
+		updateName(newValue);
+		this.onChangeProperty(NAME_PROPERTY, oldValue, newValue);
 		return;
   
 	}
@@ -134,14 +134,14 @@ public class LevelOneCategory extends BaseEntity implements  java.io.Serializabl
 		this.changed = true;
 	}
 	
-	public void setDisplayName(String displayName){
-		this.mDisplayName = trimString(displayName);;
+	public void setName(String name){
+		this.mName = trimString(name);;
 	}
-	public String getDisplayName(){
-		return this.mDisplayName;
+	public String getName(){
+		return this.mName;
 	}
-	public LevelOneCategory updateDisplayName(String displayName){
-		this.mDisplayName = trimString(displayName);;
+	public LevelOneCategory updateName(String name){
+		this.mName = trimString(name);;
 		this.changed = true;
 		return this;
 	}
@@ -289,7 +289,7 @@ public class LevelOneCategory extends BaseEntity implements  java.io.Serializabl
 
 		appendKeyValuePair(result, ID_PROPERTY, getId());
 		appendKeyValuePair(result, CATALOG_PROPERTY, getCatalog());
-		appendKeyValuePair(result, DISPLAY_NAME_PROPERTY, getDisplayName());
+		appendKeyValuePair(result, NAME_PROPERTY, getName());
 		appendKeyValuePair(result, VERSION_PROPERTY, getVersion());
 		appendKeyValuePair(result, LEVEL_TWO_CATEGORY_LIST, getLevelTwoCategoryList());
 		if(!getLevelTwoCategoryList().isEmpty()){
@@ -312,7 +312,7 @@ public class LevelOneCategory extends BaseEntity implements  java.io.Serializabl
 		
 			dest.setId(getId());
 			dest.setCatalog(getCatalog());
-			dest.setDisplayName(getDisplayName());
+			dest.setName(getName());
 			dest.setVersion(getVersion());
 			dest.setLevelTwoCategoryList(getLevelTwoCategoryList());
 
@@ -329,7 +329,7 @@ public class LevelOneCategory extends BaseEntity implements  java.io.Serializabl
 		if(getCatalog() != null ){
  			stringBuilder.append("\tcatalog='Catalog("+getCatalog().getId()+")';");
  		}
-		stringBuilder.append("\tdisplayName='"+getDisplayName()+"';");
+		stringBuilder.append("\tname='"+getName()+"';");
 		stringBuilder.append("\tversion='"+getVersion()+"';");
 		stringBuilder.append("}");
 

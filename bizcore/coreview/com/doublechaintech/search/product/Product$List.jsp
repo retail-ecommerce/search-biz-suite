@@ -98,8 +98,8 @@
 		<c:if test="${param.referName ne 'id'}">
 	<th>${userContext.localeMap['product.id']}</th>
 </c:if>
-<c:if test="${param.referName ne 'displayName'}">
-	<th>${userContext.localeMap['product.display_name']}</th>
+<c:if test="${param.referName ne 'name'}">
+	<th>${userContext.localeMap['product.name']}</th>
 </c:if>
 <c:if test="${param.referName ne 'parentCategory'}">
 	<th>${userContext.localeMap['product.parent_category']}</th>
@@ -125,7 +125,7 @@
 			
 			<c:forEach var="item" items="${productList}">
 				<tr currentVersion='${item.version}' id="product-${item.id}" ><td><a class="link-action-removed" href="./productManager/view/${item.id}/"> ${item.id}</a></td>
-<c:if test="${param.referName ne 'displayName'}">	<td contenteditable='true' class='edit-value'  propertyToChange='displayName' storedCellValue='${item.displayName}' prefix='${ownerBeanName}Manager/updateProduct/${result.id}/${item.id}/'>${item.displayName}</td>
+<c:if test="${param.referName ne 'name'}">	<td contenteditable='true' class='edit-value'  propertyToChange='name' storedCellValue='${item.name}' prefix='${ownerBeanName}Manager/updateProduct/${result.id}/${item.id}/'>${item.name}</td>
 </c:if><c:if test="${param.referName ne 'parentCategory'}">
 	<td class="select_candidate_td"
 			data-candidate-method="./productManager/requestCandidateParentCategory/${ownerBeanName}/${item.id}/"

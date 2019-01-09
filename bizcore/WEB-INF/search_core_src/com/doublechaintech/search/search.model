@@ -16,29 +16,29 @@
 		last_update_time="lastUpdateTime()"
 		
 	/>
-	<catalog display_name="Cloth"  seller_id="SC000001" site="$(site)"/>	
+	<catalog name="Cloth"  seller_id="SC000001" site="$(site)"/>	
 	
-	<level_one_category catalog="$(catalog)" display_name="Level One Cat"/>	
-	<level_two_category parent_category="$(level_one_category)" display_name="Level Two Cat"/>	
+	<level_one_category catalog="$(catalog)" name="Level One Cat"/>	
+	<level_two_category parent_category="$(level_one_category)" name="Level Two Cat"/>	
 	
-	<level_n_category parent_category="$(level_two_category)" display_name="Level N Cat"/>	
+	<level_n_category parent_category="$(level_two_category)" name="Level N Cat"/>	
 	<brand brand_name="Telsa Auto" logo="logo.jpg" 
 		remark="The brand a great that has Roadester, Model S and Model X, Model 3 is in development"
 	/>
-	<product display_name="Jeans" parent_category="$(level_n_category)" brand="$(brand)" 
+	<product name="Jeans" parent_category="$(level_n_category)" brand="$(brand)" 
 		origin="China|US|Japan|French"
 		catalog="$(catalog)"
 		remark="The brand a great that has Roadester, Model S and Model X, Model 3 is in development"
 		last_update_time="lastUpdateTime()"
 	/>
 	<product_recommendation
-		display_name="Jeans" brand="$(brand)" 
+		name="Jeans" brand="$(brand)" 
 		origin="China|US|Japan|French"
 		product="$(product)" 
 		remark="The brand a great that has Roadester, Model S and Model X, Model 3 is in development"
 		last_update_time="lastUpdateTime()"
 	/>
-	<sku display_name="Jeans - Large" 
+	<sku name="Jeans - Large" 
 		size="Large|Small|Medium" 
 		product="$(product)" 
 		active="true" 
@@ -123,9 +123,9 @@
       >
       
       <!-- 特殊用户白名单
-      <level_three_category parent_category="$(level_two_category)" display_name="Level Three Cat"/>	
-	<level_four_category parent_category="$(level_three_category)" display_name="Level Four Cat"/>	
-	<level_five_category parent_category="$(level_four_category)" display_name="Level Five Cat"/>	
+      <level_three_category parent_category="$(level_two_category)" name="Level Three Cat"/>	
+	<level_four_category parent_category="$(level_three_category)" name="Level Four Cat"/>	
+	<level_five_category parent_category="$(level_four_category)" name="Level Five Cat"/>	
       		该表安排在user-domain内，通常情况下，客户不会看到这里。
       		内容（目前）完全由项目自己定义。
       		user_identity 用于识别哪些用户有特权

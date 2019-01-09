@@ -18,7 +18,7 @@
 	
 	
 	<li><span>${userContext.localeMap['sku.id']}</span> ${sku.id}</li>
-<li><span>${userContext.localeMap['sku.display_name']}</span> ${sku.displayName}</li>
+<li><span>${userContext.localeMap['sku.name']}</span> ${sku.name}</li>
 <li><span>${userContext.localeMap['sku.size']}</span> ${sku.size}</li>
 <li><span>${userContext.localeMap['sku.active']}</span> ${sku.active}</li>
 <li><span>${userContext.localeMap['sku.base_price']}</span> <fmt:formatNumber type="currency"  value="${sku.basePrice}" /></li>

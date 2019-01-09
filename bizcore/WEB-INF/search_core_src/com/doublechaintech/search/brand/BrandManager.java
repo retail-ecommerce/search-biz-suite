@@ -27,9 +27,9 @@ public interface BrandManager{
 	/*======================================================DATA MAINTENANCE===========================================================*/
 	
 
-	//public  ProductManager getProductManager(SearchUserContext userContext, String brandId, String displayName, String parentCategoryId, String origin, String catalogId, String remark, String lastUpdateTime ,String [] tokensExpr)  throws Exception;
+	//public  ProductManager getProductManager(SearchUserContext userContext, String brandId, String name, String parentCategoryId, String origin, String catalogId, String remark, String lastUpdateTime ,String [] tokensExpr)  throws Exception;
 	
-	public  Brand addProduct(SearchUserContext userContext, String brandId, String displayName, String parentCategoryId, String origin, String catalogId, String remark, String lastUpdateTime , String [] tokensExpr)  throws Exception;
+	public  Brand addProduct(SearchUserContext userContext, String brandId, String name, String parentCategoryId, String origin, String catalogId, String remark, String lastUpdateTime , String [] tokensExpr)  throws Exception;
 	public  Brand removeProduct(SearchUserContext userContext, String brandId, String productId, int productVersion,String [] tokensExpr)  throws Exception;
 	public  Brand updateProduct(SearchUserContext userContext, String brandId, String productId, int productVersion, String property, String newValueExpr,String [] tokensExpr)  throws Exception;
 
@@ -37,9 +37,9 @@ public interface BrandManager{
 
 	*/
 
-	//public  ProductRecommendationManager getProductRecommendationManager(SearchUserContext userContext, String brandId, String displayName, String origin, String productId, String remark, String lastUpdateTime ,String [] tokensExpr)  throws Exception;
+	//public  ProductRecommendationManager getProductRecommendationManager(SearchUserContext userContext, String brandId, String name, String origin, String productId, String remark, String lastUpdateTime ,String [] tokensExpr)  throws Exception;
 	
-	public  Brand addProductRecommendation(SearchUserContext userContext, String brandId, String displayName, String origin, String productId, String remark, String lastUpdateTime , String [] tokensExpr)  throws Exception;
+	public  Brand addProductRecommendation(SearchUserContext userContext, String brandId, String name, String origin, String productId, String remark, String lastUpdateTime , String [] tokensExpr)  throws Exception;
 	public  Brand removeProductRecommendation(SearchUserContext userContext, String brandId, String productRecommendationId, int productRecommendationVersion,String [] tokensExpr)  throws Exception;
 	public  Brand updateProductRecommendation(SearchUserContext userContext, String brandId, String productRecommendationId, int productRecommendationVersion, String property, String newValueExpr,String [] tokensExpr)  throws Exception;
 

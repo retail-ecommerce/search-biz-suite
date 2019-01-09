@@ -130,7 +130,7 @@ public class LevelNCategoryTokens extends CommonTokens{
 	}
 	
 	public LevelNCategoryTokens searchAllTextOfProductList(String verb, String value){	
-		String field = "id|displayName|origin|remark|lastUpdateTime";
+		String field = "id|name|origin|remark|lastUpdateTime";
 		addSearchMoreOptions(PRODUCT_LIST,productListSearchCounter++, field, verb, value);
 		return this;
 	}

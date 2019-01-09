@@ -12,7 +12,7 @@ public interface LevelOneCategoryManager{
 
 		
 
-	public LevelOneCategory createLevelOneCategory(SearchUserContext userContext, String catalogId, String displayName) throws Exception;	
+	public LevelOneCategory createLevelOneCategory(SearchUserContext userContext, String catalogId, String name) throws Exception;	
 	public LevelOneCategory updateLevelOneCategory(SearchUserContext userContext,String levelOneCategoryId, int levelOneCategoryVersion, String property, String newValueExpr,String [] tokensExpr) throws Exception;
 	public LevelOneCategory loadLevelOneCategory(SearchUserContext userContext, String levelOneCategoryId, String [] tokensExpr) throws Exception;
 	public LevelOneCategory internalSaveLevelOneCategory(SearchUserContext userContext, LevelOneCategory levelOneCategory) throws Exception;
@@ -28,9 +28,9 @@ public interface LevelOneCategoryManager{
 	/*======================================================DATA MAINTENANCE===========================================================*/
 	
 
-	//public  LevelTwoCategoryManager getLevelTwoCategoryManager(SearchUserContext userContext, String levelOneCategoryId, String displayName ,String [] tokensExpr)  throws Exception;
+	//public  LevelTwoCategoryManager getLevelTwoCategoryManager(SearchUserContext userContext, String levelOneCategoryId, String name ,String [] tokensExpr)  throws Exception;
 	
-	public  LevelOneCategory addLevelTwoCategory(SearchUserContext userContext, String levelOneCategoryId, String displayName , String [] tokensExpr)  throws Exception;
+	public  LevelOneCategory addLevelTwoCategory(SearchUserContext userContext, String levelOneCategoryId, String name , String [] tokensExpr)  throws Exception;
 	public  LevelOneCategory removeLevelTwoCategory(SearchUserContext userContext, String levelOneCategoryId, String levelTwoCategoryId, int levelTwoCategoryVersion,String [] tokensExpr)  throws Exception;
 	public  LevelOneCategory updateLevelTwoCategory(SearchUserContext userContext, String levelOneCategoryId, String levelTwoCategoryId, int levelTwoCategoryVersion, String property, String newValueExpr,String [] tokensExpr)  throws Exception;
 

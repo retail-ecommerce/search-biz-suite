@@ -161,14 +161,14 @@ public class SkuManagerImpl extends CustomSearchCheckerManager implements SkuMan
  	
 
 
-	public Sku createSku(SearchUserContext userContext,String displayName, String size, String productId, boolean active, BigDecimal basePrice, String lastUpdateTime) throws Exception
+	public Sku createSku(SearchUserContext userContext,String name, String size, String productId, boolean active, BigDecimal basePrice, String lastUpdateTime) throws Exception
 	{
 		
 		
 
 		
 
-		userContext.getChecker().checkDisplayNameOfSku(displayName);
+		userContext.getChecker().checkNameOfSku(name);
 		userContext.getChecker().checkSizeOfSku(size);
 		userContext.getChecker().checkActiveOfSku(active);
 		userContext.getChecker().checkBasePriceOfSku(basePrice);
@@ -179,7 +179,7 @@ public class SkuManagerImpl extends CustomSearchCheckerManager implements SkuMan
 
 		Sku sku=createNewSku();	
 
-		sku.setDisplayName(displayName);
+		sku.setName(name);
 		sku.setSize(size);
 			
 		Product product = loadProduct(userContext, productId,emptyOptions());
@@ -213,8 +213,8 @@ public class SkuManagerImpl extends CustomSearchCheckerManager implements SkuMan
 		userContext.getChecker().checkVersionOfSku( skuVersion);
 		
 
-		if(Sku.DISPLAY_NAME_PROPERTY.equals(property)){
-			userContext.getChecker().checkDisplayNameOfSku(parseString(newValueExpr));
+		if(Sku.NAME_PROPERTY.equals(property)){
+			userContext.getChecker().checkNameOfSku(parseString(newValueExpr));
 		}
 		if(Sku.SIZE_PROPERTY.equals(property)){
 			userContext.getChecker().checkSizeOfSku(parseString(newValueExpr));
@@ -371,7 +371,7 @@ public class SkuManagerImpl extends CustomSearchCheckerManager implements SkuMan
 		result.setFilterKey(filterKey==null?"":filterKey.trim());
 		result.setPageNo(pageNo);
 		result.setValueFieldName("id");
-		result.setDisplayFieldName("displayName");
+		result.setDisplayFieldName("name");
 		
 		pageNo = Math.max(1, pageNo);
 		int pageSize = 20;

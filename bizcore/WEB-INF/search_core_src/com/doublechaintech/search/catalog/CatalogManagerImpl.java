@@ -174,14 +174,14 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
  	
 
 
-	public Catalog createCatalog(SearchUserContext userContext,String displayName, String sellerId, String siteId) throws Exception
+	public Catalog createCatalog(SearchUserContext userContext,String name, String sellerId, String siteId) throws Exception
 	{
 		
 		
 
 		
 
-		userContext.getChecker().checkDisplayNameOfCatalog(displayName);
+		userContext.getChecker().checkNameOfCatalog(name);
 		userContext.getChecker().checkSellerIdOfCatalog(sellerId);
 	
 		userContext.getChecker().throwExceptionIfHasErrors(CatalogManagerException.class);
@@ -189,7 +189,7 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 
 		Catalog catalog=createNewCatalog();	
 
-		catalog.setDisplayName(displayName);
+		catalog.setName(name);
 		catalog.setSellerId(sellerId);
 			
 		Site site = loadSite(userContext, siteId,emptyOptions());
@@ -220,8 +220,8 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 		userContext.getChecker().checkVersionOfCatalog( catalogVersion);
 		
 
-		if(Catalog.DISPLAY_NAME_PROPERTY.equals(property)){
-			userContext.getChecker().checkDisplayNameOfCatalog(parseString(newValueExpr));
+		if(Catalog.NAME_PROPERTY.equals(property)){
+			userContext.getChecker().checkNameOfCatalog(parseString(newValueExpr));
 		}
 		if(Catalog.SELLER_ID_PROPERTY.equals(property)){
 			userContext.getChecker().checkSellerIdOfCatalog(parseString(newValueExpr));
@@ -476,7 +476,7 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 	
 	
 
-	protected void checkParamsForAddingLevelOneCategory(SearchUserContext userContext, String catalogId, String displayName,String [] tokensExpr) throws Exception{
+	protected void checkParamsForAddingLevelOneCategory(SearchUserContext userContext, String catalogId, String name,String [] tokensExpr) throws Exception{
 		
 		
 
@@ -485,18 +485,18 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 		userContext.getChecker().checkIdOfCatalog(catalogId);
 
 		
-		userContext.getChecker().checkDisplayNameOfLevelOneCategory(displayName);
+		userContext.getChecker().checkNameOfLevelOneCategory(name);
 	
 		userContext.getChecker().throwExceptionIfHasErrors(CatalogManagerException.class);
 
 	
 	}
-	public  Catalog addLevelOneCategory(SearchUserContext userContext, String catalogId, String displayName, String [] tokensExpr) throws Exception
+	public  Catalog addLevelOneCategory(SearchUserContext userContext, String catalogId, String name, String [] tokensExpr) throws Exception
 	{	
 		
-		checkParamsForAddingLevelOneCategory(userContext,catalogId,displayName,tokensExpr);
+		checkParamsForAddingLevelOneCategory(userContext,catalogId,name,tokensExpr);
 		
-		LevelOneCategory levelOneCategory = createLevelOneCategory(userContext,displayName);
+		LevelOneCategory levelOneCategory = createLevelOneCategory(userContext,name);
 		
 		Catalog catalog = loadCatalog(userContext, catalogId, allTokens());
 		synchronized(catalog){ 
@@ -509,19 +509,19 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 			return present(userContext,catalog, mergedAllTokens(tokensExpr));
 		}
 	}
-	protected void checkParamsForUpdatingLevelOneCategoryProperties(SearchUserContext userContext, String catalogId,String id,String displayName,String [] tokensExpr) throws Exception {
+	protected void checkParamsForUpdatingLevelOneCategoryProperties(SearchUserContext userContext, String catalogId,String id,String name,String [] tokensExpr) throws Exception {
 		
 		userContext.getChecker().checkIdOfCatalog(catalogId);
 		userContext.getChecker().checkIdOfLevelOneCategory(id);
 		
-		userContext.getChecker().checkDisplayNameOfLevelOneCategory( displayName);
+		userContext.getChecker().checkNameOfLevelOneCategory( name);
 
 		userContext.getChecker().throwExceptionIfHasErrors(CatalogManagerException.class);
 		
 	}
-	public  Catalog updateLevelOneCategoryProperties(SearchUserContext userContext, String catalogId, String id,String displayName, String [] tokensExpr) throws Exception
+	public  Catalog updateLevelOneCategoryProperties(SearchUserContext userContext, String catalogId, String id,String name, String [] tokensExpr) throws Exception
 	{	
-		checkParamsForUpdatingLevelOneCategoryProperties(userContext,catalogId,id,displayName,tokensExpr);
+		checkParamsForUpdatingLevelOneCategoryProperties(userContext,catalogId,id,name,tokensExpr);
 
 		Map<String, Object> options = tokens()
 				.allTokens()
@@ -536,7 +536,7 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 		
 		LevelOneCategory item = catalogToUpdate.getLevelOneCategoryList().first();
 		
-		item.updateDisplayName( displayName );
+		item.updateName( name );
 
 		
 		//checkParamsForAddingLevelOneCategory(userContext,catalogId,name, code, used,tokensExpr);
@@ -547,12 +547,12 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 	}
 	
 	
-	protected LevelOneCategory createLevelOneCategory(SearchUserContext userContext, String displayName) throws Exception{
+	protected LevelOneCategory createLevelOneCategory(SearchUserContext userContext, String name) throws Exception{
 
 		LevelOneCategory levelOneCategory = new LevelOneCategory();
 		
 		
-		levelOneCategory.setDisplayName(displayName);
+		levelOneCategory.setName(name);
 	
 		
 		return levelOneCategory;
@@ -664,8 +664,8 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 		userContext.getChecker().checkVersionOfLevelOneCategory(levelOneCategoryVersion);
 		
 
-		if(LevelOneCategory.DISPLAY_NAME_PROPERTY.equals(property)){
-			userContext.getChecker().checkDisplayNameOfLevelOneCategory(parseString(newValueExpr));
+		if(LevelOneCategory.NAME_PROPERTY.equals(property)){
+			userContext.getChecker().checkNameOfLevelOneCategory(parseString(newValueExpr));
 		}
 		
 	
@@ -710,7 +710,7 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 
 
 
-	protected void checkParamsForAddingProduct(SearchUserContext userContext, String catalogId, String displayName, String parentCategoryId, String brandId, String origin, String remark, String lastUpdateTime,String [] tokensExpr) throws Exception{
+	protected void checkParamsForAddingProduct(SearchUserContext userContext, String catalogId, String name, String parentCategoryId, String brandId, String origin, String remark, String lastUpdateTime,String [] tokensExpr) throws Exception{
 		
 		
 
@@ -719,7 +719,7 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 		userContext.getChecker().checkIdOfCatalog(catalogId);
 
 		
-		userContext.getChecker().checkDisplayNameOfProduct(displayName);
+		userContext.getChecker().checkNameOfProduct(name);
 		
 		userContext.getChecker().checkParentCategoryIdOfProduct(parentCategoryId);
 		
@@ -735,12 +735,12 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 
 	
 	}
-	public  Catalog addProduct(SearchUserContext userContext, String catalogId, String displayName, String parentCategoryId, String brandId, String origin, String remark, String lastUpdateTime, String [] tokensExpr) throws Exception
+	public  Catalog addProduct(SearchUserContext userContext, String catalogId, String name, String parentCategoryId, String brandId, String origin, String remark, String lastUpdateTime, String [] tokensExpr) throws Exception
 	{	
 		
-		checkParamsForAddingProduct(userContext,catalogId,displayName, parentCategoryId, brandId, origin, remark, lastUpdateTime,tokensExpr);
+		checkParamsForAddingProduct(userContext,catalogId,name, parentCategoryId, brandId, origin, remark, lastUpdateTime,tokensExpr);
 		
-		Product product = createProduct(userContext,displayName, parentCategoryId, brandId, origin, remark, lastUpdateTime);
+		Product product = createProduct(userContext,name, parentCategoryId, brandId, origin, remark, lastUpdateTime);
 		
 		Catalog catalog = loadCatalog(userContext, catalogId, allTokens());
 		synchronized(catalog){ 
@@ -753,12 +753,12 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 			return present(userContext,catalog, mergedAllTokens(tokensExpr));
 		}
 	}
-	protected void checkParamsForUpdatingProductProperties(SearchUserContext userContext, String catalogId,String id,String displayName,String origin,String remark,String lastUpdateTime,String [] tokensExpr) throws Exception {
+	protected void checkParamsForUpdatingProductProperties(SearchUserContext userContext, String catalogId,String id,String name,String origin,String remark,String lastUpdateTime,String [] tokensExpr) throws Exception {
 		
 		userContext.getChecker().checkIdOfCatalog(catalogId);
 		userContext.getChecker().checkIdOfProduct(id);
 		
-		userContext.getChecker().checkDisplayNameOfProduct( displayName);
+		userContext.getChecker().checkNameOfProduct( name);
 		userContext.getChecker().checkOriginOfProduct( origin);
 		userContext.getChecker().checkRemarkOfProduct( remark);
 		userContext.getChecker().checkLastUpdateTimeOfProduct( lastUpdateTime);
@@ -766,9 +766,9 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 		userContext.getChecker().throwExceptionIfHasErrors(CatalogManagerException.class);
 		
 	}
-	public  Catalog updateProductProperties(SearchUserContext userContext, String catalogId, String id,String displayName,String origin,String remark,String lastUpdateTime, String [] tokensExpr) throws Exception
+	public  Catalog updateProductProperties(SearchUserContext userContext, String catalogId, String id,String name,String origin,String remark,String lastUpdateTime, String [] tokensExpr) throws Exception
 	{	
-		checkParamsForUpdatingProductProperties(userContext,catalogId,id,displayName,origin,remark,lastUpdateTime,tokensExpr);
+		checkParamsForUpdatingProductProperties(userContext,catalogId,id,name,origin,remark,lastUpdateTime,tokensExpr);
 
 		Map<String, Object> options = tokens()
 				.allTokens()
@@ -783,7 +783,7 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 		
 		Product item = catalogToUpdate.getProductList().first();
 		
-		item.updateDisplayName( displayName );
+		item.updateName( name );
 		item.updateOrigin( origin );
 		item.updateRemark( remark );
 		item.updateLastUpdateTime( lastUpdateTime );
@@ -797,12 +797,12 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 	}
 	
 	
-	protected Product createProduct(SearchUserContext userContext, String displayName, String parentCategoryId, String brandId, String origin, String remark, String lastUpdateTime) throws Exception{
+	protected Product createProduct(SearchUserContext userContext, String name, String parentCategoryId, String brandId, String origin, String remark, String lastUpdateTime) throws Exception{
 
 		Product product = new Product();
 		
 		
-		product.setDisplayName(displayName);		
+		product.setName(name);		
 		LevelNCategory  parentCategory = new LevelNCategory();
 		parentCategory.setId(parentCategoryId);		
 		product.setParentCategory(parentCategory);		
@@ -923,8 +923,8 @@ public class CatalogManagerImpl extends CustomSearchCheckerManager implements Ca
 		userContext.getChecker().checkVersionOfProduct(productVersion);
 		
 
-		if(Product.DISPLAY_NAME_PROPERTY.equals(property)){
-			userContext.getChecker().checkDisplayNameOfProduct(parseString(newValueExpr));
+		if(Product.NAME_PROPERTY.equals(property)){
+			userContext.getChecker().checkNameOfProduct(parseString(newValueExpr));
 		}
 		
 		if(Product.ORIGIN_PROPERTY.equals(property)){

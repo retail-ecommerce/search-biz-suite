@@ -34,17 +34,17 @@ public class SkuForm extends BaseForm {
 	}
 
 
-	public SkuForm displayNameField(String parameterName, String initValue){
-		FormField field = displayNameFromSku(parameterName, initValue);		
+	public SkuForm nameField(String parameterName, String initValue){
+		FormField field = nameFromSku(parameterName, initValue);		
 		this.addFormField(field);
 		return this;
 	}
 	
-	public SkuForm displayNameField(String initValue){
-		return displayNameField("displayName",initValue);
+	public SkuForm nameField(String initValue){
+		return nameField("name",initValue);
 	}
-	public SkuForm displayNameField(){
-		return displayNameField("displayName","");
+	public SkuForm nameField(){
+		return nameField("name","");
 	}
 
 
@@ -135,17 +135,17 @@ public class SkuForm extends BaseForm {
 	}
 
 
-	public SkuForm displayNameFieldOfProduct(String parameterName, String initValue){
-		FormField field =  displayNameFromProduct(parameterName, initValue);
+	public SkuForm nameFieldOfProduct(String parameterName, String initValue){
+		FormField field =  nameFromProduct(parameterName, initValue);
 		this.addFormField(field);	
 		return this;
 	}
 	
-	public SkuForm displayNameFieldOfProduct(String initValue){
-		return displayNameFieldOfProduct("displayName",initValue);
+	public SkuForm nameFieldOfProduct(String initValue){
+		return nameFieldOfProduct("name",initValue);
 	}
-	public SkuForm displayNameFieldOfProduct(){
-		return displayNameFieldOfProduct("displayName","");
+	public SkuForm nameFieldOfProduct(){
+		return nameFieldOfProduct("name","");
 	}
 
 

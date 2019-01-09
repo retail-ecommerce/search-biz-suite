@@ -34,17 +34,17 @@ public class CatalogForm extends BaseForm {
 	}
 
 
-	public CatalogForm displayNameField(String parameterName, String initValue){
-		FormField field = displayNameFromCatalog(parameterName, initValue);		
+	public CatalogForm nameField(String parameterName, String initValue){
+		FormField field = nameFromCatalog(parameterName, initValue);		
 		this.addFormField(field);
 		return this;
 	}
 	
-	public CatalogForm displayNameField(String initValue){
-		return displayNameField("displayName",initValue);
+	public CatalogForm nameField(String initValue){
+		return nameField("name",initValue);
 	}
-	public CatalogForm displayNameField(){
-		return displayNameField("displayName","");
+	public CatalogForm nameField(){
+		return nameField("name","");
 	}
 
 
@@ -180,17 +180,17 @@ public class CatalogForm extends BaseForm {
 	}
 
 
-	public CatalogForm displayNameFieldForLevelOneCategory(String parameterName, String initValue){
-		FormField field =  displayNameFromLevelOneCategory(parameterName, initValue);		
+	public CatalogForm nameFieldForLevelOneCategory(String parameterName, String initValue){
+		FormField field =  nameFromLevelOneCategory(parameterName, initValue);		
 		this.addFormField(field);
 		return this;
 	}
 	
-	public CatalogForm displayNameFieldForLevelOneCategory(String initValue){
-		return displayNameFieldForLevelOneCategory("displayName",initValue);
+	public CatalogForm nameFieldForLevelOneCategory(String initValue){
+		return nameFieldForLevelOneCategory("name",initValue);
 	}
-	public CatalogForm displayNameFieldForLevelOneCategory(){
-		return displayNameFieldForLevelOneCategory("displayName","");
+	public CatalogForm nameFieldForLevelOneCategory(){
+		return nameFieldForLevelOneCategory("name","");
 	}
 
 
@@ -208,17 +208,17 @@ public class CatalogForm extends BaseForm {
 	}
 
 
-	public CatalogForm displayNameFieldForProduct(String parameterName, String initValue){
-		FormField field =  displayNameFromProduct(parameterName, initValue);		
+	public CatalogForm nameFieldForProduct(String parameterName, String initValue){
+		FormField field =  nameFromProduct(parameterName, initValue);		
 		this.addFormField(field);
 		return this;
 	}
 	
-	public CatalogForm displayNameFieldForProduct(String initValue){
-		return displayNameFieldForProduct("displayName",initValue);
+	public CatalogForm nameFieldForProduct(String initValue){
+		return nameFieldForProduct("name",initValue);
 	}
-	public CatalogForm displayNameFieldForProduct(){
-		return displayNameFieldForProduct("displayName","");
+	public CatalogForm nameFieldForProduct(){
+		return nameFieldForProduct("name","");
 	}
 
 

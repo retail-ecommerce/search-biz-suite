@@ -179,14 +179,14 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
  	
 
 
-	public Product createProduct(SearchUserContext userContext,String displayName, String parentCategoryId, String brandId, String origin, String catalogId, String remark, String lastUpdateTime) throws Exception
+	public Product createProduct(SearchUserContext userContext,String name, String parentCategoryId, String brandId, String origin, String catalogId, String remark, String lastUpdateTime) throws Exception
 	{
 		
 		
 
 		
 
-		userContext.getChecker().checkDisplayNameOfProduct(displayName);
+		userContext.getChecker().checkNameOfProduct(name);
 		userContext.getChecker().checkOriginOfProduct(origin);
 		userContext.getChecker().checkRemarkOfProduct(remark);
 		userContext.getChecker().checkLastUpdateTimeOfProduct(lastUpdateTime);
@@ -196,7 +196,7 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 
 		Product product=createNewProduct();	
 
-		product.setDisplayName(displayName);
+		product.setName(name);
 			
 		LevelNCategory parentCategory = loadLevelNCategory(userContext, parentCategoryId,emptyOptions());
 		product.setParentCategory(parentCategory);
@@ -239,8 +239,8 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 		userContext.getChecker().checkVersionOfProduct( productVersion);
 		
 
-		if(Product.DISPLAY_NAME_PROPERTY.equals(property)){
-			userContext.getChecker().checkDisplayNameOfProduct(parseString(newValueExpr));
+		if(Product.NAME_PROPERTY.equals(property)){
+			userContext.getChecker().checkNameOfProduct(parseString(newValueExpr));
 		}		
 
 				
@@ -498,7 +498,7 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 		result.setFilterKey(filterKey==null?"":filterKey.trim());
 		result.setPageNo(pageNo);
 		result.setValueFieldName("id");
-		result.setDisplayFieldName("displayName");
+		result.setDisplayFieldName("name");
 		
 		pageNo = Math.max(1, pageNo);
 		int pageSize = 20;
@@ -605,7 +605,7 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 	
 	
 
-	protected void checkParamsForAddingProductRecommendation(SearchUserContext userContext, String productId, String displayName, String brandId, String origin, String remark, String lastUpdateTime,String [] tokensExpr) throws Exception{
+	protected void checkParamsForAddingProductRecommendation(SearchUserContext userContext, String productId, String name, String brandId, String origin, String remark, String lastUpdateTime,String [] tokensExpr) throws Exception{
 		
 		
 
@@ -614,7 +614,7 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 		userContext.getChecker().checkIdOfProduct(productId);
 
 		
-		userContext.getChecker().checkDisplayNameOfProductRecommendation(displayName);
+		userContext.getChecker().checkNameOfProductRecommendation(name);
 		
 		userContext.getChecker().checkBrandIdOfProductRecommendation(brandId);
 		
@@ -628,12 +628,12 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 
 	
 	}
-	public  Product addProductRecommendation(SearchUserContext userContext, String productId, String displayName, String brandId, String origin, String remark, String lastUpdateTime, String [] tokensExpr) throws Exception
+	public  Product addProductRecommendation(SearchUserContext userContext, String productId, String name, String brandId, String origin, String remark, String lastUpdateTime, String [] tokensExpr) throws Exception
 	{	
 		
-		checkParamsForAddingProductRecommendation(userContext,productId,displayName, brandId, origin, remark, lastUpdateTime,tokensExpr);
+		checkParamsForAddingProductRecommendation(userContext,productId,name, brandId, origin, remark, lastUpdateTime,tokensExpr);
 		
-		ProductRecommendation productRecommendation = createProductRecommendation(userContext,displayName, brandId, origin, remark, lastUpdateTime);
+		ProductRecommendation productRecommendation = createProductRecommendation(userContext,name, brandId, origin, remark, lastUpdateTime);
 		
 		Product product = loadProduct(userContext, productId, allTokens());
 		synchronized(product){ 
@@ -646,12 +646,12 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 			return present(userContext,product, mergedAllTokens(tokensExpr));
 		}
 	}
-	protected void checkParamsForUpdatingProductRecommendationProperties(SearchUserContext userContext, String productId,String id,String displayName,String origin,String remark,String lastUpdateTime,String [] tokensExpr) throws Exception {
+	protected void checkParamsForUpdatingProductRecommendationProperties(SearchUserContext userContext, String productId,String id,String name,String origin,String remark,String lastUpdateTime,String [] tokensExpr) throws Exception {
 		
 		userContext.getChecker().checkIdOfProduct(productId);
 		userContext.getChecker().checkIdOfProductRecommendation(id);
 		
-		userContext.getChecker().checkDisplayNameOfProductRecommendation( displayName);
+		userContext.getChecker().checkNameOfProductRecommendation( name);
 		userContext.getChecker().checkOriginOfProductRecommendation( origin);
 		userContext.getChecker().checkRemarkOfProductRecommendation( remark);
 		userContext.getChecker().checkLastUpdateTimeOfProductRecommendation( lastUpdateTime);
@@ -659,9 +659,9 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 		userContext.getChecker().throwExceptionIfHasErrors(ProductManagerException.class);
 		
 	}
-	public  Product updateProductRecommendationProperties(SearchUserContext userContext, String productId, String id,String displayName,String origin,String remark,String lastUpdateTime, String [] tokensExpr) throws Exception
+	public  Product updateProductRecommendationProperties(SearchUserContext userContext, String productId, String id,String name,String origin,String remark,String lastUpdateTime, String [] tokensExpr) throws Exception
 	{	
-		checkParamsForUpdatingProductRecommendationProperties(userContext,productId,id,displayName,origin,remark,lastUpdateTime,tokensExpr);
+		checkParamsForUpdatingProductRecommendationProperties(userContext,productId,id,name,origin,remark,lastUpdateTime,tokensExpr);
 
 		Map<String, Object> options = tokens()
 				.allTokens()
@@ -676,7 +676,7 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 		
 		ProductRecommendation item = productToUpdate.getProductRecommendationList().first();
 		
-		item.updateDisplayName( displayName );
+		item.updateName( name );
 		item.updateOrigin( origin );
 		item.updateRemark( remark );
 		item.updateLastUpdateTime( lastUpdateTime );
@@ -690,12 +690,12 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 	}
 	
 	
-	protected ProductRecommendation createProductRecommendation(SearchUserContext userContext, String displayName, String brandId, String origin, String remark, String lastUpdateTime) throws Exception{
+	protected ProductRecommendation createProductRecommendation(SearchUserContext userContext, String name, String brandId, String origin, String remark, String lastUpdateTime) throws Exception{
 
 		ProductRecommendation productRecommendation = new ProductRecommendation();
 		
 		
-		productRecommendation.setDisplayName(displayName);		
+		productRecommendation.setName(name);		
 		Brand  brand = new Brand();
 		brand.setId(brandId);		
 		productRecommendation.setBrand(brand);		
@@ -813,8 +813,8 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 		userContext.getChecker().checkVersionOfProductRecommendation(productRecommendationVersion);
 		
 
-		if(ProductRecommendation.DISPLAY_NAME_PROPERTY.equals(property)){
-			userContext.getChecker().checkDisplayNameOfProductRecommendation(parseString(newValueExpr));
+		if(ProductRecommendation.NAME_PROPERTY.equals(property)){
+			userContext.getChecker().checkNameOfProductRecommendation(parseString(newValueExpr));
 		}
 		
 		if(ProductRecommendation.ORIGIN_PROPERTY.equals(property)){
@@ -871,7 +871,7 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 
 
 
-	protected void checkParamsForAddingSku(SearchUserContext userContext, String productId, String displayName, String size, boolean active, BigDecimal basePrice, String lastUpdateTime,String [] tokensExpr) throws Exception{
+	protected void checkParamsForAddingSku(SearchUserContext userContext, String productId, String name, String size, boolean active, BigDecimal basePrice, String lastUpdateTime,String [] tokensExpr) throws Exception{
 		
 		
 
@@ -880,7 +880,7 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 		userContext.getChecker().checkIdOfProduct(productId);
 
 		
-		userContext.getChecker().checkDisplayNameOfSku(displayName);
+		userContext.getChecker().checkNameOfSku(name);
 		
 		userContext.getChecker().checkSizeOfSku(size);
 		
@@ -894,12 +894,12 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 
 	
 	}
-	public  Product addSku(SearchUserContext userContext, String productId, String displayName, String size, boolean active, BigDecimal basePrice, String lastUpdateTime, String [] tokensExpr) throws Exception
+	public  Product addSku(SearchUserContext userContext, String productId, String name, String size, boolean active, BigDecimal basePrice, String lastUpdateTime, String [] tokensExpr) throws Exception
 	{	
 		
-		checkParamsForAddingSku(userContext,productId,displayName, size, active, basePrice, lastUpdateTime,tokensExpr);
+		checkParamsForAddingSku(userContext,productId,name, size, active, basePrice, lastUpdateTime,tokensExpr);
 		
-		Sku sku = createSku(userContext,displayName, size, active, basePrice, lastUpdateTime);
+		Sku sku = createSku(userContext,name, size, active, basePrice, lastUpdateTime);
 		
 		Product product = loadProduct(userContext, productId, allTokens());
 		synchronized(product){ 
@@ -912,12 +912,12 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 			return present(userContext,product, mergedAllTokens(tokensExpr));
 		}
 	}
-	protected void checkParamsForUpdatingSkuProperties(SearchUserContext userContext, String productId,String id,String displayName,String size,boolean active,BigDecimal basePrice,String lastUpdateTime,String [] tokensExpr) throws Exception {
+	protected void checkParamsForUpdatingSkuProperties(SearchUserContext userContext, String productId,String id,String name,String size,boolean active,BigDecimal basePrice,String lastUpdateTime,String [] tokensExpr) throws Exception {
 		
 		userContext.getChecker().checkIdOfProduct(productId);
 		userContext.getChecker().checkIdOfSku(id);
 		
-		userContext.getChecker().checkDisplayNameOfSku( displayName);
+		userContext.getChecker().checkNameOfSku( name);
 		userContext.getChecker().checkSizeOfSku( size);
 		userContext.getChecker().checkActiveOfSku( active);
 		userContext.getChecker().checkBasePriceOfSku( basePrice);
@@ -926,9 +926,9 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 		userContext.getChecker().throwExceptionIfHasErrors(ProductManagerException.class);
 		
 	}
-	public  Product updateSkuProperties(SearchUserContext userContext, String productId, String id,String displayName,String size,boolean active,BigDecimal basePrice,String lastUpdateTime, String [] tokensExpr) throws Exception
+	public  Product updateSkuProperties(SearchUserContext userContext, String productId, String id,String name,String size,boolean active,BigDecimal basePrice,String lastUpdateTime, String [] tokensExpr) throws Exception
 	{	
-		checkParamsForUpdatingSkuProperties(userContext,productId,id,displayName,size,active,basePrice,lastUpdateTime,tokensExpr);
+		checkParamsForUpdatingSkuProperties(userContext,productId,id,name,size,active,basePrice,lastUpdateTime,tokensExpr);
 
 		Map<String, Object> options = tokens()
 				.allTokens()
@@ -943,7 +943,7 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 		
 		Sku item = productToUpdate.getSkuList().first();
 		
-		item.updateDisplayName( displayName );
+		item.updateName( name );
 		item.updateSize( size );
 		item.updateActive( active );
 		item.updateBasePrice( basePrice );
@@ -958,12 +958,12 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 	}
 	
 	
-	protected Sku createSku(SearchUserContext userContext, String displayName, String size, boolean active, BigDecimal basePrice, String lastUpdateTime) throws Exception{
+	protected Sku createSku(SearchUserContext userContext, String name, String size, boolean active, BigDecimal basePrice, String lastUpdateTime) throws Exception{
 
 		Sku sku = new Sku();
 		
 		
-		sku.setDisplayName(displayName);		
+		sku.setName(name);		
 		sku.setSize(size);		
 		sku.setActive(active);		
 		sku.setBasePrice(basePrice);		
@@ -1079,8 +1079,8 @@ public class ProductManagerImpl extends CustomSearchCheckerManager implements Pr
 		userContext.getChecker().checkVersionOfSku(skuVersion);
 		
 
-		if(Sku.DISPLAY_NAME_PROPERTY.equals(property)){
-			userContext.getChecker().checkDisplayNameOfSku(parseString(newValueExpr));
+		if(Sku.NAME_PROPERTY.equals(property)){
+			userContext.getChecker().checkNameOfSku(parseString(newValueExpr));
 		}
 		
 		if(Sku.SIZE_PROPERTY.equals(property)){

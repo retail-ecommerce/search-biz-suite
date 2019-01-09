@@ -818,7 +818,7 @@ public class ProductJDBCTemplateDAO extends SearchNamingServiceDAO implements Pr
  	protected Object[] prepareProductUpdateParameters(Product product){
  		Object[] parameters = new Object[10];
  
- 		parameters[0] = product.getDisplayName(); 	
+ 		parameters[0] = product.getName(); 	
  		if(product.getParentCategory() != null){
  			parameters[1] = product.getParentCategory().getId();
  		}
@@ -846,7 +846,7 @@ public class ProductJDBCTemplateDAO extends SearchNamingServiceDAO implements Pr
 		product.setId(newProductId);
 		parameters[0] =  product.getId();
  
- 		parameters[1] = product.getDisplayName(); 	
+ 		parameters[1] = product.getName(); 	
  		if(product.getParentCategory() != null){
  			parameters[2] = product.getParentCategory().getId();
  		
@@ -1250,13 +1250,13 @@ public class ProductJDBCTemplateDAO extends SearchNamingServiceDAO implements Pr
     public SmartList<Product> requestCandidateProductForProductRecommendation(SearchUserContext userContext, String ownerClass, String id, String filterKey, int pageNo, int pageSize) throws Exception {
         // NOTE: by default, ignore owner info, just return all by filter key.
 		// You need override this method if you have different candidate-logic
-		return findAllCandidateByFilter(ProductTable.COLUMN_DISPLAY_NAME, filterKey, pageNo, pageSize, getProductMapper());
+		return findAllCandidateByFilter(ProductTable.COLUMN_NAME, filterKey, pageNo, pageSize, getProductMapper());
     }
 		
     public SmartList<Product> requestCandidateProductForSku(SearchUserContext userContext, String ownerClass, String id, String filterKey, int pageNo, int pageSize) throws Exception {
         // NOTE: by default, ignore owner info, just return all by filter key.
 		// You need override this method if you have different candidate-logic
-		return findAllCandidateByFilter(ProductTable.COLUMN_DISPLAY_NAME, filterKey, pageNo, pageSize, getProductMapper());
+		return findAllCandidateByFilter(ProductTable.COLUMN_NAME, filterKey, pageNo, pageSize, getProductMapper());
     }
 		
 

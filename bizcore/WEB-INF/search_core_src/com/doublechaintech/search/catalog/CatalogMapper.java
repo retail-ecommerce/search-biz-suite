@@ -13,7 +13,7 @@ public class CatalogMapper extends BaseRowMapper<Catalog>{
 		Catalog catalog = getCatalog();		
 		 		
  		setId(catalog, rs, rowNumber); 		
- 		setDisplayName(catalog, rs, rowNumber); 		
+ 		setName(catalog, rs, rowNumber); 		
  		setSellerId(catalog, rs, rowNumber); 		
  		setSite(catalog, rs, rowNumber); 		
  		setVersion(catalog, rs, rowNumber);
@@ -37,16 +37,16 @@ public class CatalogMapper extends BaseRowMapper<Catalog>{
 		catalog.setId(id);
 	}
 		
-	protected void setDisplayName(Catalog catalog, ResultSet rs, int rowNumber) throws SQLException{
+	protected void setName(Catalog catalog, ResultSet rs, int rowNumber) throws SQLException{
 	
 		//there will be issue when the type is double/int/long
-		String displayName = rs.getString(CatalogTable.COLUMN_DISPLAY_NAME);
-		if(displayName == null){
+		String name = rs.getString(CatalogTable.COLUMN_NAME);
+		if(name == null){
 			//do nothing when nothing found in database
 			return;
 		}
 		
-		catalog.setDisplayName(displayName);
+		catalog.setName(name);
 	}
 		
 	protected void setSellerId(Catalog catalog, ResultSet rs, int rowNumber) throws SQLException{

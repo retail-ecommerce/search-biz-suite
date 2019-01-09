@@ -169,14 +169,14 @@ public class LevelNCategoryManagerImpl extends CustomSearchCheckerManager implem
  	
 
 
-	public LevelNCategory createLevelNCategory(SearchUserContext userContext,String parentCategoryId, String displayName) throws Exception
+	public LevelNCategory createLevelNCategory(SearchUserContext userContext,String parentCategoryId, String name) throws Exception
 	{
 		
 		
 
 		
 
-		userContext.getChecker().checkDisplayNameOfLevelNCategory(displayName);
+		userContext.getChecker().checkNameOfLevelNCategory(name);
 	
 		userContext.getChecker().throwExceptionIfHasErrors(LevelNCategoryManagerException.class);
 
@@ -188,7 +188,7 @@ public class LevelNCategoryManagerImpl extends CustomSearchCheckerManager implem
 		levelNCategory.setParentCategory(parentCategory);
 		
 		
-		levelNCategory.setDisplayName(displayName);
+		levelNCategory.setName(name);
 
 		levelNCategory = saveLevelNCategory(userContext, levelNCategory, emptyOptions());
 		
@@ -215,8 +215,8 @@ public class LevelNCategoryManagerImpl extends CustomSearchCheckerManager implem
 		
 
 		
-		if(LevelNCategory.DISPLAY_NAME_PROPERTY.equals(property)){
-			userContext.getChecker().checkDisplayNameOfLevelNCategory(parseString(newValueExpr));
+		if(LevelNCategory.NAME_PROPERTY.equals(property)){
+			userContext.getChecker().checkNameOfLevelNCategory(parseString(newValueExpr));
 		}
 	
 		userContext.getChecker().throwExceptionIfHasErrors(LevelNCategoryManagerException.class);
@@ -465,7 +465,7 @@ public class LevelNCategoryManagerImpl extends CustomSearchCheckerManager implem
 	
 	
 
-	protected void checkParamsForAddingProduct(SearchUserContext userContext, String levelNCategoryId, String displayName, String brandId, String origin, String catalogId, String remark, String lastUpdateTime,String [] tokensExpr) throws Exception{
+	protected void checkParamsForAddingProduct(SearchUserContext userContext, String levelNCategoryId, String name, String brandId, String origin, String catalogId, String remark, String lastUpdateTime,String [] tokensExpr) throws Exception{
 		
 		
 
@@ -474,7 +474,7 @@ public class LevelNCategoryManagerImpl extends CustomSearchCheckerManager implem
 		userContext.getChecker().checkIdOfLevelNCategory(levelNCategoryId);
 
 		
-		userContext.getChecker().checkDisplayNameOfProduct(displayName);
+		userContext.getChecker().checkNameOfProduct(name);
 		
 		userContext.getChecker().checkBrandIdOfProduct(brandId);
 		
@@ -490,12 +490,12 @@ public class LevelNCategoryManagerImpl extends CustomSearchCheckerManager implem
 
 	
 	}
-	public  LevelNCategory addProduct(SearchUserContext userContext, String levelNCategoryId, String displayName, String brandId, String origin, String catalogId, String remark, String lastUpdateTime, String [] tokensExpr) throws Exception
+	public  LevelNCategory addProduct(SearchUserContext userContext, String levelNCategoryId, String name, String brandId, String origin, String catalogId, String remark, String lastUpdateTime, String [] tokensExpr) throws Exception
 	{	
 		
-		checkParamsForAddingProduct(userContext,levelNCategoryId,displayName, brandId, origin, catalogId, remark, lastUpdateTime,tokensExpr);
+		checkParamsForAddingProduct(userContext,levelNCategoryId,name, brandId, origin, catalogId, remark, lastUpdateTime,tokensExpr);
 		
-		Product product = createProduct(userContext,displayName, brandId, origin, catalogId, remark, lastUpdateTime);
+		Product product = createProduct(userContext,name, brandId, origin, catalogId, remark, lastUpdateTime);
 		
 		LevelNCategory levelNCategory = loadLevelNCategory(userContext, levelNCategoryId, allTokens());
 		synchronized(levelNCategory){ 
@@ -508,12 +508,12 @@ public class LevelNCategoryManagerImpl extends CustomSearchCheckerManager implem
 			return present(userContext,levelNCategory, mergedAllTokens(tokensExpr));
 		}
 	}
-	protected void checkParamsForUpdatingProductProperties(SearchUserContext userContext, String levelNCategoryId,String id,String displayName,String origin,String remark,String lastUpdateTime,String [] tokensExpr) throws Exception {
+	protected void checkParamsForUpdatingProductProperties(SearchUserContext userContext, String levelNCategoryId,String id,String name,String origin,String remark,String lastUpdateTime,String [] tokensExpr) throws Exception {
 		
 		userContext.getChecker().checkIdOfLevelNCategory(levelNCategoryId);
 		userContext.getChecker().checkIdOfProduct(id);
 		
-		userContext.getChecker().checkDisplayNameOfProduct( displayName);
+		userContext.getChecker().checkNameOfProduct( name);
 		userContext.getChecker().checkOriginOfProduct( origin);
 		userContext.getChecker().checkRemarkOfProduct( remark);
 		userContext.getChecker().checkLastUpdateTimeOfProduct( lastUpdateTime);
@@ -521,9 +521,9 @@ public class LevelNCategoryManagerImpl extends CustomSearchCheckerManager implem
 		userContext.getChecker().throwExceptionIfHasErrors(LevelNCategoryManagerException.class);
 		
 	}
-	public  LevelNCategory updateProductProperties(SearchUserContext userContext, String levelNCategoryId, String id,String displayName,String origin,String remark,String lastUpdateTime, String [] tokensExpr) throws Exception
+	public  LevelNCategory updateProductProperties(SearchUserContext userContext, String levelNCategoryId, String id,String name,String origin,String remark,String lastUpdateTime, String [] tokensExpr) throws Exception
 	{	
-		checkParamsForUpdatingProductProperties(userContext,levelNCategoryId,id,displayName,origin,remark,lastUpdateTime,tokensExpr);
+		checkParamsForUpdatingProductProperties(userContext,levelNCategoryId,id,name,origin,remark,lastUpdateTime,tokensExpr);
 
 		Map<String, Object> options = tokens()
 				.allTokens()
@@ -538,7 +538,7 @@ public class LevelNCategoryManagerImpl extends CustomSearchCheckerManager implem
 		
 		Product item = levelNCategoryToUpdate.getProductList().first();
 		
-		item.updateDisplayName( displayName );
+		item.updateName( name );
 		item.updateOrigin( origin );
 		item.updateRemark( remark );
 		item.updateLastUpdateTime( lastUpdateTime );
@@ -552,12 +552,12 @@ public class LevelNCategoryManagerImpl extends CustomSearchCheckerManager implem
 	}
 	
 	
-	protected Product createProduct(SearchUserContext userContext, String displayName, String brandId, String origin, String catalogId, String remark, String lastUpdateTime) throws Exception{
+	protected Product createProduct(SearchUserContext userContext, String name, String brandId, String origin, String catalogId, String remark, String lastUpdateTime) throws Exception{
 
 		Product product = new Product();
 		
 		
-		product.setDisplayName(displayName);		
+		product.setName(name);		
 		Brand  brand = new Brand();
 		brand.setId(brandId);		
 		product.setBrand(brand);		
@@ -678,8 +678,8 @@ public class LevelNCategoryManagerImpl extends CustomSearchCheckerManager implem
 		userContext.getChecker().checkVersionOfProduct(productVersion);
 		
 
-		if(Product.DISPLAY_NAME_PROPERTY.equals(property)){
-			userContext.getChecker().checkDisplayNameOfProduct(parseString(newValueExpr));
+		if(Product.NAME_PROPERTY.equals(property)){
+			userContext.getChecker().checkNameOfProduct(parseString(newValueExpr));
 		}
 		
 		if(Product.ORIGIN_PROPERTY.equals(property)){

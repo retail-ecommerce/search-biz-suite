@@ -34,17 +34,17 @@ public class ProductForm extends BaseForm {
 	}
 
 
-	public ProductForm displayNameField(String parameterName, String initValue){
-		FormField field = displayNameFromProduct(parameterName, initValue);		
+	public ProductForm nameField(String parameterName, String initValue){
+		FormField field = nameFromProduct(parameterName, initValue);		
 		this.addFormField(field);
 		return this;
 	}
 	
-	public ProductForm displayNameField(String initValue){
-		return displayNameField("displayName",initValue);
+	public ProductForm nameField(String initValue){
+		return nameField("name",initValue);
 	}
-	public ProductForm displayNameField(){
-		return displayNameField("displayName","");
+	public ProductForm nameField(){
+		return nameField("name","");
 	}
 
 
@@ -163,17 +163,17 @@ public class ProductForm extends BaseForm {
 	}
 
 
-	public ProductForm displayNameFieldOfLevelNCategory(String parameterName, String initValue){
-		FormField field =  displayNameFromLevelNCategory(parameterName, initValue);
+	public ProductForm nameFieldOfLevelNCategory(String parameterName, String initValue){
+		FormField field =  nameFromLevelNCategory(parameterName, initValue);
 		this.addFormField(field);	
 		return this;
 	}
 	
-	public ProductForm displayNameFieldOfLevelNCategory(String initValue){
-		return displayNameFieldOfLevelNCategory("displayName",initValue);
+	public ProductForm nameFieldOfLevelNCategory(String initValue){
+		return nameFieldOfLevelNCategory("name",initValue);
 	}
-	public ProductForm displayNameFieldOfLevelNCategory(){
-		return displayNameFieldOfLevelNCategory("displayName","");
+	public ProductForm nameFieldOfLevelNCategory(){
+		return nameFieldOfLevelNCategory("name","");
 	}
 
 
@@ -247,17 +247,17 @@ public class ProductForm extends BaseForm {
 	}
 
 
-	public ProductForm displayNameFieldOfCatalog(String parameterName, String initValue){
-		FormField field =  displayNameFromCatalog(parameterName, initValue);
+	public ProductForm nameFieldOfCatalog(String parameterName, String initValue){
+		FormField field =  nameFromCatalog(parameterName, initValue);
 		this.addFormField(field);	
 		return this;
 	}
 	
-	public ProductForm displayNameFieldOfCatalog(String initValue){
-		return displayNameFieldOfCatalog("displayName",initValue);
+	public ProductForm nameFieldOfCatalog(String initValue){
+		return nameFieldOfCatalog("name",initValue);
 	}
-	public ProductForm displayNameFieldOfCatalog(){
-		return displayNameFieldOfCatalog("displayName","");
+	public ProductForm nameFieldOfCatalog(){
+		return nameFieldOfCatalog("name","");
 	}
 
 
@@ -306,17 +306,17 @@ public class ProductForm extends BaseForm {
 	}
 
 
-	public ProductForm displayNameFieldForProductRecommendation(String parameterName, String initValue){
-		FormField field =  displayNameFromProductRecommendation(parameterName, initValue);		
+	public ProductForm nameFieldForProductRecommendation(String parameterName, String initValue){
+		FormField field =  nameFromProductRecommendation(parameterName, initValue);		
 		this.addFormField(field);
 		return this;
 	}
 	
-	public ProductForm displayNameFieldForProductRecommendation(String initValue){
-		return displayNameFieldForProductRecommendation("displayName",initValue);
+	public ProductForm nameFieldForProductRecommendation(String initValue){
+		return nameFieldForProductRecommendation("name",initValue);
 	}
-	public ProductForm displayNameFieldForProductRecommendation(){
-		return displayNameFieldForProductRecommendation("displayName","");
+	public ProductForm nameFieldForProductRecommendation(){
+		return nameFieldForProductRecommendation("name","");
 	}
 
 
@@ -404,17 +404,17 @@ public class ProductForm extends BaseForm {
 	}
 
 
-	public ProductForm displayNameFieldForSku(String parameterName, String initValue){
-		FormField field =  displayNameFromSku(parameterName, initValue);		
+	public ProductForm nameFieldForSku(String parameterName, String initValue){
+		FormField field =  nameFromSku(parameterName, initValue);		
 		this.addFormField(field);
 		return this;
 	}
 	
-	public ProductForm displayNameFieldForSku(String initValue){
-		return displayNameFieldForSku("displayName",initValue);
+	public ProductForm nameFieldForSku(String initValue){
+		return nameFieldForSku("name",initValue);
 	}
-	public ProductForm displayNameFieldForSku(){
-		return displayNameFieldForSku("displayName","");
+	public ProductForm nameFieldForSku(){
+		return nameFieldForSku("name","");
 	}
 
 

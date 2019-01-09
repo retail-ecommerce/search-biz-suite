@@ -101,8 +101,8 @@
 <c:if test="${param.referName ne 'catalog'}">
 	<th>${userContext.localeMap['level_one_category.catalog']}</th>
 </c:if>
-<c:if test="${param.referName ne 'displayName'}">
-	<th>${userContext.localeMap['level_one_category.display_name']}</th>
+<c:if test="${param.referName ne 'name'}">
+	<th>${userContext.localeMap['level_one_category.name']}</th>
 </c:if>
 <th>${userContext.localeMap['@action']}</th>
 		</tr></thead>
@@ -129,7 +129,7 @@
 		</div>
 	</td>
 </c:if>
-<c:if test="${param.referName ne 'displayName'}">	<td contenteditable='true' class='edit-value'  propertyToChange='displayName' storedCellValue='${item.displayName}' prefix='${ownerBeanName}Manager/updateLevelOneCategory/${result.id}/${item.id}/'>${item.displayName}</td>
+<c:if test="${param.referName ne 'name'}">	<td contenteditable='true' class='edit-value'  propertyToChange='name' storedCellValue='${item.name}' prefix='${ownerBeanName}Manager/updateLevelOneCategory/${result.id}/${item.id}/'>${item.name}</td>
 </c:if>
 				<td>
 

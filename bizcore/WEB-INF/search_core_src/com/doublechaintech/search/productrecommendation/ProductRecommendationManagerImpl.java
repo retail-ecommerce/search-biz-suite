@@ -164,14 +164,14 @@ public class ProductRecommendationManagerImpl extends CustomSearchCheckerManager
  	
 
 
-	public ProductRecommendation createProductRecommendation(SearchUserContext userContext,String displayName, String brandId, String origin, String productId, String remark, String lastUpdateTime) throws Exception
+	public ProductRecommendation createProductRecommendation(SearchUserContext userContext,String name, String brandId, String origin, String productId, String remark, String lastUpdateTime) throws Exception
 	{
 		
 		
 
 		
 
-		userContext.getChecker().checkDisplayNameOfProductRecommendation(displayName);
+		userContext.getChecker().checkNameOfProductRecommendation(name);
 		userContext.getChecker().checkOriginOfProductRecommendation(origin);
 		userContext.getChecker().checkRemarkOfProductRecommendation(remark);
 		userContext.getChecker().checkLastUpdateTimeOfProductRecommendation(lastUpdateTime);
@@ -181,7 +181,7 @@ public class ProductRecommendationManagerImpl extends CustomSearchCheckerManager
 
 		ProductRecommendation productRecommendation=createNewProductRecommendation();	
 
-		productRecommendation.setDisplayName(displayName);
+		productRecommendation.setName(name);
 			
 		Brand brand = loadBrand(userContext, brandId,emptyOptions());
 		productRecommendation.setBrand(brand);
@@ -219,8 +219,8 @@ public class ProductRecommendationManagerImpl extends CustomSearchCheckerManager
 		userContext.getChecker().checkVersionOfProductRecommendation( productRecommendationVersion);
 		
 
-		if(ProductRecommendation.DISPLAY_NAME_PROPERTY.equals(property)){
-			userContext.getChecker().checkDisplayNameOfProductRecommendation(parseString(newValueExpr));
+		if(ProductRecommendation.NAME_PROPERTY.equals(property)){
+			userContext.getChecker().checkNameOfProductRecommendation(parseString(newValueExpr));
 		}		
 
 		
@@ -425,7 +425,7 @@ public class ProductRecommendationManagerImpl extends CustomSearchCheckerManager
 		result.setFilterKey(filterKey==null?"":filterKey.trim());
 		result.setPageNo(pageNo);
 		result.setValueFieldName("id");
-		result.setDisplayFieldName("displayName");
+		result.setDisplayFieldName("name");
 		
 		pageNo = Math.max(1, pageNo);
 		int pageSize = 20;

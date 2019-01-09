@@ -18,7 +18,7 @@ public class SkuTable{
 	//only this package can use this, so the scope is default, not public, not private either nor protected
 	static final String TABLE_NAME="sku_data";
 	static final String COLUMN_ID = "id";
-	static final String COLUMN_DISPLAY_NAME = "display_name";
+	static final String COLUMN_NAME = "name";
 	static final String COLUMN_SIZE = "size";
 	static final String COLUMN_PRODUCT = "product";
 	static final String COLUMN_ACTIVE = "active";
@@ -27,10 +27,10 @@ public class SkuTable{
 	static final String COLUMN_VERSION = "version";
  
 	static final String []ALL_CLOUMNS = {COLUMN_ID, 
-		COLUMN_DISPLAY_NAME, COLUMN_SIZE, COLUMN_PRODUCT, COLUMN_ACTIVE, COLUMN_BASE_PRICE, COLUMN_LAST_UPDATE_TIME, 
+		COLUMN_NAME, COLUMN_SIZE, COLUMN_PRODUCT, COLUMN_ACTIVE, COLUMN_BASE_PRICE, COLUMN_LAST_UPDATE_TIME, 
 		COLUMN_VERSION};
 	static final String []NORMAL_CLOUMNS = {
-		COLUMN_DISPLAY_NAME, COLUMN_SIZE, COLUMN_PRODUCT, COLUMN_ACTIVE, COLUMN_BASE_PRICE, COLUMN_LAST_UPDATE_TIME
+		COLUMN_NAME, COLUMN_SIZE, COLUMN_PRODUCT, COLUMN_ACTIVE, COLUMN_BASE_PRICE, COLUMN_LAST_UPDATE_TIME
 		};
 	
 	

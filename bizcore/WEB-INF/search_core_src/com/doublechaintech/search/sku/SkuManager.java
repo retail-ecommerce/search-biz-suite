@@ -12,7 +12,7 @@ public interface SkuManager{
 
 		
 
-	public Sku createSku(SearchUserContext userContext, String displayName, String size, String productId, boolean active, BigDecimal basePrice, String lastUpdateTime) throws Exception;	
+	public Sku createSku(SearchUserContext userContext, String name, String size, String productId, boolean active, BigDecimal basePrice, String lastUpdateTime) throws Exception;	
 	public Sku updateSku(SearchUserContext userContext,String skuId, int skuVersion, String property, String newValueExpr,String [] tokensExpr) throws Exception;
 	public Sku loadSku(SearchUserContext userContext, String skuId, String [] tokensExpr) throws Exception;
 	public Sku internalSaveSku(SearchUserContext userContext, Sku sku) throws Exception;

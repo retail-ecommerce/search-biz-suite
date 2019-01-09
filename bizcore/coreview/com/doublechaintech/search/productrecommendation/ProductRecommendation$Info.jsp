@@ -20,7 +20,7 @@
 	
 	
 	<li><span>ID</span><a class="link-action-removed" href="./productRecommendationManager/view/${productRecommendation.id}/"> ${productRecommendation.id}</a></li>
-<li><span>${userContext.localeMap['product_recommendation.display_name']}</span> ${productRecommendation.displayName}</li>
+<li><span>${userContext.localeMap['product_recommendation.name']}</span> ${productRecommendation.name}</li>
 <li><span>${userContext.localeMap['product_recommendation.origin']}</span> ${productRecommendation.origin}</li>
 <li><span>${userContext.localeMap['product_recommendation.remark']}</span> ${productRecommendation.remark}</li>
 <li><span>${userContext.localeMap['product_recommendation.last_update_time']}</span> ${productRecommendation.lastUpdateTime}</li>

@@ -20,7 +20,7 @@ public class LevelNCategory extends BaseEntity implements  java.io.Serializable{
 	
 	public static final String ID_PROPERTY                    = "id"                ;
 	public static final String PARENT_CATEGORY_PROPERTY       = "parentCategory"    ;
-	public static final String DISPLAY_NAME_PROPERTY          = "displayName"       ;
+	public static final String NAME_PROPERTY                  = "name"              ;
 	public static final String VERSION_PROPERTY               = "version"           ;
 
 	public static final String PRODUCT_LIST                             = "productList"       ;
@@ -32,7 +32,7 @@ public class LevelNCategory extends BaseEntity implements  java.io.Serializable{
 	
 	public String getDisplayName(){
 	
-		String displayName = getDisplayName();
+		String displayName = getName();
 		if(displayName!=null){
 			return displayName;
 		}
@@ -46,7 +46,7 @@ public class LevelNCategory extends BaseEntity implements  java.io.Serializable{
 
 	protected		String              	mId                 ;
 	protected		LevelTwoCategory    	mParentCategory     ;
-	protected		String              	mDisplayName        ;
+	protected		String              	mName               ;
 	protected		int                 	mVersion            ;
 	
 	
@@ -63,10 +63,10 @@ public class LevelNCategory extends BaseEntity implements  java.io.Serializable{
 		this.changed = true;
 	}
 	
-	public 	LevelNCategory(LevelTwoCategory parentCategory, String displayName)
+	public 	LevelNCategory(LevelTwoCategory parentCategory, String name)
 	{
 		setParentCategory(parentCategory);
-		setDisplayName(displayName);
+		setName(name);
 
 		this.mProductList = new SmartList<Product>();	
 	}
@@ -75,23 +75,23 @@ public class LevelNCategory extends BaseEntity implements  java.io.Serializable{
 	
 	public void changeProperty(String property, String newValueExpr) {
      	
-		if(DISPLAY_NAME_PROPERTY.equals(property)){
-			changeDisplayNameProperty(newValueExpr);
+		if(NAME_PROPERTY.equals(property)){
+			changeNameProperty(newValueExpr);
 		}
 
       
 	}
     
     
-	protected void changeDisplayNameProperty(String newValueExpr){
-		String oldValue = getDisplayName();
+	protected void changeNameProperty(String newValueExpr){
+		String oldValue = getName();
 		String newValue = parseString(newValueExpr);
 		if(equalsString(oldValue , newValue)){
 			return;//they can be both null, or exact the same object, this is much faster than equals function
 		}
 		//they are surely different each other
-		updateDisplayName(newValue);
-		this.onChangeProperty(DISPLAY_NAME_PROPERTY, oldValue, newValue);
+		updateName(newValue);
+		this.onChangeProperty(NAME_PROPERTY, oldValue, newValue);
 		return;
   
 	}
@@ -134,14 +134,14 @@ public class LevelNCategory extends BaseEntity implements  java.io.Serializable{
 		this.changed = true;
 	}
 	
-	public void setDisplayName(String displayName){
-		this.mDisplayName = trimString(displayName);;
+	public void setName(String name){
+		this.mName = trimString(name);;
 	}
-	public String getDisplayName(){
-		return this.mDisplayName;
+	public String getName(){
+		return this.mName;
 	}
-	public LevelNCategory updateDisplayName(String displayName){
-		this.mDisplayName = trimString(displayName);;
+	public LevelNCategory updateName(String name){
+		this.mName = trimString(name);;
 		this.changed = true;
 		return this;
 	}
@@ -289,7 +289,7 @@ public class LevelNCategory extends BaseEntity implements  java.io.Serializable{
 
 		appendKeyValuePair(result, ID_PROPERTY, getId());
 		appendKeyValuePair(result, PARENT_CATEGORY_PROPERTY, getParentCategory());
-		appendKeyValuePair(result, DISPLAY_NAME_PROPERTY, getDisplayName());
+		appendKeyValuePair(result, NAME_PROPERTY, getName());
 		appendKeyValuePair(result, VERSION_PROPERTY, getVersion());
 		appendKeyValuePair(result, PRODUCT_LIST, getProductList());
 		if(!getProductList().isEmpty()){
@@ -312,7 +312,7 @@ public class LevelNCategory extends BaseEntity implements  java.io.Serializable{
 		
 			dest.setId(getId());
 			dest.setParentCategory(getParentCategory());
-			dest.setDisplayName(getDisplayName());
+			dest.setName(getName());
 			dest.setVersion(getVersion());
 			dest.setProductList(getProductList());
 
@@ -329,7 +329,7 @@ public class LevelNCategory extends BaseEntity implements  java.io.Serializable{
 		if(getParentCategory() != null ){
  			stringBuilder.append("\tparentCategory='LevelTwoCategory("+getParentCategory().getId()+")';");
  		}
-		stringBuilder.append("\tdisplayName='"+getDisplayName()+"';");
+		stringBuilder.append("\tname='"+getName()+"';");
 		stringBuilder.append("\tversion='"+getVersion()+"';");
 		stringBuilder.append("}");
 

@@ -34,17 +34,17 @@ public class ProductRecommendationForm extends BaseForm {
 	}
 
 
-	public ProductRecommendationForm displayNameField(String parameterName, String initValue){
-		FormField field = displayNameFromProductRecommendation(parameterName, initValue);		
+	public ProductRecommendationForm nameField(String parameterName, String initValue){
+		FormField field = nameFromProductRecommendation(parameterName, initValue);		
 		this.addFormField(field);
 		return this;
 	}
 	
-	public ProductRecommendationForm displayNameField(String initValue){
-		return displayNameField("displayName",initValue);
+	public ProductRecommendationForm nameField(String initValue){
+		return nameField("name",initValue);
 	}
-	public ProductRecommendationForm displayNameField(){
-		return displayNameField("displayName","");
+	public ProductRecommendationForm nameField(){
+		return nameField("name","");
 	}
 
 
@@ -191,17 +191,17 @@ public class ProductRecommendationForm extends BaseForm {
 	}
 
 
-	public ProductRecommendationForm displayNameFieldOfProduct(String parameterName, String initValue){
-		FormField field =  displayNameFromProduct(parameterName, initValue);
+	public ProductRecommendationForm nameFieldOfProduct(String parameterName, String initValue){
+		FormField field =  nameFromProduct(parameterName, initValue);
 		this.addFormField(field);	
 		return this;
 	}
 	
-	public ProductRecommendationForm displayNameFieldOfProduct(String initValue){
-		return displayNameFieldOfProduct("displayName",initValue);
+	public ProductRecommendationForm nameFieldOfProduct(String initValue){
+		return nameFieldOfProduct("name",initValue);
 	}
-	public ProductRecommendationForm displayNameFieldOfProduct(){
-		return displayNameFieldOfProduct("displayName","");
+	public ProductRecommendationForm nameFieldOfProduct(){
+		return nameFieldOfProduct("name","");
 	}
 
 

@@ -18,7 +18,7 @@
 	
 	
 	<li><span>${userContext.localeMap['catalog.id']}</span> ${catalog.id}</li>
-<li><span>${userContext.localeMap['catalog.display_name']}</span> ${catalog.displayName}</li>
+<li><span>${userContext.localeMap['catalog.name']}</span> ${catalog.name}</li>
 <li><span>${userContext.localeMap['catalog.seller_id']}</span> ${catalog.sellerId}</li>
 
 	

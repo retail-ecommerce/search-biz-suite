@@ -19,7 +19,7 @@ public class ProductRecommendation extends BaseEntity implements  java.io.Serial
 
 	
 	public static final String ID_PROPERTY                    = "id"                ;
-	public static final String DISPLAY_NAME_PROPERTY          = "displayName"       ;
+	public static final String NAME_PROPERTY                  = "name"              ;
 	public static final String BRAND_PROPERTY                 = "brand"             ;
 	public static final String ORIGIN_PROPERTY                = "origin"            ;
 	public static final String PRODUCT_PROPERTY               = "product"           ;
@@ -35,7 +35,7 @@ public class ProductRecommendation extends BaseEntity implements  java.io.Serial
 	
 	public String getDisplayName(){
 	
-		String displayName = getDisplayName();
+		String displayName = getName();
 		if(displayName!=null){
 			return displayName;
 		}
@@ -48,7 +48,7 @@ public class ProductRecommendation extends BaseEntity implements  java.io.Serial
 	
 
 	protected		String              	mId                 ;
-	protected		String              	mDisplayName        ;
+	protected		String              	mName               ;
 	protected		Brand               	mBrand              ;
 	protected		String              	mOrigin             ;
 	protected		Product             	mProduct            ;
@@ -70,9 +70,9 @@ public class ProductRecommendation extends BaseEntity implements  java.io.Serial
 		this.changed = true;
 	}
 	
-	public 	ProductRecommendation(String displayName, Brand brand, String origin, Product product, String remark, String lastUpdateTime)
+	public 	ProductRecommendation(String name, Brand brand, String origin, Product product, String remark, String lastUpdateTime)
 	{
-		setDisplayName(displayName);
+		setName(name);
 		setBrand(brand);
 		setOrigin(origin);
 		setProduct(product);
@@ -85,8 +85,8 @@ public class ProductRecommendation extends BaseEntity implements  java.io.Serial
 	
 	public void changeProperty(String property, String newValueExpr) {
      	
-		if(DISPLAY_NAME_PROPERTY.equals(property)){
-			changeDisplayNameProperty(newValueExpr);
+		if(NAME_PROPERTY.equals(property)){
+			changeNameProperty(newValueExpr);
 		}
 		if(ORIGIN_PROPERTY.equals(property)){
 			changeOriginProperty(newValueExpr);
@@ -102,15 +102,15 @@ public class ProductRecommendation extends BaseEntity implements  java.io.Serial
 	}
     
     
-	protected void changeDisplayNameProperty(String newValueExpr){
-		String oldValue = getDisplayName();
+	protected void changeNameProperty(String newValueExpr){
+		String oldValue = getName();
 		String newValue = parseString(newValueExpr);
 		if(equalsString(oldValue , newValue)){
 			return;//they can be both null, or exact the same object, this is much faster than equals function
 		}
 		//they are surely different each other
-		updateDisplayName(newValue);
-		this.onChangeProperty(DISPLAY_NAME_PROPERTY, oldValue, newValue);
+		updateName(newValue);
+		this.onChangeProperty(NAME_PROPERTY, oldValue, newValue);
 		return;
   
 	}
@@ -180,14 +180,14 @@ public class ProductRecommendation extends BaseEntity implements  java.io.Serial
 	}
 	
 	
-	public void setDisplayName(String displayName){
-		this.mDisplayName = trimString(displayName);;
+	public void setName(String name){
+		this.mName = trimString(name);;
 	}
-	public String getDisplayName(){
-		return this.mDisplayName;
+	public String getName(){
+		return this.mName;
 	}
-	public ProductRecommendation updateDisplayName(String displayName){
-		this.mDisplayName = trimString(displayName);;
+	public ProductRecommendation updateName(String name){
+		this.mName = trimString(name);;
 		this.changed = true;
 		return this;
 	}
@@ -310,7 +310,7 @@ public class ProductRecommendation extends BaseEntity implements  java.io.Serial
 		List<KeyValuePair> result =  super.keyValuePairOf();
 
 		appendKeyValuePair(result, ID_PROPERTY, getId());
-		appendKeyValuePair(result, DISPLAY_NAME_PROPERTY, getDisplayName());
+		appendKeyValuePair(result, NAME_PROPERTY, getName());
 		appendKeyValuePair(result, BRAND_PROPERTY, getBrand());
 		appendKeyValuePair(result, ORIGIN_PROPERTY, getOrigin());
 		appendKeyValuePair(result, PRODUCT_PROPERTY, getProduct());
@@ -332,7 +332,7 @@ public class ProductRecommendation extends BaseEntity implements  java.io.Serial
 			ProductRecommendation dest =(ProductRecommendation)baseDest;
 		
 			dest.setId(getId());
-			dest.setDisplayName(getDisplayName());
+			dest.setName(getName());
 			dest.setBrand(getBrand());
 			dest.setOrigin(getOrigin());
 			dest.setProduct(getProduct());
@@ -350,7 +350,7 @@ public class ProductRecommendation extends BaseEntity implements  java.io.Serial
 
 		stringBuilder.append("ProductRecommendation{");
 		stringBuilder.append("\tid='"+getId()+"';");
-		stringBuilder.append("\tdisplayName='"+getDisplayName()+"';");
+		stringBuilder.append("\tname='"+getName()+"';");
 		if(getBrand() != null ){
  			stringBuilder.append("\tbrand='Brand("+getBrand().getId()+")';");
  		}

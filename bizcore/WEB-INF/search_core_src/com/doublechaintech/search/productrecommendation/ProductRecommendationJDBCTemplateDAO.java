@@ -526,7 +526,7 @@ public class ProductRecommendationJDBCTemplateDAO extends SearchNamingServiceDAO
  	protected Object[] prepareProductRecommendationUpdateParameters(ProductRecommendation productRecommendation){
  		Object[] parameters = new Object[9];
  
- 		parameters[0] = productRecommendation.getDisplayName(); 	
+ 		parameters[0] = productRecommendation.getName(); 	
  		if(productRecommendation.getBrand() != null){
  			parameters[1] = productRecommendation.getBrand().getId();
  		}
@@ -550,7 +550,7 @@ public class ProductRecommendationJDBCTemplateDAO extends SearchNamingServiceDAO
 		productRecommendation.setId(newProductRecommendationId);
 		parameters[0] =  productRecommendation.getId();
  
- 		parameters[1] = productRecommendation.getDisplayName(); 	
+ 		parameters[1] = productRecommendation.getName(); 	
  		if(productRecommendation.getBrand() != null){
  			parameters[2] = productRecommendation.getBrand().getId();
  		

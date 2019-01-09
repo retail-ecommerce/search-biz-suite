@@ -48,17 +48,17 @@ public class LevelOneCategoryForm extends BaseForm {
 	}
 
 
-	public LevelOneCategoryForm displayNameField(String parameterName, String initValue){
-		FormField field = displayNameFromLevelOneCategory(parameterName, initValue);		
+	public LevelOneCategoryForm nameField(String parameterName, String initValue){
+		FormField field = nameFromLevelOneCategory(parameterName, initValue);		
 		this.addFormField(field);
 		return this;
 	}
 	
-	public LevelOneCategoryForm displayNameField(String initValue){
-		return displayNameField("displayName",initValue);
+	public LevelOneCategoryForm nameField(String initValue){
+		return nameField("name",initValue);
 	}
-	public LevelOneCategoryForm displayNameField(){
-		return displayNameField("displayName","");
+	public LevelOneCategoryForm nameField(){
+		return nameField("name","");
 	}
 
 	
@@ -79,17 +79,17 @@ public class LevelOneCategoryForm extends BaseForm {
 	}
 
 
-	public LevelOneCategoryForm displayNameFieldOfCatalog(String parameterName, String initValue){
-		FormField field =  displayNameFromCatalog(parameterName, initValue);
+	public LevelOneCategoryForm nameFieldOfCatalog(String parameterName, String initValue){
+		FormField field =  nameFromCatalog(parameterName, initValue);
 		this.addFormField(field);	
 		return this;
 	}
 	
-	public LevelOneCategoryForm displayNameFieldOfCatalog(String initValue){
-		return displayNameFieldOfCatalog("displayName",initValue);
+	public LevelOneCategoryForm nameFieldOfCatalog(String initValue){
+		return nameFieldOfCatalog("name",initValue);
 	}
-	public LevelOneCategoryForm displayNameFieldOfCatalog(){
-		return displayNameFieldOfCatalog("displayName","");
+	public LevelOneCategoryForm nameFieldOfCatalog(){
+		return nameFieldOfCatalog("name","");
 	}
 
 
@@ -152,17 +152,17 @@ public class LevelOneCategoryForm extends BaseForm {
 	}
 
 
-	public LevelOneCategoryForm displayNameFieldForLevelTwoCategory(String parameterName, String initValue){
-		FormField field =  displayNameFromLevelTwoCategory(parameterName, initValue);		
+	public LevelOneCategoryForm nameFieldForLevelTwoCategory(String parameterName, String initValue){
+		FormField field =  nameFromLevelTwoCategory(parameterName, initValue);		
 		this.addFormField(field);
 		return this;
 	}
 	
-	public LevelOneCategoryForm displayNameFieldForLevelTwoCategory(String initValue){
-		return displayNameFieldForLevelTwoCategory("displayName",initValue);
+	public LevelOneCategoryForm nameFieldForLevelTwoCategory(String initValue){
+		return nameFieldForLevelTwoCategory("name",initValue);
 	}
-	public LevelOneCategoryForm displayNameFieldForLevelTwoCategory(){
-		return displayNameFieldForLevelTwoCategory("displayName","");
+	public LevelOneCategoryForm nameFieldForLevelTwoCategory(){
+		return nameFieldForLevelTwoCategory("name","");
 	}
 
 	

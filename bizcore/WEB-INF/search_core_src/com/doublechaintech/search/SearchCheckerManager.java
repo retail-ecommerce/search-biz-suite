@@ -105,11 +105,11 @@ public class SearchCheckerManager extends BaseManagerImpl {
 		
 	}	 			
 	
-	public static final String  DISPLAY_NAME_OF_CATALOG ="catalog.display_name";
-	protected void checkDisplayNameOfCatalog(SearchUserContext userContext, String displayName, List<Message> messageList)
+	public static final String  NAME_OF_CATALOG ="catalog.name";
+	protected void checkNameOfCatalog(SearchUserContext userContext, String name, List<Message> messageList)
 	{
 		
-	 	checkStringLengthRange(displayName,2, 20,DISPLAY_NAME_OF_CATALOG, messageList); 		
+	 	checkStringLengthRange(name,2, 20,NAME_OF_CATALOG, messageList); 		
 		
 	}	 			
 	
@@ -153,11 +153,11 @@ public class SearchCheckerManager extends BaseManagerImpl {
 		
 	}	 			
 	
-	public static final String  DISPLAY_NAME_OF_LEVEL_ONE_CATEGORY ="level_one_category.display_name";
-	protected void checkDisplayNameOfLevelOneCategory(SearchUserContext userContext, String displayName, List<Message> messageList)
+	public static final String  NAME_OF_LEVEL_ONE_CATEGORY ="level_one_category.name";
+	protected void checkNameOfLevelOneCategory(SearchUserContext userContext, String name, List<Message> messageList)
 	{
 		
-	 	checkStringLengthRange(displayName,4, 52,DISPLAY_NAME_OF_LEVEL_ONE_CATEGORY, messageList); 		
+	 	checkStringLengthRange(name,4, 52,NAME_OF_LEVEL_ONE_CATEGORY, messageList); 		
 		
 	}	 			
 	
@@ -185,11 +185,11 @@ public class SearchCheckerManager extends BaseManagerImpl {
 		
 	}	 			
 	
-	public static final String  DISPLAY_NAME_OF_LEVEL_TWO_CATEGORY ="level_two_category.display_name";
-	protected void checkDisplayNameOfLevelTwoCategory(SearchUserContext userContext, String displayName, List<Message> messageList)
+	public static final String  NAME_OF_LEVEL_TWO_CATEGORY ="level_two_category.name";
+	protected void checkNameOfLevelTwoCategory(SearchUserContext userContext, String name, List<Message> messageList)
 	{
 		
-	 	checkStringLengthRange(displayName,4, 52,DISPLAY_NAME_OF_LEVEL_TWO_CATEGORY, messageList); 		
+	 	checkStringLengthRange(name,4, 52,NAME_OF_LEVEL_TWO_CATEGORY, messageList); 		
 		
 	}	 			
 	
@@ -217,11 +217,11 @@ public class SearchCheckerManager extends BaseManagerImpl {
 		
 	}	 			
 	
-	public static final String  DISPLAY_NAME_OF_LEVEL_N_CATEGORY ="level_n_category.display_name";
-	protected void checkDisplayNameOfLevelNCategory(SearchUserContext userContext, String displayName, List<Message> messageList)
+	public static final String  NAME_OF_LEVEL_N_CATEGORY ="level_n_category.name";
+	protected void checkNameOfLevelNCategory(SearchUserContext userContext, String name, List<Message> messageList)
 	{
 		
-	 	checkStringLengthRange(displayName,3, 44,DISPLAY_NAME_OF_LEVEL_N_CATEGORY, messageList); 		
+	 	checkStringLengthRange(name,3, 44,NAME_OF_LEVEL_N_CATEGORY, messageList); 		
 		
 	}	 			
 	
@@ -281,11 +281,11 @@ public class SearchCheckerManager extends BaseManagerImpl {
 		
 	}	 			
 	
-	public static final String  DISPLAY_NAME_OF_PRODUCT ="product.display_name";
-	protected void checkDisplayNameOfProduct(SearchUserContext userContext, String displayName, List<Message> messageList)
+	public static final String  NAME_OF_PRODUCT ="product.name";
+	protected void checkNameOfProduct(SearchUserContext userContext, String name, List<Message> messageList)
 	{
 		
-	 	checkStringLengthRange(displayName,2, 20,DISPLAY_NAME_OF_PRODUCT, messageList); 		
+	 	checkStringLengthRange(name,2, 20,NAME_OF_PRODUCT, messageList); 		
 		
 	}	 			
 	
@@ -353,11 +353,11 @@ public class SearchCheckerManager extends BaseManagerImpl {
 		
 	}	 			
 	
-	public static final String  DISPLAY_NAME_OF_PRODUCT_RECOMMENDATION ="product_recommendation.display_name";
-	protected void checkDisplayNameOfProductRecommendation(SearchUserContext userContext, String displayName, List<Message> messageList)
+	public static final String  NAME_OF_PRODUCT_RECOMMENDATION ="product_recommendation.name";
+	protected void checkNameOfProductRecommendation(SearchUserContext userContext, String name, List<Message> messageList)
 	{
 		
-	 	checkStringLengthRange(displayName,2, 20,DISPLAY_NAME_OF_PRODUCT_RECOMMENDATION, messageList); 		
+	 	checkStringLengthRange(name,2, 20,NAME_OF_PRODUCT_RECOMMENDATION, messageList); 		
 		
 	}	 			
 	
@@ -417,11 +417,11 @@ public class SearchCheckerManager extends BaseManagerImpl {
 		
 	}	 			
 	
-	public static final String  DISPLAY_NAME_OF_SKU ="sku.display_name";
-	protected void checkDisplayNameOfSku(SearchUserContext userContext, String displayName, List<Message> messageList)
+	public static final String  NAME_OF_SKU ="sku.name";
+	protected void checkNameOfSku(SearchUserContext userContext, String name, List<Message> messageList)
 	{
 		
-	 	checkStringLengthRange(displayName,4, 52,DISPLAY_NAME_OF_SKU, messageList); 		
+	 	checkStringLengthRange(name,4, 52,NAME_OF_SKU, messageList); 		
 		
 	}	 			
 	

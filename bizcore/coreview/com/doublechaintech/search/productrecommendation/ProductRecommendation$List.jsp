@@ -98,8 +98,8 @@
 		<c:if test="${param.referName ne 'id'}">
 	<th>${userContext.localeMap['product_recommendation.id']}</th>
 </c:if>
-<c:if test="${param.referName ne 'displayName'}">
-	<th>${userContext.localeMap['product_recommendation.display_name']}</th>
+<c:if test="${param.referName ne 'name'}">
+	<th>${userContext.localeMap['product_recommendation.name']}</th>
 </c:if>
 <c:if test="${param.referName ne 'brand'}">
 	<th>${userContext.localeMap['product_recommendation.brand']}</th>
@@ -122,7 +122,7 @@
 			
 			<c:forEach var="item" items="${productRecommendationList}">
 				<tr currentVersion='${item.version}' id="productRecommendation-${item.id}" ><td><a class="link-action-removed" href="./productRecommendationManager/view/${item.id}/"> ${item.id}</a></td>
-<c:if test="${param.referName ne 'displayName'}">	<td contenteditable='true' class='edit-value'  propertyToChange='displayName' storedCellValue='${item.displayName}' prefix='${ownerBeanName}Manager/updateProductRecommendation/${result.id}/${item.id}/'>${item.displayName}</td>
+<c:if test="${param.referName ne 'name'}">	<td contenteditable='true' class='edit-value'  propertyToChange='name' storedCellValue='${item.name}' prefix='${ownerBeanName}Manager/updateProductRecommendation/${result.id}/${item.id}/'>${item.name}</td>
 </c:if><c:if test="${param.referName ne 'brand'}">
 	<td class="select_candidate_td"
 			data-candidate-method="./productRecommendationManager/requestCandidateBrand/${ownerBeanName}/${item.id}/"

@@ -12,7 +12,7 @@ public interface ProductManager{
 
 		
 
-	public Product createProduct(SearchUserContext userContext, String displayName, String parentCategoryId, String brandId, String origin, String catalogId, String remark, String lastUpdateTime) throws Exception;	
+	public Product createProduct(SearchUserContext userContext, String name, String parentCategoryId, String brandId, String origin, String catalogId, String remark, String lastUpdateTime) throws Exception;	
 	public Product updateProduct(SearchUserContext userContext,String productId, int productVersion, String property, String newValueExpr,String [] tokensExpr) throws Exception;
 	public Product loadProduct(SearchUserContext userContext, String productId, String [] tokensExpr) throws Exception;
 	public Product internalSaveProduct(SearchUserContext userContext, Product product) throws Exception;
@@ -30,9 +30,9 @@ public interface ProductManager{
 	/*======================================================DATA MAINTENANCE===========================================================*/
 	
 
-	//public  ProductRecommendationManager getProductRecommendationManager(SearchUserContext userContext, String productId, String displayName, String brandId, String origin, String remark, String lastUpdateTime ,String [] tokensExpr)  throws Exception;
+	//public  ProductRecommendationManager getProductRecommendationManager(SearchUserContext userContext, String productId, String name, String brandId, String origin, String remark, String lastUpdateTime ,String [] tokensExpr)  throws Exception;
 	
-	public  Product addProductRecommendation(SearchUserContext userContext, String productId, String displayName, String brandId, String origin, String remark, String lastUpdateTime , String [] tokensExpr)  throws Exception;
+	public  Product addProductRecommendation(SearchUserContext userContext, String productId, String name, String brandId, String origin, String remark, String lastUpdateTime , String [] tokensExpr)  throws Exception;
 	public  Product removeProductRecommendation(SearchUserContext userContext, String productId, String productRecommendationId, int productRecommendationVersion,String [] tokensExpr)  throws Exception;
 	public  Product updateProductRecommendation(SearchUserContext userContext, String productId, String productRecommendationId, int productRecommendationVersion, String property, String newValueExpr,String [] tokensExpr)  throws Exception;
 
@@ -40,9 +40,9 @@ public interface ProductManager{
 
 	*/
 
-	//public  SkuManager getSkuManager(SearchUserContext userContext, String productId, String displayName, String size, boolean active, BigDecimal basePrice, String lastUpdateTime ,String [] tokensExpr)  throws Exception;
+	//public  SkuManager getSkuManager(SearchUserContext userContext, String productId, String name, String size, boolean active, BigDecimal basePrice, String lastUpdateTime ,String [] tokensExpr)  throws Exception;
 	
-	public  Product addSku(SearchUserContext userContext, String productId, String displayName, String size, boolean active, BigDecimal basePrice, String lastUpdateTime , String [] tokensExpr)  throws Exception;
+	public  Product addSku(SearchUserContext userContext, String productId, String name, String size, boolean active, BigDecimal basePrice, String lastUpdateTime , String [] tokensExpr)  throws Exception;
 	public  Product removeSku(SearchUserContext userContext, String productId, String skuId, int skuVersion,String [] tokensExpr)  throws Exception;
 	public  Product updateSku(SearchUserContext userContext, String productId, String skuId, int skuVersion, String property, String newValueExpr,String [] tokensExpr)  throws Exception;
 

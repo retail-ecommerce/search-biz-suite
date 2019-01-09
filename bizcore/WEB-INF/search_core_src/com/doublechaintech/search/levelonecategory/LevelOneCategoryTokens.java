@@ -130,7 +130,7 @@ public class LevelOneCategoryTokens extends CommonTokens{
 	}
 	
 	public LevelOneCategoryTokens searchAllTextOfLevelTwoCategoryList(String verb, String value){	
-		String field = "id|displayName";
+		String field = "id|name";
 		addSearchMoreOptions(LEVEL_TWO_CATEGORY_LIST,levelTwoCategoryListSearchCounter++, field, verb, value);
 		return this;
 	}

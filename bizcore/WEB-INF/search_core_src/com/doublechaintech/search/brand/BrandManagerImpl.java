@@ -431,7 +431,7 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 	
 	
 
-	protected void checkParamsForAddingProduct(SearchUserContext userContext, String brandId, String displayName, String parentCategoryId, String origin, String catalogId, String remark, String lastUpdateTime,String [] tokensExpr) throws Exception{
+	protected void checkParamsForAddingProduct(SearchUserContext userContext, String brandId, String name, String parentCategoryId, String origin, String catalogId, String remark, String lastUpdateTime,String [] tokensExpr) throws Exception{
 		
 		
 
@@ -440,7 +440,7 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 		userContext.getChecker().checkIdOfBrand(brandId);
 
 		
-		userContext.getChecker().checkDisplayNameOfProduct(displayName);
+		userContext.getChecker().checkNameOfProduct(name);
 		
 		userContext.getChecker().checkParentCategoryIdOfProduct(parentCategoryId);
 		
@@ -456,12 +456,12 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 
 	
 	}
-	public  Brand addProduct(SearchUserContext userContext, String brandId, String displayName, String parentCategoryId, String origin, String catalogId, String remark, String lastUpdateTime, String [] tokensExpr) throws Exception
+	public  Brand addProduct(SearchUserContext userContext, String brandId, String name, String parentCategoryId, String origin, String catalogId, String remark, String lastUpdateTime, String [] tokensExpr) throws Exception
 	{	
 		
-		checkParamsForAddingProduct(userContext,brandId,displayName, parentCategoryId, origin, catalogId, remark, lastUpdateTime,tokensExpr);
+		checkParamsForAddingProduct(userContext,brandId,name, parentCategoryId, origin, catalogId, remark, lastUpdateTime,tokensExpr);
 		
-		Product product = createProduct(userContext,displayName, parentCategoryId, origin, catalogId, remark, lastUpdateTime);
+		Product product = createProduct(userContext,name, parentCategoryId, origin, catalogId, remark, lastUpdateTime);
 		
 		Brand brand = loadBrand(userContext, brandId, allTokens());
 		synchronized(brand){ 
@@ -474,12 +474,12 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 			return present(userContext,brand, mergedAllTokens(tokensExpr));
 		}
 	}
-	protected void checkParamsForUpdatingProductProperties(SearchUserContext userContext, String brandId,String id,String displayName,String origin,String remark,String lastUpdateTime,String [] tokensExpr) throws Exception {
+	protected void checkParamsForUpdatingProductProperties(SearchUserContext userContext, String brandId,String id,String name,String origin,String remark,String lastUpdateTime,String [] tokensExpr) throws Exception {
 		
 		userContext.getChecker().checkIdOfBrand(brandId);
 		userContext.getChecker().checkIdOfProduct(id);
 		
-		userContext.getChecker().checkDisplayNameOfProduct( displayName);
+		userContext.getChecker().checkNameOfProduct( name);
 		userContext.getChecker().checkOriginOfProduct( origin);
 		userContext.getChecker().checkRemarkOfProduct( remark);
 		userContext.getChecker().checkLastUpdateTimeOfProduct( lastUpdateTime);
@@ -487,9 +487,9 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 		userContext.getChecker().throwExceptionIfHasErrors(BrandManagerException.class);
 		
 	}
-	public  Brand updateProductProperties(SearchUserContext userContext, String brandId, String id,String displayName,String origin,String remark,String lastUpdateTime, String [] tokensExpr) throws Exception
+	public  Brand updateProductProperties(SearchUserContext userContext, String brandId, String id,String name,String origin,String remark,String lastUpdateTime, String [] tokensExpr) throws Exception
 	{	
-		checkParamsForUpdatingProductProperties(userContext,brandId,id,displayName,origin,remark,lastUpdateTime,tokensExpr);
+		checkParamsForUpdatingProductProperties(userContext,brandId,id,name,origin,remark,lastUpdateTime,tokensExpr);
 
 		Map<String, Object> options = tokens()
 				.allTokens()
@@ -504,7 +504,7 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 		
 		Product item = brandToUpdate.getProductList().first();
 		
-		item.updateDisplayName( displayName );
+		item.updateName( name );
 		item.updateOrigin( origin );
 		item.updateRemark( remark );
 		item.updateLastUpdateTime( lastUpdateTime );
@@ -518,12 +518,12 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 	}
 	
 	
-	protected Product createProduct(SearchUserContext userContext, String displayName, String parentCategoryId, String origin, String catalogId, String remark, String lastUpdateTime) throws Exception{
+	protected Product createProduct(SearchUserContext userContext, String name, String parentCategoryId, String origin, String catalogId, String remark, String lastUpdateTime) throws Exception{
 
 		Product product = new Product();
 		
 		
-		product.setDisplayName(displayName);		
+		product.setName(name);		
 		LevelNCategory  parentCategory = new LevelNCategory();
 		parentCategory.setId(parentCategoryId);		
 		product.setParentCategory(parentCategory);		
@@ -644,8 +644,8 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 		userContext.getChecker().checkVersionOfProduct(productVersion);
 		
 
-		if(Product.DISPLAY_NAME_PROPERTY.equals(property)){
-			userContext.getChecker().checkDisplayNameOfProduct(parseString(newValueExpr));
+		if(Product.NAME_PROPERTY.equals(property)){
+			userContext.getChecker().checkNameOfProduct(parseString(newValueExpr));
 		}
 		
 		if(Product.ORIGIN_PROPERTY.equals(property)){
@@ -702,7 +702,7 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 
 
 
-	protected void checkParamsForAddingProductRecommendation(SearchUserContext userContext, String brandId, String displayName, String origin, String productId, String remark, String lastUpdateTime,String [] tokensExpr) throws Exception{
+	protected void checkParamsForAddingProductRecommendation(SearchUserContext userContext, String brandId, String name, String origin, String productId, String remark, String lastUpdateTime,String [] tokensExpr) throws Exception{
 		
 		
 
@@ -711,7 +711,7 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 		userContext.getChecker().checkIdOfBrand(brandId);
 
 		
-		userContext.getChecker().checkDisplayNameOfProductRecommendation(displayName);
+		userContext.getChecker().checkNameOfProductRecommendation(name);
 		
 		userContext.getChecker().checkOriginOfProductRecommendation(origin);
 		
@@ -725,12 +725,12 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 
 	
 	}
-	public  Brand addProductRecommendation(SearchUserContext userContext, String brandId, String displayName, String origin, String productId, String remark, String lastUpdateTime, String [] tokensExpr) throws Exception
+	public  Brand addProductRecommendation(SearchUserContext userContext, String brandId, String name, String origin, String productId, String remark, String lastUpdateTime, String [] tokensExpr) throws Exception
 	{	
 		
-		checkParamsForAddingProductRecommendation(userContext,brandId,displayName, origin, productId, remark, lastUpdateTime,tokensExpr);
+		checkParamsForAddingProductRecommendation(userContext,brandId,name, origin, productId, remark, lastUpdateTime,tokensExpr);
 		
-		ProductRecommendation productRecommendation = createProductRecommendation(userContext,displayName, origin, productId, remark, lastUpdateTime);
+		ProductRecommendation productRecommendation = createProductRecommendation(userContext,name, origin, productId, remark, lastUpdateTime);
 		
 		Brand brand = loadBrand(userContext, brandId, allTokens());
 		synchronized(brand){ 
@@ -743,12 +743,12 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 			return present(userContext,brand, mergedAllTokens(tokensExpr));
 		}
 	}
-	protected void checkParamsForUpdatingProductRecommendationProperties(SearchUserContext userContext, String brandId,String id,String displayName,String origin,String remark,String lastUpdateTime,String [] tokensExpr) throws Exception {
+	protected void checkParamsForUpdatingProductRecommendationProperties(SearchUserContext userContext, String brandId,String id,String name,String origin,String remark,String lastUpdateTime,String [] tokensExpr) throws Exception {
 		
 		userContext.getChecker().checkIdOfBrand(brandId);
 		userContext.getChecker().checkIdOfProductRecommendation(id);
 		
-		userContext.getChecker().checkDisplayNameOfProductRecommendation( displayName);
+		userContext.getChecker().checkNameOfProductRecommendation( name);
 		userContext.getChecker().checkOriginOfProductRecommendation( origin);
 		userContext.getChecker().checkRemarkOfProductRecommendation( remark);
 		userContext.getChecker().checkLastUpdateTimeOfProductRecommendation( lastUpdateTime);
@@ -756,9 +756,9 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 		userContext.getChecker().throwExceptionIfHasErrors(BrandManagerException.class);
 		
 	}
-	public  Brand updateProductRecommendationProperties(SearchUserContext userContext, String brandId, String id,String displayName,String origin,String remark,String lastUpdateTime, String [] tokensExpr) throws Exception
+	public  Brand updateProductRecommendationProperties(SearchUserContext userContext, String brandId, String id,String name,String origin,String remark,String lastUpdateTime, String [] tokensExpr) throws Exception
 	{	
-		checkParamsForUpdatingProductRecommendationProperties(userContext,brandId,id,displayName,origin,remark,lastUpdateTime,tokensExpr);
+		checkParamsForUpdatingProductRecommendationProperties(userContext,brandId,id,name,origin,remark,lastUpdateTime,tokensExpr);
 
 		Map<String, Object> options = tokens()
 				.allTokens()
@@ -773,7 +773,7 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 		
 		ProductRecommendation item = brandToUpdate.getProductRecommendationList().first();
 		
-		item.updateDisplayName( displayName );
+		item.updateName( name );
 		item.updateOrigin( origin );
 		item.updateRemark( remark );
 		item.updateLastUpdateTime( lastUpdateTime );
@@ -787,12 +787,12 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 	}
 	
 	
-	protected ProductRecommendation createProductRecommendation(SearchUserContext userContext, String displayName, String origin, String productId, String remark, String lastUpdateTime) throws Exception{
+	protected ProductRecommendation createProductRecommendation(SearchUserContext userContext, String name, String origin, String productId, String remark, String lastUpdateTime) throws Exception{
 
 		ProductRecommendation productRecommendation = new ProductRecommendation();
 		
 		
-		productRecommendation.setDisplayName(displayName);		
+		productRecommendation.setName(name);		
 		productRecommendation.setOrigin(origin);		
 		Product  product = new Product();
 		product.setId(productId);		
@@ -910,8 +910,8 @@ public class BrandManagerImpl extends CustomSearchCheckerManager implements Bran
 		userContext.getChecker().checkVersionOfProductRecommendation(productRecommendationVersion);
 		
 
-		if(ProductRecommendation.DISPLAY_NAME_PROPERTY.equals(property)){
-			userContext.getChecker().checkDisplayNameOfProductRecommendation(parseString(newValueExpr));
+		if(ProductRecommendation.NAME_PROPERTY.equals(property)){
+			userContext.getChecker().checkNameOfProductRecommendation(parseString(newValueExpr));
 		}
 		
 		if(ProductRecommendation.ORIGIN_PROPERTY.equals(property)){

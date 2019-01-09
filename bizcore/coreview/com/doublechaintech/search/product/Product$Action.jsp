@@ -18,7 +18,7 @@
 	
 	
 	<li><span>${userContext.localeMap['product.id']}</span> ${product.id}</li>
-<li><span>${userContext.localeMap['product.display_name']}</span> ${product.displayName}</li>
+<li><span>${userContext.localeMap['product.name']}</span> ${product.name}</li>
 <li><span>${userContext.localeMap['product.origin']}</span> ${product.origin}</li>
 <li><span>${userContext.localeMap['product.remark']}</span> ${product.remark}</li>
 <li><span>${userContext.localeMap['product.last_update_time']}</span> ${product.lastUpdateTime}</li>

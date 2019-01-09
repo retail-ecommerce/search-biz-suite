@@ -425,7 +425,7 @@ public class SkuJDBCTemplateDAO extends SearchNamingServiceDAO implements SkuDAO
  	protected Object[] prepareSkuUpdateParameters(Sku sku){
  		Object[] parameters = new Object[9];
  
- 		parameters[0] = sku.getDisplayName();
+ 		parameters[0] = sku.getName();
  		parameters[1] = sku.getSize(); 	
  		if(sku.getProduct() != null){
  			parameters[2] = sku.getProduct().getId();
@@ -446,7 +446,7 @@ public class SkuJDBCTemplateDAO extends SearchNamingServiceDAO implements SkuDAO
 		sku.setId(newSkuId);
 		parameters[0] =  sku.getId();
  
- 		parameters[1] = sku.getDisplayName();
+ 		parameters[1] = sku.getName();
  		parameters[2] = sku.getSize(); 	
  		if(sku.getProduct() != null){
  			parameters[3] = sku.getProduct().getId();

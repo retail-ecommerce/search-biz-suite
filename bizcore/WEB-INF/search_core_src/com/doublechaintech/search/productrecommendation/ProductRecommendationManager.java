@@ -12,7 +12,7 @@ public interface ProductRecommendationManager{
 
 		
 
-	public ProductRecommendation createProductRecommendation(SearchUserContext userContext, String displayName, String brandId, String origin, String productId, String remark, String lastUpdateTime) throws Exception;	
+	public ProductRecommendation createProductRecommendation(SearchUserContext userContext, String name, String brandId, String origin, String productId, String remark, String lastUpdateTime) throws Exception;	
 	public ProductRecommendation updateProductRecommendation(SearchUserContext userContext,String productRecommendationId, int productRecommendationVersion, String property, String newValueExpr,String [] tokensExpr) throws Exception;
 	public ProductRecommendation loadProductRecommendation(SearchUserContext userContext, String productRecommendationId, String [] tokensExpr) throws Exception;
 	public ProductRecommendation internalSaveProductRecommendation(SearchUserContext userContext, ProductRecommendation productRecommendation) throws Exception;

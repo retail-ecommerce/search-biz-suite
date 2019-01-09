@@ -529,7 +529,7 @@ public class LevelOneCategoryJDBCTemplateDAO extends SearchNamingServiceDAO impl
  			parameters[0] = levelOneCategory.getCatalog().getId();
  		}
  
- 		parameters[1] = levelOneCategory.getDisplayName();		
+ 		parameters[1] = levelOneCategory.getName();		
  		parameters[2] = levelOneCategory.nextVersion();
  		parameters[3] = levelOneCategory.getId();
  		parameters[4] = levelOneCategory.getVersion();
@@ -547,7 +547,7 @@ public class LevelOneCategoryJDBCTemplateDAO extends SearchNamingServiceDAO impl
  		
  		}
  		
- 		parameters[2] = levelOneCategory.getDisplayName();		
+ 		parameters[2] = levelOneCategory.getName();		
  				
  		return parameters;
  	}

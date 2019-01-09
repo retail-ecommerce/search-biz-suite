@@ -14,24 +14,24 @@ Last Update Time|Last Update Time
 Version|Version
 Catalog|Catalog
 Id|Id
-Display Name|Display Name
+Name|Name
 Seller Id|Seller Id
 Site|Site
 Version|Version
 Level One Category|Level One Category
 Id|Id
 Catalog|Catalog
-Display Name|Display Name
+Name|Name
 Version|Version
 Level Two Category|Level Two Category
 Id|Id
 Parent Category|Parent Category
-Display Name|Display Name
+Name|Name
 Version|Version
 Level N Category|Level N Category
 Id|Id
 Parent Category|Parent Category
-Display Name|Display Name
+Name|Name
 Version|Version
 Brand|Brand
 Id|Id
@@ -41,7 +41,7 @@ Remark|Remark
 Version|Version
 Product|Product
 Id|Id
-Display Name|Display Name
+Name|Name
 Parent Category|Parent Category
 Brand|Brand
 Origin|Origin
@@ -51,7 +51,7 @@ Last Update Time|Last Update Time
 Version|Version
 Product Recommendation|Product Recommendation
 Id|Id
-Display Name|Display Name
+Name|Name
 Brand|Brand
 Origin|Origin
 Product|Product
@@ -60,7 +60,7 @@ Last Update Time|Last Update Time
 Version|Version
 Sku|Sku
 Id|Id
-Display Name|Display Name
+Name|Name
 Size|Size
 Product|Product
 Active|Active

@@ -19,14 +19,14 @@ public class LevelNCategoryTable{
 	static final String TABLE_NAME="level_n_category_data";
 	static final String COLUMN_ID = "id";
 	static final String COLUMN_PARENT_CATEGORY = "parent_category";
-	static final String COLUMN_DISPLAY_NAME = "display_name";
+	static final String COLUMN_NAME = "name";
 	static final String COLUMN_VERSION = "version";
  
 	static final String []ALL_CLOUMNS = {COLUMN_ID, 
-		COLUMN_PARENT_CATEGORY, COLUMN_DISPLAY_NAME, 
+		COLUMN_PARENT_CATEGORY, COLUMN_NAME, 
 		COLUMN_VERSION};
 	static final String []NORMAL_CLOUMNS = {
-		COLUMN_PARENT_CATEGORY, COLUMN_DISPLAY_NAME
+		COLUMN_PARENT_CATEGORY, COLUMN_NAME
 		};
 	
 	

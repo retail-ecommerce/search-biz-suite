@@ -19,14 +19,14 @@ public class LevelOneCategoryTable{
 	static final String TABLE_NAME="level_one_category_data";
 	static final String COLUMN_ID = "id";
 	static final String COLUMN_CATALOG = "catalog";
-	static final String COLUMN_DISPLAY_NAME = "display_name";
+	static final String COLUMN_NAME = "name";
 	static final String COLUMN_VERSION = "version";
  
 	static final String []ALL_CLOUMNS = {COLUMN_ID, 
-		COLUMN_CATALOG, COLUMN_DISPLAY_NAME, 
+		COLUMN_CATALOG, COLUMN_NAME, 
 		COLUMN_VERSION};
 	static final String []NORMAL_CLOUMNS = {
-		COLUMN_CATALOG, COLUMN_DISPLAY_NAME
+		COLUMN_CATALOG, COLUMN_NAME
 		};
 	
 	

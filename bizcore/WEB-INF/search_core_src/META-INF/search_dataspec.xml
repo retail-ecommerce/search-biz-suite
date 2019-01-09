@@ -25,7 +25,7 @@
 	<table name="catalog_data">
 		<fields>
 			<field name="id" nullable="false" type="string" checkType="StringLengthRange" min="5" max="64" description="Id" />
-			<field name="display_name" type="string" checkType="StringLengthRange" min="2" max="20" description="Display Name" />
+			<field name="name" type="string" checkType="StringLengthRange" min="2" max="20" description="Name" />
 			<field name="seller_id" type="string" checkType="StringLengthRange" min="3" max="32" description="Seller Id" />
 			<field name="site" type="reference" checkType="exist(site)" description="Site" />
 			<field name="version" type="int" checkType="IntegerRange" min="0" max="Integer.MAX_VALUE" description="Version" />
@@ -36,7 +36,7 @@
 		<fields>
 			<field name="id" nullable="false" type="string" checkType="StringLengthRange" min="5" max="64" description="Id" />
 			<field name="catalog" type="reference" checkType="exist(catalog)" description="Catalog" />
-			<field name="display_name" type="string" checkType="StringLengthRange" min="4" max="52" description="Display Name" />
+			<field name="name" type="string" checkType="StringLengthRange" min="4" max="52" description="Name" />
 			<field name="version" type="int" checkType="IntegerRange" min="0" max="Integer.MAX_VALUE" description="Version" />
 		</fields>
 	</table>
@@ -45,7 +45,7 @@
 		<fields>
 			<field name="id" nullable="false" type="string" checkType="StringLengthRange" min="5" max="64" description="Id" />
 			<field name="parent_category" type="reference" checkType="exist(level_one_category)" description="Parent Category" />
-			<field name="display_name" type="string" checkType="StringLengthRange" min="4" max="52" description="Display Name" />
+			<field name="name" type="string" checkType="StringLengthRange" min="4" max="52" description="Name" />
 			<field name="version" type="int" checkType="IntegerRange" min="0" max="Integer.MAX_VALUE" description="Version" />
 		</fields>
 	</table>
@@ -54,7 +54,7 @@
 		<fields>
 			<field name="id" nullable="false" type="string" checkType="StringLengthRange" min="5" max="64" description="Id" />
 			<field name="parent_category" type="reference" checkType="exist(level_two_category)" description="Parent Category" />
-			<field name="display_name" type="string" checkType="StringLengthRange" min="3" max="44" description="Display Name" />
+			<field name="name" type="string" checkType="StringLengthRange" min="3" max="44" description="Name" />
 			<field name="version" type="int" checkType="IntegerRange" min="0" max="Integer.MAX_VALUE" description="Version" />
 		</fields>
 	</table>
@@ -72,7 +72,7 @@
 	<table name="product_data">
 		<fields>
 			<field name="id" nullable="false" type="string" checkType="StringLengthRange" min="5" max="64" description="Id" />
-			<field name="display_name" type="string" checkType="StringLengthRange" min="2" max="20" description="Display Name" />
+			<field name="name" type="string" checkType="StringLengthRange" min="2" max="20" description="Name" />
 			<field name="parent_category" type="reference" checkType="exist(level_n_category)" description="Parent Category" />
 			<field name="brand" type="reference" checkType="exist(brand)" description="Brand" />
 			<field name="origin" type="string" checkType="StringLengthRange" min="1" max="24" description="Origin" />
@@ -86,7 +86,7 @@
 	<table name="product_recommendation_data">
 		<fields>
 			<field name="id" nullable="false" type="string" checkType="StringLengthRange" min="5" max="64" description="Id" />
-			<field name="display_name" type="string" checkType="StringLengthRange" min="2" max="20" description="Display Name" />
+			<field name="name" type="string" checkType="StringLengthRange" min="2" max="20" description="Name" />
 			<field name="brand" type="reference" checkType="exist(brand)" description="Brand" />
 			<field name="origin" type="string" checkType="StringLengthRange" min="1" max="24" description="Origin" />
 			<field name="product" type="reference" checkType="exist(product)" description="Product" />
@@ -99,7 +99,7 @@
 	<table name="sku_data">
 		<fields>
 			<field name="id" nullable="false" type="string" checkType="StringLengthRange" min="5" max="64" description="Id" />
-			<field name="display_name" type="string" checkType="StringLengthRange" min="4" max="52" description="Display Name" />
+			<field name="name" type="string" checkType="StringLengthRange" min="4" max="52" description="Name" />
 			<field name="size" type="string" checkType="StringLengthRange" min="2" max="24" description="Size" />
 			<field name="product" type="reference" checkType="exist(product)" description="Product" />
 			<field name="active" type="bool" checkType="BooleanRange" min="0" max="true" description="Active" />

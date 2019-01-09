@@ -209,16 +209,16 @@ public class BaseForm extends GenericForm{
 		return field;
 	}
 
-	protected FormField displayNameFromCatalog(String parameterName, String initValue){
+	protected FormField nameFromCatalog(String parameterName, String initValue){
 		FormField field = new FormField();
-		field.setLabel("Display Name");
-		field.setLocaleKey("catalog.display_name");
+		field.setLabel("Name");
+		field.setLocaleKey("catalog.name");
 		field.setParameterName(parameterName);
 		field.setDefaultValue(initValue);
 		field.setFieldGroup("基本信息");
 		field.setType("text");
 		field.setRequired(true);
-		field.setPlaceholder("请填写Display Name");
+		field.setPlaceholder("请填写Name");
 		return field;
 	}
 
@@ -274,16 +274,16 @@ public class BaseForm extends GenericForm{
 		return field;
 	}
 
-	protected FormField displayNameFromLevelOneCategory(String parameterName, String initValue){
+	protected FormField nameFromLevelOneCategory(String parameterName, String initValue){
 		FormField field = new FormField();
-		field.setLabel("Display Name");
-		field.setLocaleKey("level_one_category.display_name");
+		field.setLabel("Name");
+		field.setLocaleKey("level_one_category.name");
 		field.setParameterName(parameterName);
 		field.setDefaultValue(initValue);
 		field.setFieldGroup("基本信息");
 		field.setType("text");
 		field.setRequired(true);
-		field.setPlaceholder("请填写Display Name");
+		field.setPlaceholder("请填写Name");
 		return field;
 	}
 
@@ -313,16 +313,16 @@ public class BaseForm extends GenericForm{
 		return field;
 	}
 
-	protected FormField displayNameFromLevelTwoCategory(String parameterName, String initValue){
+	protected FormField nameFromLevelTwoCategory(String parameterName, String initValue){
 		FormField field = new FormField();
-		field.setLabel("Display Name");
-		field.setLocaleKey("level_two_category.display_name");
+		field.setLabel("Name");
+		field.setLocaleKey("level_two_category.name");
 		field.setParameterName(parameterName);
 		field.setDefaultValue(initValue);
 		field.setFieldGroup("基本信息");
 		field.setType("text");
 		field.setRequired(true);
-		field.setPlaceholder("请填写Display Name");
+		field.setPlaceholder("请填写Name");
 		return field;
 	}
 
@@ -352,16 +352,16 @@ public class BaseForm extends GenericForm{
 		return field;
 	}
 
-	protected FormField displayNameFromLevelNCategory(String parameterName, String initValue){
+	protected FormField nameFromLevelNCategory(String parameterName, String initValue){
 		FormField field = new FormField();
-		field.setLabel("Display Name");
-		field.setLocaleKey("level_n_category.display_name");
+		field.setLabel("Name");
+		field.setLocaleKey("level_n_category.name");
 		field.setParameterName(parameterName);
 		field.setDefaultValue(initValue);
 		field.setFieldGroup("基本信息");
 		field.setType("text");
 		field.setRequired(true);
-		field.setPlaceholder("请填写Display Name");
+		field.setPlaceholder("请填写Name");
 		return field;
 	}
 
@@ -430,16 +430,16 @@ public class BaseForm extends GenericForm{
 		return field;
 	}
 
-	protected FormField displayNameFromProduct(String parameterName, String initValue){
+	protected FormField nameFromProduct(String parameterName, String initValue){
 		FormField field = new FormField();
-		field.setLabel("Display Name");
-		field.setLocaleKey("product.display_name");
+		field.setLabel("Name");
+		field.setLocaleKey("product.name");
 		field.setParameterName(parameterName);
 		field.setDefaultValue(initValue);
 		field.setFieldGroup("基本信息");
 		field.setType("text");
 		field.setRequired(true);
-		field.setPlaceholder("请填写Display Name");
+		field.setPlaceholder("请填写Name");
 		return field;
 	}
 
@@ -534,16 +534,16 @@ public class BaseForm extends GenericForm{
 		return field;
 	}
 
-	protected FormField displayNameFromProductRecommendation(String parameterName, String initValue){
+	protected FormField nameFromProductRecommendation(String parameterName, String initValue){
 		FormField field = new FormField();
-		field.setLabel("Display Name");
-		field.setLocaleKey("product_recommendation.display_name");
+		field.setLabel("Name");
+		field.setLocaleKey("product_recommendation.name");
 		field.setParameterName(parameterName);
 		field.setDefaultValue(initValue);
 		field.setFieldGroup("基本信息");
 		field.setType("text");
 		field.setRequired(true);
-		field.setPlaceholder("请填写Display Name");
+		field.setPlaceholder("请填写Name");
 		return field;
 	}
 
@@ -625,16 +625,16 @@ public class BaseForm extends GenericForm{
 		return field;
 	}
 
-	protected FormField displayNameFromSku(String parameterName, String initValue){
+	protected FormField nameFromSku(String parameterName, String initValue){
 		FormField field = new FormField();
-		field.setLabel("Display Name");
-		field.setLocaleKey("sku.display_name");
+		field.setLabel("Name");
+		field.setLocaleKey("sku.name");
 		field.setParameterName(parameterName);
 		field.setDefaultValue(initValue);
 		field.setFieldGroup("基本信息");
 		field.setType("text");
 		field.setRequired(true);
-		field.setPlaceholder("请填写Display Name");
+		field.setPlaceholder("请填写Name");
 		return field;
 	}
 

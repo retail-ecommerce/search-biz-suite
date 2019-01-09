@@ -130,7 +130,7 @@ public class SiteTokens extends CommonTokens{
 	}
 	
 	public SiteTokens searchAllTextOfCatalogList(String verb, String value){	
-		String field = "id|displayName|sellerId";
+		String field = "id|name|sellerId";
 		addSearchMoreOptions(CATALOG_LIST,catalogListSearchCounter++, field, verb, value);
 		return this;
 	}

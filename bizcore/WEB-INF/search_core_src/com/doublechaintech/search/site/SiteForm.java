@@ -166,17 +166,17 @@ public class SiteForm extends BaseForm {
 	}
 
 
-	public SiteForm displayNameFieldForCatalog(String parameterName, String initValue){
-		FormField field =  displayNameFromCatalog(parameterName, initValue);		
+	public SiteForm nameFieldForCatalog(String parameterName, String initValue){
+		FormField field =  nameFromCatalog(parameterName, initValue);		
 		this.addFormField(field);
 		return this;
 	}
 	
-	public SiteForm displayNameFieldForCatalog(String initValue){
-		return displayNameFieldForCatalog("displayName",initValue);
+	public SiteForm nameFieldForCatalog(String initValue){
+		return nameFieldForCatalog("name",initValue);
 	}
-	public SiteForm displayNameFieldForCatalog(){
-		return displayNameFieldForCatalog("displayName","");
+	public SiteForm nameFieldForCatalog(){
+		return nameFieldForCatalog("name","");
 	}
 
 

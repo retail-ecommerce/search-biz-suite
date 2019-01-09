@@ -14,7 +14,7 @@ public class LevelOneCategoryMapper extends BaseRowMapper<LevelOneCategory>{
 		 		
  		setId(levelOneCategory, rs, rowNumber); 		
  		setCatalog(levelOneCategory, rs, rowNumber); 		
- 		setDisplayName(levelOneCategory, rs, rowNumber); 		
+ 		setName(levelOneCategory, rs, rowNumber); 		
  		setVersion(levelOneCategory, rs, rowNumber);
 
 		return levelOneCategory;
@@ -54,16 +54,16 @@ public class LevelOneCategoryMapper extends BaseRowMapper<LevelOneCategory>{
  		levelOneCategory.setCatalog(createEmptyCatalog(catalogId));
  	}
  	
-	protected void setDisplayName(LevelOneCategory levelOneCategory, ResultSet rs, int rowNumber) throws SQLException{
+	protected void setName(LevelOneCategory levelOneCategory, ResultSet rs, int rowNumber) throws SQLException{
 	
 		//there will be issue when the type is double/int/long
-		String displayName = rs.getString(LevelOneCategoryTable.COLUMN_DISPLAY_NAME);
-		if(displayName == null){
+		String name = rs.getString(LevelOneCategoryTable.COLUMN_NAME);
+		if(name == null){
 			//do nothing when nothing found in database
 			return;
 		}
 		
-		levelOneCategory.setDisplayName(displayName);
+		levelOneCategory.setName(name);
 	}
 		
 	protected void setVersion(LevelOneCategory levelOneCategory, ResultSet rs, int rowNumber) throws SQLException{

@@ -155,7 +155,7 @@ public class ProductTokens extends CommonTokens{
 	}
 	
 	public ProductTokens searchAllTextOfProductRecommendationList(String verb, String value){	
-		String field = "id|displayName|origin|remark|lastUpdateTime";
+		String field = "id|name|origin|remark|lastUpdateTime";
 		addSearchMoreOptions(PRODUCT_RECOMMENDATION_LIST,productRecommendationListSearchCounter++, field, verb, value);
 		return this;
 	}
@@ -217,7 +217,7 @@ public class ProductTokens extends CommonTokens{
 	}
 	
 	public ProductTokens searchAllTextOfSkuList(String verb, String value){	
-		String field = "id|displayName|size|lastUpdateTime";
+		String field = "id|name|size|lastUpdateTime";
 		addSearchMoreOptions(SKU_LIST,skuListSearchCounter++, field, verb, value);
 		return this;
 	}

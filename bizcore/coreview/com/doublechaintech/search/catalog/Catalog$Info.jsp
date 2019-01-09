@@ -20,7 +20,7 @@
 	
 	
 	<li><span>ID</span><a class="link-action-removed" href="./catalogManager/view/${catalog.id}/"> ${catalog.id}</a></li>
-<li><span>${userContext.localeMap['catalog.display_name']}</span> ${catalog.displayName}</li>
+<li><span>${userContext.localeMap['catalog.name']}</span> ${catalog.name}</li>
 <li><span>${userContext.localeMap['catalog.seller_id']}</span> ${catalog.sellerId}</li>
 
 	

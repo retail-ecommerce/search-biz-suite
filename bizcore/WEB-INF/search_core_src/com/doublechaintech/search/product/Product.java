@@ -22,7 +22,7 @@ public class Product extends BaseEntity implements  java.io.Serializable{
 
 	
 	public static final String ID_PROPERTY                    = "id"                ;
-	public static final String DISPLAY_NAME_PROPERTY          = "displayName"       ;
+	public static final String NAME_PROPERTY                  = "name"              ;
 	public static final String PARENT_CATEGORY_PROPERTY       = "parentCategory"    ;
 	public static final String BRAND_PROPERTY                 = "brand"             ;
 	public static final String ORIGIN_PROPERTY                = "origin"            ;
@@ -41,7 +41,7 @@ public class Product extends BaseEntity implements  java.io.Serializable{
 	
 	public String getDisplayName(){
 	
-		String displayName = getDisplayName();
+		String displayName = getName();
 		if(displayName!=null){
 			return displayName;
 		}
@@ -54,7 +54,7 @@ public class Product extends BaseEntity implements  java.io.Serializable{
 	
 
 	protected		String              	mId                 ;
-	protected		String              	mDisplayName        ;
+	protected		String              	mName               ;
 	protected		LevelNCategory      	mParentCategory     ;
 	protected		Brand               	mBrand              ;
 	protected		String              	mOrigin             ;
@@ -80,9 +80,9 @@ public class Product extends BaseEntity implements  java.io.Serializable{
 		this.changed = true;
 	}
 	
-	public 	Product(String displayName, LevelNCategory parentCategory, Brand brand, String origin, Catalog catalog, String remark, String lastUpdateTime)
+	public 	Product(String name, LevelNCategory parentCategory, Brand brand, String origin, Catalog catalog, String remark, String lastUpdateTime)
 	{
-		setDisplayName(displayName);
+		setName(name);
 		setParentCategory(parentCategory);
 		setBrand(brand);
 		setOrigin(origin);
@@ -98,8 +98,8 @@ public class Product extends BaseEntity implements  java.io.Serializable{
 	
 	public void changeProperty(String property, String newValueExpr) {
      	
-		if(DISPLAY_NAME_PROPERTY.equals(property)){
-			changeDisplayNameProperty(newValueExpr);
+		if(NAME_PROPERTY.equals(property)){
+			changeNameProperty(newValueExpr);
 		}
 		if(ORIGIN_PROPERTY.equals(property)){
 			changeOriginProperty(newValueExpr);
@@ -115,15 +115,15 @@ public class Product extends BaseEntity implements  java.io.Serializable{
 	}
     
     
-	protected void changeDisplayNameProperty(String newValueExpr){
-		String oldValue = getDisplayName();
+	protected void changeNameProperty(String newValueExpr){
+		String oldValue = getName();
 		String newValue = parseString(newValueExpr);
 		if(equalsString(oldValue , newValue)){
 			return;//they can be both null, or exact the same object, this is much faster than equals function
 		}
 		//they are surely different each other
-		updateDisplayName(newValue);
-		this.onChangeProperty(DISPLAY_NAME_PROPERTY, oldValue, newValue);
+		updateName(newValue);
+		this.onChangeProperty(NAME_PROPERTY, oldValue, newValue);
 		return;
   
 	}
@@ -193,14 +193,14 @@ public class Product extends BaseEntity implements  java.io.Serializable{
 	}
 	
 	
-	public void setDisplayName(String displayName){
-		this.mDisplayName = trimString(displayName);;
+	public void setName(String name){
+		this.mName = trimString(name);;
 	}
-	public String getDisplayName(){
-		return this.mDisplayName;
+	public String getName(){
+		return this.mName;
 	}
-	public Product updateDisplayName(String displayName){
-		this.mDisplayName = trimString(displayName);;
+	public Product updateName(String name){
+		this.mName = trimString(name);;
 		this.changed = true;
 		return this;
 	}
@@ -542,7 +542,7 @@ public class Product extends BaseEntity implements  java.io.Serializable{
 		List<KeyValuePair> result =  super.keyValuePairOf();
 
 		appendKeyValuePair(result, ID_PROPERTY, getId());
-		appendKeyValuePair(result, DISPLAY_NAME_PROPERTY, getDisplayName());
+		appendKeyValuePair(result, NAME_PROPERTY, getName());
 		appendKeyValuePair(result, PARENT_CATEGORY_PROPERTY, getParentCategory());
 		appendKeyValuePair(result, BRAND_PROPERTY, getBrand());
 		appendKeyValuePair(result, ORIGIN_PROPERTY, getOrigin());
@@ -575,7 +575,7 @@ public class Product extends BaseEntity implements  java.io.Serializable{
 			Product dest =(Product)baseDest;
 		
 			dest.setId(getId());
-			dest.setDisplayName(getDisplayName());
+			dest.setName(getName());
 			dest.setParentCategory(getParentCategory());
 			dest.setBrand(getBrand());
 			dest.setOrigin(getOrigin());
@@ -596,7 +596,7 @@ public class Product extends BaseEntity implements  java.io.Serializable{
 
 		stringBuilder.append("Product{");
 		stringBuilder.append("\tid='"+getId()+"';");
-		stringBuilder.append("\tdisplayName='"+getDisplayName()+"';");
+		stringBuilder.append("\tname='"+getName()+"';");
 		if(getParentCategory() != null ){
  			stringBuilder.append("\tparentCategory='LevelNCategory("+getParentCategory().getId()+")';");
  		}

@@ -98,8 +98,8 @@
 		<c:if test="${param.referName ne 'id'}">
 	<th>${userContext.localeMap['sku.id']}</th>
 </c:if>
-<c:if test="${param.referName ne 'displayName'}">
-	<th>${userContext.localeMap['sku.display_name']}</th>
+<c:if test="${param.referName ne 'name'}">
+	<th>${userContext.localeMap['sku.name']}</th>
 </c:if>
 <c:if test="${param.referName ne 'size'}">
 	<th>${userContext.localeMap['sku.size']}</th>
@@ -122,7 +122,7 @@
 			
 			<c:forEach var="item" items="${skuList}">
 				<tr currentVersion='${item.version}' id="sku-${item.id}" ><td><a class="link-action-removed" href="./skuManager/view/${item.id}/"> ${item.id}</a></td>
-<c:if test="${param.referName ne 'displayName'}">	<td contenteditable='true' class='edit-value'  propertyToChange='displayName' storedCellValue='${item.displayName}' prefix='${ownerBeanName}Manager/updateSku/${result.id}/${item.id}/'>${item.displayName}</td>
+<c:if test="${param.referName ne 'name'}">	<td contenteditable='true' class='edit-value'  propertyToChange='name' storedCellValue='${item.name}' prefix='${ownerBeanName}Manager/updateSku/${result.id}/${item.id}/'>${item.name}</td>
 </c:if><c:if test="${param.referName ne 'size'}">	<td contenteditable='true' class='edit-value'  propertyToChange='size' storedCellValue='${item.size}' prefix='${ownerBeanName}Manager/updateSku/${result.id}/${item.id}/'>${item.size}</td>
 </c:if><c:if test="${param.referName ne 'product'}">
 	<td class="select_candidate_td"

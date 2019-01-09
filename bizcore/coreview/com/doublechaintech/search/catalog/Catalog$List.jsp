@@ -98,8 +98,8 @@
 		<c:if test="${param.referName ne 'id'}">
 	<th>${userContext.localeMap['catalog.id']}</th>
 </c:if>
-<c:if test="${param.referName ne 'displayName'}">
-	<th>${userContext.localeMap['catalog.display_name']}</th>
+<c:if test="${param.referName ne 'name'}">
+	<th>${userContext.localeMap['catalog.name']}</th>
 </c:if>
 <c:if test="${param.referName ne 'sellerId'}">
 	<th>${userContext.localeMap['catalog.seller_id']}</th>
@@ -113,7 +113,7 @@
 			
 			<c:forEach var="item" items="${catalogList}">
 				<tr currentVersion='${item.version}' id="catalog-${item.id}" ><td><a class="link-action-removed" href="./catalogManager/view/${item.id}/"> ${item.id}</a></td>
-<c:if test="${param.referName ne 'displayName'}">	<td contenteditable='true' class='edit-value'  propertyToChange='displayName' storedCellValue='${item.displayName}' prefix='${ownerBeanName}Manager/updateCatalog/${result.id}/${item.id}/'>${item.displayName}</td>
+<c:if test="${param.referName ne 'name'}">	<td contenteditable='true' class='edit-value'  propertyToChange='name' storedCellValue='${item.name}' prefix='${ownerBeanName}Manager/updateCatalog/${result.id}/${item.id}/'>${item.name}</td>
 </c:if><c:if test="${param.referName ne 'sellerId'}">	<td contenteditable='true' class='edit-value'  propertyToChange='sellerId' storedCellValue='${item.sellerId}' prefix='${ownerBeanName}Manager/updateCatalog/${result.id}/${item.id}/'>${item.sellerId}</td>
 </c:if><c:if test="${param.referName ne 'site'}">
 	<td class="select_candidate_td"

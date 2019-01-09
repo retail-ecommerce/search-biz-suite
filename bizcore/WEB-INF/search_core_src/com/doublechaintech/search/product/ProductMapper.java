@@ -15,7 +15,7 @@ public class ProductMapper extends BaseRowMapper<Product>{
 		Product product = getProduct();		
 		 		
  		setId(product, rs, rowNumber); 		
- 		setDisplayName(product, rs, rowNumber); 		
+ 		setName(product, rs, rowNumber); 		
  		setParentCategory(product, rs, rowNumber); 		
  		setBrand(product, rs, rowNumber); 		
  		setOrigin(product, rs, rowNumber); 		
@@ -43,16 +43,16 @@ public class ProductMapper extends BaseRowMapper<Product>{
 		product.setId(id);
 	}
 		
-	protected void setDisplayName(Product product, ResultSet rs, int rowNumber) throws SQLException{
+	protected void setName(Product product, ResultSet rs, int rowNumber) throws SQLException{
 	
 		//there will be issue when the type is double/int/long
-		String displayName = rs.getString(ProductTable.COLUMN_DISPLAY_NAME);
-		if(displayName == null){
+		String name = rs.getString(ProductTable.COLUMN_NAME);
+		if(name == null){
 			//do nothing when nothing found in database
 			return;
 		}
 		
-		product.setDisplayName(displayName);
+		product.setName(name);
 	}
 		 		
  	protected void setParentCategory(Product product, ResultSet rs, int rowNumber) throws SQLException{

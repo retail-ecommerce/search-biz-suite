@@ -167,14 +167,14 @@ public class LevelOneCategoryManagerImpl extends CustomSearchCheckerManager impl
  	
 
 
-	public LevelOneCategory createLevelOneCategory(SearchUserContext userContext,String catalogId, String displayName) throws Exception
+	public LevelOneCategory createLevelOneCategory(SearchUserContext userContext,String catalogId, String name) throws Exception
 	{
 		
 		
 
 		
 
-		userContext.getChecker().checkDisplayNameOfLevelOneCategory(displayName);
+		userContext.getChecker().checkNameOfLevelOneCategory(name);
 	
 		userContext.getChecker().throwExceptionIfHasErrors(LevelOneCategoryManagerException.class);
 
@@ -186,7 +186,7 @@ public class LevelOneCategoryManagerImpl extends CustomSearchCheckerManager impl
 		levelOneCategory.setCatalog(catalog);
 		
 		
-		levelOneCategory.setDisplayName(displayName);
+		levelOneCategory.setName(name);
 
 		levelOneCategory = saveLevelOneCategory(userContext, levelOneCategory, emptyOptions());
 		
@@ -213,8 +213,8 @@ public class LevelOneCategoryManagerImpl extends CustomSearchCheckerManager impl
 		
 
 		
-		if(LevelOneCategory.DISPLAY_NAME_PROPERTY.equals(property)){
-			userContext.getChecker().checkDisplayNameOfLevelOneCategory(parseString(newValueExpr));
+		if(LevelOneCategory.NAME_PROPERTY.equals(property)){
+			userContext.getChecker().checkNameOfLevelOneCategory(parseString(newValueExpr));
 		}
 	
 		userContext.getChecker().throwExceptionIfHasErrors(LevelOneCategoryManagerException.class);
@@ -358,7 +358,7 @@ public class LevelOneCategoryManagerImpl extends CustomSearchCheckerManager impl
 		result.setFilterKey(filterKey==null?"":filterKey.trim());
 		result.setPageNo(pageNo);
 		result.setValueFieldName("id");
-		result.setDisplayFieldName("displayName");
+		result.setDisplayFieldName("name");
 		
 		pageNo = Math.max(1, pageNo);
 		int pageSize = 20;
@@ -427,7 +427,7 @@ public class LevelOneCategoryManagerImpl extends CustomSearchCheckerManager impl
 	
 	
 
-	protected void checkParamsForAddingLevelTwoCategory(SearchUserContext userContext, String levelOneCategoryId, String displayName,String [] tokensExpr) throws Exception{
+	protected void checkParamsForAddingLevelTwoCategory(SearchUserContext userContext, String levelOneCategoryId, String name,String [] tokensExpr) throws Exception{
 		
 		
 
@@ -436,18 +436,18 @@ public class LevelOneCategoryManagerImpl extends CustomSearchCheckerManager impl
 		userContext.getChecker().checkIdOfLevelOneCategory(levelOneCategoryId);
 
 		
-		userContext.getChecker().checkDisplayNameOfLevelTwoCategory(displayName);
+		userContext.getChecker().checkNameOfLevelTwoCategory(name);
 	
 		userContext.getChecker().throwExceptionIfHasErrors(LevelOneCategoryManagerException.class);
 
 	
 	}
-	public  LevelOneCategory addLevelTwoCategory(SearchUserContext userContext, String levelOneCategoryId, String displayName, String [] tokensExpr) throws Exception
+	public  LevelOneCategory addLevelTwoCategory(SearchUserContext userContext, String levelOneCategoryId, String name, String [] tokensExpr) throws Exception
 	{	
 		
-		checkParamsForAddingLevelTwoCategory(userContext,levelOneCategoryId,displayName,tokensExpr);
+		checkParamsForAddingLevelTwoCategory(userContext,levelOneCategoryId,name,tokensExpr);
 		
-		LevelTwoCategory levelTwoCategory = createLevelTwoCategory(userContext,displayName);
+		LevelTwoCategory levelTwoCategory = createLevelTwoCategory(userContext,name);
 		
 		LevelOneCategory levelOneCategory = loadLevelOneCategory(userContext, levelOneCategoryId, allTokens());
 		synchronized(levelOneCategory){ 
@@ -460,19 +460,19 @@ public class LevelOneCategoryManagerImpl extends CustomSearchCheckerManager impl
 			return present(userContext,levelOneCategory, mergedAllTokens(tokensExpr));
 		}
 	}
-	protected void checkParamsForUpdatingLevelTwoCategoryProperties(SearchUserContext userContext, String levelOneCategoryId,String id,String displayName,String [] tokensExpr) throws Exception {
+	protected void checkParamsForUpdatingLevelTwoCategoryProperties(SearchUserContext userContext, String levelOneCategoryId,String id,String name,String [] tokensExpr) throws Exception {
 		
 		userContext.getChecker().checkIdOfLevelOneCategory(levelOneCategoryId);
 		userContext.getChecker().checkIdOfLevelTwoCategory(id);
 		
-		userContext.getChecker().checkDisplayNameOfLevelTwoCategory( displayName);
+		userContext.getChecker().checkNameOfLevelTwoCategory( name);
 
 		userContext.getChecker().throwExceptionIfHasErrors(LevelOneCategoryManagerException.class);
 		
 	}
-	public  LevelOneCategory updateLevelTwoCategoryProperties(SearchUserContext userContext, String levelOneCategoryId, String id,String displayName, String [] tokensExpr) throws Exception
+	public  LevelOneCategory updateLevelTwoCategoryProperties(SearchUserContext userContext, String levelOneCategoryId, String id,String name, String [] tokensExpr) throws Exception
 	{	
-		checkParamsForUpdatingLevelTwoCategoryProperties(userContext,levelOneCategoryId,id,displayName,tokensExpr);
+		checkParamsForUpdatingLevelTwoCategoryProperties(userContext,levelOneCategoryId,id,name,tokensExpr);
 
 		Map<String, Object> options = tokens()
 				.allTokens()
@@ -487,7 +487,7 @@ public class LevelOneCategoryManagerImpl extends CustomSearchCheckerManager impl
 		
 		LevelTwoCategory item = levelOneCategoryToUpdate.getLevelTwoCategoryList().first();
 		
-		item.updateDisplayName( displayName );
+		item.updateName( name );
 
 		
 		//checkParamsForAddingLevelTwoCategory(userContext,levelOneCategoryId,name, code, used,tokensExpr);
@@ -498,12 +498,12 @@ public class LevelOneCategoryManagerImpl extends CustomSearchCheckerManager impl
 	}
 	
 	
-	protected LevelTwoCategory createLevelTwoCategory(SearchUserContext userContext, String displayName) throws Exception{
+	protected LevelTwoCategory createLevelTwoCategory(SearchUserContext userContext, String name) throws Exception{
 
 		LevelTwoCategory levelTwoCategory = new LevelTwoCategory();
 		
 		
-		levelTwoCategory.setDisplayName(displayName);
+		levelTwoCategory.setName(name);
 	
 		
 		return levelTwoCategory;
@@ -615,8 +615,8 @@ public class LevelOneCategoryManagerImpl extends CustomSearchCheckerManager impl
 		userContext.getChecker().checkVersionOfLevelTwoCategory(levelTwoCategoryVersion);
 		
 
-		if(LevelTwoCategory.DISPLAY_NAME_PROPERTY.equals(property)){
-			userContext.getChecker().checkDisplayNameOfLevelTwoCategory(parseString(newValueExpr));
+		if(LevelTwoCategory.NAME_PROPERTY.equals(property)){
+			userContext.getChecker().checkNameOfLevelTwoCategory(parseString(newValueExpr));
 		}
 		
 	

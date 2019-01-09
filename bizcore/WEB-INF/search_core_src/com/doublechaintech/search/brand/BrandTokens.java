@@ -119,7 +119,7 @@ public class BrandTokens extends CommonTokens{
 	}
 	
 	public BrandTokens searchAllTextOfProductList(String verb, String value){	
-		String field = "id|displayName|origin|remark|lastUpdateTime";
+		String field = "id|name|origin|remark|lastUpdateTime";
 		addSearchMoreOptions(PRODUCT_LIST,productListSearchCounter++, field, verb, value);
 		return this;
 	}
@@ -181,7 +181,7 @@ public class BrandTokens extends CommonTokens{
 	}
 	
 	public BrandTokens searchAllTextOfProductRecommendationList(String verb, String value){	
-		String field = "id|displayName|origin|remark|lastUpdateTime";
+		String field = "id|name|origin|remark|lastUpdateTime";
 		addSearchMoreOptions(PRODUCT_RECOMMENDATION_LIST,productRecommendationListSearchCounter++, field, verb, value);
 		return this;
 	}

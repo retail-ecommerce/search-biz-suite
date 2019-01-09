@@ -20,7 +20,7 @@ public class Catalog extends BaseEntity implements  java.io.Serializable{
 
 	
 	public static final String ID_PROPERTY                    = "id"                ;
-	public static final String DISPLAY_NAME_PROPERTY          = "displayName"       ;
+	public static final String NAME_PROPERTY                  = "name"              ;
 	public static final String SELLER_ID_PROPERTY             = "sellerId"          ;
 	public static final String SITE_PROPERTY                  = "site"              ;
 	public static final String VERSION_PROPERTY               = "version"           ;
@@ -35,7 +35,7 @@ public class Catalog extends BaseEntity implements  java.io.Serializable{
 	
 	public String getDisplayName(){
 	
-		String displayName = getDisplayName();
+		String displayName = getName();
 		if(displayName!=null){
 			return displayName;
 		}
@@ -48,7 +48,7 @@ public class Catalog extends BaseEntity implements  java.io.Serializable{
 	
 
 	protected		String              	mId                 ;
-	protected		String              	mDisplayName        ;
+	protected		String              	mName               ;
 	protected		String              	mSellerId           ;
 	protected		Site                	mSite               ;
 	protected		int                 	mVersion            ;
@@ -68,9 +68,9 @@ public class Catalog extends BaseEntity implements  java.io.Serializable{
 		this.changed = true;
 	}
 	
-	public 	Catalog(String displayName, String sellerId, Site site)
+	public 	Catalog(String name, String sellerId, Site site)
 	{
-		setDisplayName(displayName);
+		setName(name);
 		setSellerId(sellerId);
 		setSite(site);
 
@@ -82,8 +82,8 @@ public class Catalog extends BaseEntity implements  java.io.Serializable{
 	
 	public void changeProperty(String property, String newValueExpr) {
      	
-		if(DISPLAY_NAME_PROPERTY.equals(property)){
-			changeDisplayNameProperty(newValueExpr);
+		if(NAME_PROPERTY.equals(property)){
+			changeNameProperty(newValueExpr);
 		}
 		if(SELLER_ID_PROPERTY.equals(property)){
 			changeSellerIdProperty(newValueExpr);
@@ -93,15 +93,15 @@ public class Catalog extends BaseEntity implements  java.io.Serializable{
 	}
     
     
-	protected void changeDisplayNameProperty(String newValueExpr){
-		String oldValue = getDisplayName();
+	protected void changeNameProperty(String newValueExpr){
+		String oldValue = getName();
 		String newValue = parseString(newValueExpr);
 		if(equalsString(oldValue , newValue)){
 			return;//they can be both null, or exact the same object, this is much faster than equals function
 		}
 		//they are surely different each other
-		updateDisplayName(newValue);
-		this.onChangeProperty(DISPLAY_NAME_PROPERTY, oldValue, newValue);
+		updateName(newValue);
+		this.onChangeProperty(NAME_PROPERTY, oldValue, newValue);
 		return;
   
 	}
@@ -141,14 +141,14 @@ public class Catalog extends BaseEntity implements  java.io.Serializable{
 	}
 	
 	
-	public void setDisplayName(String displayName){
-		this.mDisplayName = trimString(displayName);;
+	public void setName(String name){
+		this.mName = trimString(name);;
 	}
-	public String getDisplayName(){
-		return this.mDisplayName;
+	public String getName(){
+		return this.mName;
 	}
-	public Catalog updateDisplayName(String displayName){
-		this.mDisplayName = trimString(displayName);;
+	public Catalog updateName(String name){
+		this.mName = trimString(name);;
 		this.changed = true;
 		return this;
 	}
@@ -431,7 +431,7 @@ public class Catalog extends BaseEntity implements  java.io.Serializable{
 		List<KeyValuePair> result =  super.keyValuePairOf();
 
 		appendKeyValuePair(result, ID_PROPERTY, getId());
-		appendKeyValuePair(result, DISPLAY_NAME_PROPERTY, getDisplayName());
+		appendKeyValuePair(result, NAME_PROPERTY, getName());
 		appendKeyValuePair(result, SELLER_ID_PROPERTY, getSellerId());
 		appendKeyValuePair(result, SITE_PROPERTY, getSite());
 		appendKeyValuePair(result, VERSION_PROPERTY, getVersion());
@@ -460,7 +460,7 @@ public class Catalog extends BaseEntity implements  java.io.Serializable{
 			Catalog dest =(Catalog)baseDest;
 		
 			dest.setId(getId());
-			dest.setDisplayName(getDisplayName());
+			dest.setName(getName());
 			dest.setSellerId(getSellerId());
 			dest.setSite(getSite());
 			dest.setVersion(getVersion());
@@ -477,7 +477,7 @@ public class Catalog extends BaseEntity implements  java.io.Serializable{
 
 		stringBuilder.append("Catalog{");
 		stringBuilder.append("\tid='"+getId()+"';");
-		stringBuilder.append("\tdisplayName='"+getDisplayName()+"';");
+		stringBuilder.append("\tname='"+getName()+"';");
 		stringBuilder.append("\tsellerId='"+getSellerId()+"';");
 		if(getSite() != null ){
  			stringBuilder.append("\tsite='Site("+getSite().getId()+")';");

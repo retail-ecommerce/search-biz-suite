@@ -18,7 +18,7 @@
 	
 	
 	<li><span>${userContext.localeMap['level_n_category.id']}</span> ${levelNCategory.id}</li>
-<li><span>${userContext.localeMap['level_n_category.display_name']}</span> ${levelNCategory.displayName}</li>
+<li><span>${userContext.localeMap['level_n_category.name']}</span> ${levelNCategory.name}</li>
 
 	
 	</ul>

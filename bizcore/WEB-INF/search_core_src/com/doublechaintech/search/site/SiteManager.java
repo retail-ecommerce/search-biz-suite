@@ -28,9 +28,9 @@ public interface SiteManager{
 	/*======================================================DATA MAINTENANCE===========================================================*/
 	
 
-	//public  CatalogManager getCatalogManager(SearchUserContext userContext, String siteId, String displayName, String sellerId ,String [] tokensExpr)  throws Exception;
+	//public  CatalogManager getCatalogManager(SearchUserContext userContext, String siteId, String name, String sellerId ,String [] tokensExpr)  throws Exception;
 	
-	public  Site addCatalog(SearchUserContext userContext, String siteId, String displayName, String sellerId , String [] tokensExpr)  throws Exception;
+	public  Site addCatalog(SearchUserContext userContext, String siteId, String name, String sellerId , String [] tokensExpr)  throws Exception;
 	public  Site removeCatalog(SearchUserContext userContext, String siteId, String catalogId, int catalogVersion,String [] tokensExpr)  throws Exception;
 	public  Site updateCatalog(SearchUserContext userContext, String siteId, String catalogId, int catalogVersion, String property, String newValueExpr,String [] tokensExpr)  throws Exception;
 

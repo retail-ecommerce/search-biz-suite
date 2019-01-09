@@ -529,7 +529,7 @@ public class LevelNCategoryJDBCTemplateDAO extends SearchNamingServiceDAO implem
  			parameters[0] = levelNCategory.getParentCategory().getId();
  		}
  
- 		parameters[1] = levelNCategory.getDisplayName();		
+ 		parameters[1] = levelNCategory.getName();		
  		parameters[2] = levelNCategory.nextVersion();
  		parameters[3] = levelNCategory.getId();
  		parameters[4] = levelNCategory.getVersion();
@@ -547,7 +547,7 @@ public class LevelNCategoryJDBCTemplateDAO extends SearchNamingServiceDAO implem
  		
  		}
  		
- 		parameters[2] = levelNCategory.getDisplayName();		
+ 		parameters[2] = levelNCategory.getName();		
  				
  		return parameters;
  	}

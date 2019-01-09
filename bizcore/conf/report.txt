@@ -1,7 +1,7 @@
 
 
 
-=================Execute Report (Model Time 190108T1830) @Wed Jan 09 15:50:17 CST 2019, 32 objects and 232 fields===========================
+=================Execute Report (Model Time 190109T2209) @Wed Jan 09 22:12:13 CST 2019, 32 objects and 232 fields===========================
 
 
 
@@ -315,7 +315,7 @@ site{
 catalog{
 	fields(5){
 		string	id('ABCDEFGIJK000001'), verb: false, required: true;
-		string	display_name('Cloth'), verb: false, required: true;
+		string	name('Cloth'), verb: false, required: true;
 		string	seller_id('SC000001'), verb: false, required: true;
 		site	site('$(object)'), verb: false, required: true, referenceBy: catalogList;
 		int	version('2147483647'), verb: false, required: true;
@@ -330,7 +330,7 @@ level_one_category{
 	fields(4){
 		string	id('ABCDEFGIJK000001'), verb: false, required: true;
 		catalog	catalog('$(object)'), verb: false, required: true, referenceBy: levelOneCategoryList;
-		string	display_name('Level One Cat'), verb: false, required: true;
+		string	name('Level One Cat'), verb: false, required: true;
 		int	version('2147483647'), verb: false, required: true;
 	}
 	references field(1){
@@ -342,7 +342,7 @@ level_two_category{
 	fields(4){
 		string	id('ABCDEFGIJK000001'), verb: false, required: true;
 		level_one_category	parent_category('$(object)'), verb: false, required: true, referenceBy: levelTwoCategoryList;
-		string	display_name('Level Two Cat'), verb: false, required: true;
+		string	name('Level Two Cat'), verb: false, required: true;
 		int	version('2147483647'), verb: false, required: true;
 	}
 	references field(1){
@@ -354,7 +354,7 @@ level_n_category{
 	fields(4){
 		string	id('ABCDEFGIJK000001'), verb: false, required: true;
 		level_two_category	parent_category('$(object)'), verb: false, required: true, referenceBy: levelNCategoryList;
-		string	display_name('Level N Cat'), verb: false, required: true;
+		string	name('Level N Cat'), verb: false, required: true;
 		int	version('2147483647'), verb: false, required: true;
 	}
 	references field(1){
@@ -379,7 +379,7 @@ brand{
 product{
 	fields(9){
 		string	id('ABCDEFGIJK000001'), verb: false, required: true;
-		string	display_name('Jeans'), verb: false, required: true;
+		string	name('Jeans'), verb: false, required: true;
 		level_n_category	parent_category('$(object)'), verb: false, required: true, referenceBy: productList;
 		brand	brand('$(object)'), verb: false, required: true, referenceBy: productList;
 		string	origin('China|US|Japan|French'), verb: false, required: true;
@@ -397,7 +397,7 @@ product{
 product_recommendation{
 	fields(8){
 		string	id('ABCDEFGIJK000001'), verb: false, required: true;
-		string	display_name('Jeans'), verb: false, required: true;
+		string	name('Jeans'), verb: false, required: true;
 		brand	brand('$(object)'), verb: false, required: true, referenceBy: productRecommendationList;
 		string	origin('China|US|Japan|French'), verb: false, required: true;
 		product	product('$(object)'), verb: false, required: true, referenceBy: productRecommendationList;
@@ -412,7 +412,7 @@ product_recommendation{
 sku{
 	fields(8){
 		string	id('ABCDEFGIJK000001'), verb: false, required: true;
-		string	display_name('Jeans - Large'), verb: false, required: true;
+		string	name('Jeans - Large'), verb: false, required: true;
 		string	size('Large|Small|Medium'), verb: false, required: true;
 		product	product('$(object)'), verb: false, required: true, referenceBy: skuList;
 		bool	active('true'), verb: false, required: true;
@@ -801,7 +801,7 @@ site{
 catalog{
 	fields(5){
 		string	id('ABCDEFGIJK000001'), verb: false, required: true;
-		string	display_name('Cloth'), verb: false, required: true;
+		string	name('Cloth'), verb: false, required: true;
 		string	seller_id('SC000001'), verb: false, required: true;
 		site	site('$(object)'), verb: false, required: true, referenceBy: catalogList;
 		int	version('2147483647'), verb: false, required: true;
@@ -816,7 +816,7 @@ level_one_category{
 	fields(4){
 		string	id('ABCDEFGIJK000001'), verb: false, required: true;
 		catalog	catalog('$(object)'), verb: false, required: true, referenceBy: levelOneCategoryList;
-		string	display_name('Level One Cat'), verb: false, required: true;
+		string	name('Level One Cat'), verb: false, required: true;
 		int	version('2147483647'), verb: false, required: true;
 	}
 	references field(1){
@@ -828,7 +828,7 @@ level_two_category{
 	fields(4){
 		string	id('ABCDEFGIJK000001'), verb: false, required: true;
 		level_one_category	parent_category('$(object)'), verb: false, required: true, referenceBy: levelTwoCategoryList;
-		string	display_name('Level Two Cat'), verb: false, required: true;
+		string	name('Level Two Cat'), verb: false, required: true;
 		int	version('2147483647'), verb: false, required: true;
 	}
 	references field(1){
@@ -840,7 +840,7 @@ level_n_category{
 	fields(4){
 		string	id('ABCDEFGIJK000001'), verb: false, required: true;
 		level_two_category	parent_category('$(object)'), verb: false, required: true, referenceBy: levelNCategoryList;
-		string	display_name('Level N Cat'), verb: false, required: true;
+		string	name('Level N Cat'), verb: false, required: true;
 		int	version('2147483647'), verb: false, required: true;
 	}
 	references field(1){
@@ -865,7 +865,7 @@ brand{
 product{
 	fields(9){
 		string	id('ABCDEFGIJK000001'), verb: false, required: true;
-		string	display_name('Jeans'), verb: false, required: true;
+		string	name('Jeans'), verb: false, required: true;
 		level_n_category	parent_category('$(object)'), verb: false, required: true, referenceBy: productList;
 		brand	brand('$(object)'), verb: false, required: true, referenceBy: productList;
 		string	origin('China|US|Japan|French'), verb: false, required: true;
@@ -883,7 +883,7 @@ product{
 product_recommendation{
 	fields(8){
 		string	id('ABCDEFGIJK000001'), verb: false, required: true;
-		string	display_name('Jeans'), verb: false, required: true;
+		string	name('Jeans'), verb: false, required: true;
 		brand	brand('$(object)'), verb: false, required: true, referenceBy: productRecommendationList;
 		string	origin('China|US|Japan|French'), verb: false, required: true;
 		product	product('$(object)'), verb: false, required: true, referenceBy: productRecommendationList;
@@ -898,7 +898,7 @@ product_recommendation{
 sku{
 	fields(8){
 		string	id('ABCDEFGIJK000001'), verb: false, required: true;
-		string	display_name('Jeans - Large'), verb: false, required: true;
+		string	name('Jeans - Large'), verb: false, required: true;
 		string	size('Large|Small|Medium'), verb: false, required: true;
 		product	product('$(object)'), verb: false, required: true, referenceBy: skuList;
 		bool	active('true'), verb: false, required: true;

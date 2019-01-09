@@ -131,11 +131,11 @@ public class SearchChecker extends BaseChecker{
 		return this;
 	}	 			
 
-	public static final String  DISPLAY_NAME_OF_CATALOG ="catalog.display_name";
-	public SearchChecker checkDisplayNameOfCatalog(String displayName)
+	public static final String  NAME_OF_CATALOG ="catalog.name";
+	public SearchChecker checkNameOfCatalog(String name)
 	{
 		
-	 	checkStringLengthRange(displayName,2, 20,DISPLAY_NAME_OF_CATALOG ); 		
+	 	checkStringLengthRange(name,2, 20,NAME_OF_CATALOG ); 		
 		
 		return this;
 	}	 			
@@ -185,11 +185,11 @@ public class SearchChecker extends BaseChecker{
 		return this;
 	}	 			
 
-	public static final String  DISPLAY_NAME_OF_LEVEL_ONE_CATEGORY ="level_one_category.display_name";
-	public SearchChecker checkDisplayNameOfLevelOneCategory(String displayName)
+	public static final String  NAME_OF_LEVEL_ONE_CATEGORY ="level_one_category.name";
+	public SearchChecker checkNameOfLevelOneCategory(String name)
 	{
 		
-	 	checkStringLengthRange(displayName,4, 52,DISPLAY_NAME_OF_LEVEL_ONE_CATEGORY ); 		
+	 	checkStringLengthRange(name,4, 52,NAME_OF_LEVEL_ONE_CATEGORY ); 		
 		
 		return this;
 	}	 			
@@ -221,11 +221,11 @@ public class SearchChecker extends BaseChecker{
 		return this;
 	}	 			
 
-	public static final String  DISPLAY_NAME_OF_LEVEL_TWO_CATEGORY ="level_two_category.display_name";
-	public SearchChecker checkDisplayNameOfLevelTwoCategory(String displayName)
+	public static final String  NAME_OF_LEVEL_TWO_CATEGORY ="level_two_category.name";
+	public SearchChecker checkNameOfLevelTwoCategory(String name)
 	{
 		
-	 	checkStringLengthRange(displayName,4, 52,DISPLAY_NAME_OF_LEVEL_TWO_CATEGORY ); 		
+	 	checkStringLengthRange(name,4, 52,NAME_OF_LEVEL_TWO_CATEGORY ); 		
 		
 		return this;
 	}	 			
@@ -257,11 +257,11 @@ public class SearchChecker extends BaseChecker{
 		return this;
 	}	 			
 
-	public static final String  DISPLAY_NAME_OF_LEVEL_N_CATEGORY ="level_n_category.display_name";
-	public SearchChecker checkDisplayNameOfLevelNCategory(String displayName)
+	public static final String  NAME_OF_LEVEL_N_CATEGORY ="level_n_category.name";
+	public SearchChecker checkNameOfLevelNCategory(String name)
 	{
 		
-	 	checkStringLengthRange(displayName,3, 44,DISPLAY_NAME_OF_LEVEL_N_CATEGORY ); 		
+	 	checkStringLengthRange(name,3, 44,NAME_OF_LEVEL_N_CATEGORY ); 		
 		
 		return this;
 	}	 			
@@ -329,11 +329,11 @@ public class SearchChecker extends BaseChecker{
 		return this;
 	}	 			
 
-	public static final String  DISPLAY_NAME_OF_PRODUCT ="product.display_name";
-	public SearchChecker checkDisplayNameOfProduct(String displayName)
+	public static final String  NAME_OF_PRODUCT ="product.name";
+	public SearchChecker checkNameOfProduct(String name)
 	{
 		
-	 	checkStringLengthRange(displayName,2, 20,DISPLAY_NAME_OF_PRODUCT ); 		
+	 	checkStringLengthRange(name,2, 20,NAME_OF_PRODUCT ); 		
 		
 		return this;
 	}	 			
@@ -410,11 +410,11 @@ public class SearchChecker extends BaseChecker{
 		return this;
 	}	 			
 
-	public static final String  DISPLAY_NAME_OF_PRODUCT_RECOMMENDATION ="product_recommendation.display_name";
-	public SearchChecker checkDisplayNameOfProductRecommendation(String displayName)
+	public static final String  NAME_OF_PRODUCT_RECOMMENDATION ="product_recommendation.name";
+	public SearchChecker checkNameOfProductRecommendation(String name)
 	{
 		
-	 	checkStringLengthRange(displayName,2, 20,DISPLAY_NAME_OF_PRODUCT_RECOMMENDATION ); 		
+	 	checkStringLengthRange(name,2, 20,NAME_OF_PRODUCT_RECOMMENDATION ); 		
 		
 		return this;
 	}	 			
@@ -482,11 +482,11 @@ public class SearchChecker extends BaseChecker{
 		return this;
 	}	 			
 
-	public static final String  DISPLAY_NAME_OF_SKU ="sku.display_name";
-	public SearchChecker checkDisplayNameOfSku(String displayName)
+	public static final String  NAME_OF_SKU ="sku.name";
+	public SearchChecker checkNameOfSku(String name)
 	{
 		
-	 	checkStringLengthRange(displayName,4, 52,DISPLAY_NAME_OF_SKU ); 		
+	 	checkStringLengthRange(name,4, 52,NAME_OF_SKU ); 		
 		
 		return this;
 	}	 			

@@ -20,7 +20,7 @@
 	
 	
 	<li><span>ID</span><a class="link-action-removed" href="./levelOneCategoryManager/view/${levelOneCategory.id}/"> ${levelOneCategory.id}</a></li>
-<li><span>${userContext.localeMap['level_one_category.display_name']}</span> ${levelOneCategory.displayName}</li>
+<li><span>${userContext.localeMap['level_one_category.name']}</span> ${levelOneCategory.name}</li>
 
 	
 	</ul>

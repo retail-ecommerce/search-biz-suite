@@ -13,7 +13,7 @@ public class SkuMapper extends BaseRowMapper<Sku>{
 		Sku sku = getSku();		
 		 		
  		setId(sku, rs, rowNumber); 		
- 		setDisplayName(sku, rs, rowNumber); 		
+ 		setName(sku, rs, rowNumber); 		
  		setSize(sku, rs, rowNumber); 		
  		setProduct(sku, rs, rowNumber); 		
  		setActive(sku, rs, rowNumber); 		
@@ -40,16 +40,16 @@ public class SkuMapper extends BaseRowMapper<Sku>{
 		sku.setId(id);
 	}
 		
-	protected void setDisplayName(Sku sku, ResultSet rs, int rowNumber) throws SQLException{
+	protected void setName(Sku sku, ResultSet rs, int rowNumber) throws SQLException{
 	
 		//there will be issue when the type is double/int/long
-		String displayName = rs.getString(SkuTable.COLUMN_DISPLAY_NAME);
-		if(displayName == null){
+		String name = rs.getString(SkuTable.COLUMN_NAME);
+		if(name == null){
 			//do nothing when nothing found in database
 			return;
 		}
 		
-		sku.setDisplayName(displayName);
+		sku.setName(name);
 	}
 		
 	protected void setSize(Sku sku, ResultSet rs, int rowNumber) throws SQLException{
