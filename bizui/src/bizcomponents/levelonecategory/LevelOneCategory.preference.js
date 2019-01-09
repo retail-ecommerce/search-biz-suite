@@ -265,7 +265,7 @@ const internalSummaryOf = (levelOneCategory,targetComponent) =>{
 	      "transferToAnotherCatalog","anotherCatalogId",levelOneCategory.catalog?levelOneCategory.catalog.id:"")} 
   style={{fontSize: 20,color:"red"}} />
 </Description>
-<Description term="Display Name">{levelOneCategory.displayName}</Description> 
+<Description term="Name">{levelOneCategory.name}</Description> 
 	
         {buildTransferModal(levelOneCategory,targetComponent)}
       </DescriptionList>

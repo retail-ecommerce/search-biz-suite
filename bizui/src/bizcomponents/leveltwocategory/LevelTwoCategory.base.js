@@ -70,14 +70,14 @@ const renderReferenceCell=(value, record)=>{
 const displayColumns = [
   { title: 'Id', debugtype: 'string', dataIndex: 'id', width: '20', render: (text, record)=>renderTextCell(text,record,'levelTwoCategory') },
   { title: 'Parent Category', dataIndex: 'parentCategory', render: (text, record) => renderReferenceCell(text, record)},
-  { title: 'Display Name', debugtype: 'string', dataIndex: 'displayName', width: '17',render: (text, record)=>renderTextCell(text,record) },
+  { title: 'Name', debugtype: 'string', dataIndex: 'name', width: '17',render: (text, record)=>renderTextCell(text,record) },
 
 ]
 
 const fieldLabels = {
   id: 'Id',
   parentCategory: 'Parent Category',
-  displayName: 'Display Name',
+  name: 'Name',
 
 }
 

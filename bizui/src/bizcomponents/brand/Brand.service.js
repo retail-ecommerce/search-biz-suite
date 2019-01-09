@@ -23,14 +23,14 @@ const load = (targetObjectId, parameters) => {
 
 
 const addProduct = (targetObjectId, parameters) => {
-  const url = `${PREFIX}brandManager/addProduct/brandId/displayName/parentCategoryId/origin/catalogId/remark/lastUpdateTime/tokensExpr/`
+  const url = `${PREFIX}brandManager/addProduct/brandId/name/parentCategoryId/origin/catalogId/remark/lastUpdateTime/tokensExpr/`
   const brandId = targetObjectId
   const requestParameters = { ...parameters, brandId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateProduct = (targetObjectId, parameters) => {
-  const url = `${PREFIX}brandManager/updateProductProperties/brandId/id/displayName/origin/remark/lastUpdateTime/tokensExpr/`
+  const url = `${PREFIX}brandManager/updateProductProperties/brandId/id/name/origin/remark/lastUpdateTime/tokensExpr/`
   const brandId = targetObjectId
   const requestParameters = { ...parameters, brandId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -45,14 +45,14 @@ const removeProductList = (targetObjectId, parameters) => {
 
 
 const addProductRecommendation = (targetObjectId, parameters) => {
-  const url = `${PREFIX}brandManager/addProductRecommendation/brandId/displayName/origin/productId/remark/lastUpdateTime/tokensExpr/`
+  const url = `${PREFIX}brandManager/addProductRecommendation/brandId/name/origin/productId/remark/lastUpdateTime/tokensExpr/`
   const brandId = targetObjectId
   const requestParameters = { ...parameters, brandId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateProductRecommendation = (targetObjectId, parameters) => {
-  const url = `${PREFIX}brandManager/updateProductRecommendationProperties/brandId/id/displayName/origin/remark/lastUpdateTime/tokensExpr/`
+  const url = `${PREFIX}brandManager/updateProductRecommendationProperties/brandId/id/name/origin/remark/lastUpdateTime/tokensExpr/`
   const brandId = targetObjectId
   const requestParameters = { ...parameters, brandId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

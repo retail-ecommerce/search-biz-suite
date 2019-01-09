@@ -81,7 +81,7 @@ const internalSummaryOf = (sku,targetComponent) =>{
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="Id">{sku.id}</Description> 
-<Description term="Display Name">{sku.displayName}</Description> 
+<Description term="Name">{sku.name}</Description> 
 <Description term="Size">{sku.size}</Description> 
 <Description term="Product">{sku.product==null?"未分配":sku.product.displayName}
  <Icon type="swap" onClick={()=>

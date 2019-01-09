@@ -39,14 +39,14 @@ const transferToAnotherPlatform = (id, parameters) => {
 
 
 const addCatalog = (targetObjectId, parameters) => {
-  const url = `${PREFIX}siteManager/addCatalog/siteId/displayName/sellerId/tokensExpr/`
+  const url = `${PREFIX}siteManager/addCatalog/siteId/name/sellerId/tokensExpr/`
   const siteId = targetObjectId
   const requestParameters = { ...parameters, siteId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateCatalog = (targetObjectId, parameters) => {
-  const url = `${PREFIX}siteManager/updateCatalogProperties/siteId/id/displayName/sellerId/tokensExpr/`
+  const url = `${PREFIX}siteManager/updateCatalogProperties/siteId/id/name/sellerId/tokensExpr/`
   const siteId = targetObjectId
   const requestParameters = { ...parameters, siteId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

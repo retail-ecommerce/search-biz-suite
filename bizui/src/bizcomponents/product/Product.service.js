@@ -71,14 +71,14 @@ const transferToAnotherCatalog = (id, parameters) => {
 
 
 const addProductRecommendation = (targetObjectId, parameters) => {
-  const url = `${PREFIX}productManager/addProductRecommendation/productId/displayName/brandId/origin/remark/lastUpdateTime/tokensExpr/`
+  const url = `${PREFIX}productManager/addProductRecommendation/productId/name/brandId/origin/remark/lastUpdateTime/tokensExpr/`
   const productId = targetObjectId
   const requestParameters = { ...parameters, productId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateProductRecommendation = (targetObjectId, parameters) => {
-  const url = `${PREFIX}productManager/updateProductRecommendationProperties/productId/id/displayName/origin/remark/lastUpdateTime/tokensExpr/`
+  const url = `${PREFIX}productManager/updateProductRecommendationProperties/productId/id/name/origin/remark/lastUpdateTime/tokensExpr/`
   const productId = targetObjectId
   const requestParameters = { ...parameters, productId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -93,14 +93,14 @@ const removeProductRecommendationList = (targetObjectId, parameters) => {
 
 
 const addSku = (targetObjectId, parameters) => {
-  const url = `${PREFIX}productManager/addSku/productId/displayName/size/active/basePrice/lastUpdateTime/tokensExpr/`
+  const url = `${PREFIX}productManager/addSku/productId/name/size/active/basePrice/lastUpdateTime/tokensExpr/`
   const productId = targetObjectId
   const requestParameters = { ...parameters, productId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateSku = (targetObjectId, parameters) => {
-  const url = `${PREFIX}productManager/updateSkuProperties/productId/id/displayName/size/active/basePrice/lastUpdateTime/tokensExpr/`
+  const url = `${PREFIX}productManager/updateSkuProperties/productId/id/name/size/active/basePrice/lastUpdateTime/tokensExpr/`
   const productId = targetObjectId
   const requestParameters = { ...parameters, productId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

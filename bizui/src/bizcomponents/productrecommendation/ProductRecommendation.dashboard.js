@@ -83,7 +83,7 @@ const internalSummaryOf = (productRecommendation,targetComponent) =>{
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="Id">{productRecommendation.id}</Description> 
-<Description term="Display Name">{productRecommendation.displayName}</Description> 
+<Description term="Name">{productRecommendation.name}</Description> 
 <Description term="Origin">{productRecommendation.origin}</Description> 
 <Description term="Product">{productRecommendation.product==null?"未分配":productRecommendation.product.displayName}
  <Icon type="swap" onClick={()=>

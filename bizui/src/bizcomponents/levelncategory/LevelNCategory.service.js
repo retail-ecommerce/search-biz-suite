@@ -39,14 +39,14 @@ const transferToAnotherParentCategory = (id, parameters) => {
 
 
 const addProduct = (targetObjectId, parameters) => {
-  const url = `${PREFIX}levelNCategoryManager/addProduct/levelNCategoryId/displayName/brandId/origin/catalogId/remark/lastUpdateTime/tokensExpr/`
+  const url = `${PREFIX}levelNCategoryManager/addProduct/levelNCategoryId/name/brandId/origin/catalogId/remark/lastUpdateTime/tokensExpr/`
   const levelNCategoryId = targetObjectId
   const requestParameters = { ...parameters, levelNCategoryId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateProduct = (targetObjectId, parameters) => {
-  const url = `${PREFIX}levelNCategoryManager/updateProductProperties/levelNCategoryId/id/displayName/origin/remark/lastUpdateTime/tokensExpr/`
+  const url = `${PREFIX}levelNCategoryManager/updateProductProperties/levelNCategoryId/id/name/origin/remark/lastUpdateTime/tokensExpr/`
   const levelNCategoryId = targetObjectId
   const requestParameters = { ...parameters, levelNCategoryId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

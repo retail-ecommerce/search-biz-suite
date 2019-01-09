@@ -68,7 +68,7 @@ const renderReferenceCell=(value, record)=>{
 
 const displayColumns = [
   { title: 'Id', debugtype: 'string', dataIndex: 'id', width: '20',render: (text, record)=>renderTextCell(text,record) },
-  { title: 'Display Name', debugtype: 'string', dataIndex: 'displayName', width: '9',render: (text, record)=>renderTextCell(text,record) },
+  { title: 'Name', debugtype: 'string', dataIndex: 'name', width: '9',render: (text, record)=>renderTextCell(text,record) },
   { title: 'Brand', dataIndex: 'brand', render: (text, record) => renderReferenceCell(text, record)},
   { title: 'Origin', debugtype: 'string', dataIndex: 'origin', width: '10',render: (text, record)=>renderTextCell(text,record) },
   { title: 'Product', dataIndex: 'product', render: (text, record) => renderReferenceCell(text, record)},
@@ -79,7 +79,7 @@ const displayColumns = [
 
 const fieldLabels = {
   id: 'Id',
-  displayName: 'Display Name',
+  name: 'Name',
   brand: 'Brand',
   origin: 'Origin',
   product: 'Product',

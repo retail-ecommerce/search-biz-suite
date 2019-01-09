@@ -39,14 +39,14 @@ const transferToAnotherSite = (id, parameters) => {
 
 
 const addLevelOneCategory = (targetObjectId, parameters) => {
-  const url = `${PREFIX}catalogManager/addLevelOneCategory/catalogId/displayName/tokensExpr/`
+  const url = `${PREFIX}catalogManager/addLevelOneCategory/catalogId/name/tokensExpr/`
   const catalogId = targetObjectId
   const requestParameters = { ...parameters, catalogId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateLevelOneCategory = (targetObjectId, parameters) => {
-  const url = `${PREFIX}catalogManager/updateLevelOneCategoryProperties/catalogId/id/displayName/tokensExpr/`
+  const url = `${PREFIX}catalogManager/updateLevelOneCategoryProperties/catalogId/id/name/tokensExpr/`
   const catalogId = targetObjectId
   const requestParameters = { ...parameters, catalogId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
@@ -61,14 +61,14 @@ const removeLevelOneCategoryList = (targetObjectId, parameters) => {
 
 
 const addProduct = (targetObjectId, parameters) => {
-  const url = `${PREFIX}catalogManager/addProduct/catalogId/displayName/parentCategoryId/brandId/origin/remark/lastUpdateTime/tokensExpr/`
+  const url = `${PREFIX}catalogManager/addProduct/catalogId/name/parentCategoryId/brandId/origin/remark/lastUpdateTime/tokensExpr/`
   const catalogId = targetObjectId
   const requestParameters = { ...parameters, catalogId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateProduct = (targetObjectId, parameters) => {
-  const url = `${PREFIX}catalogManager/updateProductProperties/catalogId/id/displayName/origin/remark/lastUpdateTime/tokensExpr/`
+  const url = `${PREFIX}catalogManager/updateProductProperties/catalogId/id/name/origin/remark/lastUpdateTime/tokensExpr/`
   const catalogId = targetObjectId
   const requestParameters = { ...parameters, catalogId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

@@ -39,14 +39,14 @@ const transferToAnotherCatalog = (id, parameters) => {
 
 
 const addLevelTwoCategory = (targetObjectId, parameters) => {
-  const url = `${PREFIX}levelOneCategoryManager/addLevelTwoCategory/levelOneCategoryId/displayName/tokensExpr/`
+  const url = `${PREFIX}levelOneCategoryManager/addLevelTwoCategory/levelOneCategoryId/name/tokensExpr/`
   const levelOneCategoryId = targetObjectId
   const requestParameters = { ...parameters, levelOneCategoryId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateLevelTwoCategory = (targetObjectId, parameters) => {
-  const url = `${PREFIX}levelOneCategoryManager/updateLevelTwoCategoryProperties/levelOneCategoryId/id/displayName/tokensExpr/`
+  const url = `${PREFIX}levelOneCategoryManager/updateLevelTwoCategoryProperties/levelOneCategoryId/id/name/tokensExpr/`
   const levelOneCategoryId = targetObjectId
   const requestParameters = { ...parameters, levelOneCategoryId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

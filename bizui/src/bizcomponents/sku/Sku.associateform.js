@@ -18,9 +18,9 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  displayName: 'Jeans - Large',
+  name: 'Jeans - Large',
   size: 'Large',
-  basePrice: '83.50',
+  basePrice: '95.62',
   lastUpdateTime: 'lastUpdateTime()',
   productId: 'P000001',
 }
@@ -135,11 +135,11 @@ class SkuAssociateForm extends Component {
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={12}>
-                <Form.Item label={fieldLabels.displayName} {...formItemLayout}>
-                  {getFieldDecorator('displayName', {
-                    rules: [{ required: true, message: '请输入Display Name' }],
+                <Form.Item label={fieldLabels.name} {...formItemLayout}>
+                  {getFieldDecorator('name', {
+                    rules: [{ required: true, message: '请输入Name' }],
                   })(
-                    <Input placeholder="请输入Display Name" />
+                    <Input placeholder="请输入Name" />
                   )}
                 </Form.Item>
               </Col>

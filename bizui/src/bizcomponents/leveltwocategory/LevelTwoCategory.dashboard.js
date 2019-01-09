@@ -86,7 +86,7 @@ const internalSummaryOf = (levelTwoCategory,targetComponent) =>{
 	      LevelTwoCategoryService.transferToAnotherParentCategory,"anotherParentCategoryId",levelTwoCategory.parentCategory?levelTwoCategory.parentCategory.id:"")} 
   style={{fontSize: 20,color:"red"}} />
 </Description>
-<Description term="Display Name">{levelTwoCategory.displayName}</Description> 
+<Description term="Name">{levelTwoCategory.name}</Description> 
 	
         {buildTransferModal(levelTwoCategory,targetComponent)}
       </DescriptionList>

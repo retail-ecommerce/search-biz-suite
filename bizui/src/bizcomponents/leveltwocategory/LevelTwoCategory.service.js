@@ -39,14 +39,14 @@ const transferToAnotherParentCategory = (id, parameters) => {
 
 
 const addLevelNCategory = (targetObjectId, parameters) => {
-  const url = `${PREFIX}levelTwoCategoryManager/addLevelNCategory/levelTwoCategoryId/displayName/tokensExpr/`
+  const url = `${PREFIX}levelTwoCategoryManager/addLevelNCategory/levelTwoCategoryId/name/tokensExpr/`
   const levelTwoCategoryId = targetObjectId
   const requestParameters = { ...parameters, levelTwoCategoryId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})
 }
 
 const updateLevelNCategory = (targetObjectId, parameters) => {
-  const url = `${PREFIX}levelTwoCategoryManager/updateLevelNCategoryProperties/levelTwoCategoryId/id/displayName/tokensExpr/`
+  const url = `${PREFIX}levelTwoCategoryManager/updateLevelNCategoryProperties/levelTwoCategoryId/id/name/tokensExpr/`
   const levelTwoCategoryId = targetObjectId
   const requestParameters = { ...parameters, levelTwoCategoryId, tokensExpr: 'none' }
   return postForm({ url,requestParameters})

@@ -262,7 +262,7 @@ const internalSummaryOf = (product,targetComponent) =>{
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="Id">{product.id}</Description> 
-<Description term="Display Name">{product.displayName}</Description> 
+<Description term="Name">{product.name}</Description> 
 <Description term="Parent Category">{product.parentCategory==null?"未分配":product.parentCategory.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"Parent Category","levelNCategory","requestCandidateParentCategory",

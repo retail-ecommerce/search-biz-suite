@@ -17,7 +17,7 @@ const { TextArea } = Input
 const testValues = {};
 /*
 const testValues = {
-  displayName: 'Cloth',
+  name: 'Cloth',
   sellerId: 'SC000001',
   siteId: 'S000001',
 }
@@ -203,11 +203,11 @@ class CatalogCreateForm extends Component {
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
-                <Form.Item label={fieldLabels.displayName} {...formItemLayout}>
-                  {getFieldDecorator('displayName', {
-                    rules: [{ required: true, message: '请输入Display Name' }],
+                <Form.Item label={fieldLabels.name} {...formItemLayout}>
+                  {getFieldDecorator('name', {
+                    rules: [{ required: true, message: '请输入Name' }],
                   })(
-                    <Input placeholder="请输入Display Name" />
+                    <Input placeholder="请输入Name" />
                   )}
                 </Form.Item>
               </Col>

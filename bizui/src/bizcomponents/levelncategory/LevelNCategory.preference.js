@@ -265,7 +265,7 @@ const internalSummaryOf = (levelNCategory,targetComponent) =>{
 	      "transferToAnotherParentCategory","anotherParentCategoryId",levelNCategory.parentCategory?levelNCategory.parentCategory.id:"")} 
   style={{fontSize: 20,color:"red"}} />
 </Description>
-<Description term="Display Name">{levelNCategory.displayName}</Description> 
+<Description term="Name">{levelNCategory.name}</Description> 
 	
         {buildTransferModal(levelNCategory,targetComponent)}
       </DescriptionList>
