@@ -77,7 +77,7 @@ public class SearchUserContextImpl extends UserContextImpl implements SearchUser
 	public Map<String,String> getLocaleMap(){
 		
 		init();
-		return chineseMap;
+		return englishMap;
 		
 	}
 	
