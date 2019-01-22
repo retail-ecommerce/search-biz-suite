@@ -1,4 +1,4 @@
--- BUILD WITH MODEL TIME 190109T2209
+-- BUILD WITH MODEL TIME 190109T2342
 drop database  if exists search;
 create database search;
 alter  database search  character set = utf8mb4  collate = utf8mb4_unicode_ci; -- 支持表情符号
@@ -676,203 +676,203 @@ insert into product_recommendation_data values ('PR000127','Jeans0127','B000001'
 insert into product_recommendation_data values ('PR000128','Jeans0128','B000001','French','P000064','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0128','lastUpdateTime()0128','1');
 
 	
-insert into sku_data values ('S000001','Jeans - Large','Large','P000001',1,'87.01','lastUpdateTime()','1');
-insert into sku_data values ('S000002','Jeans - Large0002','Small','P000001',1,'86.44','lastUpdateTime()0002','1');
-insert into sku_data values ('S000003','Jeans - Large0003','Medium','P000002',1,'93.49','lastUpdateTime()0003','1');
-insert into sku_data values ('S000004','Jeans - Large0004','Large','P000002',1,'78.53','lastUpdateTime()0004','1');
-insert into sku_data values ('S000005','Jeans - Large0005','Small','P000003',1,'81.57','lastUpdateTime()0005','1');
-insert into sku_data values ('S000006','Jeans - Large0006','Medium','P000003',1,'86.10','lastUpdateTime()0006','1');
-insert into sku_data values ('S000007','Jeans - Large0007','Large','P000004',1,'93.28','lastUpdateTime()0007','1');
-insert into sku_data values ('S000008','Jeans - Large0008','Small','P000004',1,'75.08','lastUpdateTime()0008','1');
-insert into sku_data values ('S000009','Jeans - Large0009','Medium','P000005',1,'84.19','lastUpdateTime()0009','1');
-insert into sku_data values ('S000010','Jeans - Large0010','Large','P000005',1,'82.35','lastUpdateTime()0010','1');
-insert into sku_data values ('S000011','Jeans - Large0011','Small','P000006',1,'80.56','lastUpdateTime()0011','1');
-insert into sku_data values ('S000012','Jeans - Large0012','Medium','P000006',1,'79.83','lastUpdateTime()0012','1');
-insert into sku_data values ('S000013','Jeans - Large0013','Large','P000007',1,'101.33','lastUpdateTime()0013','1');
-insert into sku_data values ('S000014','Jeans - Large0014','Small','P000007',1,'72.55','lastUpdateTime()0014','1');
-insert into sku_data values ('S000015','Jeans - Large0015','Medium','P000008',1,'98.28','lastUpdateTime()0015','1');
-insert into sku_data values ('S000016','Jeans - Large0016','Large','P000008',1,'80.30','lastUpdateTime()0016','1');
-insert into sku_data values ('S000017','Jeans - Large0017','Small','P000009',1,'86.83','lastUpdateTime()0017','1');
-insert into sku_data values ('S000018','Jeans - Large0018','Medium','P000009',1,'78.99','lastUpdateTime()0018','1');
-insert into sku_data values ('S000019','Jeans - Large0019','Large','P000010',1,'89.74','lastUpdateTime()0019','1');
-insert into sku_data values ('S000020','Jeans - Large0020','Small','P000010',1,'96.17','lastUpdateTime()0020','1');
-insert into sku_data values ('S000021','Jeans - Large0021','Medium','P000011',1,'84.97','lastUpdateTime()0021','1');
-insert into sku_data values ('S000022','Jeans - Large0022','Large','P000011',1,'98.08','lastUpdateTime()0022','1');
-insert into sku_data values ('S000023','Jeans - Large0023','Small','P000012',1,'72.49','lastUpdateTime()0023','1');
-insert into sku_data values ('S000024','Jeans - Large0024','Medium','P000012',1,'100.22','lastUpdateTime()0024','1');
-insert into sku_data values ('S000025','Jeans - Large0025','Large','P000013',1,'78.78','lastUpdateTime()0025','1');
-insert into sku_data values ('S000026','Jeans - Large0026','Small','P000013',1,'88.04','lastUpdateTime()0026','1');
-insert into sku_data values ('S000027','Jeans - Large0027','Medium','P000014',1,'84.28','lastUpdateTime()0027','1');
-insert into sku_data values ('S000028','Jeans - Large0028','Large','P000014',1,'73.27','lastUpdateTime()0028','1');
-insert into sku_data values ('S000029','Jeans - Large0029','Small','P000015',1,'89.89','lastUpdateTime()0029','1');
-insert into sku_data values ('S000030','Jeans - Large0030','Medium','P000015',1,'75.24','lastUpdateTime()0030','1');
-insert into sku_data values ('S000031','Jeans - Large0031','Large','P000016',1,'93.35','lastUpdateTime()0031','1');
-insert into sku_data values ('S000032','Jeans - Large0032','Small','P000016',1,'74.73','lastUpdateTime()0032','1');
-insert into sku_data values ('S000033','Jeans - Large0033','Medium','P000017',1,'97.31','lastUpdateTime()0033','1');
-insert into sku_data values ('S000034','Jeans - Large0034','Large','P000017',1,'75.41','lastUpdateTime()0034','1');
-insert into sku_data values ('S000035','Jeans - Large0035','Small','P000018',1,'88.55','lastUpdateTime()0035','1');
-insert into sku_data values ('S000036','Jeans - Large0036','Medium','P000018',1,'96.66','lastUpdateTime()0036','1');
-insert into sku_data values ('S000037','Jeans - Large0037','Large','P000019',1,'81.02','lastUpdateTime()0037','1');
-insert into sku_data values ('S000038','Jeans - Large0038','Small','P000019',1,'77.44','lastUpdateTime()0038','1');
-insert into sku_data values ('S000039','Jeans - Large0039','Medium','P000020',1,'91.12','lastUpdateTime()0039','1');
-insert into sku_data values ('S000040','Jeans - Large0040','Large','P000020',1,'89.86','lastUpdateTime()0040','1');
-insert into sku_data values ('S000041','Jeans - Large0041','Small','P000021',1,'72.42','lastUpdateTime()0041','1');
-insert into sku_data values ('S000042','Jeans - Large0042','Medium','P000021',1,'90.61','lastUpdateTime()0042','1');
-insert into sku_data values ('S000043','Jeans - Large0043','Large','P000022',1,'98.88','lastUpdateTime()0043','1');
-insert into sku_data values ('S000044','Jeans - Large0044','Small','P000022',1,'78.74','lastUpdateTime()0044','1');
-insert into sku_data values ('S000045','Jeans - Large0045','Medium','P000023',1,'87.44','lastUpdateTime()0045','1');
-insert into sku_data values ('S000046','Jeans - Large0046','Large','P000023',1,'78.09','lastUpdateTime()0046','1');
-insert into sku_data values ('S000047','Jeans - Large0047','Small','P000024',1,'86.36','lastUpdateTime()0047','1');
-insert into sku_data values ('S000048','Jeans - Large0048','Medium','P000024',1,'80.26','lastUpdateTime()0048','1');
-insert into sku_data values ('S000049','Jeans - Large0049','Large','P000025',1,'73.59','lastUpdateTime()0049','1');
-insert into sku_data values ('S000050','Jeans - Large0050','Small','P000025',1,'78.47','lastUpdateTime()0050','1');
-insert into sku_data values ('S000051','Jeans - Large0051','Medium','P000026',1,'79.72','lastUpdateTime()0051','1');
-insert into sku_data values ('S000052','Jeans - Large0052','Large','P000026',1,'74.28','lastUpdateTime()0052','1');
-insert into sku_data values ('S000053','Jeans - Large0053','Small','P000027',1,'86.73','lastUpdateTime()0053','1');
-insert into sku_data values ('S000054','Jeans - Large0054','Medium','P000027',1,'95.27','lastUpdateTime()0054','1');
-insert into sku_data values ('S000055','Jeans - Large0055','Large','P000028',1,'95.67','lastUpdateTime()0055','1');
-insert into sku_data values ('S000056','Jeans - Large0056','Small','P000028',1,'85.08','lastUpdateTime()0056','1');
-insert into sku_data values ('S000057','Jeans - Large0057','Medium','P000029',1,'83.08','lastUpdateTime()0057','1');
-insert into sku_data values ('S000058','Jeans - Large0058','Large','P000029',1,'74.42','lastUpdateTime()0058','1');
-insert into sku_data values ('S000059','Jeans - Large0059','Small','P000030',1,'91.41','lastUpdateTime()0059','1');
-insert into sku_data values ('S000060','Jeans - Large0060','Medium','P000030',1,'81.58','lastUpdateTime()0060','1');
-insert into sku_data values ('S000061','Jeans - Large0061','Large','P000031',1,'95.40','lastUpdateTime()0061','1');
-insert into sku_data values ('S000062','Jeans - Large0062','Small','P000031',1,'76.99','lastUpdateTime()0062','1');
-insert into sku_data values ('S000063','Jeans - Large0063','Medium','P000032',1,'88.63','lastUpdateTime()0063','1');
-insert into sku_data values ('S000064','Jeans - Large0064','Large','P000032',1,'96.31','lastUpdateTime()0064','1');
-insert into sku_data values ('S000065','Jeans - Large0065','Small','P000033',1,'79.54','lastUpdateTime()0065','1');
-insert into sku_data values ('S000066','Jeans - Large0066','Medium','P000033',1,'83.71','lastUpdateTime()0066','1');
-insert into sku_data values ('S000067','Jeans - Large0067','Large','P000034',1,'92.72','lastUpdateTime()0067','1');
-insert into sku_data values ('S000068','Jeans - Large0068','Small','P000034',1,'98.49','lastUpdateTime()0068','1');
-insert into sku_data values ('S000069','Jeans - Large0069','Medium','P000035',1,'99.07','lastUpdateTime()0069','1');
-insert into sku_data values ('S000070','Jeans - Large0070','Large','P000035',1,'92.90','lastUpdateTime()0070','1');
-insert into sku_data values ('S000071','Jeans - Large0071','Small','P000036',1,'92.58','lastUpdateTime()0071','1');
-insert into sku_data values ('S000072','Jeans - Large0072','Medium','P000036',1,'79.25','lastUpdateTime()0072','1');
-insert into sku_data values ('S000073','Jeans - Large0073','Large','P000037',1,'93.11','lastUpdateTime()0073','1');
-insert into sku_data values ('S000074','Jeans - Large0074','Small','P000037',1,'82.77','lastUpdateTime()0074','1');
-insert into sku_data values ('S000075','Jeans - Large0075','Medium','P000038',1,'99.24','lastUpdateTime()0075','1');
-insert into sku_data values ('S000076','Jeans - Large0076','Large','P000038',1,'79.80','lastUpdateTime()0076','1');
-insert into sku_data values ('S000077','Jeans - Large0077','Small','P000039',1,'99.42','lastUpdateTime()0077','1');
-insert into sku_data values ('S000078','Jeans - Large0078','Medium','P000039',1,'90.35','lastUpdateTime()0078','1');
-insert into sku_data values ('S000079','Jeans - Large0079','Large','P000040',1,'100.80','lastUpdateTime()0079','1');
-insert into sku_data values ('S000080','Jeans - Large0080','Small','P000040',1,'86.32','lastUpdateTime()0080','1');
-insert into sku_data values ('S000081','Jeans - Large0081','Medium','P000041',1,'102.26','lastUpdateTime()0081','1');
-insert into sku_data values ('S000082','Jeans - Large0082','Large','P000041',1,'77.72','lastUpdateTime()0082','1');
-insert into sku_data values ('S000083','Jeans - Large0083','Small','P000042',1,'101.45','lastUpdateTime()0083','1');
-insert into sku_data values ('S000084','Jeans - Large0084','Medium','P000042',1,'85.42','lastUpdateTime()0084','1');
-insert into sku_data values ('S000085','Jeans - Large0085','Large','P000043',1,'81.98','lastUpdateTime()0085','1');
-insert into sku_data values ('S000086','Jeans - Large0086','Small','P000043',1,'74.66','lastUpdateTime()0086','1');
-insert into sku_data values ('S000087','Jeans - Large0087','Medium','P000044',1,'81.73','lastUpdateTime()0087','1');
-insert into sku_data values ('S000088','Jeans - Large0088','Large','P000044',1,'99.56','lastUpdateTime()0088','1');
-insert into sku_data values ('S000089','Jeans - Large0089','Small','P000045',1,'99.26','lastUpdateTime()0089','1');
-insert into sku_data values ('S000090','Jeans - Large0090','Medium','P000045',1,'85.49','lastUpdateTime()0090','1');
-insert into sku_data values ('S000091','Jeans - Large0091','Large','P000046',1,'98.46','lastUpdateTime()0091','1');
-insert into sku_data values ('S000092','Jeans - Large0092','Small','P000046',1,'95.52','lastUpdateTime()0092','1');
-insert into sku_data values ('S000093','Jeans - Large0093','Medium','P000047',1,'73.25','lastUpdateTime()0093','1');
-insert into sku_data values ('S000094','Jeans - Large0094','Large','P000047',1,'79.90','lastUpdateTime()0094','1');
-insert into sku_data values ('S000095','Jeans - Large0095','Small','P000048',1,'100.97','lastUpdateTime()0095','1');
-insert into sku_data values ('S000096','Jeans - Large0096','Medium','P000048',1,'96.03','lastUpdateTime()0096','1');
-insert into sku_data values ('S000097','Jeans - Large0097','Large','P000049',1,'86.16','lastUpdateTime()0097','1');
-insert into sku_data values ('S000098','Jeans - Large0098','Small','P000049',1,'80.84','lastUpdateTime()0098','1');
-insert into sku_data values ('S000099','Jeans - Large0099','Medium','P000050',1,'100.13','lastUpdateTime()0099','1');
-insert into sku_data values ('S000100','Jeans - Large0100','Large','P000050',1,'76.24','lastUpdateTime()0100','1');
-insert into sku_data values ('S000101','Jeans - Large0101','Small','P000051',1,'76.03','lastUpdateTime()0101','1');
-insert into sku_data values ('S000102','Jeans - Large0102','Medium','P000051',1,'93.43','lastUpdateTime()0102','1');
-insert into sku_data values ('S000103','Jeans - Large0103','Large','P000052',1,'95.24','lastUpdateTime()0103','1');
-insert into sku_data values ('S000104','Jeans - Large0104','Small','P000052',1,'79.49','lastUpdateTime()0104','1');
-insert into sku_data values ('S000105','Jeans - Large0105','Medium','P000053',1,'95.93','lastUpdateTime()0105','1');
-insert into sku_data values ('S000106','Jeans - Large0106','Large','P000053',1,'99.93','lastUpdateTime()0106','1');
-insert into sku_data values ('S000107','Jeans - Large0107','Small','P000054',1,'97.60','lastUpdateTime()0107','1');
-insert into sku_data values ('S000108','Jeans - Large0108','Medium','P000054',1,'97.19','lastUpdateTime()0108','1');
-insert into sku_data values ('S000109','Jeans - Large0109','Large','P000055',1,'97.54','lastUpdateTime()0109','1');
-insert into sku_data values ('S000110','Jeans - Large0110','Small','P000055',1,'89.99','lastUpdateTime()0110','1');
-insert into sku_data values ('S000111','Jeans - Large0111','Medium','P000056',1,'99.36','lastUpdateTime()0111','1');
-insert into sku_data values ('S000112','Jeans - Large0112','Large','P000056',1,'92.99','lastUpdateTime()0112','1');
-insert into sku_data values ('S000113','Jeans - Large0113','Small','P000057',1,'78.14','lastUpdateTime()0113','1');
-insert into sku_data values ('S000114','Jeans - Large0114','Medium','P000057',1,'94.81','lastUpdateTime()0114','1');
-insert into sku_data values ('S000115','Jeans - Large0115','Large','P000058',1,'87.09','lastUpdateTime()0115','1');
-insert into sku_data values ('S000116','Jeans - Large0116','Small','P000058',1,'78.06','lastUpdateTime()0116','1');
-insert into sku_data values ('S000117','Jeans - Large0117','Medium','P000059',1,'74.91','lastUpdateTime()0117','1');
-insert into sku_data values ('S000118','Jeans - Large0118','Large','P000059',1,'75.42','lastUpdateTime()0118','1');
-insert into sku_data values ('S000119','Jeans - Large0119','Small','P000060',1,'78.52','lastUpdateTime()0119','1');
-insert into sku_data values ('S000120','Jeans - Large0120','Medium','P000060',1,'94.90','lastUpdateTime()0120','1');
-insert into sku_data values ('S000121','Jeans - Large0121','Large','P000061',1,'99.80','lastUpdateTime()0121','1');
-insert into sku_data values ('S000122','Jeans - Large0122','Small','P000061',1,'85.37','lastUpdateTime()0122','1');
-insert into sku_data values ('S000123','Jeans - Large0123','Medium','P000062',1,'100.58','lastUpdateTime()0123','1');
-insert into sku_data values ('S000124','Jeans - Large0124','Large','P000062',1,'95.83','lastUpdateTime()0124','1');
-insert into sku_data values ('S000125','Jeans - Large0125','Small','P000063',1,'82.90','lastUpdateTime()0125','1');
-insert into sku_data values ('S000126','Jeans - Large0126','Medium','P000063',1,'94.58','lastUpdateTime()0126','1');
-insert into sku_data values ('S000127','Jeans - Large0127','Large','P000064',1,'89.49','lastUpdateTime()0127','1');
-insert into sku_data values ('S000128','Jeans - Large0128','Small','P000064',1,'100.02','lastUpdateTime()0128','1');
+insert into sku_data values ('S000001','Jeans - Large','Large','P000001',1,'97.03','lastUpdateTime()','1');
+insert into sku_data values ('S000002','Jeans - Large0002','Small','P000001',1,'85.96','lastUpdateTime()0002','1');
+insert into sku_data values ('S000003','Jeans - Large0003','Medium','P000002',1,'103.13','lastUpdateTime()0003','1');
+insert into sku_data values ('S000004','Jeans - Large0004','Large','P000002',1,'78.82','lastUpdateTime()0004','1');
+insert into sku_data values ('S000005','Jeans - Large0005','Small','P000003',1,'90.96','lastUpdateTime()0005','1');
+insert into sku_data values ('S000006','Jeans - Large0006','Medium','P000003',1,'77.52','lastUpdateTime()0006','1');
+insert into sku_data values ('S000007','Jeans - Large0007','Large','P000004',1,'101.55','lastUpdateTime()0007','1');
+insert into sku_data values ('S000008','Jeans - Large0008','Small','P000004',1,'97.45','lastUpdateTime()0008','1');
+insert into sku_data values ('S000009','Jeans - Large0009','Medium','P000005',1,'76.46','lastUpdateTime()0009','1');
+insert into sku_data values ('S000010','Jeans - Large0010','Large','P000005',1,'93.44','lastUpdateTime()0010','1');
+insert into sku_data values ('S000011','Jeans - Large0011','Small','P000006',1,'82.96','lastUpdateTime()0011','1');
+insert into sku_data values ('S000012','Jeans - Large0012','Medium','P000006',1,'84.60','lastUpdateTime()0012','1');
+insert into sku_data values ('S000013','Jeans - Large0013','Large','P000007',1,'95.86','lastUpdateTime()0013','1');
+insert into sku_data values ('S000014','Jeans - Large0014','Small','P000007',1,'95.19','lastUpdateTime()0014','1');
+insert into sku_data values ('S000015','Jeans - Large0015','Medium','P000008',1,'91.28','lastUpdateTime()0015','1');
+insert into sku_data values ('S000016','Jeans - Large0016','Large','P000008',1,'79.17','lastUpdateTime()0016','1');
+insert into sku_data values ('S000017','Jeans - Large0017','Small','P000009',1,'83.55','lastUpdateTime()0017','1');
+insert into sku_data values ('S000018','Jeans - Large0018','Medium','P000009',1,'81.42','lastUpdateTime()0018','1');
+insert into sku_data values ('S000019','Jeans - Large0019','Large','P000010',1,'73.16','lastUpdateTime()0019','1');
+insert into sku_data values ('S000020','Jeans - Large0020','Small','P000010',1,'90.33','lastUpdateTime()0020','1');
+insert into sku_data values ('S000021','Jeans - Large0021','Medium','P000011',1,'92.63','lastUpdateTime()0021','1');
+insert into sku_data values ('S000022','Jeans - Large0022','Large','P000011',1,'96.35','lastUpdateTime()0022','1');
+insert into sku_data values ('S000023','Jeans - Large0023','Small','P000012',1,'83.45','lastUpdateTime()0023','1');
+insert into sku_data values ('S000024','Jeans - Large0024','Medium','P000012',1,'75.62','lastUpdateTime()0024','1');
+insert into sku_data values ('S000025','Jeans - Large0025','Large','P000013',1,'99.02','lastUpdateTime()0025','1');
+insert into sku_data values ('S000026','Jeans - Large0026','Small','P000013',1,'72.48','lastUpdateTime()0026','1');
+insert into sku_data values ('S000027','Jeans - Large0027','Medium','P000014',1,'102.57','lastUpdateTime()0027','1');
+insert into sku_data values ('S000028','Jeans - Large0028','Large','P000014',1,'101.03','lastUpdateTime()0028','1');
+insert into sku_data values ('S000029','Jeans - Large0029','Small','P000015',1,'89.36','lastUpdateTime()0029','1');
+insert into sku_data values ('S000030','Jeans - Large0030','Medium','P000015',1,'81.42','lastUpdateTime()0030','1');
+insert into sku_data values ('S000031','Jeans - Large0031','Large','P000016',1,'83.62','lastUpdateTime()0031','1');
+insert into sku_data values ('S000032','Jeans - Large0032','Small','P000016',1,'94.56','lastUpdateTime()0032','1');
+insert into sku_data values ('S000033','Jeans - Large0033','Medium','P000017',1,'75.49','lastUpdateTime()0033','1');
+insert into sku_data values ('S000034','Jeans - Large0034','Large','P000017',1,'95.45','lastUpdateTime()0034','1');
+insert into sku_data values ('S000035','Jeans - Large0035','Small','P000018',1,'80.83','lastUpdateTime()0035','1');
+insert into sku_data values ('S000036','Jeans - Large0036','Medium','P000018',1,'74.74','lastUpdateTime()0036','1');
+insert into sku_data values ('S000037','Jeans - Large0037','Large','P000019',1,'99.64','lastUpdateTime()0037','1');
+insert into sku_data values ('S000038','Jeans - Large0038','Small','P000019',1,'102.49','lastUpdateTime()0038','1');
+insert into sku_data values ('S000039','Jeans - Large0039','Medium','P000020',1,'85.98','lastUpdateTime()0039','1');
+insert into sku_data values ('S000040','Jeans - Large0040','Large','P000020',1,'84.65','lastUpdateTime()0040','1');
+insert into sku_data values ('S000041','Jeans - Large0041','Small','P000021',1,'96.22','lastUpdateTime()0041','1');
+insert into sku_data values ('S000042','Jeans - Large0042','Medium','P000021',1,'83.46','lastUpdateTime()0042','1');
+insert into sku_data values ('S000043','Jeans - Large0043','Large','P000022',1,'102.89','lastUpdateTime()0043','1');
+insert into sku_data values ('S000044','Jeans - Large0044','Small','P000022',1,'80.81','lastUpdateTime()0044','1');
+insert into sku_data values ('S000045','Jeans - Large0045','Medium','P000023',1,'81.09','lastUpdateTime()0045','1');
+insert into sku_data values ('S000046','Jeans - Large0046','Large','P000023',1,'92.78','lastUpdateTime()0046','1');
+insert into sku_data values ('S000047','Jeans - Large0047','Small','P000024',1,'82.36','lastUpdateTime()0047','1');
+insert into sku_data values ('S000048','Jeans - Large0048','Medium','P000024',1,'92.35','lastUpdateTime()0048','1');
+insert into sku_data values ('S000049','Jeans - Large0049','Large','P000025',1,'103.12','lastUpdateTime()0049','1');
+insert into sku_data values ('S000050','Jeans - Large0050','Small','P000025',1,'74.78','lastUpdateTime()0050','1');
+insert into sku_data values ('S000051','Jeans - Large0051','Medium','P000026',1,'86.49','lastUpdateTime()0051','1');
+insert into sku_data values ('S000052','Jeans - Large0052','Large','P000026',1,'78.17','lastUpdateTime()0052','1');
+insert into sku_data values ('S000053','Jeans - Large0053','Small','P000027',1,'88.66','lastUpdateTime()0053','1');
+insert into sku_data values ('S000054','Jeans - Large0054','Medium','P000027',1,'72.82','lastUpdateTime()0054','1');
+insert into sku_data values ('S000055','Jeans - Large0055','Large','P000028',1,'79.56','lastUpdateTime()0055','1');
+insert into sku_data values ('S000056','Jeans - Large0056','Small','P000028',1,'73.10','lastUpdateTime()0056','1');
+insert into sku_data values ('S000057','Jeans - Large0057','Medium','P000029',1,'95.96','lastUpdateTime()0057','1');
+insert into sku_data values ('S000058','Jeans - Large0058','Large','P000029',1,'88.29','lastUpdateTime()0058','1');
+insert into sku_data values ('S000059','Jeans - Large0059','Small','P000030',1,'75.96','lastUpdateTime()0059','1');
+insert into sku_data values ('S000060','Jeans - Large0060','Medium','P000030',1,'92.54','lastUpdateTime()0060','1');
+insert into sku_data values ('S000061','Jeans - Large0061','Large','P000031',1,'85.09','lastUpdateTime()0061','1');
+insert into sku_data values ('S000062','Jeans - Large0062','Small','P000031',1,'101.29','lastUpdateTime()0062','1');
+insert into sku_data values ('S000063','Jeans - Large0063','Medium','P000032',1,'91.99','lastUpdateTime()0063','1');
+insert into sku_data values ('S000064','Jeans - Large0064','Large','P000032',1,'100.87','lastUpdateTime()0064','1');
+insert into sku_data values ('S000065','Jeans - Large0065','Small','P000033',1,'86.31','lastUpdateTime()0065','1');
+insert into sku_data values ('S000066','Jeans - Large0066','Medium','P000033',1,'90.45','lastUpdateTime()0066','1');
+insert into sku_data values ('S000067','Jeans - Large0067','Large','P000034',1,'91.57','lastUpdateTime()0067','1');
+insert into sku_data values ('S000068','Jeans - Large0068','Small','P000034',1,'77.30','lastUpdateTime()0068','1');
+insert into sku_data values ('S000069','Jeans - Large0069','Medium','P000035',1,'82.04','lastUpdateTime()0069','1');
+insert into sku_data values ('S000070','Jeans - Large0070','Large','P000035',1,'74.10','lastUpdateTime()0070','1');
+insert into sku_data values ('S000071','Jeans - Large0071','Small','P000036',1,'99.82','lastUpdateTime()0071','1');
+insert into sku_data values ('S000072','Jeans - Large0072','Medium','P000036',1,'102.14','lastUpdateTime()0072','1');
+insert into sku_data values ('S000073','Jeans - Large0073','Large','P000037',1,'73.53','lastUpdateTime()0073','1');
+insert into sku_data values ('S000074','Jeans - Large0074','Small','P000037',1,'91.54','lastUpdateTime()0074','1');
+insert into sku_data values ('S000075','Jeans - Large0075','Medium','P000038',1,'99.20','lastUpdateTime()0075','1');
+insert into sku_data values ('S000076','Jeans - Large0076','Large','P000038',1,'97.47','lastUpdateTime()0076','1');
+insert into sku_data values ('S000077','Jeans - Large0077','Small','P000039',1,'100.71','lastUpdateTime()0077','1');
+insert into sku_data values ('S000078','Jeans - Large0078','Medium','P000039',1,'86.47','lastUpdateTime()0078','1');
+insert into sku_data values ('S000079','Jeans - Large0079','Large','P000040',1,'78.99','lastUpdateTime()0079','1');
+insert into sku_data values ('S000080','Jeans - Large0080','Small','P000040',1,'90.52','lastUpdateTime()0080','1');
+insert into sku_data values ('S000081','Jeans - Large0081','Medium','P000041',1,'84.86','lastUpdateTime()0081','1');
+insert into sku_data values ('S000082','Jeans - Large0082','Large','P000041',1,'91.25','lastUpdateTime()0082','1');
+insert into sku_data values ('S000083','Jeans - Large0083','Small','P000042',1,'78.82','lastUpdateTime()0083','1');
+insert into sku_data values ('S000084','Jeans - Large0084','Medium','P000042',1,'75.27','lastUpdateTime()0084','1');
+insert into sku_data values ('S000085','Jeans - Large0085','Large','P000043',1,'83.47','lastUpdateTime()0085','1');
+insert into sku_data values ('S000086','Jeans - Large0086','Small','P000043',1,'83.69','lastUpdateTime()0086','1');
+insert into sku_data values ('S000087','Jeans - Large0087','Medium','P000044',1,'77.69','lastUpdateTime()0087','1');
+insert into sku_data values ('S000088','Jeans - Large0088','Large','P000044',1,'74.61','lastUpdateTime()0088','1');
+insert into sku_data values ('S000089','Jeans - Large0089','Small','P000045',1,'97.89','lastUpdateTime()0089','1');
+insert into sku_data values ('S000090','Jeans - Large0090','Medium','P000045',1,'81.58','lastUpdateTime()0090','1');
+insert into sku_data values ('S000091','Jeans - Large0091','Large','P000046',1,'100.85','lastUpdateTime()0091','1');
+insert into sku_data values ('S000092','Jeans - Large0092','Small','P000046',1,'92.72','lastUpdateTime()0092','1');
+insert into sku_data values ('S000093','Jeans - Large0093','Medium','P000047',1,'97.05','lastUpdateTime()0093','1');
+insert into sku_data values ('S000094','Jeans - Large0094','Large','P000047',1,'88.24','lastUpdateTime()0094','1');
+insert into sku_data values ('S000095','Jeans - Large0095','Small','P000048',1,'89.74','lastUpdateTime()0095','1');
+insert into sku_data values ('S000096','Jeans - Large0096','Medium','P000048',1,'73.41','lastUpdateTime()0096','1');
+insert into sku_data values ('S000097','Jeans - Large0097','Large','P000049',1,'89.04','lastUpdateTime()0097','1');
+insert into sku_data values ('S000098','Jeans - Large0098','Small','P000049',1,'90.59','lastUpdateTime()0098','1');
+insert into sku_data values ('S000099','Jeans - Large0099','Medium','P000050',1,'94.59','lastUpdateTime()0099','1');
+insert into sku_data values ('S000100','Jeans - Large0100','Large','P000050',1,'102.62','lastUpdateTime()0100','1');
+insert into sku_data values ('S000101','Jeans - Large0101','Small','P000051',1,'76.23','lastUpdateTime()0101','1');
+insert into sku_data values ('S000102','Jeans - Large0102','Medium','P000051',1,'84.91','lastUpdateTime()0102','1');
+insert into sku_data values ('S000103','Jeans - Large0103','Large','P000052',1,'86.41','lastUpdateTime()0103','1');
+insert into sku_data values ('S000104','Jeans - Large0104','Small','P000052',1,'77.54','lastUpdateTime()0104','1');
+insert into sku_data values ('S000105','Jeans - Large0105','Medium','P000053',1,'72.32','lastUpdateTime()0105','1');
+insert into sku_data values ('S000106','Jeans - Large0106','Large','P000053',1,'87.68','lastUpdateTime()0106','1');
+insert into sku_data values ('S000107','Jeans - Large0107','Small','P000054',1,'100.45','lastUpdateTime()0107','1');
+insert into sku_data values ('S000108','Jeans - Large0108','Medium','P000054',1,'89.93','lastUpdateTime()0108','1');
+insert into sku_data values ('S000109','Jeans - Large0109','Large','P000055',1,'83.27','lastUpdateTime()0109','1');
+insert into sku_data values ('S000110','Jeans - Large0110','Small','P000055',1,'93.17','lastUpdateTime()0110','1');
+insert into sku_data values ('S000111','Jeans - Large0111','Medium','P000056',1,'96.42','lastUpdateTime()0111','1');
+insert into sku_data values ('S000112','Jeans - Large0112','Large','P000056',1,'96.53','lastUpdateTime()0112','1');
+insert into sku_data values ('S000113','Jeans - Large0113','Small','P000057',1,'78.16','lastUpdateTime()0113','1');
+insert into sku_data values ('S000114','Jeans - Large0114','Medium','P000057',1,'90.05','lastUpdateTime()0114','1');
+insert into sku_data values ('S000115','Jeans - Large0115','Large','P000058',1,'86.22','lastUpdateTime()0115','1');
+insert into sku_data values ('S000116','Jeans - Large0116','Small','P000058',1,'76.78','lastUpdateTime()0116','1');
+insert into sku_data values ('S000117','Jeans - Large0117','Medium','P000059',1,'99.88','lastUpdateTime()0117','1');
+insert into sku_data values ('S000118','Jeans - Large0118','Large','P000059',1,'81.01','lastUpdateTime()0118','1');
+insert into sku_data values ('S000119','Jeans - Large0119','Small','P000060',1,'92.03','lastUpdateTime()0119','1');
+insert into sku_data values ('S000120','Jeans - Large0120','Medium','P000060',1,'83.92','lastUpdateTime()0120','1');
+insert into sku_data values ('S000121','Jeans - Large0121','Large','P000061',1,'75.89','lastUpdateTime()0121','1');
+insert into sku_data values ('S000122','Jeans - Large0122','Small','P000061',1,'89.95','lastUpdateTime()0122','1');
+insert into sku_data values ('S000123','Jeans - Large0123','Medium','P000062',1,'72.75','lastUpdateTime()0123','1');
+insert into sku_data values ('S000124','Jeans - Large0124','Large','P000062',1,'99.53','lastUpdateTime()0124','1');
+insert into sku_data values ('S000125','Jeans - Large0125','Small','P000063',1,'94.72','lastUpdateTime()0125','1');
+insert into sku_data values ('S000126','Jeans - Large0126','Medium','P000063',1,'79.42','lastUpdateTime()0126','1');
+insert into sku_data values ('S000127','Jeans - Large0127','Large','P000064',1,'81.70','lastUpdateTime()0127','1');
+insert into sku_data values ('S000128','Jeans - Large0128','Small','P000064',1,'81.76','lastUpdateTime()0128','1');
 
 	
-insert into profile_data values ('P000001','Philip Zhang','38','male','lastUpdateTime()','P000001','1');
-insert into profile_data values ('P000002','Naveen Kumar R ','37','female','lastUpdateTime()0002','P000001','1');
-insert into profile_data values ('P000003','VENKATESH GADUPUTI','38','male','lastUpdateTime()0003','P000001','1');
+insert into profile_data values ('P000001','Philip Zhang','33','male','lastUpdateTime()','P000001','1');
+insert into profile_data values ('P000002','Naveen Kumar R ','38','female','lastUpdateTime()0002','P000001','1');
+insert into profile_data values ('P000003','VENKATESH GADUPUTI','39','male','lastUpdateTime()0003','P000001','1');
 
 	
-insert into shipping_address_data values ('SA000001','Home','1900 AVE OF THE STARTS - ','Suite 555 - ','Century City - ','CA','969326','1');
-insert into shipping_address_data values ('SA000002','Office','1900 AVE OF THE STARTS - 0002','Suite 555 - 0002','Century City - 0002','VA','821429','1');
+insert into shipping_address_data values ('SA000001','Home','1900 AVE OF THE STARTS - ','Suite 555 - ','Century City - ','CA','884102','1');
+insert into shipping_address_data values ('SA000002','Office','1900 AVE OF THE STARTS - 0002','Suite 555 - 0002','Century City - 0002','VA','759242','1');
 
 	
-insert into payment_method_data values ('PM000001','Credit Card','4100987733939','1900 AVE OF THE STARTS','Suite 555 ','Century City','2017-07-01','1');
-insert into payment_method_data values ('PM000002','GiftCard','4100987733939','1900 AVE OF THE STARTS0002','Suite 555 0002','Century City0002','2016-12-24','1');
+insert into payment_method_data values ('PM000001','Credit Card','4100987733939','1900 AVE OF THE STARTS','Suite 555 ','Century City','2018-11-02','1');
+insert into payment_method_data values ('PM000002','GiftCard','4100987733939','1900 AVE OF THE STARTS0002','Suite 555 0002','Century City0002','2017-04-27','1');
 
 	
-insert into user_order_data values ('UO000001','a consumer order','78.98','7443.26','P000001','P000001','lastUpdateTime()','1');
-insert into user_order_data values ('UO000002','a consumer order0002','88.11','7602.44','P000001','P000001','lastUpdateTime()0002','1');
-insert into user_order_data values ('UO000003','a consumer order0003','87.62','7021.78','P000002','P000001','lastUpdateTime()0003','1');
-insert into user_order_data values ('UO000004','a consumer order0004','90.94','9401.18','P000003','P000001','lastUpdateTime()0004','1');
+insert into user_order_data values ('UO000001','a consumer order','79.57','8025.54','P000001','P000001','lastUpdateTime()','1');
+insert into user_order_data values ('UO000002','a consumer order0002','73.95','9789.42','P000001','P000001','lastUpdateTime()0002','1');
+insert into user_order_data values ('UO000003','a consumer order0003','72.04','7689.36','P000002','P000001','lastUpdateTime()0003','1');
+insert into user_order_data values ('UO000004','a consumer order0004','78.38','9636.64','P000003','P000001','lastUpdateTime()0004','1');
 
 	
-insert into line_item_data values ('LI000001','Jeans - Large','10','82.39','8.76','UO000001','1');
-insert into line_item_data values ('LI000002','Jeans - Large0002','9','73.77','9.03','UO000001','1');
-insert into line_item_data values ('LI000003','Jeans - Large0003','9','84.23','10.83','UO000002','1');
-insert into line_item_data values ('LI000004','Jeans - Large0004','12','83.32','9.42','UO000002','1');
-insert into line_item_data values ('LI000005','Jeans - Large0005','11','85.70','7.77','UO000003','1');
-insert into line_item_data values ('LI000006','Jeans - Large0006','11','88.96','10.30','UO000003','1');
-insert into line_item_data values ('LI000007','Jeans - Large0007','10','78.93','10.27','UO000004','1');
-insert into line_item_data values ('LI000008','Jeans - Large0008','10','98.20','9.82','UO000004','1');
+insert into line_item_data values ('LI000001','Jeans - Large','10','86.84','9.36','UO000001','1');
+insert into line_item_data values ('LI000002','Jeans - Large0002','12','78.80','8.19','UO000001','1');
+insert into line_item_data values ('LI000003','Jeans - Large0003','11','84.94','9.67','UO000002','1');
+insert into line_item_data values ('LI000004','Jeans - Large0004','12','75.49','9.71','UO000002','1');
+insert into line_item_data values ('LI000005','Jeans - Large0005','9','101.27','10.67','UO000003','1');
+insert into line_item_data values ('LI000006','Jeans - Large0006','10','97.44','8.17','UO000003','1');
+insert into line_item_data values ('LI000007','Jeans - Large0007','10','78.53','10.28','UO000004','1');
+insert into line_item_data values ('LI000008','Jeans - Large0008','12','87.31','9.37','UO000004','1');
 
 	
-insert into order_promotion_data values ('OP000001','Promo For Total','1093','897','PERCENT_OFF','UO000001','1');
-insert into order_promotion_data values ('OP000002','Promo For Total0002','1103','1101','FIX_PRICE','UO000001','1');
-insert into order_promotion_data values ('OP000003','Promo For Total0003','1211','959','PERCENT_OFF','UO000002','1');
-insert into order_promotion_data values ('OP000004','Promo For Total0004','1031','1189','FIX_PRICE','UO000002','1');
-insert into order_promotion_data values ('OP000005','Promo For Total0005','907','891','PERCENT_OFF','UO000003','1');
-insert into order_promotion_data values ('OP000006','Promo For Total0006','874','1116','FIX_PRICE','UO000003','1');
-insert into order_promotion_data values ('OP000007','Promo For Total0007','1037','1205','PERCENT_OFF','UO000004','1');
-insert into order_promotion_data values ('OP000008','Promo For Total0008','897','1065','FIX_PRICE','UO000004','1');
+insert into order_promotion_data values ('OP000001','Promo For Total','889','1108','PERCENT_OFF','UO000001','1');
+insert into order_promotion_data values ('OP000002','Promo For Total0002','1090','1017','FIX_PRICE','UO000001','1');
+insert into order_promotion_data values ('OP000003','Promo For Total0003','1041','912','PERCENT_OFF','UO000002','1');
+insert into order_promotion_data values ('OP000004','Promo For Total0004','1218','1136','FIX_PRICE','UO000002','1');
+insert into order_promotion_data values ('OP000005','Promo For Total0005','1198','1118','PERCENT_OFF','UO000003','1');
+insert into order_promotion_data values ('OP000006','Promo For Total0006','1063','886','FIX_PRICE','UO000003','1');
+insert into order_promotion_data values ('OP000007','Promo For Total0007','1184','1191','PERCENT_OFF','UO000004','1');
+insert into order_promotion_data values ('OP000008','Promo For Total0008','941','898','FIX_PRICE','UO000004','1');
 
 	
-insert into manual_adjustment_data values ('MA000001','Promo For Total','1188','1178','OFF','UO000001','1');
-insert into manual_adjustment_data values ('MA000002','Promo For Total0002','1130','944','FIX_PRICE','UO000001','1');
-insert into manual_adjustment_data values ('MA000003','Promo For Total0003','941','1211','OFF','UO000002','1');
-insert into manual_adjustment_data values ('MA000004','Promo For Total0004','989','1171','FIX_PRICE','UO000002','1');
-insert into manual_adjustment_data values ('MA000005','Promo For Total0005','1018','969','OFF','UO000003','1');
-insert into manual_adjustment_data values ('MA000006','Promo For Total0006','1052','921','FIX_PRICE','UO000003','1');
-insert into manual_adjustment_data values ('MA000007','Promo For Total0007','976','1146','OFF','UO000004','1');
-insert into manual_adjustment_data values ('MA000008','Promo For Total0008','1021','976','FIX_PRICE','UO000004','1');
+insert into manual_adjustment_data values ('MA000001','Promo For Total','1056','915','OFF','UO000001','1');
+insert into manual_adjustment_data values ('MA000002','Promo For Total0002','1228','913','FIX_PRICE','UO000001','1');
+insert into manual_adjustment_data values ('MA000003','Promo For Total0003','1053','1184','OFF','UO000002','1');
+insert into manual_adjustment_data values ('MA000004','Promo For Total0004','903','1066','FIX_PRICE','UO000002','1');
+insert into manual_adjustment_data values ('MA000005','Promo For Total0005','883','1185','OFF','UO000003','1');
+insert into manual_adjustment_data values ('MA000006','Promo For Total0006','1067','913','FIX_PRICE','UO000003','1');
+insert into manual_adjustment_data values ('MA000007','Promo For Total0007','1128','868','OFF','UO000004','1');
+insert into manual_adjustment_data values ('MA000008','Promo For Total0008','1131','1124','FIX_PRICE','UO000004','1');
 
 	
-insert into shipping_group_data values ('SG000001','Ship To Home','1900 AVE OF THE STARTS - ','Suite 555 - ','Century City - ','CA','881681','US','UO000001','1');
-insert into shipping_group_data values ('SG000002','Ship To Home0002','1900 AVE OF THE STARTS - 0002','Suite 555 - 0002','Century City - 0002','VA','692525','US','UO000001','1');
-insert into shipping_group_data values ('SG000003','Ship To Home0003','1900 AVE OF THE STARTS - 0003','Suite 555 - 0003','Century City - 0003','MA','885328','US','UO000002','1');
-insert into shipping_group_data values ('SG000004','Ship To Home0004','1900 AVE OF THE STARTS - 0004','Suite 555 - 0004','Century City - 0004','PA','948911','US','UO000002','1');
-insert into shipping_group_data values ('SG000005','Ship To Home0005','1900 AVE OF THE STARTS - 0005','Suite 555 - 0005','Century City - 0005','WA','721769','US','UO000003','1');
-insert into shipping_group_data values ('SG000006','Ship To Home0006','1900 AVE OF THE STARTS - 0006','Suite 555 - 0006','Century City - 0006','LA','822909','US','UO000003','1');
-insert into shipping_group_data values ('SG000007','Ship To Home0007','1900 AVE OF THE STARTS - 0007','Suite 555 - 0007','Century City - 0007','CA','948291','US','UO000004','1');
-insert into shipping_group_data values ('SG000008','Ship To Home0008','1900 AVE OF THE STARTS - 0008','Suite 555 - 0008','Century City - 0008','VA','904220','US','UO000004','1');
+insert into shipping_group_data values ('SG000001','Ship To Home','1900 AVE OF THE STARTS - ','Suite 555 - ','Century City - ','CA','976020','US','UO000001','1');
+insert into shipping_group_data values ('SG000002','Ship To Home0002','1900 AVE OF THE STARTS - 0002','Suite 555 - 0002','Century City - 0002','VA','873817','US','UO000001','1');
+insert into shipping_group_data values ('SG000003','Ship To Home0003','1900 AVE OF THE STARTS - 0003','Suite 555 - 0003','Century City - 0003','MA','870832','US','UO000002','1');
+insert into shipping_group_data values ('SG000004','Ship To Home0004','1900 AVE OF THE STARTS - 0004','Suite 555 - 0004','Century City - 0004','PA','740032','US','UO000002','1');
+insert into shipping_group_data values ('SG000005','Ship To Home0005','1900 AVE OF THE STARTS - 0005','Suite 555 - 0005','Century City - 0005','WA','730176','US','UO000003','1');
+insert into shipping_group_data values ('SG000006','Ship To Home0006','1900 AVE OF THE STARTS - 0006','Suite 555 - 0006','Century City - 0006','LA','827442','US','UO000003','1');
+insert into shipping_group_data values ('SG000007','Ship To Home0007','1900 AVE OF THE STARTS - 0007','Suite 555 - 0007','Century City - 0007','CA','757860','US','UO000004','1');
+insert into shipping_group_data values ('SG000008','Ship To Home0008','1900 AVE OF THE STARTS - 0008','Suite 555 - 0008','Century City - 0008','VA','928469','US','UO000004','1');
 
 	
-insert into payment_group_data values ('PG000001','Pay for order','91.89','UO000001','PAID','1');
-insert into payment_group_data values ('PG000002','Pay for order0002','97.08','UO000001','PENDING','1');
-insert into payment_group_data values ('PG000003','Pay for order0003','91.77','UO000002','FAIL','1');
-insert into payment_group_data values ('PG000004','Pay for order0004','121.31','UO000002','PAID','1');
-insert into payment_group_data values ('PG000005','Pay for order0005','114.68','UO000003','PENDING','1');
-insert into payment_group_data values ('PG000006','Pay for order0006','115.20','UO000003','FAIL','1');
-insert into payment_group_data values ('PG000007','Pay for order0007','100.03','UO000004','PAID','1');
-insert into payment_group_data values ('PG000008','Pay for order0008','92.12','UO000004','PENDING','1');
+insert into payment_group_data values ('PG000001','Pay for order','90.80','UO000001','PAID','1');
+insert into payment_group_data values ('PG000002','Pay for order0002','89.17','UO000001','PENDING','1');
+insert into payment_group_data values ('PG000003','Pay for order0003','88.07','UO000002','FAIL','1');
+insert into payment_group_data values ('PG000004','Pay for order0004','96.59','UO000002','PAID','1');
+insert into payment_group_data values ('PG000005','Pay for order0005','113.98','UO000003','PENDING','1');
+insert into payment_group_data values ('PG000006','Pay for order0006','120.87','UO000003','FAIL','1');
+insert into payment_group_data values ('PG000007','Pay for order0007','95.95','UO000004','PAID','1');
+insert into payment_group_data values ('PG000008','Pay for order0008','97.02','UO000004','PENDING','1');
 
 	
 insert into user_domain_data values ('UD000001','用户区域','1');
@@ -882,11 +882,11 @@ insert into user_white_list_data values ('UWL000001','clariones','tester;ios-spo
 insert into user_white_list_data values ('UWL000002','13808188512','tester;ios-spokesperson0002','UD000001','1');
 
 	
-insert into sec_user_data values ('SU000001','login','13900000001','','C183EC89F92A462CF45B95504792EC4625E847C90536EEFE512D1C9DB8602E95','0','2018-12-20 04:48:53','2019-01-05 05:47:21','UD000001',NULL,'BLOCKED','1');
-insert into sec_user_data values ('SU000002','login0002','13900000002','suddy_chang@163.com','AC2F95628244C6975EB2C36942EA879ED93D93F5895EF3157733E4629FA86B92','9999999','2018-12-27 06:28:21','2019-01-03 00:15:04','UD000001',NULL,'BLOCKED0002','1');
+insert into sec_user_data values ('SU000001','login','13900000001','','C183EC89F92A462CF45B95504792EC4625E847C90536EEFE512D1C9DB8602E95','0','2018-12-30 18:54:08','2018-12-22 19:08:56','UD000001',NULL,'BLOCKED','1');
+insert into sec_user_data values ('SU000002','login0002','13900000002','suddy_chang@163.com','AC2F95628244C6975EB2C36942EA879ED93D93F5895EF3157733E4629FA86B92','9999999','2019-01-09 20:01:13','2018-12-24 10:55:13','UD000001',NULL,'BLOCKED0002','1');
 
 	
-insert into sec_user_blocking_data values ('SUB000001','currentUser()','2019-01-02 00:05:30','这个用户多次发送违反社区的帖子，现在把他给屏蔽了','1');
+insert into sec_user_blocking_data values ('SUB000001','currentUser()','2019-01-08 09:24:03','这个用户多次发送违反社区的帖子，现在把他给屏蔽了','1');
 
 	
 insert into user_app_data values ('UA000001','审车平台','SU000001','users',1,'MXWR','CarInspectionPlatform','CIP000001','/link/to/app','1');
@@ -917,10 +917,10 @@ insert into object_access_data values ('OA000007','控制访问列表10007','Fra
 insert into object_access_data values ('OA000008','控制访问列表10008','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000006','1');
 
 	
-insert into login_history_data values ('LH000001','2019-01-06 23:09:54','192.168.1.1','登陆成功','SU000001','1');
-insert into login_history_data values ('LH000002','2019-01-07 02:35:57','192.168.1.2','登陆成功0002','SU000001','1');
-insert into login_history_data values ('LH000003','2018-12-29 21:09:53','192.168.1.1','登陆成功0003','SU000002','1');
-insert into login_history_data values ('LH000004','2019-01-07 17:10:10','192.168.1.2','登陆成功0004','SU000002','1');
+insert into login_history_data values ('LH000001','2019-01-05 08:49:42','192.168.1.1','登陆成功','SU000001','1');
+insert into login_history_data values ('LH000002','2019-01-05 16:42:10','192.168.1.2','登陆成功0002','SU000001','1');
+insert into login_history_data values ('LH000003','2018-12-30 00:20:32','192.168.1.1','登陆成功0003','SU000002','1');
+insert into login_history_data values ('LH000004','2019-01-06 19:35:35','192.168.1.2','登陆成功0004','SU000002','1');
 
 	
 insert into generic_form_data values ('GF000001','登记输入单','姓名就是你身份证上的名字','1');
@@ -1163,15 +1163,27 @@ delete from user_app_data;
 
 */
 
-insert into sec_user_data values('SU000001','user000001','13900000001','1000001@qq.com','258D9BB89BBC1F2A6CDDD3A4CB300E6CD9B83F3FC9984619DF1A59F6051F1F44','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
+insert into sec_user_data values('SU000001','u000001','13900000001','1000001@qq.com','258D9BB89BBC1F2A6CDDD3A4CB300E6CD9B83F3FC9984619DF1A59F6051F1F44','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
 insert into user_app_data values('UA000001','Platform','SU000001','at',1,'MXWR','Platform','P000001','/link/to/app','1'); -- REFER COUNT: 3
-insert into user_app_data values('UA000002','安全中心','SU000001','lock',1,'MXWR','SecUser','SU000001','/link/to/app','1'); -- REFER COUNT: 3
-insert into sec_user_data values('SU000002','user000002','13900000002','1000002@qq.com','7FEABCC19D638787655F9FFC2C22755D5771184D85D000147D643D22F6617F7B','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
+insert into user_app_data values('UA000002','My Account','SU000001','lock',1,'MXWR','SecUser','SU000001','/link/to/app','1'); -- REFER COUNT: 3
+insert into sec_user_data values('SU000002','u000002','13900000002','1000002@qq.com','7FEABCC19D638787655F9FFC2C22755D5771184D85D000147D643D22F6617F7B','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
 insert into user_app_data values('UA000003','Brand','SU000002','address-card',1,'MXWR','Brand','B000001','/link/to/app','1'); -- REFER COUNT: 2
-insert into user_app_data values('UA000004','安全中心','SU000002','lock',1,'MXWR','SecUser','SU000002','/link/to/app','1'); -- REFER COUNT: 2
-insert into sec_user_data values('SU000003','user000003','13900000003','1000003@qq.com','8169C17063461B0B0CC210CE5EF682E9517A19170F7DCA3C76170229D765DE7A','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
-insert into user_app_data values('UA000005','User Domain','SU000003','user',1,'MXWR','UserDomain','UD000001','/link/to/app','1'); -- REFER COUNT: 2
-insert into user_app_data values('UA000006','安全中心','SU000003','lock',1,'MXWR','SecUser','SU000003','/link/to/app','1'); -- REFER COUNT: 2
+insert into user_app_data values('UA000004','My Account','SU000002','lock',1,'MXWR','SecUser','SU000002','/link/to/app','1'); -- REFER COUNT: 2
+insert into sec_user_data values('SU000003','u000003','13900000003','1000003@qq.com','8169C17063461B0B0CC210CE5EF682E9517A19170F7DCA3C76170229D765DE7A','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
+insert into user_app_data values('UA000005','Shipping Address','SU000003','ad',1,'MXWR','ShippingAddress','SA000001','/link/to/app','1'); -- REFER COUNT: 0
+insert into user_app_data values('UA000006','My Account','SU000003','lock',1,'MXWR','SecUser','SU000003','/link/to/app','1'); -- REFER COUNT: 0
+insert into sec_user_data values('SU000004','u000004','13900000004','1000004@qq.com','025745F4A4EA0C11059911E40714470F323C42836B1137D66AD3F85210A725CF','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
+insert into user_app_data values('UA000007','Payment Method','SU000004','th',1,'MXWR','PaymentMethod','PM000001','/link/to/app','1'); -- REFER COUNT: 0
+insert into user_app_data values('UA000008','My Account','SU000004','lock',1,'MXWR','SecUser','SU000004','/link/to/app','1'); -- REFER COUNT: 0
+insert into sec_user_data values('SU000005','u000005','13900000005','1000005@qq.com','F8D472FBE8716BFB66C0A9BC73208FE4C5971051D240D9AC3B5EBCEF05CD5FFA','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
+insert into user_app_data values('UA000009','User Order','SU000005','user',1,'MXWR','UserOrder','UO000001','/link/to/app','1'); -- REFER COUNT: 5
+insert into user_app_data values('UA000010','My Account','SU000005','lock',1,'MXWR','SecUser','SU000005','/link/to/app','1'); -- REFER COUNT: 5
+insert into sec_user_data values('SU000006','u000006','13900000006','1000006@qq.com','FEE10F101DD4B9D2C98FAA1A672821DF22B9FA662528ED5B885B60C0979E6530','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
+insert into user_app_data values('UA000011','User Domain','SU000006','user',1,'MXWR','UserDomain','UD000001','/link/to/app','1'); -- REFER COUNT: 2
+insert into user_app_data values('UA000012','My Account','SU000006','lock',1,'MXWR','SecUser','SU000006','/link/to/app','1'); -- REFER COUNT: 2
+insert into sec_user_data values('SU000007','u000007','13900000007','1000007@qq.com','016B4A47737559D64FC1369AA4D8CFD0B47E11F4C6219E80946C0E47A4C1C74B','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
+insert into user_app_data values('UA000013','Sec User Blocking','SU000007','user',1,'MXWR','SecUserBlocking','SUB000001','/link/to/app','1'); -- REFER COUNT: 1
+insert into user_app_data values('UA000014','My Account','SU000007','lock',1,'MXWR','SecUser','SU000007','/link/to/app','1'); -- REFER COUNT: 1
 
 
 
@@ -1181,7 +1193,11 @@ insert into user_app_data values('UA000006','安全中心','SU000003','lock',1,'
 | ------------- |:-------------:|:-------------------:|
 |Platform|13900000001|DoubleChain!y1|
 |Brand|13900000002|DoubleChain!y1|
-|User Domain|13900000003|DoubleChain!y1|
+|Shipping Address|13900000003|DoubleChain!y1|
+|Payment Method|13900000004|DoubleChain!y1|
+|User Order|13900000005|DoubleChain!y1|
+|User Domain|13900000006|DoubleChain!y1|
+|Sec User Blocking|13900000007|DoubleChain!y1|
 
 
 */

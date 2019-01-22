@@ -23,7 +23,7 @@ const testValues = {
   line1: '1900 AVE OF THE STARTS',
   line2: 'Suite 555 ',
   city: 'Century City',
-  expireOn: '2018-09-11',
+  expireOn: '2018-07-31',
 }
 */
 
