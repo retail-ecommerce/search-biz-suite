@@ -9,7 +9,7 @@ import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
 import PaymentMethodBase from './PaymentMethod.base'
 import SelectObject from '../../components/SelectObject'
-
+import appLocaleName from '../../common/Locale.tool'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
@@ -23,7 +23,7 @@ const testValues = {
   line1: '1900 AVE OF THE STARTS',
   line2: 'Suite 555 ',
   city: 'Century City',
-  expireOn: '2018-07-31',
+  expireOn: '2017-02-03',
 }
 */
 
@@ -75,6 +75,8 @@ class PaymentMethodAssociateForm extends Component {
 	const { form, dispatch, submitting, role,data,owner,toggleAssociatePaymentVisible,visible,onCancel, onCreate } = this.props
     const { convertedImagesValues } = this.state
     const {PaymentMethodService} = GlobalComponents
+    const userContext = null
+    
 
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
@@ -121,24 +123,24 @@ class PaymentMethodAssociateForm extends Component {
       labelCol: { span: 14 },
       wrapperCol: { span: 4 },
     }
-    
+   
     return (
  <Modal
-          title="创建新的支付"
+          title={appLocaleName(userContext,"CreateNew")}
           visible={visible}
           onOk={onCancel}
           onCancel={onCancel}
           width={920}
           style={{ top: 40}}
         >
-        <Card title="基础信息"  className={styles.card} style={{ backgroundColor:"#eee" }}>
+        <Card title={appLocaleName(userContext,"BasicInfo")}  className={styles.card} style={{ backgroundColor:"#eee" }}>
           <Form >
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.name} {...formItemLayout}>
                   {getFieldDecorator('name', {
-                    rules: [{ required: true, message: '请输入Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Name" />
                   )}
@@ -148,7 +150,7 @@ class PaymentMethodAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.number} {...formItemLayout}>
                   {getFieldDecorator('number', {
-                    rules: [{ required: true, message: '请输入Number' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Number" />
                   )}
@@ -158,7 +160,7 @@ class PaymentMethodAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.line1} {...formItemLayout}>
                   {getFieldDecorator('line1', {
-                    rules: [{ required: true, message: '请输入Line1' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Line1" />
                   )}
@@ -168,7 +170,7 @@ class PaymentMethodAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.line2} {...formItemLayout}>
                   {getFieldDecorator('line2', {
-                    rules: [{ required: true, message: '请输入Line2' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Line2" />
                   )}
@@ -178,7 +180,7 @@ class PaymentMethodAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.city} {...formItemLayout}>
                   {getFieldDecorator('city', {
-                    rules: [{ required: true, message: '请输入City' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入City" />
                   )}
@@ -188,7 +190,7 @@ class PaymentMethodAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.expireOn} {...formItemLayout}>
                   {getFieldDecorator('expireOn', {
-                    rules: [{ required: true, message: '请输入Expire On' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <DatePicker format="YYYY-MM-DD" placeholder="请输入Expire On" />
                   )}

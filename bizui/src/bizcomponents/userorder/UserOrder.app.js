@@ -31,6 +31,7 @@ import GlobalFooter from '../../components/GlobalFooter';
 import GlobalComponents from '../../custcomponents';
 
 import PermissionSettingService from '../../permission/PermissionSetting.service'
+import appLocaleName from '../../common/Locale.tool'
 
 const  {  filterForMenuPermission } = PermissionSettingService
 
@@ -76,9 +77,7 @@ const query = {
 class UserOrderBizApp extends React.PureComponent {
   constructor(props) {
     super(props)
-    // 把一级 Layout 的 children 作为菜单项
-    // this.menus = getNavData().reduce((arr, current) => arr.concat(current.children), [])
-    this.state = {
+     this.state = {
       openKeys: this.getDefaultCollapsedSubMenus(props),
     }
   }
@@ -117,7 +116,7 @@ class UserOrderBizApp extends React.PureComponent {
     const menuData = sessionObject('menuData')
     const targetApp = sessionObject('targetApp')
 	const {objectId}=targetApp;
-  
+  	const userContext = null
     return (
       
 		  <Menu
@@ -133,22 +132,22 @@ class UserOrderBizApp extends React.PureComponent {
            
 
              <Menu.Item key="dashboard">
-               <Link to={`/userOrder/${this.props.userOrder.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
+               <Link to={`/userOrder/${this.props.userOrder.id}/dashboard`}><Icon type="dashboard" /><span>{appLocaleName(userContext,"Dashboard")}</span></Link>
              </Menu.Item>
              
 		 <Menu.Item key="homepage">
-               <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
+               <Link to={"/home"}><Icon type="home" /><span>{appLocaleName(userContext,"Home")}</span></Link>
              </Menu.Item>
              
              
          {filteredMenuItems(targetObject,this).map((item)=>(<Menu.Item key={item.name}>
-          <Link to={`/${menuData.menuFor}/${objectId}/list/${item.name}/${item.displayName}列表`}>
+          <Link to={`/${menuData.menuFor}/${objectId}/list/${item.name}/${item.displayName}${appLocaleName(userContext,"List")}`}>
           <Icon type="bars" /><span>{item.displayName}</span>
           </Link>
         </Menu.Item>))}
        
        <Menu.Item key="preference">
-               <Link to={`/userOrder/${this.props.userOrder.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+               <Link to={`/userOrder/${this.props.userOrder.id}/preference`}><Icon type="setting" /><span>{appLocaleName(userContext,"Preference")}</span></Link>
              </Menu.Item>
       
            </Menu>
@@ -160,6 +159,7 @@ class UserOrderBizApp extends React.PureComponent {
 
   getLineItemSearch = () => {
     const {LineItemSearch} = GlobalComponents;
+    const userContext = null
     return connect(state => ({
       rule: state.rule,
       name: "Line Item",
@@ -176,11 +176,12 @@ class UserOrderBizApp extends React.PureComponent {
       owner: { type: '_userOrder', id: state._userOrder.id, 
       referenceName: 'userOrder', 
       listName: 'lineItemList', ref:state._userOrder, 
-      listDisplayName: 'Line Item列表' }, // this is for model namespace and
+      listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(LineItemSearch)
   }
   getLineItemCreateForm = () => {
    	const {LineItemCreateForm} = GlobalComponents;
+   	const userContext = null
     return connect(state => ({
       rule: state.rule,
       role: "lineItem",
@@ -190,22 +191,24 @@ class UserOrderBizApp extends React.PureComponent {
       currentPage: state._userOrder.lineItemCurrentPageNumber,
       searchFormParameters: state._userOrder.lineItemSearchFormParameters,
       loading: state._userOrder.loading,
-      owner: { type: '_userOrder', id: state._userOrder.id, referenceName: 'userOrder', listName: 'lineItemList', ref:state._userOrder, listDisplayName: 'Line Item列表'}, // this is for model namespace and
+      owner: { type: '_userOrder', id: state._userOrder.id, referenceName: 'userOrder', listName: 'lineItemList', ref:state._userOrder, listDisplayName: appLocaleName(userContext,"List")}, // this is for model namespace and
     }))(LineItemCreateForm)
   }
   
   getLineItemUpdateForm = () => {
+    const userContext = null
   	const {LineItemUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._userOrder.selectedRows,
       role: "lineItem",
       currentUpdateIndex: state._userOrder.currentUpdateIndex,
-      owner: { type: '_userOrder', id: state._userOrder.id, listName: 'lineItemList', ref:state._userOrder, listDisplayName: 'Line Item列表' }, // this is for model namespace and
+      owner: { type: '_userOrder', id: state._userOrder.id, listName: 'lineItemList', ref:state._userOrder, listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(LineItemUpdateForm)
   }
 
   getOrderPromotionSearch = () => {
     const {OrderPromotionSearch} = GlobalComponents;
+    const userContext = null
     return connect(state => ({
       rule: state.rule,
       name: "Order Promotion",
@@ -222,11 +225,12 @@ class UserOrderBizApp extends React.PureComponent {
       owner: { type: '_userOrder', id: state._userOrder.id, 
       referenceName: 'userOrder', 
       listName: 'orderPromotionList', ref:state._userOrder, 
-      listDisplayName: 'Order Promotion列表' }, // this is for model namespace and
+      listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(OrderPromotionSearch)
   }
   getOrderPromotionCreateForm = () => {
    	const {OrderPromotionCreateForm} = GlobalComponents;
+   	const userContext = null
     return connect(state => ({
       rule: state.rule,
       role: "orderPromotion",
@@ -236,22 +240,24 @@ class UserOrderBizApp extends React.PureComponent {
       currentPage: state._userOrder.orderPromotionCurrentPageNumber,
       searchFormParameters: state._userOrder.orderPromotionSearchFormParameters,
       loading: state._userOrder.loading,
-      owner: { type: '_userOrder', id: state._userOrder.id, referenceName: 'userOrder', listName: 'orderPromotionList', ref:state._userOrder, listDisplayName: 'Order Promotion列表'}, // this is for model namespace and
+      owner: { type: '_userOrder', id: state._userOrder.id, referenceName: 'userOrder', listName: 'orderPromotionList', ref:state._userOrder, listDisplayName: appLocaleName(userContext,"List")}, // this is for model namespace and
     }))(OrderPromotionCreateForm)
   }
   
   getOrderPromotionUpdateForm = () => {
+    const userContext = null
   	const {OrderPromotionUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._userOrder.selectedRows,
       role: "orderPromotion",
       currentUpdateIndex: state._userOrder.currentUpdateIndex,
-      owner: { type: '_userOrder', id: state._userOrder.id, listName: 'orderPromotionList', ref:state._userOrder, listDisplayName: 'Order Promotion列表' }, // this is for model namespace and
+      owner: { type: '_userOrder', id: state._userOrder.id, listName: 'orderPromotionList', ref:state._userOrder, listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(OrderPromotionUpdateForm)
   }
 
   getManualAdjustmentSearch = () => {
     const {ManualAdjustmentSearch} = GlobalComponents;
+    const userContext = null
     return connect(state => ({
       rule: state.rule,
       name: "Manual Adjustment",
@@ -268,11 +274,12 @@ class UserOrderBizApp extends React.PureComponent {
       owner: { type: '_userOrder', id: state._userOrder.id, 
       referenceName: 'userOrder', 
       listName: 'manualAdjustmentList', ref:state._userOrder, 
-      listDisplayName: 'Manual Adjustment列表' }, // this is for model namespace and
+      listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(ManualAdjustmentSearch)
   }
   getManualAdjustmentCreateForm = () => {
    	const {ManualAdjustmentCreateForm} = GlobalComponents;
+   	const userContext = null
     return connect(state => ({
       rule: state.rule,
       role: "manualAdjustment",
@@ -282,22 +289,24 @@ class UserOrderBizApp extends React.PureComponent {
       currentPage: state._userOrder.manualAdjustmentCurrentPageNumber,
       searchFormParameters: state._userOrder.manualAdjustmentSearchFormParameters,
       loading: state._userOrder.loading,
-      owner: { type: '_userOrder', id: state._userOrder.id, referenceName: 'userOrder', listName: 'manualAdjustmentList', ref:state._userOrder, listDisplayName: 'Manual Adjustment列表'}, // this is for model namespace and
+      owner: { type: '_userOrder', id: state._userOrder.id, referenceName: 'userOrder', listName: 'manualAdjustmentList', ref:state._userOrder, listDisplayName: appLocaleName(userContext,"List")}, // this is for model namespace and
     }))(ManualAdjustmentCreateForm)
   }
   
   getManualAdjustmentUpdateForm = () => {
+    const userContext = null
   	const {ManualAdjustmentUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._userOrder.selectedRows,
       role: "manualAdjustment",
       currentUpdateIndex: state._userOrder.currentUpdateIndex,
-      owner: { type: '_userOrder', id: state._userOrder.id, listName: 'manualAdjustmentList', ref:state._userOrder, listDisplayName: 'Manual Adjustment列表' }, // this is for model namespace and
+      owner: { type: '_userOrder', id: state._userOrder.id, listName: 'manualAdjustmentList', ref:state._userOrder, listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(ManualAdjustmentUpdateForm)
   }
 
   getShippingGroupSearch = () => {
     const {ShippingGroupSearch} = GlobalComponents;
+    const userContext = null
     return connect(state => ({
       rule: state.rule,
       name: "Shipping Group",
@@ -314,11 +323,12 @@ class UserOrderBizApp extends React.PureComponent {
       owner: { type: '_userOrder', id: state._userOrder.id, 
       referenceName: 'userOrder', 
       listName: 'shippingGroupList', ref:state._userOrder, 
-      listDisplayName: 'Shipping Group列表' }, // this is for model namespace and
+      listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(ShippingGroupSearch)
   }
   getShippingGroupCreateForm = () => {
    	const {ShippingGroupCreateForm} = GlobalComponents;
+   	const userContext = null
     return connect(state => ({
       rule: state.rule,
       role: "shippingGroup",
@@ -328,22 +338,24 @@ class UserOrderBizApp extends React.PureComponent {
       currentPage: state._userOrder.shippingGroupCurrentPageNumber,
       searchFormParameters: state._userOrder.shippingGroupSearchFormParameters,
       loading: state._userOrder.loading,
-      owner: { type: '_userOrder', id: state._userOrder.id, referenceName: 'userOrder', listName: 'shippingGroupList', ref:state._userOrder, listDisplayName: 'Shipping Group列表'}, // this is for model namespace and
+      owner: { type: '_userOrder', id: state._userOrder.id, referenceName: 'userOrder', listName: 'shippingGroupList', ref:state._userOrder, listDisplayName: appLocaleName(userContext,"List")}, // this is for model namespace and
     }))(ShippingGroupCreateForm)
   }
   
   getShippingGroupUpdateForm = () => {
+    const userContext = null
   	const {ShippingGroupUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._userOrder.selectedRows,
       role: "shippingGroup",
       currentUpdateIndex: state._userOrder.currentUpdateIndex,
-      owner: { type: '_userOrder', id: state._userOrder.id, listName: 'shippingGroupList', ref:state._userOrder, listDisplayName: 'Shipping Group列表' }, // this is for model namespace and
+      owner: { type: '_userOrder', id: state._userOrder.id, listName: 'shippingGroupList', ref:state._userOrder, listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(ShippingGroupUpdateForm)
   }
 
   getPaymentGroupSearch = () => {
     const {PaymentGroupSearch} = GlobalComponents;
+    const userContext = null
     return connect(state => ({
       rule: state.rule,
       name: "Payment Group",
@@ -360,11 +372,12 @@ class UserOrderBizApp extends React.PureComponent {
       owner: { type: '_userOrder', id: state._userOrder.id, 
       referenceName: 'userOrder', 
       listName: 'paymentGroupList', ref:state._userOrder, 
-      listDisplayName: 'Payment Group列表' }, // this is for model namespace and
+      listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(PaymentGroupSearch)
   }
   getPaymentGroupCreateForm = () => {
    	const {PaymentGroupCreateForm} = GlobalComponents;
+   	const userContext = null
     return connect(state => ({
       rule: state.rule,
       role: "paymentGroup",
@@ -374,17 +387,18 @@ class UserOrderBizApp extends React.PureComponent {
       currentPage: state._userOrder.paymentGroupCurrentPageNumber,
       searchFormParameters: state._userOrder.paymentGroupSearchFormParameters,
       loading: state._userOrder.loading,
-      owner: { type: '_userOrder', id: state._userOrder.id, referenceName: 'userOrder', listName: 'paymentGroupList', ref:state._userOrder, listDisplayName: 'Payment Group列表'}, // this is for model namespace and
+      owner: { type: '_userOrder', id: state._userOrder.id, referenceName: 'userOrder', listName: 'paymentGroupList', ref:state._userOrder, listDisplayName: appLocaleName(userContext,"List")}, // this is for model namespace and
     }))(PaymentGroupCreateForm)
   }
   
   getPaymentGroupUpdateForm = () => {
+    const userContext = null
   	const {PaymentGroupUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._userOrder.selectedRows,
       role: "paymentGroup",
       currentUpdateIndex: state._userOrder.currentUpdateIndex,
-      owner: { type: '_userOrder', id: state._userOrder.id, listName: 'paymentGroupList', ref:state._userOrder, listDisplayName: 'Payment Group列表' }, // this is for model namespace and
+      owner: { type: '_userOrder', id: state._userOrder.id, listName: 'paymentGroupList', ref:state._userOrder, listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(PaymentGroupUpdateForm)
   }
 
@@ -465,16 +479,11 @@ class UserOrderBizApp extends React.PureComponent {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
      const { breadcrumb }  = this.props
-
-     //const {UserOrderEditDetail} = GlobalComponents
-     //const {UserOrderViewDetail} = GlobalComponents
-     
-     
+  
      const targetApp = sessionObject('targetApp')
      const currentBreadcrumb =sessionObject(targetApp.id)
+     const userContext = null
      
-     
-     // Don't show popup menu when it is been collapsed
      const menuProps = collapsed ? {} : {
        openKeys: this.state.openKeys,
      }
@@ -496,7 +505,7 @@ class UserOrderBizApp extends React.PureComponent {
          </div>
           <div className={styles.right}  >
           <Button type="primary"  icon="logout" onClick={()=>this.logout()}>
-          退出</Button>
+          {appLocaleName(userContext,"Exit")}</Button>
           </div>
           
         </Header>

@@ -222,9 +222,10 @@ public class LevelNCategoryJDBCTemplateDAO extends SearchNamingServiceDAO implem
  		return checkOptions(options,LevelNCategoryTokens.PRODUCT_LIST);
  	}
  	protected boolean isAnalyzeProductListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,LevelNCategoryTokens.PRODUCT_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,LevelNCategoryTokens.PRODUCT_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveProductListEnabled(Map<String,Object> options){
 		return checkOptions(options, LevelNCategoryTokens.PRODUCT_LIST);
 		
@@ -266,7 +267,7 @@ public class LevelNCategoryJDBCTemplateDAO extends SearchNamingServiceDAO implem
 	 		extractProductList(levelNCategory, loadOptions);
  		}	
  		if(isAnalyzeProductListEnabled(loadOptions)){
-	 		// analyzeProductList(levelNCategory, loadOptions);
+	 		analyzeProductList(levelNCategory, loadOptions);
  		}
  		
 		

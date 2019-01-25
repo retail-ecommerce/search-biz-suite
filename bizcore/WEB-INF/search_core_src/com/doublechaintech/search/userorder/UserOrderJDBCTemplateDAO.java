@@ -359,9 +359,10 @@ public class UserOrderJDBCTemplateDAO extends SearchNamingServiceDAO implements 
  		return checkOptions(options,UserOrderTokens.LINE_ITEM_LIST);
  	}
  	protected boolean isAnalyzeLineItemListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,UserOrderTokens.LINE_ITEM_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,UserOrderTokens.LINE_ITEM_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveLineItemListEnabled(Map<String,Object> options){
 		return checkOptions(options, UserOrderTokens.LINE_ITEM_LIST);
 		
@@ -373,9 +374,10 @@ public class UserOrderJDBCTemplateDAO extends SearchNamingServiceDAO implements 
  		return checkOptions(options,UserOrderTokens.ORDER_PROMOTION_LIST);
  	}
  	protected boolean isAnalyzeOrderPromotionListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,UserOrderTokens.ORDER_PROMOTION_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,UserOrderTokens.ORDER_PROMOTION_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveOrderPromotionListEnabled(Map<String,Object> options){
 		return checkOptions(options, UserOrderTokens.ORDER_PROMOTION_LIST);
 		
@@ -387,9 +389,10 @@ public class UserOrderJDBCTemplateDAO extends SearchNamingServiceDAO implements 
  		return checkOptions(options,UserOrderTokens.MANUAL_ADJUSTMENT_LIST);
  	}
  	protected boolean isAnalyzeManualAdjustmentListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,UserOrderTokens.MANUAL_ADJUSTMENT_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,UserOrderTokens.MANUAL_ADJUSTMENT_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveManualAdjustmentListEnabled(Map<String,Object> options){
 		return checkOptions(options, UserOrderTokens.MANUAL_ADJUSTMENT_LIST);
 		
@@ -401,9 +404,10 @@ public class UserOrderJDBCTemplateDAO extends SearchNamingServiceDAO implements 
  		return checkOptions(options,UserOrderTokens.SHIPPING_GROUP_LIST);
  	}
  	protected boolean isAnalyzeShippingGroupListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,UserOrderTokens.SHIPPING_GROUP_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,UserOrderTokens.SHIPPING_GROUP_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveShippingGroupListEnabled(Map<String,Object> options){
 		return checkOptions(options, UserOrderTokens.SHIPPING_GROUP_LIST);
 		
@@ -415,9 +419,10 @@ public class UserOrderJDBCTemplateDAO extends SearchNamingServiceDAO implements 
  		return checkOptions(options,UserOrderTokens.PAYMENT_GROUP_LIST);
  	}
  	protected boolean isAnalyzePaymentGroupListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,UserOrderTokens.PAYMENT_GROUP_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,UserOrderTokens.PAYMENT_GROUP_LIST+".analyze");
  	}
-
+	
 	protected boolean isSavePaymentGroupListEnabled(Map<String,Object> options){
 		return checkOptions(options, UserOrderTokens.PAYMENT_GROUP_LIST);
 		
@@ -463,7 +468,7 @@ public class UserOrderJDBCTemplateDAO extends SearchNamingServiceDAO implements 
 	 		extractLineItemList(userOrder, loadOptions);
  		}	
  		if(isAnalyzeLineItemListEnabled(loadOptions)){
-	 		// analyzeLineItemList(userOrder, loadOptions);
+	 		analyzeLineItemList(userOrder, loadOptions);
  		}
  		
 		
@@ -471,7 +476,7 @@ public class UserOrderJDBCTemplateDAO extends SearchNamingServiceDAO implements 
 	 		extractOrderPromotionList(userOrder, loadOptions);
  		}	
  		if(isAnalyzeOrderPromotionListEnabled(loadOptions)){
-	 		// analyzeOrderPromotionList(userOrder, loadOptions);
+	 		analyzeOrderPromotionList(userOrder, loadOptions);
  		}
  		
 		
@@ -479,7 +484,7 @@ public class UserOrderJDBCTemplateDAO extends SearchNamingServiceDAO implements 
 	 		extractManualAdjustmentList(userOrder, loadOptions);
  		}	
  		if(isAnalyzeManualAdjustmentListEnabled(loadOptions)){
-	 		// analyzeManualAdjustmentList(userOrder, loadOptions);
+	 		analyzeManualAdjustmentList(userOrder, loadOptions);
  		}
  		
 		
@@ -487,7 +492,7 @@ public class UserOrderJDBCTemplateDAO extends SearchNamingServiceDAO implements 
 	 		extractShippingGroupList(userOrder, loadOptions);
  		}	
  		if(isAnalyzeShippingGroupListEnabled(loadOptions)){
-	 		// analyzeShippingGroupList(userOrder, loadOptions);
+	 		analyzeShippingGroupList(userOrder, loadOptions);
  		}
  		
 		
@@ -495,7 +500,7 @@ public class UserOrderJDBCTemplateDAO extends SearchNamingServiceDAO implements 
 	 		extractPaymentGroupList(userOrder, loadOptions);
  		}	
  		if(isAnalyzePaymentGroupListEnabled(loadOptions)){
-	 		// analyzePaymentGroupList(userOrder, loadOptions);
+	 		analyzePaymentGroupList(userOrder, loadOptions);
  		}
  		
 		

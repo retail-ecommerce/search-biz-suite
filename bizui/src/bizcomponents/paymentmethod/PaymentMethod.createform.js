@@ -9,7 +9,7 @@ import styles from './PaymentMethod.createform.less'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
 import PaymentMethodBase from './PaymentMethod.base'
-
+import appLocaleName from '../../common/Locale.tool'
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
@@ -22,7 +22,7 @@ const testValues = {
   line1: '1900 AVE OF THE STARTS',
   line2: 'Suite 555 ',
   city: 'Century City',
-  expireOn: '2018-11-10',
+  expireOn: '2016-09-18',
 }
 */
 
@@ -71,7 +71,7 @@ class PaymentMethodCreateForm extends Component {
   render() {
     const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
-
+	const userContext = null
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = PaymentMethodBase
     const {PaymentMethodService} = GlobalComponents
@@ -120,9 +120,10 @@ class PaymentMethodCreateForm extends Component {
     
     const goback = () => {
       const { owner } = this.props
+     
       dispatch({
         type: `${owner.type}/goback`,
-        payload: { id: owner.id, type: 'paymentMethod',listName:'Payment Method列表' },
+        payload: { id: owner.id, type: 'paymentMethod',listName:appLocaleName(userContext,"List") },
       })
     }
     const errors = getFieldsError()
@@ -153,7 +154,7 @@ class PaymentMethodCreateForm extends Component {
       return (
         <span className={styles.errorIcon}>
           <Popover
-            title="表单校验信息"
+            title={appLocaleName(userContext,"FieldValidateInfo")}
             content={errorList}
             overlayClassName={styles.errorPopover}
             trigger="click"
@@ -197,18 +198,18 @@ class PaymentMethodCreateForm extends Component {
     }
     return (
       <PageHeaderLayout
-        title="新建一个Payment Method"
-        content="新建一个Payment Method"
+        title={appLocaleName(userContext,"CreateNew")}
+        content={appLocaleName(userContext,"CreateNew")}
         wrapperClassName={styles.advancedForm}
       >
-        <Card title="基础信息" className={styles.card} bordered={false}>
+        <Card title={appLocaleName(userContext,"BasicInfo")} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.name} {...formItemLayout}>
                   {getFieldDecorator('name', {
-                    rules: [{ required: true, message: '请输入Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Name" />
                   )}
@@ -218,7 +219,7 @@ class PaymentMethodCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.number} {...formItemLayout}>
                   {getFieldDecorator('number', {
-                    rules: [{ required: true, message: '请输入Number' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Number" />
                   )}
@@ -228,7 +229,7 @@ class PaymentMethodCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.line1} {...formItemLayout}>
                   {getFieldDecorator('line1', {
-                    rules: [{ required: true, message: '请输入Line1' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Line1" />
                   )}
@@ -238,7 +239,7 @@ class PaymentMethodCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.line2} {...formItemLayout}>
                   {getFieldDecorator('line2', {
-                    rules: [{ required: true, message: '请输入Line2' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Line2" />
                   )}
@@ -248,7 +249,7 @@ class PaymentMethodCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.city} {...formItemLayout}>
                   {getFieldDecorator('city', {
-                    rules: [{ required: true, message: '请输入City' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入City" />
                   )}
@@ -258,7 +259,7 @@ class PaymentMethodCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.expireOn} {...formItemLayout}>
                   {getFieldDecorator('expireOn', {
-                    rules: [{ required: true, message: '请输入Expire On' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <DatePicker format="YYYY-MM-DD" placeholder="请输入Expire On" />
                   )}
@@ -285,13 +286,13 @@ class PaymentMethodCreateForm extends Component {
         <FooterToolbar>
           {getErrorInfo()}
           <Button type="primary" onClick={submitCreateForm} loading={submitting} htmlType="submit">
-            提交
+            {appLocaleName(userContext,"Submit")}
           </Button>
           <Button type="primary" onClick={submitCreateFormAndContinue} loading={submitting}>
-            提交并建下一个
+            {appLocaleName(userContext,"SubmitAndContinue")}
           </Button>
           <Button type="danger" onClick={goback} loading={submitting}>
-            放弃
+            {appLocaleName(userContext,"Discard")}
           </Button>
         </FooterToolbar>
       </PageHeaderLayout>

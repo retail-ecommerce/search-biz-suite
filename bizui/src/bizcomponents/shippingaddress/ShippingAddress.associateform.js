@@ -9,7 +9,7 @@ import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
 import ShippingAddressBase from './ShippingAddress.base'
 import SelectObject from '../../components/SelectObject'
-
+import appLocaleName from '../../common/Locale.tool'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
@@ -23,7 +23,7 @@ const testValues = {
   line2: 'Suite 555 - ',
   city: 'Century City - ',
   state: 'CA',
-  zipCode: '952059',
+  zipCode: '907601',
 }
 */
 
@@ -75,6 +75,8 @@ class ShippingAddressAssociateForm extends Component {
 	const { form, dispatch, submitting, role,data,owner,toggleAssociatePaymentVisible,visible,onCancel, onCreate } = this.props
     const { convertedImagesValues } = this.state
     const {ShippingAddressService} = GlobalComponents
+    const userContext = null
+    
 
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
@@ -121,24 +123,24 @@ class ShippingAddressAssociateForm extends Component {
       labelCol: { span: 14 },
       wrapperCol: { span: 4 },
     }
-    
+   
     return (
  <Modal
-          title="创建新的支付"
+          title={appLocaleName(userContext,"CreateNew")}
           visible={visible}
           onOk={onCancel}
           onCancel={onCancel}
           width={920}
           style={{ top: 40}}
         >
-        <Card title="基础信息"  className={styles.card} style={{ backgroundColor:"#eee" }}>
+        <Card title={appLocaleName(userContext,"BasicInfo")}  className={styles.card} style={{ backgroundColor:"#eee" }}>
           <Form >
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.name} {...formItemLayout}>
                   {getFieldDecorator('name', {
-                    rules: [{ required: true, message: '请输入Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Name" />
                   )}
@@ -148,7 +150,7 @@ class ShippingAddressAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.line1} {...formItemLayout}>
                   {getFieldDecorator('line1', {
-                    rules: [{ required: true, message: '请输入Line1' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Line1" />
                   )}
@@ -158,7 +160,7 @@ class ShippingAddressAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.line2} {...formItemLayout}>
                   {getFieldDecorator('line2', {
-                    rules: [{ required: true, message: '请输入Line2' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Line2" />
                   )}
@@ -168,7 +170,7 @@ class ShippingAddressAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.city} {...formItemLayout}>
                   {getFieldDecorator('city', {
-                    rules: [{ required: true, message: '请输入City' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入City" />
                   )}
@@ -178,7 +180,7 @@ class ShippingAddressAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.state} {...formItemLayout}>
                   {getFieldDecorator('state', {
-                    rules: [{ required: true, message: '请输入State' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入State" />
                   )}
@@ -188,7 +190,7 @@ class ShippingAddressAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.zipCode} {...formItemLayout}>
                   {getFieldDecorator('zipCode', {
-                    rules: [{ required: true, message: '请输入Zip Code' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Zip Code" />
                   )}

@@ -20,7 +20,7 @@ import DescriptionList from '../../components/DescriptionList';
 import ImagePreview from '../../components/ImagePreview';
 import GlobalComponents from '../../custcomponents';
 import DashboardTool from '../../common/Dashboard.tool'
-
+import appLocaleName from '../../common/Locale.tool'
 
 const {aggregateDataset,calcKey, defaultHideCloseTrans,
   defaultImageListOf,defaultSettingListOf,defaultBuildTransferModal,
@@ -76,7 +76,7 @@ const internalSummaryOf = (shippingGroup,targetComponent) =>{
 	
 	
 	const {ShippingGroupService} = GlobalComponents
-	
+	const userContext = null
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="Id">{shippingGroup.id}</Description> 
@@ -87,7 +87,7 @@ const internalSummaryOf = (shippingGroup,targetComponent) =>{
 <Description term="State">{shippingGroup.state}</Description> 
 <Description term="Zip Code">{shippingGroup.zipCode}</Description> 
 <Description term="Country">{shippingGroup.country}</Description> 
-<Description term="User Order">{shippingGroup.userOrder==null?"未分配":shippingGroup.userOrder.displayName}
+<Description term="User Order">{shippingGroup.userOrder==null?appLocaleName(userContext,"NotAssigned"):shippingGroup.userOrder.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"User Order","userOrder",ShippingGroupService.requestCandidateUserOrder,
 	      ShippingGroupService.transferToAnotherUserOrder,"anotherUserOrderId",shippingGroup.userOrder?shippingGroup.userOrder.id:"")} 
@@ -108,7 +108,7 @@ class ShippingGroupDashboard extends Component {
     candidateReferenceList: {},
     candidateServiceName:"",
     candidateObjectType:"city",
-    targetLocalName:"城市",
+    targetLocalName:"",
     transferServiceName:"",
     currentValue:"",
     transferTargetParameterName:"",  
@@ -135,7 +135,6 @@ class ShippingGroupDashboard extends Component {
     
       	],
   	};
-    //下面各个渲染方法都可以定制，只要在每个模型的里面的_features="custom"就可以得到定制的例子
     
     const renderExtraHeader = this.props.renderExtraHeader || internalRenderExtraHeader
     const settingListOf = this.props.settingListOf || internalSettingListOf

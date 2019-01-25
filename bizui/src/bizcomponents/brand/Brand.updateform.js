@@ -10,6 +10,7 @@ import FooterToolbar from '../../components/FooterToolbar'
 
 import styles from './Brand.updateform.less'
 import BrandBase from './Brand.base'
+import appLocaleName from '../../common/Locale.tool'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
@@ -89,6 +90,7 @@ class BrandUpdateForm extends Component {
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
+    const userContext = null
     const {fieldLabels} = BrandBase
     const capFirstChar = (value)=>{
     	//const upper = value.replace(/^\w/, c => c.toUpperCase());
@@ -101,7 +103,7 @@ class BrandUpdateForm extends Component {
           console.log('code go here', error)
           return
         }
-
+		
         const { owner, role } = this.props
         const brandId = values.id
         const imagesValues = mapBackToImageValues(convertedImagesValues)
@@ -185,7 +187,7 @@ class BrandUpdateForm extends Component {
         payload: {
           id: owner.id,
           type: 'brand',
-          listName:'Brand列表' 
+          listName:appLocaleName(userContext,"List") 
         },
       })
     }
@@ -216,7 +218,7 @@ class BrandUpdateForm extends Component {
       return (
         <span className={styles.errorIcon}>
           <Popover
-            title="表单校验信息"
+            title={appLocaleName(userContext,"FieldValidateInfo")}
             content={errorList}
             overlayClassName={styles.errorPopover}
             trigger="click"
@@ -230,7 +232,7 @@ class BrandUpdateForm extends Component {
     }
     
     if (!selectedRows) {
-      return (<div>缺少被更新的对象</div>)
+      return (<div>{appLocaleName(userContext,"NoTargetItems")}</div>)
     }
 	const selectedRow = this.getSelectedRow()
 
@@ -245,11 +247,11 @@ class BrandUpdateForm extends Component {
 
     return (
       <PageHeaderLayout
-        title={"更新Brand"+(currentUpdateIndex+1)+"/"+selectedRows.length}
-        content="更新Brand"
+        title={appLocaleName(userContext,"Update")+(currentUpdateIndex+1)+"/"+selectedRows.length}
+        content={appLocaleName(userContext,"Update")}
         wrapperClassName={styles.advancedForm}
       >
-        <Card title="基础信息" className={styles.card} bordered={false}>
+        <Card title={appLocaleName(userContext,"BasicInfo")} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
             
@@ -258,7 +260,7 @@ class BrandUpdateForm extends Component {
                 <Form.Item label={fieldLabels.id} {...formItemLayout}>
                   {getFieldDecorator('id', {
                     initialValue: selectedRow.id,
-                    rules: [{ required: true, message: '请输入Id' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Id" disabled/>
                     
@@ -270,7 +272,7 @@ class BrandUpdateForm extends Component {
                 <Form.Item label={fieldLabels.brandName} {...formItemLayout}>
                   {getFieldDecorator('brandName', {
                     initialValue: selectedRow.brandName,
-                    rules: [{ required: true, message: '请输入Brand Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Brand Name" />
                     
@@ -293,9 +295,9 @@ class BrandUpdateForm extends Component {
                 <Form.Item>
                   {getFieldDecorator('remark', {
                   	initialValue: selectedRow.remark,
-                    rules: [{  required: true, message: '请输入Remark' }],
+                    rules: [{  required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
-                    <TextArea rows={4} placeholder="请输入请输入Remark" />
+                    <TextArea rows={4} placeholder={appLocaleName(userContext,"PleaseInput")} />
                   )}
                 </Form.Item>
               </Col>
@@ -304,7 +306,7 @@ class BrandUpdateForm extends Component {
         </Card>
 
 
-        <Card title={<div>附件 <Popover title="扫描二维码可以从手机上传图片或者附件" content={<div><img src='./qrtest.png'/></div>}><Icon type="qrcode" ></Icon></Popover></div>} className={styles.card} bordered={false}>
+        <Card title={<div>{appLocaleName(userContext,"Attachment")} <Popover title={appLocaleName(userContext,"ScanQRCodetoUploadfromSmartPhone")} content={<div><img src='./qrtest.png'/></div>}><Icon type="qrcode" ></Icon></Popover></div>} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
 
@@ -324,16 +326,16 @@ class BrandUpdateForm extends Component {
         <FooterToolbar>
           {getErrorInfo()}
           <Button type="primary" onClick={submitUpdateForm} loading={submitting} htmlType="submit">
-            更新
+            {appLocaleName(userContext,"Update")}
           </Button>
           <Button type="primary" onClick={submitUpdateFormAndContinue} loading={submitting} disabled={currentUpdateIndex + 1 >= selectedRows.length}>
-            更新并装载下一个
+            {appLocaleName(userContext,"UpdateAndContinue")}
           </Button>
           <Button type="default" onClick={skipToNext} loading={submitting} disabled={currentUpdateIndex + 1 >= selectedRows.length}>
-            略过
+            {appLocaleName(userContext,"Skip")}
           </Button>
           <Button type="default" onClick={goback} loading={submitting}>
-            取消
+            {appLocaleName(userContext,"Cancel")}
           </Button>
         </FooterToolbar>
       </PageHeaderLayout>

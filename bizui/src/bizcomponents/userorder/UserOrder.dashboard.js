@@ -20,7 +20,7 @@ import DescriptionList from '../../components/DescriptionList';
 import ImagePreview from '../../components/ImagePreview';
 import GlobalComponents from '../../custcomponents';
 import DashboardTool from '../../common/Dashboard.tool'
-
+import appLocaleName from '../../common/Locale.tool'
 
 const {aggregateDataset,calcKey, defaultHideCloseTrans,
   defaultImageListOf,defaultSettingListOf,defaultBuildTransferModal,
@@ -76,14 +76,14 @@ const internalSummaryOf = (userOrder,targetComponent) =>{
 	
 	
 	const {UserOrderService} = GlobalComponents
-	
+	const userContext = null
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="Id">{userOrder.id}</Description> 
 <Description term="Title">{userOrder.title}</Description> 
 <Description term="Total Adjustment">{userOrder.totalAdjustment}</Description> 
 <Description term="Total Amount">{userOrder.totalAmount}</Description> 
-<Description term="User">{userOrder.user==null?"未分配":userOrder.user.displayName}
+<Description term="User">{userOrder.user==null?appLocaleName(userContext,"NotAssigned"):userOrder.user.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"User","profile",UserOrderService.requestCandidateUser,
 	      UserOrderService.transferToAnotherUser,"anotherUserId",userOrder.user?userOrder.user.id:"")} 
@@ -105,7 +105,7 @@ class UserOrderDashboard extends Component {
     candidateReferenceList: {},
     candidateServiceName:"",
     candidateObjectType:"city",
-    targetLocalName:"城市",
+    targetLocalName:"",
     transferServiceName:"",
     currentValue:"",
     transferTargetParameterName:"",  
@@ -137,7 +137,6 @@ class UserOrderDashboard extends Component {
     
       	],
   	};
-    //下面各个渲染方法都可以定制，只要在每个模型的里面的_features="custom"就可以得到定制的例子
     
     const renderExtraHeader = this.props.renderExtraHeader || internalRenderExtraHeader
     const settingListOf = this.props.settingListOf || internalSettingListOf

@@ -9,7 +9,7 @@ import styles from './PaymentGroup.createform.less'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
 import PaymentGroupBase from './PaymentGroup.base'
-
+import appLocaleName from '../../common/Locale.tool'
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
@@ -18,7 +18,7 @@ const testValues = {};
 /*
 const testValues = {
   name: 'Pay for order',
-  amount: '91.95',
+  amount: '119.97',
   status: 'PAID',
   userOrderId: 'UO000001',
 }
@@ -69,7 +69,7 @@ class PaymentGroupCreateForm extends Component {
   render() {
     const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
-
+	const userContext = null
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = PaymentGroupBase
     const {PaymentGroupService} = GlobalComponents
@@ -118,9 +118,10 @@ class PaymentGroupCreateForm extends Component {
     
     const goback = () => {
       const { owner } = this.props
+     
       dispatch({
         type: `${owner.type}/goback`,
-        payload: { id: owner.id, type: 'paymentGroup',listName:'Payment Group列表' },
+        payload: { id: owner.id, type: 'paymentGroup',listName:appLocaleName(userContext,"List") },
       })
     }
     const errors = getFieldsError()
@@ -151,7 +152,7 @@ class PaymentGroupCreateForm extends Component {
       return (
         <span className={styles.errorIcon}>
           <Popover
-            title="表单校验信息"
+            title={appLocaleName(userContext,"FieldValidateInfo")}
             content={errorList}
             overlayClassName={styles.errorPopover}
             trigger="click"
@@ -195,18 +196,18 @@ class PaymentGroupCreateForm extends Component {
     }
     return (
       <PageHeaderLayout
-        title="新建一个Payment Group"
-        content="新建一个Payment Group"
+        title={appLocaleName(userContext,"CreateNew")}
+        content={appLocaleName(userContext,"CreateNew")}
         wrapperClassName={styles.advancedForm}
       >
-        <Card title="基础信息" className={styles.card} bordered={false}>
+        <Card title={appLocaleName(userContext,"BasicInfo")} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.name} {...formItemLayout}>
                   {getFieldDecorator('name', {
-                    rules: [{ required: true, message: '请输入Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Name" />
                   )}
@@ -216,7 +217,7 @@ class PaymentGroupCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.amount} {...formItemLayout}>
                   {getFieldDecorator('amount', {
-                    rules: [{ required: true, message: '请输入Amount' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Amount" />
                   )}
@@ -226,7 +227,7 @@ class PaymentGroupCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.status} {...formItemLayout}>
                   {getFieldDecorator('status', {
-                    rules: [{ required: true, message: '请输入Status' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Status" />
                   )}
@@ -250,7 +251,7 @@ class PaymentGroupCreateForm extends Component {
 
 
 
-        <Card title="关联" className={styles.card} bordered={false}>
+        <Card title={appLocaleName(userContext,"Associate")} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
 
@@ -258,7 +259,7 @@ class PaymentGroupCreateForm extends Component {
                 <Form.Item label={fieldLabels.userOrder} {...formItemLayout}>
                   {getFieldDecorator('userOrderId', {
                   	initialValue: tryinit('userOrder'),
-                    rules: [{ required: true, message: '请输入User Order' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                   
                   <SelectObject 
@@ -278,13 +279,13 @@ class PaymentGroupCreateForm extends Component {
         <FooterToolbar>
           {getErrorInfo()}
           <Button type="primary" onClick={submitCreateForm} loading={submitting} htmlType="submit">
-            提交
+            {appLocaleName(userContext,"Submit")}
           </Button>
           <Button type="primary" onClick={submitCreateFormAndContinue} loading={submitting}>
-            提交并建下一个
+            {appLocaleName(userContext,"SubmitAndContinue")}
           </Button>
           <Button type="danger" onClick={goback} loading={submitting}>
-            放弃
+            {appLocaleName(userContext,"Discard")}
           </Button>
         </FooterToolbar>
       </PageHeaderLayout>

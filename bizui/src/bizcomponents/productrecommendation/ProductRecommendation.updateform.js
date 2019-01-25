@@ -10,6 +10,7 @@ import FooterToolbar from '../../components/FooterToolbar'
 
 import styles from './ProductRecommendation.updateform.less'
 import ProductRecommendationBase from './ProductRecommendation.base'
+import appLocaleName from '../../common/Locale.tool'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
@@ -88,6 +89,7 @@ class ProductRecommendationUpdateForm extends Component {
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
+    const userContext = null
     const {fieldLabels} = ProductRecommendationBase
     const capFirstChar = (value)=>{
     	//const upper = value.replace(/^\w/, c => c.toUpperCase());
@@ -100,7 +102,7 @@ class ProductRecommendationUpdateForm extends Component {
           console.log('code go here', error)
           return
         }
-
+		
         const { owner, role } = this.props
         const productRecommendationId = values.id
         const imagesValues = mapBackToImageValues(convertedImagesValues)
@@ -184,7 +186,7 @@ class ProductRecommendationUpdateForm extends Component {
         payload: {
           id: owner.id,
           type: 'productRecommendation',
-          listName:'Product Recommendation列表' 
+          listName:appLocaleName(userContext,"List") 
         },
       })
     }
@@ -215,7 +217,7 @@ class ProductRecommendationUpdateForm extends Component {
       return (
         <span className={styles.errorIcon}>
           <Popover
-            title="表单校验信息"
+            title={appLocaleName(userContext,"FieldValidateInfo")}
             content={errorList}
             overlayClassName={styles.errorPopover}
             trigger="click"
@@ -229,7 +231,7 @@ class ProductRecommendationUpdateForm extends Component {
     }
     
     if (!selectedRows) {
-      return (<div>缺少被更新的对象</div>)
+      return (<div>{appLocaleName(userContext,"NoTargetItems")}</div>)
     }
 	const selectedRow = this.getSelectedRow()
 
@@ -244,11 +246,11 @@ class ProductRecommendationUpdateForm extends Component {
 
     return (
       <PageHeaderLayout
-        title={"更新Product Recommendation"+(currentUpdateIndex+1)+"/"+selectedRows.length}
-        content="更新Product Recommendation"
+        title={appLocaleName(userContext,"Update")+(currentUpdateIndex+1)+"/"+selectedRows.length}
+        content={appLocaleName(userContext,"Update")}
         wrapperClassName={styles.advancedForm}
       >
-        <Card title="基础信息" className={styles.card} bordered={false}>
+        <Card title={appLocaleName(userContext,"BasicInfo")} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
             
@@ -257,7 +259,7 @@ class ProductRecommendationUpdateForm extends Component {
                 <Form.Item label={fieldLabels.id} {...formItemLayout}>
                   {getFieldDecorator('id', {
                     initialValue: selectedRow.id,
-                    rules: [{ required: true, message: '请输入Id' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Id" disabled/>
                     
@@ -269,7 +271,7 @@ class ProductRecommendationUpdateForm extends Component {
                 <Form.Item label={fieldLabels.name} {...formItemLayout}>
                   {getFieldDecorator('name', {
                     initialValue: selectedRow.name,
-                    rules: [{ required: true, message: '请输入Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Name" />
                     
@@ -281,7 +283,7 @@ class ProductRecommendationUpdateForm extends Component {
                 <Form.Item label={fieldLabels.origin} {...formItemLayout}>
                   {getFieldDecorator('origin', {
                     initialValue: selectedRow.origin,
-                    rules: [{ required: true, message: '请输入Origin' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Origin" />
                     
@@ -293,7 +295,7 @@ class ProductRecommendationUpdateForm extends Component {
                 <Form.Item label={fieldLabels.lastUpdateTime} {...formItemLayout}>
                   {getFieldDecorator('lastUpdateTime', {
                     initialValue: selectedRow.lastUpdateTime,
-                    rules: [{ required: true, message: '请输入Last Update Time' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Last Update Time" />
                     
@@ -316,9 +318,9 @@ class ProductRecommendationUpdateForm extends Component {
                 <Form.Item>
                   {getFieldDecorator('remark', {
                   	initialValue: selectedRow.remark,
-                    rules: [{  required: true, message: '请输入Remark' }],
+                    rules: [{  required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
-                    <TextArea rows={4} placeholder="请输入请输入Remark" />
+                    <TextArea rows={4} placeholder={appLocaleName(userContext,"PleaseInput")} />
                   )}
                 </Form.Item>
               </Col>
@@ -330,16 +332,16 @@ class ProductRecommendationUpdateForm extends Component {
         <FooterToolbar>
           {getErrorInfo()}
           <Button type="primary" onClick={submitUpdateForm} loading={submitting} htmlType="submit">
-            更新
+            {appLocaleName(userContext,"Update")}
           </Button>
           <Button type="primary" onClick={submitUpdateFormAndContinue} loading={submitting} disabled={currentUpdateIndex + 1 >= selectedRows.length}>
-            更新并装载下一个
+            {appLocaleName(userContext,"UpdateAndContinue")}
           </Button>
           <Button type="default" onClick={skipToNext} loading={submitting} disabled={currentUpdateIndex + 1 >= selectedRows.length}>
-            略过
+            {appLocaleName(userContext,"Skip")}
           </Button>
           <Button type="default" onClick={goback} loading={submitting}>
-            取消
+            {appLocaleName(userContext,"Cancel")}
           </Button>
         </FooterToolbar>
       </PageHeaderLayout>

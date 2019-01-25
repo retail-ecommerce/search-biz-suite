@@ -31,6 +31,7 @@ import GlobalFooter from '../../components/GlobalFooter';
 import GlobalComponents from '../../custcomponents';
 
 import PermissionSettingService from '../../permission/PermissionSetting.service'
+import appLocaleName from '../../common/Locale.tool'
 
 const  {  filterForMenuPermission } = PermissionSettingService
 
@@ -76,9 +77,7 @@ const query = {
 class BrandBizApp extends React.PureComponent {
   constructor(props) {
     super(props)
-    // 把一级 Layout 的 children 作为菜单项
-    // this.menus = getNavData().reduce((arr, current) => arr.concat(current.children), [])
-    this.state = {
+     this.state = {
       openKeys: this.getDefaultCollapsedSubMenus(props),
     }
   }
@@ -117,7 +116,7 @@ class BrandBizApp extends React.PureComponent {
     const menuData = sessionObject('menuData')
     const targetApp = sessionObject('targetApp')
 	const {objectId}=targetApp;
-  
+  	const userContext = null
     return (
       
 		  <Menu
@@ -133,22 +132,22 @@ class BrandBizApp extends React.PureComponent {
            
 
              <Menu.Item key="dashboard">
-               <Link to={`/brand/${this.props.brand.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
+               <Link to={`/brand/${this.props.brand.id}/dashboard`}><Icon type="dashboard" /><span>{appLocaleName(userContext,"Dashboard")}</span></Link>
              </Menu.Item>
              
 		 <Menu.Item key="homepage">
-               <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
+               <Link to={"/home"}><Icon type="home" /><span>{appLocaleName(userContext,"Home")}</span></Link>
              </Menu.Item>
              
              
          {filteredMenuItems(targetObject,this).map((item)=>(<Menu.Item key={item.name}>
-          <Link to={`/${menuData.menuFor}/${objectId}/list/${item.name}/${item.displayName}列表`}>
+          <Link to={`/${menuData.menuFor}/${objectId}/list/${item.name}/${item.displayName}${appLocaleName(userContext,"List")}`}>
           <Icon type="bars" /><span>{item.displayName}</span>
           </Link>
         </Menu.Item>))}
        
        <Menu.Item key="preference">
-               <Link to={`/brand/${this.props.brand.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+               <Link to={`/brand/${this.props.brand.id}/preference`}><Icon type="setting" /><span>{appLocaleName(userContext,"Preference")}</span></Link>
              </Menu.Item>
       
            </Menu>
@@ -160,6 +159,7 @@ class BrandBizApp extends React.PureComponent {
 
   getProductSearch = () => {
     const {ProductSearch} = GlobalComponents;
+    const userContext = null
     return connect(state => ({
       rule: state.rule,
       name: "Product",
@@ -176,11 +176,12 @@ class BrandBizApp extends React.PureComponent {
       owner: { type: '_brand', id: state._brand.id, 
       referenceName: 'brand', 
       listName: 'productList', ref:state._brand, 
-      listDisplayName: 'Product列表' }, // this is for model namespace and
+      listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(ProductSearch)
   }
   getProductCreateForm = () => {
    	const {ProductCreateForm} = GlobalComponents;
+   	const userContext = null
     return connect(state => ({
       rule: state.rule,
       role: "product",
@@ -190,22 +191,24 @@ class BrandBizApp extends React.PureComponent {
       currentPage: state._brand.productCurrentPageNumber,
       searchFormParameters: state._brand.productSearchFormParameters,
       loading: state._brand.loading,
-      owner: { type: '_brand', id: state._brand.id, referenceName: 'brand', listName: 'productList', ref:state._brand, listDisplayName: 'Product列表'}, // this is for model namespace and
+      owner: { type: '_brand', id: state._brand.id, referenceName: 'brand', listName: 'productList', ref:state._brand, listDisplayName: appLocaleName(userContext,"List")}, // this is for model namespace and
     }))(ProductCreateForm)
   }
   
   getProductUpdateForm = () => {
+    const userContext = null
   	const {ProductUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._brand.selectedRows,
       role: "product",
       currentUpdateIndex: state._brand.currentUpdateIndex,
-      owner: { type: '_brand', id: state._brand.id, listName: 'productList', ref:state._brand, listDisplayName: 'Product列表' }, // this is for model namespace and
+      owner: { type: '_brand', id: state._brand.id, listName: 'productList', ref:state._brand, listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(ProductUpdateForm)
   }
 
   getProductRecommendationSearch = () => {
     const {ProductRecommendationSearch} = GlobalComponents;
+    const userContext = null
     return connect(state => ({
       rule: state.rule,
       name: "Product Recommendation",
@@ -222,11 +225,12 @@ class BrandBizApp extends React.PureComponent {
       owner: { type: '_brand', id: state._brand.id, 
       referenceName: 'brand', 
       listName: 'productRecommendationList', ref:state._brand, 
-      listDisplayName: 'Product Recommendation列表' }, // this is for model namespace and
+      listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(ProductRecommendationSearch)
   }
   getProductRecommendationCreateForm = () => {
    	const {ProductRecommendationCreateForm} = GlobalComponents;
+   	const userContext = null
     return connect(state => ({
       rule: state.rule,
       role: "productRecommendation",
@@ -236,17 +240,18 @@ class BrandBizApp extends React.PureComponent {
       currentPage: state._brand.productRecommendationCurrentPageNumber,
       searchFormParameters: state._brand.productRecommendationSearchFormParameters,
       loading: state._brand.loading,
-      owner: { type: '_brand', id: state._brand.id, referenceName: 'brand', listName: 'productRecommendationList', ref:state._brand, listDisplayName: 'Product Recommendation列表'}, // this is for model namespace and
+      owner: { type: '_brand', id: state._brand.id, referenceName: 'brand', listName: 'productRecommendationList', ref:state._brand, listDisplayName: appLocaleName(userContext,"List")}, // this is for model namespace and
     }))(ProductRecommendationCreateForm)
   }
   
   getProductRecommendationUpdateForm = () => {
+    const userContext = null
   	const {ProductRecommendationUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._brand.selectedRows,
       role: "productRecommendation",
       currentUpdateIndex: state._brand.currentUpdateIndex,
-      owner: { type: '_brand', id: state._brand.id, listName: 'productRecommendationList', ref:state._brand, listDisplayName: 'Product Recommendation列表' }, // this is for model namespace and
+      owner: { type: '_brand', id: state._brand.id, listName: 'productRecommendationList', ref:state._brand, listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(ProductRecommendationUpdateForm)
   }
 
@@ -315,16 +320,11 @@ class BrandBizApp extends React.PureComponent {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
      const { breadcrumb }  = this.props
-
-     //const {BrandEditDetail} = GlobalComponents
-     //const {BrandViewDetail} = GlobalComponents
-     
-     
+  
      const targetApp = sessionObject('targetApp')
      const currentBreadcrumb =sessionObject(targetApp.id)
+     const userContext = null
      
-     
-     // Don't show popup menu when it is been collapsed
      const menuProps = collapsed ? {} : {
        openKeys: this.state.openKeys,
      }
@@ -346,7 +346,7 @@ class BrandBizApp extends React.PureComponent {
          </div>
           <div className={styles.right}  >
           <Button type="primary"  icon="logout" onClick={()=>this.logout()}>
-          退出</Button>
+          {appLocaleName(userContext,"Exit")}</Button>
           </div>
           
         </Header>

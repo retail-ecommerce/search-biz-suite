@@ -300,9 +300,10 @@ public class ProductJDBCTemplateDAO extends SearchNamingServiceDAO implements Pr
  		return checkOptions(options,ProductTokens.PRODUCT_RECOMMENDATION_LIST);
  	}
  	protected boolean isAnalyzeProductRecommendationListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,ProductTokens.PRODUCT_RECOMMENDATION_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,ProductTokens.PRODUCT_RECOMMENDATION_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveProductRecommendationListEnabled(Map<String,Object> options){
 		return checkOptions(options, ProductTokens.PRODUCT_RECOMMENDATION_LIST);
 		
@@ -314,9 +315,10 @@ public class ProductJDBCTemplateDAO extends SearchNamingServiceDAO implements Pr
  		return checkOptions(options,ProductTokens.SKU_LIST);
  	}
  	protected boolean isAnalyzeSkuListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,ProductTokens.SKU_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,ProductTokens.SKU_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveSkuListEnabled(Map<String,Object> options){
 		return checkOptions(options, ProductTokens.SKU_LIST);
 		
@@ -366,7 +368,7 @@ public class ProductJDBCTemplateDAO extends SearchNamingServiceDAO implements Pr
 	 		extractProductRecommendationList(product, loadOptions);
  		}	
  		if(isAnalyzeProductRecommendationListEnabled(loadOptions)){
-	 		// analyzeProductRecommendationList(product, loadOptions);
+	 		analyzeProductRecommendationList(product, loadOptions);
  		}
  		
 		
@@ -374,7 +376,7 @@ public class ProductJDBCTemplateDAO extends SearchNamingServiceDAO implements Pr
 	 		extractSkuList(product, loadOptions);
  		}	
  		if(isAnalyzeSkuListEnabled(loadOptions)){
-	 		// analyzeSkuList(product, loadOptions);
+	 		analyzeSkuList(product, loadOptions);
  		}
  		
 		

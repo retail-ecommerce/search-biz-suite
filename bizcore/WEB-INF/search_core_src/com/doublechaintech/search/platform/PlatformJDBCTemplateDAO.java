@@ -253,9 +253,10 @@ public class PlatformJDBCTemplateDAO extends SearchNamingServiceDAO implements P
  		return checkOptions(options,PlatformTokens.SITE_LIST);
  	}
  	protected boolean isAnalyzeSiteListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,PlatformTokens.SITE_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,PlatformTokens.SITE_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveSiteListEnabled(Map<String,Object> options){
 		return checkOptions(options, PlatformTokens.SITE_LIST);
 		
@@ -267,9 +268,10 @@ public class PlatformJDBCTemplateDAO extends SearchNamingServiceDAO implements P
  		return checkOptions(options,PlatformTokens.PROFILE_LIST);
  	}
  	protected boolean isAnalyzeProfileListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,PlatformTokens.PROFILE_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,PlatformTokens.PROFILE_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveProfileListEnabled(Map<String,Object> options){
 		return checkOptions(options, PlatformTokens.PROFILE_LIST);
 		
@@ -281,9 +283,10 @@ public class PlatformJDBCTemplateDAO extends SearchNamingServiceDAO implements P
  		return checkOptions(options,PlatformTokens.USER_ORDER_LIST);
  	}
  	protected boolean isAnalyzeUserOrderListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,PlatformTokens.USER_ORDER_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,PlatformTokens.USER_ORDER_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveUserOrderListEnabled(Map<String,Object> options){
 		return checkOptions(options, PlatformTokens.USER_ORDER_LIST);
 		
@@ -321,7 +324,7 @@ public class PlatformJDBCTemplateDAO extends SearchNamingServiceDAO implements P
 	 		extractSiteList(platform, loadOptions);
  		}	
  		if(isAnalyzeSiteListEnabled(loadOptions)){
-	 		// analyzeSiteList(platform, loadOptions);
+	 		analyzeSiteList(platform, loadOptions);
  		}
  		
 		
@@ -329,7 +332,7 @@ public class PlatformJDBCTemplateDAO extends SearchNamingServiceDAO implements P
 	 		extractProfileList(platform, loadOptions);
  		}	
  		if(isAnalyzeProfileListEnabled(loadOptions)){
-	 		// analyzeProfileList(platform, loadOptions);
+	 		analyzeProfileList(platform, loadOptions);
  		}
  		
 		
@@ -337,7 +340,7 @@ public class PlatformJDBCTemplateDAO extends SearchNamingServiceDAO implements P
 	 		extractUserOrderList(platform, loadOptions);
  		}	
  		if(isAnalyzeUserOrderListEnabled(loadOptions)){
-	 		// analyzeUserOrderList(platform, loadOptions);
+	 		analyzeUserOrderList(platform, loadOptions);
  		}
  		
 		

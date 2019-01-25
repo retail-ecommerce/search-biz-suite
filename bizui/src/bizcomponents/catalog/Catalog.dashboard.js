@@ -20,7 +20,7 @@ import DescriptionList from '../../components/DescriptionList';
 import ImagePreview from '../../components/ImagePreview';
 import GlobalComponents from '../../custcomponents';
 import DashboardTool from '../../common/Dashboard.tool'
-
+import appLocaleName from '../../common/Locale.tool'
 
 const {aggregateDataset,calcKey, defaultHideCloseTrans,
   defaultImageListOf,defaultSettingListOf,defaultBuildTransferModal,
@@ -76,13 +76,13 @@ const internalSummaryOf = (catalog,targetComponent) =>{
 	
 	
 	const {CatalogService} = GlobalComponents
-	
+	const userContext = null
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="Id">{catalog.id}</Description> 
 <Description term="Name">{catalog.name}</Description> 
 <Description term="Seller Id">{catalog.sellerId}</Description> 
-<Description term="Site">{catalog.site==null?"未分配":catalog.site.displayName}
+<Description term="Site">{catalog.site==null?appLocaleName(userContext,"NotAssigned"):catalog.site.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"Site","site",CatalogService.requestCandidateSite,
 	      CatalogService.transferToAnotherSite,"anotherSiteId",catalog.site?catalog.site.id:"")} 
@@ -103,7 +103,7 @@ class CatalogDashboard extends Component {
     candidateReferenceList: {},
     candidateServiceName:"",
     candidateObjectType:"city",
-    targetLocalName:"城市",
+    targetLocalName:"",
     transferServiceName:"",
     currentValue:"",
     transferTargetParameterName:"",  
@@ -132,7 +132,6 @@ class CatalogDashboard extends Component {
     
       	],
   	};
-    //下面各个渲染方法都可以定制，只要在每个模型的里面的_features="custom"就可以得到定制的例子
     
     const renderExtraHeader = this.props.renderExtraHeader || internalRenderExtraHeader
     const settingListOf = this.props.settingListOf || internalSettingListOf

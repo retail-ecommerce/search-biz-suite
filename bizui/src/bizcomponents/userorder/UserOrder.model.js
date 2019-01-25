@@ -4,9 +4,18 @@ import pathToRegexp from 'path-to-regexp'
 import { routerRedux } from 'dva/router'
 import { notification } from 'antd'
 import GlobalComponents from '../../custcomponents';
-
+import appLocaleName from '../../common/Locale.tool'
 import modeltool from '../../utils/modeltool'
 const {setupModel,hasError,handleClientError,handleServerError,keepValueWithKeySuffix}=modeltool
+
+const notifySuccess=(userContext)=>{
+
+	notification.success({
+        message: appLocaleName(userContext,'Success'),
+        description: appLocaleName(userContext,'Success'),
+      })
+
+}
 
 
 export default {
@@ -68,14 +77,15 @@ export default {
     },
     
     *doJob({ payload }, { call, put }) { 
+      const userContext = null
       const {TaskService} = GlobalComponents;
       //yield put({ type: 'showLoading', payload })      
       const {serviceNameToCall, id, parameters} = payload;
       if(!serviceNameToCall){
-      	handleClientError("没有提供后台服务的名字, 该服务没有注册")
+      	handleClientError(appLocaleName(userContext,'ServiceNotRegistered'))
       	return;
       }
-      
+      "react/dva_object_model.jsp"
       
       const data = yield call(serviceNameToCall, id, parameters)
       if(handleServerError(data)){
@@ -108,6 +118,7 @@ export default {
 
 
     *addLineItem({ payload }, { call, put }) {
+      const userContext = null
       const {UserOrderService} = GlobalComponents;
 
       const { id, role, parameters, continueNext } = payload
@@ -120,19 +131,17 @@ export default {
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
       // yield put(routerRedux.push(`/userOrder/${id}/list/${role}CreateForm'))
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       if (continueNext) {
         return
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/userOrder/${id}/list/\LineItemList/Line Item列表`, state: newState }
+      const location = { pathname: `/userOrder/${id}/list/\LineItemList/Line Item+${appLocaleName(userContext,'List')}`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateLineItem({ payload }, { call, put }) {
+      const userContext = null
       const {UserOrderService} = GlobalComponents;      
       const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
       console.log('get form parameters', parameters)
@@ -145,10 +154,7 @@ export default {
       
       const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
       yield put({ type: 'updateState', payload: newPlayload })
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       
       if (continueNext) {
         return
@@ -162,6 +168,7 @@ export default {
       yield put({ type: 'updateState', payload: newPlayload })
     },
     *removeLineItemList({ payload }, { call, put }) {
+     const userContext = null
       const {UserOrderService} = GlobalComponents; 
       const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
@@ -173,19 +180,14 @@ export default {
       const newPlayload = { ...payload, ...data }
 
       yield put({ type: 'updateState', payload: newPlayload })
-        
-     
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
-
+      notifySuccess(userContext)
     },
 
 
 
 
     *addOrderPromotion({ payload }, { call, put }) {
+      const userContext = null
       const {UserOrderService} = GlobalComponents;
 
       const { id, role, parameters, continueNext } = payload
@@ -198,19 +200,17 @@ export default {
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
       // yield put(routerRedux.push(`/userOrder/${id}/list/${role}CreateForm'))
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       if (continueNext) {
         return
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/userOrder/${id}/list/\OrderPromotionList/Order Promotion列表`, state: newState }
+      const location = { pathname: `/userOrder/${id}/list/\OrderPromotionList/Order Promotion+${appLocaleName(userContext,'List')}`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateOrderPromotion({ payload }, { call, put }) {
+      const userContext = null
       const {UserOrderService} = GlobalComponents;      
       const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
       console.log('get form parameters', parameters)
@@ -223,10 +223,7 @@ export default {
       
       const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
       yield put({ type: 'updateState', payload: newPlayload })
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       
       if (continueNext) {
         return
@@ -240,6 +237,7 @@ export default {
       yield put({ type: 'updateState', payload: newPlayload })
     },
     *removeOrderPromotionList({ payload }, { call, put }) {
+     const userContext = null
       const {UserOrderService} = GlobalComponents; 
       const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
@@ -251,19 +249,14 @@ export default {
       const newPlayload = { ...payload, ...data }
 
       yield put({ type: 'updateState', payload: newPlayload })
-        
-     
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
-
+      notifySuccess(userContext)
     },
 
 
 
 
     *addManualAdjustment({ payload }, { call, put }) {
+      const userContext = null
       const {UserOrderService} = GlobalComponents;
 
       const { id, role, parameters, continueNext } = payload
@@ -276,19 +269,17 @@ export default {
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
       // yield put(routerRedux.push(`/userOrder/${id}/list/${role}CreateForm'))
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       if (continueNext) {
         return
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/userOrder/${id}/list/\ManualAdjustmentList/Manual Adjustment列表`, state: newState }
+      const location = { pathname: `/userOrder/${id}/list/\ManualAdjustmentList/Manual Adjustment+${appLocaleName(userContext,'List')}`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateManualAdjustment({ payload }, { call, put }) {
+      const userContext = null
       const {UserOrderService} = GlobalComponents;      
       const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
       console.log('get form parameters', parameters)
@@ -301,10 +292,7 @@ export default {
       
       const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
       yield put({ type: 'updateState', payload: newPlayload })
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       
       if (continueNext) {
         return
@@ -318,6 +306,7 @@ export default {
       yield put({ type: 'updateState', payload: newPlayload })
     },
     *removeManualAdjustmentList({ payload }, { call, put }) {
+     const userContext = null
       const {UserOrderService} = GlobalComponents; 
       const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
@@ -329,19 +318,14 @@ export default {
       const newPlayload = { ...payload, ...data }
 
       yield put({ type: 'updateState', payload: newPlayload })
-        
-     
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
-
+      notifySuccess(userContext)
     },
 
 
 
 
     *addShippingGroup({ payload }, { call, put }) {
+      const userContext = null
       const {UserOrderService} = GlobalComponents;
 
       const { id, role, parameters, continueNext } = payload
@@ -354,19 +338,17 @@ export default {
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
       // yield put(routerRedux.push(`/userOrder/${id}/list/${role}CreateForm'))
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       if (continueNext) {
         return
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/userOrder/${id}/list/\ShippingGroupList/Shipping Group列表`, state: newState }
+      const location = { pathname: `/userOrder/${id}/list/\ShippingGroupList/Shipping Group+${appLocaleName(userContext,'List')}`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateShippingGroup({ payload }, { call, put }) {
+      const userContext = null
       const {UserOrderService} = GlobalComponents;      
       const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
       console.log('get form parameters', parameters)
@@ -379,10 +361,7 @@ export default {
       
       const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
       yield put({ type: 'updateState', payload: newPlayload })
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       
       if (continueNext) {
         return
@@ -396,6 +375,7 @@ export default {
       yield put({ type: 'updateState', payload: newPlayload })
     },
     *removeShippingGroupList({ payload }, { call, put }) {
+     const userContext = null
       const {UserOrderService} = GlobalComponents; 
       const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
@@ -407,19 +387,14 @@ export default {
       const newPlayload = { ...payload, ...data }
 
       yield put({ type: 'updateState', payload: newPlayload })
-        
-     
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
-
+      notifySuccess(userContext)
     },
 
 
 
 
     *addPaymentGroup({ payload }, { call, put }) {
+      const userContext = null
       const {UserOrderService} = GlobalComponents;
 
       const { id, role, parameters, continueNext } = payload
@@ -432,19 +407,17 @@ export default {
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
       // yield put(routerRedux.push(`/userOrder/${id}/list/${role}CreateForm'))
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       if (continueNext) {
         return
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/userOrder/${id}/list/\PaymentGroupList/Payment Group列表`, state: newState }
+      const location = { pathname: `/userOrder/${id}/list/\PaymentGroupList/Payment Group+${appLocaleName(userContext,'List')}`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updatePaymentGroup({ payload }, { call, put }) {
+      const userContext = null
       const {UserOrderService} = GlobalComponents;      
       const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
       console.log('get form parameters', parameters)
@@ -457,10 +430,7 @@ export default {
       
       const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
       yield put({ type: 'updateState', payload: newPlayload })
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       
       if (continueNext) {
         return
@@ -474,6 +444,7 @@ export default {
       yield put({ type: 'updateState', payload: newPlayload })
     },
     *removePaymentGroupList({ payload }, { call, put }) {
+     const userContext = null
       const {UserOrderService} = GlobalComponents; 
       const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
@@ -485,13 +456,7 @@ export default {
       const newPlayload = { ...payload, ...data }
 
       yield put({ type: 'updateState', payload: newPlayload })
-        
-     
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
-
+      notifySuccess(userContext)
     },
 
   },

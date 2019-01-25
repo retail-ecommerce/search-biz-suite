@@ -9,7 +9,7 @@ import styles from './ShippingAddress.createform.less'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
 import ShippingAddressBase from './ShippingAddress.base'
-
+import appLocaleName from '../../common/Locale.tool'
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
@@ -22,7 +22,7 @@ const testValues = {
   line2: 'Suite 555 - ',
   city: 'Century City - ',
   state: 'CA',
-  zipCode: '903648',
+  zipCode: '836629',
 }
 */
 
@@ -71,7 +71,7 @@ class ShippingAddressCreateForm extends Component {
   render() {
     const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
-
+	const userContext = null
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = ShippingAddressBase
     const {ShippingAddressService} = GlobalComponents
@@ -120,9 +120,10 @@ class ShippingAddressCreateForm extends Component {
     
     const goback = () => {
       const { owner } = this.props
+     
       dispatch({
         type: `${owner.type}/goback`,
-        payload: { id: owner.id, type: 'shippingAddress',listName:'Shipping Address列表' },
+        payload: { id: owner.id, type: 'shippingAddress',listName:appLocaleName(userContext,"List") },
       })
     }
     const errors = getFieldsError()
@@ -153,7 +154,7 @@ class ShippingAddressCreateForm extends Component {
       return (
         <span className={styles.errorIcon}>
           <Popover
-            title="表单校验信息"
+            title={appLocaleName(userContext,"FieldValidateInfo")}
             content={errorList}
             overlayClassName={styles.errorPopover}
             trigger="click"
@@ -197,18 +198,18 @@ class ShippingAddressCreateForm extends Component {
     }
     return (
       <PageHeaderLayout
-        title="新建一个Shipping Address"
-        content="新建一个Shipping Address"
+        title={appLocaleName(userContext,"CreateNew")}
+        content={appLocaleName(userContext,"CreateNew")}
         wrapperClassName={styles.advancedForm}
       >
-        <Card title="基础信息" className={styles.card} bordered={false}>
+        <Card title={appLocaleName(userContext,"BasicInfo")} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.name} {...formItemLayout}>
                   {getFieldDecorator('name', {
-                    rules: [{ required: true, message: '请输入Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Name" />
                   )}
@@ -218,7 +219,7 @@ class ShippingAddressCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.line1} {...formItemLayout}>
                   {getFieldDecorator('line1', {
-                    rules: [{ required: true, message: '请输入Line1' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Line1" />
                   )}
@@ -228,7 +229,7 @@ class ShippingAddressCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.line2} {...formItemLayout}>
                   {getFieldDecorator('line2', {
-                    rules: [{ required: true, message: '请输入Line2' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Line2" />
                   )}
@@ -238,7 +239,7 @@ class ShippingAddressCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.city} {...formItemLayout}>
                   {getFieldDecorator('city', {
-                    rules: [{ required: true, message: '请输入City' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入City" />
                   )}
@@ -248,7 +249,7 @@ class ShippingAddressCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.state} {...formItemLayout}>
                   {getFieldDecorator('state', {
-                    rules: [{ required: true, message: '请输入State' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入State" />
                   )}
@@ -258,7 +259,7 @@ class ShippingAddressCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.zipCode} {...formItemLayout}>
                   {getFieldDecorator('zipCode', {
-                    rules: [{ required: true, message: '请输入Zip Code' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Zip Code" />
                   )}
@@ -285,13 +286,13 @@ class ShippingAddressCreateForm extends Component {
         <FooterToolbar>
           {getErrorInfo()}
           <Button type="primary" onClick={submitCreateForm} loading={submitting} htmlType="submit">
-            提交
+            {appLocaleName(userContext,"Submit")}
           </Button>
           <Button type="primary" onClick={submitCreateFormAndContinue} loading={submitting}>
-            提交并建下一个
+            {appLocaleName(userContext,"SubmitAndContinue")}
           </Button>
           <Button type="danger" onClick={goback} loading={submitting}>
-            放弃
+            {appLocaleName(userContext,"Discard")}
           </Button>
         </FooterToolbar>
       </PageHeaderLayout>

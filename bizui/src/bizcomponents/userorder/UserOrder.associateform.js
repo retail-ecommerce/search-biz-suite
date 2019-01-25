@@ -9,7 +9,7 @@ import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
 import UserOrderBase from './UserOrder.base'
 import SelectObject from '../../components/SelectObject'
-
+import appLocaleName from '../../common/Locale.tool'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
@@ -19,8 +19,8 @@ const testValues = {};
 /*
 const testValues = {
   title: 'a consumer order',
-  totalAdjustment: '77.18',
-  totalAmount: '7767.90',
+  totalAdjustment: '96.63',
+  totalAmount: '9162.06',
   lastUpdateTime: 'lastUpdateTime()',
   userId: 'P000001',
   platformId: 'P000001',
@@ -75,6 +75,8 @@ class UserOrderAssociateForm extends Component {
 	const { form, dispatch, submitting, role,data,owner,toggleAssociatePaymentVisible,visible,onCancel, onCreate } = this.props
     const { convertedImagesValues } = this.state
     const {UserOrderService} = GlobalComponents
+    const userContext = null
+    
  const {LineItemModalTable} = GlobalComponents;
  const {OrderPromotionModalTable} = GlobalComponents;
  const {ManualAdjustmentModalTable} = GlobalComponents;
@@ -126,24 +128,24 @@ class UserOrderAssociateForm extends Component {
       labelCol: { span: 14 },
       wrapperCol: { span: 4 },
     }
-    
+   
     return (
  <Modal
-          title="创建新的支付"
+          title={appLocaleName(userContext,"CreateNew")}
           visible={visible}
           onOk={onCancel}
           onCancel={onCancel}
           width={920}
           style={{ top: 40}}
         >
-        <Card title="基础信息"  className={styles.card} style={{ backgroundColor:"#eee" }}>
+        <Card title={appLocaleName(userContext,"BasicInfo")}  className={styles.card} style={{ backgroundColor:"#eee" }}>
           <Form >
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.title} {...formItemLayout}>
                   {getFieldDecorator('title', {
-                    rules: [{ required: true, message: '请输入Title' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Title" />
                   )}
@@ -153,7 +155,7 @@ class UserOrderAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.totalAdjustment} {...formItemLayout}>
                   {getFieldDecorator('totalAdjustment', {
-                    rules: [{ required: true, message: '请输入Total Adjustment' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Total Adjustment" />
                   )}
@@ -163,7 +165,7 @@ class UserOrderAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.totalAmount} {...formItemLayout}>
                   {getFieldDecorator('totalAmount', {
-                    rules: [{ required: true, message: '请输入Total Amount' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Total Amount" />
                   )}
@@ -173,7 +175,7 @@ class UserOrderAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.lastUpdateTime} {...formItemLayout}>
                   {getFieldDecorator('lastUpdateTime', {
-                    rules: [{ required: true, message: '请输入Last Update Time' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Last Update Time" />
                   )}
@@ -201,7 +203,7 @@ class UserOrderAssociateForm extends Component {
                 <Form.Item label={fieldLabels.user} {...formItemLayout}>
                   {getFieldDecorator('userId', {
                   	initialValue: tryinit('user'),
-                    rules: [{ required: true, message: '请输入User' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                 <SelectObject 
                     disabled={!availableForEdit('user')}
@@ -216,7 +218,7 @@ class UserOrderAssociateForm extends Component {
                 <Form.Item label={fieldLabels.platform} {...formItemLayout}>
                   {getFieldDecorator('platformId', {
                   	initialValue: tryinit('platform'),
-                    rules: [{ required: true, message: '请输入Platform' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                 <SelectObject 
                     disabled={!availableForEdit('platform')}

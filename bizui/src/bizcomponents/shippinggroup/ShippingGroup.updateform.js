@@ -10,6 +10,7 @@ import FooterToolbar from '../../components/FooterToolbar'
 
 import styles from './ShippingGroup.updateform.less'
 import ShippingGroupBase from './ShippingGroup.base'
+import appLocaleName from '../../common/Locale.tool'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
@@ -88,6 +89,7 @@ class ShippingGroupUpdateForm extends Component {
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
+    const userContext = null
     const {fieldLabels} = ShippingGroupBase
     const capFirstChar = (value)=>{
     	//const upper = value.replace(/^\w/, c => c.toUpperCase());
@@ -100,7 +102,7 @@ class ShippingGroupUpdateForm extends Component {
           console.log('code go here', error)
           return
         }
-
+		
         const { owner, role } = this.props
         const shippingGroupId = values.id
         const imagesValues = mapBackToImageValues(convertedImagesValues)
@@ -184,7 +186,7 @@ class ShippingGroupUpdateForm extends Component {
         payload: {
           id: owner.id,
           type: 'shippingGroup',
-          listName:'Shipping Group列表' 
+          listName:appLocaleName(userContext,"List") 
         },
       })
     }
@@ -215,7 +217,7 @@ class ShippingGroupUpdateForm extends Component {
       return (
         <span className={styles.errorIcon}>
           <Popover
-            title="表单校验信息"
+            title={appLocaleName(userContext,"FieldValidateInfo")}
             content={errorList}
             overlayClassName={styles.errorPopover}
             trigger="click"
@@ -229,7 +231,7 @@ class ShippingGroupUpdateForm extends Component {
     }
     
     if (!selectedRows) {
-      return (<div>缺少被更新的对象</div>)
+      return (<div>{appLocaleName(userContext,"NoTargetItems")}</div>)
     }
 	const selectedRow = this.getSelectedRow()
 
@@ -244,11 +246,11 @@ class ShippingGroupUpdateForm extends Component {
 
     return (
       <PageHeaderLayout
-        title={"更新Shipping Group"+(currentUpdateIndex+1)+"/"+selectedRows.length}
-        content="更新Shipping Group"
+        title={appLocaleName(userContext,"Update")+(currentUpdateIndex+1)+"/"+selectedRows.length}
+        content={appLocaleName(userContext,"Update")}
         wrapperClassName={styles.advancedForm}
       >
-        <Card title="基础信息" className={styles.card} bordered={false}>
+        <Card title={appLocaleName(userContext,"BasicInfo")} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
             
@@ -257,7 +259,7 @@ class ShippingGroupUpdateForm extends Component {
                 <Form.Item label={fieldLabels.id} {...formItemLayout}>
                   {getFieldDecorator('id', {
                     initialValue: selectedRow.id,
-                    rules: [{ required: true, message: '请输入Id' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Id" disabled/>
                     
@@ -269,7 +271,7 @@ class ShippingGroupUpdateForm extends Component {
                 <Form.Item label={fieldLabels.name} {...formItemLayout}>
                   {getFieldDecorator('name', {
                     initialValue: selectedRow.name,
-                    rules: [{ required: true, message: '请输入Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Name" />
                     
@@ -281,7 +283,7 @@ class ShippingGroupUpdateForm extends Component {
                 <Form.Item label={fieldLabels.line1} {...formItemLayout}>
                   {getFieldDecorator('line1', {
                     initialValue: selectedRow.line1,
-                    rules: [{ required: true, message: '请输入Line1' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Line1" />
                     
@@ -293,7 +295,7 @@ class ShippingGroupUpdateForm extends Component {
                 <Form.Item label={fieldLabels.line2} {...formItemLayout}>
                   {getFieldDecorator('line2', {
                     initialValue: selectedRow.line2,
-                    rules: [{ required: true, message: '请输入Line2' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Line2" />
                     
@@ -305,7 +307,7 @@ class ShippingGroupUpdateForm extends Component {
                 <Form.Item label={fieldLabels.city} {...formItemLayout}>
                   {getFieldDecorator('city', {
                     initialValue: selectedRow.city,
-                    rules: [{ required: true, message: '请输入City' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入City" />
                     
@@ -317,7 +319,7 @@ class ShippingGroupUpdateForm extends Component {
                 <Form.Item label={fieldLabels.state} {...formItemLayout}>
                   {getFieldDecorator('state', {
                     initialValue: selectedRow.state,
-                    rules: [{ required: true, message: '请输入State' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入State" />
                     
@@ -329,7 +331,7 @@ class ShippingGroupUpdateForm extends Component {
                 <Form.Item label={fieldLabels.zipCode} {...formItemLayout}>
                   {getFieldDecorator('zipCode', {
                     initialValue: selectedRow.zipCode,
-                    rules: [{ required: true, message: '请输入Zip Code' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Zip Code" />
                     
@@ -341,7 +343,7 @@ class ShippingGroupUpdateForm extends Component {
                 <Form.Item label={fieldLabels.country} {...formItemLayout}>
                   {getFieldDecorator('country', {
                     initialValue: selectedRow.country,
-                    rules: [{ required: true, message: '请输入Country' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Country" />
                     
@@ -361,16 +363,16 @@ class ShippingGroupUpdateForm extends Component {
         <FooterToolbar>
           {getErrorInfo()}
           <Button type="primary" onClick={submitUpdateForm} loading={submitting} htmlType="submit">
-            更新
+            {appLocaleName(userContext,"Update")}
           </Button>
           <Button type="primary" onClick={submitUpdateFormAndContinue} loading={submitting} disabled={currentUpdateIndex + 1 >= selectedRows.length}>
-            更新并装载下一个
+            {appLocaleName(userContext,"UpdateAndContinue")}
           </Button>
           <Button type="default" onClick={skipToNext} loading={submitting} disabled={currentUpdateIndex + 1 >= selectedRows.length}>
-            略过
+            {appLocaleName(userContext,"Skip")}
           </Button>
           <Button type="default" onClick={goback} loading={submitting}>
-            取消
+            {appLocaleName(userContext,"Cancel")}
           </Button>
         </FooterToolbar>
       </PageHeaderLayout>

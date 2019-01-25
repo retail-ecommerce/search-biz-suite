@@ -31,6 +31,7 @@ import GlobalFooter from '../../components/GlobalFooter';
 import GlobalComponents from '../../custcomponents';
 
 import PermissionSettingService from '../../permission/PermissionSetting.service'
+import appLocaleName from '../../common/Locale.tool'
 
 const  {  filterForMenuPermission } = PermissionSettingService
 
@@ -76,9 +77,7 @@ const query = {
 class PlatformBizApp extends React.PureComponent {
   constructor(props) {
     super(props)
-    // 把一级 Layout 的 children 作为菜单项
-    // this.menus = getNavData().reduce((arr, current) => arr.concat(current.children), [])
-    this.state = {
+     this.state = {
       openKeys: this.getDefaultCollapsedSubMenus(props),
     }
   }
@@ -117,7 +116,7 @@ class PlatformBizApp extends React.PureComponent {
     const menuData = sessionObject('menuData')
     const targetApp = sessionObject('targetApp')
 	const {objectId}=targetApp;
-  
+  	const userContext = null
     return (
       
 		  <Menu
@@ -133,22 +132,22 @@ class PlatformBizApp extends React.PureComponent {
            
 
              <Menu.Item key="dashboard">
-               <Link to={`/platform/${this.props.platform.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
+               <Link to={`/platform/${this.props.platform.id}/dashboard`}><Icon type="dashboard" /><span>{appLocaleName(userContext,"Dashboard")}</span></Link>
              </Menu.Item>
              
 		 <Menu.Item key="homepage">
-               <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
+               <Link to={"/home"}><Icon type="home" /><span>{appLocaleName(userContext,"Home")}</span></Link>
              </Menu.Item>
              
              
          {filteredMenuItems(targetObject,this).map((item)=>(<Menu.Item key={item.name}>
-          <Link to={`/${menuData.menuFor}/${objectId}/list/${item.name}/${item.displayName}列表`}>
+          <Link to={`/${menuData.menuFor}/${objectId}/list/${item.name}/${item.displayName}${appLocaleName(userContext,"List")}`}>
           <Icon type="bars" /><span>{item.displayName}</span>
           </Link>
         </Menu.Item>))}
        
        <Menu.Item key="preference">
-               <Link to={`/platform/${this.props.platform.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+               <Link to={`/platform/${this.props.platform.id}/preference`}><Icon type="setting" /><span>{appLocaleName(userContext,"Preference")}</span></Link>
              </Menu.Item>
       
            </Menu>
@@ -160,6 +159,7 @@ class PlatformBizApp extends React.PureComponent {
 
   getSiteSearch = () => {
     const {SiteSearch} = GlobalComponents;
+    const userContext = null
     return connect(state => ({
       rule: state.rule,
       name: "Site",
@@ -176,11 +176,12 @@ class PlatformBizApp extends React.PureComponent {
       owner: { type: '_platform', id: state._platform.id, 
       referenceName: 'platform', 
       listName: 'siteList', ref:state._platform, 
-      listDisplayName: 'Site列表' }, // this is for model namespace and
+      listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(SiteSearch)
   }
   getSiteCreateForm = () => {
    	const {SiteCreateForm} = GlobalComponents;
+   	const userContext = null
     return connect(state => ({
       rule: state.rule,
       role: "site",
@@ -190,22 +191,24 @@ class PlatformBizApp extends React.PureComponent {
       currentPage: state._platform.siteCurrentPageNumber,
       searchFormParameters: state._platform.siteSearchFormParameters,
       loading: state._platform.loading,
-      owner: { type: '_platform', id: state._platform.id, referenceName: 'platform', listName: 'siteList', ref:state._platform, listDisplayName: 'Site列表'}, // this is for model namespace and
+      owner: { type: '_platform', id: state._platform.id, referenceName: 'platform', listName: 'siteList', ref:state._platform, listDisplayName: appLocaleName(userContext,"List")}, // this is for model namespace and
     }))(SiteCreateForm)
   }
   
   getSiteUpdateForm = () => {
+    const userContext = null
   	const {SiteUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._platform.selectedRows,
       role: "site",
       currentUpdateIndex: state._platform.currentUpdateIndex,
-      owner: { type: '_platform', id: state._platform.id, listName: 'siteList', ref:state._platform, listDisplayName: 'Site列表' }, // this is for model namespace and
+      owner: { type: '_platform', id: state._platform.id, listName: 'siteList', ref:state._platform, listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(SiteUpdateForm)
   }
 
   getProfileSearch = () => {
     const {ProfileSearch} = GlobalComponents;
+    const userContext = null
     return connect(state => ({
       rule: state.rule,
       name: "Profile",
@@ -222,11 +225,12 @@ class PlatformBizApp extends React.PureComponent {
       owner: { type: '_platform', id: state._platform.id, 
       referenceName: 'platform', 
       listName: 'profileList', ref:state._platform, 
-      listDisplayName: 'Profile列表' }, // this is for model namespace and
+      listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(ProfileSearch)
   }
   getProfileCreateForm = () => {
    	const {ProfileCreateForm} = GlobalComponents;
+   	const userContext = null
     return connect(state => ({
       rule: state.rule,
       role: "profile",
@@ -236,22 +240,24 @@ class PlatformBizApp extends React.PureComponent {
       currentPage: state._platform.profileCurrentPageNumber,
       searchFormParameters: state._platform.profileSearchFormParameters,
       loading: state._platform.loading,
-      owner: { type: '_platform', id: state._platform.id, referenceName: 'platform', listName: 'profileList', ref:state._platform, listDisplayName: 'Profile列表'}, // this is for model namespace and
+      owner: { type: '_platform', id: state._platform.id, referenceName: 'platform', listName: 'profileList', ref:state._platform, listDisplayName: appLocaleName(userContext,"List")}, // this is for model namespace and
     }))(ProfileCreateForm)
   }
   
   getProfileUpdateForm = () => {
+    const userContext = null
   	const {ProfileUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._platform.selectedRows,
       role: "profile",
       currentUpdateIndex: state._platform.currentUpdateIndex,
-      owner: { type: '_platform', id: state._platform.id, listName: 'profileList', ref:state._platform, listDisplayName: 'Profile列表' }, // this is for model namespace and
+      owner: { type: '_platform', id: state._platform.id, listName: 'profileList', ref:state._platform, listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(ProfileUpdateForm)
   }
 
   getUserOrderSearch = () => {
     const {UserOrderSearch} = GlobalComponents;
+    const userContext = null
     return connect(state => ({
       rule: state.rule,
       name: "User Order",
@@ -268,11 +274,12 @@ class PlatformBizApp extends React.PureComponent {
       owner: { type: '_platform', id: state._platform.id, 
       referenceName: 'platform', 
       listName: 'userOrderList', ref:state._platform, 
-      listDisplayName: 'User Order列表' }, // this is for model namespace and
+      listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(UserOrderSearch)
   }
   getUserOrderCreateForm = () => {
    	const {UserOrderCreateForm} = GlobalComponents;
+   	const userContext = null
     return connect(state => ({
       rule: state.rule,
       role: "userOrder",
@@ -282,17 +289,18 @@ class PlatformBizApp extends React.PureComponent {
       currentPage: state._platform.userOrderCurrentPageNumber,
       searchFormParameters: state._platform.userOrderSearchFormParameters,
       loading: state._platform.loading,
-      owner: { type: '_platform', id: state._platform.id, referenceName: 'platform', listName: 'userOrderList', ref:state._platform, listDisplayName: 'User Order列表'}, // this is for model namespace and
+      owner: { type: '_platform', id: state._platform.id, referenceName: 'platform', listName: 'userOrderList', ref:state._platform, listDisplayName: appLocaleName(userContext,"List")}, // this is for model namespace and
     }))(UserOrderCreateForm)
   }
   
   getUserOrderUpdateForm = () => {
+    const userContext = null
   	const {UserOrderUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._platform.selectedRows,
       role: "userOrder",
       currentUpdateIndex: state._platform.currentUpdateIndex,
-      owner: { type: '_platform', id: state._platform.id, listName: 'userOrderList', ref:state._platform, listDisplayName: 'User Order列表' }, // this is for model namespace and
+      owner: { type: '_platform', id: state._platform.id, listName: 'userOrderList', ref:state._platform, listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(UserOrderUpdateForm)
   }
 
@@ -365,16 +373,11 @@ class PlatformBizApp extends React.PureComponent {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
      const { breadcrumb }  = this.props
-
-     //const {PlatformEditDetail} = GlobalComponents
-     //const {PlatformViewDetail} = GlobalComponents
-     
-     
+  
      const targetApp = sessionObject('targetApp')
      const currentBreadcrumb =sessionObject(targetApp.id)
+     const userContext = null
      
-     
-     // Don't show popup menu when it is been collapsed
      const menuProps = collapsed ? {} : {
        openKeys: this.state.openKeys,
      }
@@ -396,7 +399,7 @@ class PlatformBizApp extends React.PureComponent {
          </div>
           <div className={styles.right}  >
           <Button type="primary"  icon="logout" onClick={()=>this.logout()}>
-          退出</Button>
+          {appLocaleName(userContext,"Exit")}</Button>
           </div>
           
         </Header>

@@ -222,9 +222,10 @@ public class LevelTwoCategoryJDBCTemplateDAO extends SearchNamingServiceDAO impl
  		return checkOptions(options,LevelTwoCategoryTokens.LEVEL_N_CATEGORY_LIST);
  	}
  	protected boolean isAnalyzeLevelNCategoryListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,LevelTwoCategoryTokens.LEVEL_N_CATEGORY_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,LevelTwoCategoryTokens.LEVEL_N_CATEGORY_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveLevelNCategoryListEnabled(Map<String,Object> options){
 		return checkOptions(options, LevelTwoCategoryTokens.LEVEL_N_CATEGORY_LIST);
 		
@@ -266,7 +267,7 @@ public class LevelTwoCategoryJDBCTemplateDAO extends SearchNamingServiceDAO impl
 	 		extractLevelNCategoryList(levelTwoCategory, loadOptions);
  		}	
  		if(isAnalyzeLevelNCategoryListEnabled(loadOptions)){
-	 		// analyzeLevelNCategoryList(levelTwoCategory, loadOptions);
+	 		analyzeLevelNCategoryList(levelTwoCategory, loadOptions);
  		}
  		
 		

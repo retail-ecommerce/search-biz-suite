@@ -9,7 +9,7 @@ import styles from './LineItem.createform.less'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
 import LineItemBase from './LineItem.base'
-
+import appLocaleName from '../../common/Locale.tool'
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
@@ -19,8 +19,8 @@ const testValues = {};
 const testValues = {
   name: 'Jeans - Large',
   quantity: '11',
-  price: '87.01',
-  discountPrice: '8.19',
+  price: '99.79',
+  discountPrice: '8.82',
   userOrderId: 'UO000001',
 }
 */
@@ -70,7 +70,7 @@ class LineItemCreateForm extends Component {
   render() {
     const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
-
+	const userContext = null
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = LineItemBase
     const {LineItemService} = GlobalComponents
@@ -119,9 +119,10 @@ class LineItemCreateForm extends Component {
     
     const goback = () => {
       const { owner } = this.props
+     
       dispatch({
         type: `${owner.type}/goback`,
-        payload: { id: owner.id, type: 'lineItem',listName:'Line Item列表' },
+        payload: { id: owner.id, type: 'lineItem',listName:appLocaleName(userContext,"List") },
       })
     }
     const errors = getFieldsError()
@@ -152,7 +153,7 @@ class LineItemCreateForm extends Component {
       return (
         <span className={styles.errorIcon}>
           <Popover
-            title="表单校验信息"
+            title={appLocaleName(userContext,"FieldValidateInfo")}
             content={errorList}
             overlayClassName={styles.errorPopover}
             trigger="click"
@@ -196,18 +197,18 @@ class LineItemCreateForm extends Component {
     }
     return (
       <PageHeaderLayout
-        title="新建一个Line Item"
-        content="新建一个Line Item"
+        title={appLocaleName(userContext,"CreateNew")}
+        content={appLocaleName(userContext,"CreateNew")}
         wrapperClassName={styles.advancedForm}
       >
-        <Card title="基础信息" className={styles.card} bordered={false}>
+        <Card title={appLocaleName(userContext,"BasicInfo")} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.name} {...formItemLayout}>
                   {getFieldDecorator('name', {
-                    rules: [{ required: true, message: '请输入Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Name" />
                   )}
@@ -217,7 +218,7 @@ class LineItemCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.quantity} {...formItemLayout}>
                   {getFieldDecorator('quantity', {
-                    rules: [{ required: true, message: '请输入Quantity' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Quantity" />
                   )}
@@ -227,7 +228,7 @@ class LineItemCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.price} {...formItemLayout}>
                   {getFieldDecorator('price', {
-                    rules: [{ required: true, message: '请输入Price' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Price" />
                   )}
@@ -237,7 +238,7 @@ class LineItemCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.discountPrice} {...formItemLayout}>
                   {getFieldDecorator('discountPrice', {
-                    rules: [{ required: true, message: '请输入Discount Price' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Discount Price" />
                   )}
@@ -261,7 +262,7 @@ class LineItemCreateForm extends Component {
 
 
 
-        <Card title="关联" className={styles.card} bordered={false}>
+        <Card title={appLocaleName(userContext,"Associate")} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
 
@@ -269,7 +270,7 @@ class LineItemCreateForm extends Component {
                 <Form.Item label={fieldLabels.userOrder} {...formItemLayout}>
                   {getFieldDecorator('userOrderId', {
                   	initialValue: tryinit('userOrder'),
-                    rules: [{ required: true, message: '请输入User Order' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                   
                   <SelectObject 
@@ -289,13 +290,13 @@ class LineItemCreateForm extends Component {
         <FooterToolbar>
           {getErrorInfo()}
           <Button type="primary" onClick={submitCreateForm} loading={submitting} htmlType="submit">
-            提交
+            {appLocaleName(userContext,"Submit")}
           </Button>
           <Button type="primary" onClick={submitCreateFormAndContinue} loading={submitting}>
-            提交并建下一个
+            {appLocaleName(userContext,"SubmitAndContinue")}
           </Button>
           <Button type="danger" onClick={goback} loading={submitting}>
-            放弃
+            {appLocaleName(userContext,"Discard")}
           </Button>
         </FooterToolbar>
       </PageHeaderLayout>

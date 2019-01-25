@@ -9,7 +9,7 @@ import styles from './ProductRecommendation.createform.less'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
 import ProductRecommendationBase from './ProductRecommendation.base'
-
+import appLocaleName from '../../common/Locale.tool'
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
@@ -71,7 +71,7 @@ class ProductRecommendationCreateForm extends Component {
   render() {
     const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
-
+	const userContext = null
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = ProductRecommendationBase
     const {ProductRecommendationService} = GlobalComponents
@@ -120,9 +120,10 @@ class ProductRecommendationCreateForm extends Component {
     
     const goback = () => {
       const { owner } = this.props
+     
       dispatch({
         type: `${owner.type}/goback`,
-        payload: { id: owner.id, type: 'productRecommendation',listName:'Product Recommendation列表' },
+        payload: { id: owner.id, type: 'productRecommendation',listName:appLocaleName(userContext,"List") },
       })
     }
     const errors = getFieldsError()
@@ -153,7 +154,7 @@ class ProductRecommendationCreateForm extends Component {
       return (
         <span className={styles.errorIcon}>
           <Popover
-            title="表单校验信息"
+            title={appLocaleName(userContext,"FieldValidateInfo")}
             content={errorList}
             overlayClassName={styles.errorPopover}
             trigger="click"
@@ -197,18 +198,18 @@ class ProductRecommendationCreateForm extends Component {
     }
     return (
       <PageHeaderLayout
-        title="新建一个Product Recommendation"
-        content="新建一个Product Recommendation"
+        title={appLocaleName(userContext,"CreateNew")}
+        content={appLocaleName(userContext,"CreateNew")}
         wrapperClassName={styles.advancedForm}
       >
-        <Card title="基础信息" className={styles.card} bordered={false}>
+        <Card title={appLocaleName(userContext,"BasicInfo")} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.name} {...formItemLayout}>
                   {getFieldDecorator('name', {
-                    rules: [{ required: true, message: '请输入Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Name" />
                   )}
@@ -218,7 +219,7 @@ class ProductRecommendationCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.origin} {...formItemLayout}>
                   {getFieldDecorator('origin', {
-                    rules: [{ required: true, message: '请输入Origin' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Origin" />
                   )}
@@ -228,7 +229,7 @@ class ProductRecommendationCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.lastUpdateTime} {...formItemLayout}>
                   {getFieldDecorator('lastUpdateTime', {
-                    rules: [{ required: true, message: '请输入Last Update Time' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Last Update Time" />
                   )}
@@ -254,9 +255,9 @@ class ProductRecommendationCreateForm extends Component {
               <Col lg={24} md={24} sm={24}>
                 <Form.Item>
                   {getFieldDecorator('remark', {
-                    rules: [{ required: true, message: '请输入Remark' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
-                    <TextArea rows={4} placeholder="请输入请输入Remark" />
+                    <TextArea rows={4} placeholder={appLocaleName(userContext,"PleaseInput")} />
                   )}
                 </Form.Item>
               </Col>
@@ -268,7 +269,7 @@ class ProductRecommendationCreateForm extends Component {
 
 
 
-        <Card title="关联" className={styles.card} bordered={false}>
+        <Card title={appLocaleName(userContext,"Associate")} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
 
@@ -276,7 +277,7 @@ class ProductRecommendationCreateForm extends Component {
                 <Form.Item label={fieldLabels.brand} {...formItemLayout}>
                   {getFieldDecorator('brandId', {
                   	initialValue: tryinit('brand'),
-                    rules: [{ required: true, message: '请输入Brand' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                   
                   <SelectObject 
@@ -293,7 +294,7 @@ class ProductRecommendationCreateForm extends Component {
                 <Form.Item label={fieldLabels.product} {...formItemLayout}>
                   {getFieldDecorator('productId', {
                   	initialValue: tryinit('product'),
-                    rules: [{ required: true, message: '请输入Product' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                   
                   <SelectObject 
@@ -313,13 +314,13 @@ class ProductRecommendationCreateForm extends Component {
         <FooterToolbar>
           {getErrorInfo()}
           <Button type="primary" onClick={submitCreateForm} loading={submitting} htmlType="submit">
-            提交
+            {appLocaleName(userContext,"Submit")}
           </Button>
           <Button type="primary" onClick={submitCreateFormAndContinue} loading={submitting}>
-            提交并建下一个
+            {appLocaleName(userContext,"SubmitAndContinue")}
           </Button>
           <Button type="danger" onClick={goback} loading={submitting}>
-            放弃
+            {appLocaleName(userContext,"Discard")}
           </Button>
         </FooterToolbar>
       </PageHeaderLayout>

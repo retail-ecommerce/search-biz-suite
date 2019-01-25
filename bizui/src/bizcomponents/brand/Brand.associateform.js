@@ -9,7 +9,7 @@ import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
 import BrandBase from './Brand.base'
 import SelectObject from '../../components/SelectObject'
-
+import appLocaleName from '../../common/Locale.tool'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
@@ -72,6 +72,8 @@ class BrandAssociateForm extends Component {
 	const { form, dispatch, submitting, role,data,owner,toggleAssociatePaymentVisible,visible,onCancel, onCreate } = this.props
     const { convertedImagesValues } = this.state
     const {BrandService} = GlobalComponents
+    const userContext = null
+    
  const {ProductModalTable} = GlobalComponents;
  const {ProductRecommendationModalTable} = GlobalComponents;
 
@@ -120,24 +122,24 @@ class BrandAssociateForm extends Component {
       labelCol: { span: 14 },
       wrapperCol: { span: 4 },
     }
-    
+   
     return (
  <Modal
-          title="创建新的支付"
+          title={appLocaleName(userContext,"CreateNew")}
           visible={visible}
           onOk={onCancel}
           onCancel={onCancel}
           width={920}
           style={{ top: 40}}
         >
-        <Card title="基础信息"  className={styles.card} style={{ backgroundColor:"#eee" }}>
+        <Card title={appLocaleName(userContext,"BasicInfo")}  className={styles.card} style={{ backgroundColor:"#eee" }}>
           <Form >
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.brandName} {...formItemLayout}>
                   {getFieldDecorator('brandName', {
-                    rules: [{ required: true, message: '请输入Brand Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Brand Name" />
                   )}
@@ -159,9 +161,9 @@ class BrandAssociateForm extends Component {
               <Col lg={24} md={24} sm={24}>
                 <Form.Item>
                   {getFieldDecorator('remark', {
-                    rules: [{ required: true, message: '请输入Remark' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
-                    <TextArea rows={4} placeholder="请输入请输入Remark" />
+                    <TextArea rows={4} placeholder={appLocaleName(userContext,"PleaseInput")} />
                   )}
                 </Form.Item>
               </Col>

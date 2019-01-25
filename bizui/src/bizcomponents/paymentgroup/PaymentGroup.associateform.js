@@ -9,7 +9,7 @@ import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
 import PaymentGroupBase from './PaymentGroup.base'
 import SelectObject from '../../components/SelectObject'
-
+import appLocaleName from '../../common/Locale.tool'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
@@ -19,7 +19,7 @@ const testValues = {};
 /*
 const testValues = {
   name: 'Pay for order',
-  amount: '95.09',
+  amount: '102.48',
   status: 'PAID',
   userOrderId: 'UO000001',
 }
@@ -73,6 +73,8 @@ class PaymentGroupAssociateForm extends Component {
 	const { form, dispatch, submitting, role,data,owner,toggleAssociatePaymentVisible,visible,onCancel, onCreate } = this.props
     const { convertedImagesValues } = this.state
     const {PaymentGroupService} = GlobalComponents
+    const userContext = null
+    
 
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
@@ -119,24 +121,24 @@ class PaymentGroupAssociateForm extends Component {
       labelCol: { span: 14 },
       wrapperCol: { span: 4 },
     }
-    
+   
     return (
  <Modal
-          title="创建新的支付"
+          title={appLocaleName(userContext,"CreateNew")}
           visible={visible}
           onOk={onCancel}
           onCancel={onCancel}
           width={920}
           style={{ top: 40}}
         >
-        <Card title="基础信息"  className={styles.card} style={{ backgroundColor:"#eee" }}>
+        <Card title={appLocaleName(userContext,"BasicInfo")}  className={styles.card} style={{ backgroundColor:"#eee" }}>
           <Form >
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.name} {...formItemLayout}>
                   {getFieldDecorator('name', {
-                    rules: [{ required: true, message: '请输入Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Name" />
                   )}
@@ -146,7 +148,7 @@ class PaymentGroupAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.amount} {...formItemLayout}>
                   {getFieldDecorator('amount', {
-                    rules: [{ required: true, message: '请输入Amount' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Amount" />
                   )}
@@ -156,7 +158,7 @@ class PaymentGroupAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.status} {...formItemLayout}>
                   {getFieldDecorator('status', {
-                    rules: [{ required: true, message: '请输入Status' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Status" />
                   )}
@@ -184,7 +186,7 @@ class PaymentGroupAssociateForm extends Component {
                 <Form.Item label={fieldLabels.userOrder} {...formItemLayout}>
                   {getFieldDecorator('userOrderId', {
                   	initialValue: tryinit('userOrder'),
-                    rules: [{ required: true, message: '请输入User Order' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                 <SelectObject 
                     disabled={!availableForEdit('userOrder')}

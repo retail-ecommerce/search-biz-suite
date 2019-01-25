@@ -5,14 +5,14 @@ import { Table, Alert, Badge } from 'antd'
 import styles from './ShippingAddress.table.less'
 import ImagePreview from '../../components/ImagePreview'
 import ShippingAddressBase from './ShippingAddress.base'
-
+import appLocaleName from '../../common/Locale.tool'
 
 class ShippingAddressModalTable extends PureComponent {
   render() {
     // const { data,count,current, owner } = this.props
     const { data } = this.props
 	const {displayColumns} = ShippingAddressBase
-	
+	const userContext = null
 	if(!data){
 		return null
 	}
@@ -26,7 +26,7 @@ class ShippingAddressModalTable extends PureComponent {
           <Alert
             message={(
               <p>
-                一共 <a style={{ fontWeight: 600 }}>{data.length}</a> 项 
+                {appLocaleName(userContext,"Totally")} <a style={{ fontWeight: 600 }}>{data.length}</a> {appLocaleName(userContext,"Items")} 
               </p>
             )}
             type="warning"

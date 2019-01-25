@@ -20,7 +20,7 @@ import DescriptionList from '../../components/DescriptionList';
 import ImagePreview from '../../components/ImagePreview';
 import GlobalComponents from '../../custcomponents';
 import DashboardTool from '../../common/Dashboard.tool'
-
+import appLocaleName from '../../common/Locale.tool'
 
 const {aggregateDataset,calcKey, defaultHideCloseTrans,
   defaultImageListOf,defaultSettingListOf,defaultBuildTransferModal,
@@ -76,7 +76,7 @@ const internalSummaryOf = (lineItem,targetComponent) =>{
 	
 	
 	const {LineItemService} = GlobalComponents
-	
+	const userContext = null
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="Id">{lineItem.id}</Description> 
@@ -84,7 +84,7 @@ const internalSummaryOf = (lineItem,targetComponent) =>{
 <Description term="Quantity">{lineItem.quantity}</Description> 
 <Description term="Price">{lineItem.price}</Description> 
 <Description term="Discount Price">{lineItem.discountPrice}</Description> 
-<Description term="User Order">{lineItem.userOrder==null?"未分配":lineItem.userOrder.displayName}
+<Description term="User Order">{lineItem.userOrder==null?appLocaleName(userContext,"NotAssigned"):lineItem.userOrder.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"User Order","userOrder",LineItemService.requestCandidateUserOrder,
 	      LineItemService.transferToAnotherUserOrder,"anotherUserOrderId",lineItem.userOrder?lineItem.userOrder.id:"")} 
@@ -105,7 +105,7 @@ class LineItemDashboard extends Component {
     candidateReferenceList: {},
     candidateServiceName:"",
     candidateObjectType:"city",
-    targetLocalName:"城市",
+    targetLocalName:"",
     transferServiceName:"",
     currentValue:"",
     transferTargetParameterName:"",  
@@ -132,7 +132,6 @@ class LineItemDashboard extends Component {
     
       	],
   	};
-    //下面各个渲染方法都可以定制，只要在每个模型的里面的_features="custom"就可以得到定制的例子
     
     const renderExtraHeader = this.props.renderExtraHeader || internalRenderExtraHeader
     const settingListOf = this.props.settingListOf || internalSettingListOf

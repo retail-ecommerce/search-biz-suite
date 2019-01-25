@@ -9,7 +9,7 @@ import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
 import ProfileBase from './Profile.base'
 import SelectObject from '../../components/SelectObject'
-
+import appLocaleName from '../../common/Locale.tool'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
@@ -19,7 +19,7 @@ const testValues = {};
 /*
 const testValues = {
   name: 'Philip Zhang',
-  age: '40',
+  age: '32',
   gender: 'male',
   lastUpdateTime: 'lastUpdateTime()',
   platformId: 'P000001',
@@ -74,6 +74,8 @@ class ProfileAssociateForm extends Component {
 	const { form, dispatch, submitting, role,data,owner,toggleAssociatePaymentVisible,visible,onCancel, onCreate } = this.props
     const { convertedImagesValues } = this.state
     const {ProfileService} = GlobalComponents
+    const userContext = null
+    
  const {UserOrderModalTable} = GlobalComponents;
 
 
@@ -121,24 +123,24 @@ class ProfileAssociateForm extends Component {
       labelCol: { span: 14 },
       wrapperCol: { span: 4 },
     }
-    
+   
     return (
  <Modal
-          title="创建新的支付"
+          title={appLocaleName(userContext,"CreateNew")}
           visible={visible}
           onOk={onCancel}
           onCancel={onCancel}
           width={920}
           style={{ top: 40}}
         >
-        <Card title="基础信息"  className={styles.card} style={{ backgroundColor:"#eee" }}>
+        <Card title={appLocaleName(userContext,"BasicInfo")}  className={styles.card} style={{ backgroundColor:"#eee" }}>
           <Form >
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.name} {...formItemLayout}>
                   {getFieldDecorator('name', {
-                    rules: [{ required: true, message: '请输入Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Name" />
                   )}
@@ -148,7 +150,7 @@ class ProfileAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.age} {...formItemLayout}>
                   {getFieldDecorator('age', {
-                    rules: [{ required: true, message: '请输入Age' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Age" />
                   )}
@@ -158,7 +160,7 @@ class ProfileAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.gender} {...formItemLayout}>
                   {getFieldDecorator('gender', {
-                    rules: [{ required: true, message: '请输入Gender' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Gender" />
                   )}
@@ -168,7 +170,7 @@ class ProfileAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.lastUpdateTime} {...formItemLayout}>
                   {getFieldDecorator('lastUpdateTime', {
-                    rules: [{ required: true, message: '请输入Last Update Time' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Last Update Time" />
                   )}
@@ -196,7 +198,7 @@ class ProfileAssociateForm extends Component {
                 <Form.Item label={fieldLabels.platform} {...formItemLayout}>
                   {getFieldDecorator('platformId', {
                   	initialValue: tryinit('platform'),
-                    rules: [{ required: true, message: '请输入Platform' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                 <SelectObject 
                     disabled={!availableForEdit('platform')}

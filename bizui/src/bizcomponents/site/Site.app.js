@@ -31,6 +31,7 @@ import GlobalFooter from '../../components/GlobalFooter';
 import GlobalComponents from '../../custcomponents';
 
 import PermissionSettingService from '../../permission/PermissionSetting.service'
+import appLocaleName from '../../common/Locale.tool'
 
 const  {  filterForMenuPermission } = PermissionSettingService
 
@@ -76,9 +77,7 @@ const query = {
 class SiteBizApp extends React.PureComponent {
   constructor(props) {
     super(props)
-    // 把一级 Layout 的 children 作为菜单项
-    // this.menus = getNavData().reduce((arr, current) => arr.concat(current.children), [])
-    this.state = {
+     this.state = {
       openKeys: this.getDefaultCollapsedSubMenus(props),
     }
   }
@@ -117,7 +116,7 @@ class SiteBizApp extends React.PureComponent {
     const menuData = sessionObject('menuData')
     const targetApp = sessionObject('targetApp')
 	const {objectId}=targetApp;
-  
+  	const userContext = null
     return (
       
 		  <Menu
@@ -133,22 +132,22 @@ class SiteBizApp extends React.PureComponent {
            
 
              <Menu.Item key="dashboard">
-               <Link to={`/site/${this.props.site.id}/dashboard`}><Icon type="dashboard" /><span>仪表板</span></Link>
+               <Link to={`/site/${this.props.site.id}/dashboard`}><Icon type="dashboard" /><span>{appLocaleName(userContext,"Dashboard")}</span></Link>
              </Menu.Item>
              
 		 <Menu.Item key="homepage">
-               <Link to={"/home"}><Icon type="home" /><span>回到主页</span></Link>
+               <Link to={"/home"}><Icon type="home" /><span>{appLocaleName(userContext,"Home")}</span></Link>
              </Menu.Item>
              
              
          {filteredMenuItems(targetObject,this).map((item)=>(<Menu.Item key={item.name}>
-          <Link to={`/${menuData.menuFor}/${objectId}/list/${item.name}/${item.displayName}列表`}>
+          <Link to={`/${menuData.menuFor}/${objectId}/list/${item.name}/${item.displayName}${appLocaleName(userContext,"List")}`}>
           <Icon type="bars" /><span>{item.displayName}</span>
           </Link>
         </Menu.Item>))}
        
        <Menu.Item key="preference">
-               <Link to={`/site/${this.props.site.id}/preference`}><Icon type="setting" /><span>设置</span></Link>
+               <Link to={`/site/${this.props.site.id}/preference`}><Icon type="setting" /><span>{appLocaleName(userContext,"Preference")}</span></Link>
              </Menu.Item>
       
            </Menu>
@@ -160,6 +159,7 @@ class SiteBizApp extends React.PureComponent {
 
   getCatalogSearch = () => {
     const {CatalogSearch} = GlobalComponents;
+    const userContext = null
     return connect(state => ({
       rule: state.rule,
       name: "Catalog",
@@ -176,11 +176,12 @@ class SiteBizApp extends React.PureComponent {
       owner: { type: '_site', id: state._site.id, 
       referenceName: 'site', 
       listName: 'catalogList', ref:state._site, 
-      listDisplayName: 'Catalog列表' }, // this is for model namespace and
+      listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(CatalogSearch)
   }
   getCatalogCreateForm = () => {
    	const {CatalogCreateForm} = GlobalComponents;
+   	const userContext = null
     return connect(state => ({
       rule: state.rule,
       role: "catalog",
@@ -190,17 +191,18 @@ class SiteBizApp extends React.PureComponent {
       currentPage: state._site.catalogCurrentPageNumber,
       searchFormParameters: state._site.catalogSearchFormParameters,
       loading: state._site.loading,
-      owner: { type: '_site', id: state._site.id, referenceName: 'site', listName: 'catalogList', ref:state._site, listDisplayName: 'Catalog列表'}, // this is for model namespace and
+      owner: { type: '_site', id: state._site.id, referenceName: 'site', listName: 'catalogList', ref:state._site, listDisplayName: appLocaleName(userContext,"List")}, // this is for model namespace and
     }))(CatalogCreateForm)
   }
   
   getCatalogUpdateForm = () => {
+    const userContext = null
   	const {CatalogUpdateForm} = GlobalComponents;
     return connect(state => ({
       selectedRows: state._site.selectedRows,
       role: "catalog",
       currentUpdateIndex: state._site.currentUpdateIndex,
-      owner: { type: '_site', id: state._site.id, listName: 'catalogList', ref:state._site, listDisplayName: 'Catalog列表' }, // this is for model namespace and
+      owner: { type: '_site', id: state._site.id, listName: 'catalogList', ref:state._site, listDisplayName: appLocaleName(userContext,"List") }, // this is for model namespace and
     }))(CatalogUpdateForm)
   }
 
@@ -265,16 +267,11 @@ class SiteBizApp extends React.PureComponent {
      // const { collapsed, fetchingNotices,loading } = this.props
      const { collapsed } = this.props
      const { breadcrumb }  = this.props
-
-     //const {SiteEditDetail} = GlobalComponents
-     //const {SiteViewDetail} = GlobalComponents
-     
-     
+  
      const targetApp = sessionObject('targetApp')
      const currentBreadcrumb =sessionObject(targetApp.id)
+     const userContext = null
      
-     
-     // Don't show popup menu when it is been collapsed
      const menuProps = collapsed ? {} : {
        openKeys: this.state.openKeys,
      }
@@ -296,7 +293,7 @@ class SiteBizApp extends React.PureComponent {
          </div>
           <div className={styles.right}  >
           <Button type="primary"  icon="logout" onClick={()=>this.logout()}>
-          退出</Button>
+          {appLocaleName(userContext,"Exit")}</Button>
           </div>
           
         </Header>

@@ -9,7 +9,7 @@ import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
 import LineItemBase from './LineItem.base'
 import SelectObject from '../../components/SelectObject'
-
+import appLocaleName from '../../common/Locale.tool'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
@@ -19,9 +19,9 @@ const testValues = {};
 /*
 const testValues = {
   name: 'Jeans - Large',
-  quantity: '12',
-  price: '93.86',
-  discountPrice: '10.18',
+  quantity: '10',
+  price: '98.87',
+  discountPrice: '10.08',
   userOrderId: 'UO000001',
 }
 */
@@ -74,6 +74,8 @@ class LineItemAssociateForm extends Component {
 	const { form, dispatch, submitting, role,data,owner,toggleAssociatePaymentVisible,visible,onCancel, onCreate } = this.props
     const { convertedImagesValues } = this.state
     const {LineItemService} = GlobalComponents
+    const userContext = null
+    
 
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
@@ -120,24 +122,24 @@ class LineItemAssociateForm extends Component {
       labelCol: { span: 14 },
       wrapperCol: { span: 4 },
     }
-    
+   
     return (
  <Modal
-          title="创建新的支付"
+          title={appLocaleName(userContext,"CreateNew")}
           visible={visible}
           onOk={onCancel}
           onCancel={onCancel}
           width={920}
           style={{ top: 40}}
         >
-        <Card title="基础信息"  className={styles.card} style={{ backgroundColor:"#eee" }}>
+        <Card title={appLocaleName(userContext,"BasicInfo")}  className={styles.card} style={{ backgroundColor:"#eee" }}>
           <Form >
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.name} {...formItemLayout}>
                   {getFieldDecorator('name', {
-                    rules: [{ required: true, message: '请输入Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Name" />
                   )}
@@ -147,7 +149,7 @@ class LineItemAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.quantity} {...formItemLayout}>
                   {getFieldDecorator('quantity', {
-                    rules: [{ required: true, message: '请输入Quantity' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Quantity" />
                   )}
@@ -157,7 +159,7 @@ class LineItemAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.price} {...formItemLayout}>
                   {getFieldDecorator('price', {
-                    rules: [{ required: true, message: '请输入Price' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Price" />
                   )}
@@ -167,7 +169,7 @@ class LineItemAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.discountPrice} {...formItemLayout}>
                   {getFieldDecorator('discountPrice', {
-                    rules: [{ required: true, message: '请输入Discount Price' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Discount Price" />
                   )}
@@ -195,7 +197,7 @@ class LineItemAssociateForm extends Component {
                 <Form.Item label={fieldLabels.userOrder} {...formItemLayout}>
                   {getFieldDecorator('userOrderId', {
                   	initialValue: tryinit('userOrder'),
-                    rules: [{ required: true, message: '请输入User Order' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                 <SelectObject 
                     disabled={!availableForEdit('userOrder')}

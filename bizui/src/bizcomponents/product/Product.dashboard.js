@@ -20,7 +20,7 @@ import DescriptionList from '../../components/DescriptionList';
 import ImagePreview from '../../components/ImagePreview';
 import GlobalComponents from '../../custcomponents';
 import DashboardTool from '../../common/Dashboard.tool'
-
+import appLocaleName from '../../common/Locale.tool'
 
 const {aggregateDataset,calcKey, defaultHideCloseTrans,
   defaultImageListOf,defaultSettingListOf,defaultBuildTransferModal,
@@ -79,19 +79,19 @@ const internalSummaryOf = (product,targetComponent) =>{
 	
 	
 	const {ProductService} = GlobalComponents
-	
+	const userContext = null
 	return (
 	<DescriptionList className={styles.headerList} size="small" col="4">
 <Description term="Id">{product.id}</Description> 
 <Description term="Name">{product.name}</Description> 
-<Description term="Parent Category">{product.parentCategory==null?"未分配":product.parentCategory.displayName}
+<Description term="Parent Category">{product.parentCategory==null?appLocaleName(userContext,"NotAssigned"):product.parentCategory.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"Parent Category","levelNCategory",ProductService.requestCandidateParentCategory,
 	      ProductService.transferToAnotherParentCategory,"anotherParentCategoryId",product.parentCategory?product.parentCategory.id:"")} 
   style={{fontSize: 20,color:"red"}} />
 </Description>
 <Description term="Origin">{product.origin}</Description> 
-<Description term="Catalog">{product.catalog==null?"未分配":product.catalog.displayName}
+<Description term="Catalog">{product.catalog==null?appLocaleName(userContext,"NotAssigned"):product.catalog.displayName}
  <Icon type="swap" onClick={()=>
   showTransferModel(targetComponent,"Catalog","catalog",ProductService.requestCandidateCatalog,
 	      ProductService.transferToAnotherCatalog,"anotherCatalogId",product.catalog?product.catalog.id:"")} 
@@ -113,7 +113,7 @@ class ProductDashboard extends Component {
     candidateReferenceList: {},
     candidateServiceName:"",
     candidateObjectType:"city",
-    targetLocalName:"城市",
+    targetLocalName:"",
     transferServiceName:"",
     currentValue:"",
     transferTargetParameterName:"",  
@@ -142,7 +142,6 @@ class ProductDashboard extends Component {
     
       	],
   	};
-    //下面各个渲染方法都可以定制，只要在每个模型的里面的_features="custom"就可以得到定制的例子
     
     const renderExtraHeader = this.props.renderExtraHeader || internalRenderExtraHeader
     const settingListOf = this.props.settingListOf || internalSettingListOf

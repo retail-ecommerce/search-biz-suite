@@ -9,7 +9,7 @@ import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
 import SkuBase from './Sku.base'
 import SelectObject from '../../components/SelectObject'
-
+import appLocaleName from '../../common/Locale.tool'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
@@ -20,7 +20,7 @@ const testValues = {};
 const testValues = {
   name: 'Jeans - Large',
   size: 'Large',
-  basePrice: '98.64',
+  basePrice: '102.64',
   lastUpdateTime: 'lastUpdateTime()',
   productId: 'P000001',
 }
@@ -74,6 +74,8 @@ class SkuAssociateForm extends Component {
 	const { form, dispatch, submitting, role,data,owner,toggleAssociatePaymentVisible,visible,onCancel, onCreate } = this.props
     const { convertedImagesValues } = this.state
     const {SkuService} = GlobalComponents
+    const userContext = null
+    
 
 
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
@@ -120,24 +122,24 @@ class SkuAssociateForm extends Component {
       labelCol: { span: 14 },
       wrapperCol: { span: 4 },
     }
-    
+   
     return (
  <Modal
-          title="创建新的支付"
+          title={appLocaleName(userContext,"CreateNew")}
           visible={visible}
           onOk={onCancel}
           onCancel={onCancel}
           width={920}
           style={{ top: 40}}
         >
-        <Card title="基础信息"  className={styles.card} style={{ backgroundColor:"#eee" }}>
+        <Card title={appLocaleName(userContext,"BasicInfo")}  className={styles.card} style={{ backgroundColor:"#eee" }}>
           <Form >
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.name} {...formItemLayout}>
                   {getFieldDecorator('name', {
-                    rules: [{ required: true, message: '请输入Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Name" />
                   )}
@@ -147,7 +149,7 @@ class SkuAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.size} {...formItemLayout}>
                   {getFieldDecorator('size', {
-                    rules: [{ required: true, message: '请输入Size' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Size" />
                   )}
@@ -157,7 +159,7 @@ class SkuAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.basePrice} {...formItemLayout}>
                   {getFieldDecorator('basePrice', {
-                    rules: [{ required: true, message: '请输入Base Price' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Base Price" />
                   )}
@@ -167,7 +169,7 @@ class SkuAssociateForm extends Component {
               <Col lg={12} md={12} sm={12}>
                 <Form.Item label={fieldLabels.lastUpdateTime} {...formItemLayout}>
                   {getFieldDecorator('lastUpdateTime', {
-                    rules: [{ required: true, message: '请输入Last Update Time' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Last Update Time" />
                   )}
@@ -186,10 +188,10 @@ class SkuAssociateForm extends Component {
                 <Form.Item label={fieldLabels.active}  {...switchFormItemLayout}>
                   {getFieldDecorator('active', {
                     initialValue: false,
-                    rules: [{ required: true, message: '请输入Active' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                     valuePropName: 'checked'
                   })(
-                    <Switch checkedChildren="是" unCheckedChildren="否"  placeholder="请输入Activebool" />
+                    <Switch checkedChildren={appLocaleName(userContext,"Yes")} unCheckedChildren={appLocaleName(userContext,"No")}  placeholder={appLocaleName(userContext,"PleaseInput")} />
                   )}
                 </Form.Item>
               </Col>
@@ -214,7 +216,7 @@ class SkuAssociateForm extends Component {
                 <Form.Item label={fieldLabels.product} {...formItemLayout}>
                   {getFieldDecorator('productId', {
                   	initialValue: tryinit('product'),
-                    rules: [{ required: true, message: '请输入Product' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                 <SelectObject 
                     disabled={!availableForEdit('product')}

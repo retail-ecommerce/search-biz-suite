@@ -10,6 +10,7 @@ import FooterToolbar from '../../components/FooterToolbar'
 
 import styles from './UserOrder.updateform.less'
 import UserOrderBase from './UserOrder.base'
+import appLocaleName from '../../common/Locale.tool'
 
 const { Option } = Select
 const { RangePicker } = DatePicker
@@ -88,6 +89,7 @@ class UserOrderUpdateForm extends Component {
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const { convertedImagesValues } = this.state
     const { setFieldsValue } = this.props.form
+    const userContext = null
     const {fieldLabels} = UserOrderBase
     const capFirstChar = (value)=>{
     	//const upper = value.replace(/^\w/, c => c.toUpperCase());
@@ -100,7 +102,7 @@ class UserOrderUpdateForm extends Component {
           console.log('code go here', error)
           return
         }
-
+		
         const { owner, role } = this.props
         const userOrderId = values.id
         const imagesValues = mapBackToImageValues(convertedImagesValues)
@@ -184,7 +186,7 @@ class UserOrderUpdateForm extends Component {
         payload: {
           id: owner.id,
           type: 'userOrder',
-          listName:'User Order列表' 
+          listName:appLocaleName(userContext,"List") 
         },
       })
     }
@@ -215,7 +217,7 @@ class UserOrderUpdateForm extends Component {
       return (
         <span className={styles.errorIcon}>
           <Popover
-            title="表单校验信息"
+            title={appLocaleName(userContext,"FieldValidateInfo")}
             content={errorList}
             overlayClassName={styles.errorPopover}
             trigger="click"
@@ -229,7 +231,7 @@ class UserOrderUpdateForm extends Component {
     }
     
     if (!selectedRows) {
-      return (<div>缺少被更新的对象</div>)
+      return (<div>{appLocaleName(userContext,"NoTargetItems")}</div>)
     }
 	const selectedRow = this.getSelectedRow()
 
@@ -244,11 +246,11 @@ class UserOrderUpdateForm extends Component {
 
     return (
       <PageHeaderLayout
-        title={"更新User Order"+(currentUpdateIndex+1)+"/"+selectedRows.length}
-        content="更新User Order"
+        title={appLocaleName(userContext,"Update")+(currentUpdateIndex+1)+"/"+selectedRows.length}
+        content={appLocaleName(userContext,"Update")}
         wrapperClassName={styles.advancedForm}
       >
-        <Card title="基础信息" className={styles.card} bordered={false}>
+        <Card title={appLocaleName(userContext,"BasicInfo")} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
             
@@ -257,7 +259,7 @@ class UserOrderUpdateForm extends Component {
                 <Form.Item label={fieldLabels.id} {...formItemLayout}>
                   {getFieldDecorator('id', {
                     initialValue: selectedRow.id,
-                    rules: [{ required: true, message: '请输入Id' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Id" disabled/>
                     
@@ -269,7 +271,7 @@ class UserOrderUpdateForm extends Component {
                 <Form.Item label={fieldLabels.title} {...formItemLayout}>
                   {getFieldDecorator('title', {
                     initialValue: selectedRow.title,
-                    rules: [{ required: true, message: '请输入Title' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Title" />
                     
@@ -281,7 +283,7 @@ class UserOrderUpdateForm extends Component {
                 <Form.Item label={fieldLabels.totalAdjustment} {...formItemLayout}>
                   {getFieldDecorator('totalAdjustment', {
                     initialValue: selectedRow.totalAdjustment,
-                    rules: [{ required: true, message: '请输入Total Adjustment' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Total Adjustment" />
                     
@@ -293,7 +295,7 @@ class UserOrderUpdateForm extends Component {
                 <Form.Item label={fieldLabels.totalAmount} {...formItemLayout}>
                   {getFieldDecorator('totalAmount', {
                     initialValue: selectedRow.totalAmount,
-                    rules: [{ required: true, message: '请输入Total Amount' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Total Amount" />
                     
@@ -305,7 +307,7 @@ class UserOrderUpdateForm extends Component {
                 <Form.Item label={fieldLabels.lastUpdateTime} {...formItemLayout}>
                   {getFieldDecorator('lastUpdateTime', {
                     initialValue: selectedRow.lastUpdateTime,
-                    rules: [{ required: true, message: '请输入Last Update Time' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Last Update Time" />
                     
@@ -325,16 +327,16 @@ class UserOrderUpdateForm extends Component {
         <FooterToolbar>
           {getErrorInfo()}
           <Button type="primary" onClick={submitUpdateForm} loading={submitting} htmlType="submit">
-            更新
+            {appLocaleName(userContext,"Update")}
           </Button>
           <Button type="primary" onClick={submitUpdateFormAndContinue} loading={submitting} disabled={currentUpdateIndex + 1 >= selectedRows.length}>
-            更新并装载下一个
+            {appLocaleName(userContext,"UpdateAndContinue")}
           </Button>
           <Button type="default" onClick={skipToNext} loading={submitting} disabled={currentUpdateIndex + 1 >= selectedRows.length}>
-            略过
+            {appLocaleName(userContext,"Skip")}
           </Button>
           <Button type="default" onClick={goback} loading={submitting}>
-            取消
+            {appLocaleName(userContext,"Cancel")}
           </Button>
         </FooterToolbar>
       </PageHeaderLayout>

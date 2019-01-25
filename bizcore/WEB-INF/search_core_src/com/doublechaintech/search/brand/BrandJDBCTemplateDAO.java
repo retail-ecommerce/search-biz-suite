@@ -225,9 +225,10 @@ public class BrandJDBCTemplateDAO extends SearchNamingServiceDAO implements Bran
  		return checkOptions(options,BrandTokens.PRODUCT_LIST);
  	}
  	protected boolean isAnalyzeProductListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,BrandTokens.PRODUCT_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,BrandTokens.PRODUCT_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveProductListEnabled(Map<String,Object> options){
 		return checkOptions(options, BrandTokens.PRODUCT_LIST);
 		
@@ -239,9 +240,10 @@ public class BrandJDBCTemplateDAO extends SearchNamingServiceDAO implements Bran
  		return checkOptions(options,BrandTokens.PRODUCT_RECOMMENDATION_LIST);
  	}
  	protected boolean isAnalyzeProductRecommendationListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,BrandTokens.PRODUCT_RECOMMENDATION_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,BrandTokens.PRODUCT_RECOMMENDATION_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveProductRecommendationListEnabled(Map<String,Object> options){
 		return checkOptions(options, BrandTokens.PRODUCT_RECOMMENDATION_LIST);
 		
@@ -279,7 +281,7 @@ public class BrandJDBCTemplateDAO extends SearchNamingServiceDAO implements Bran
 	 		extractProductList(brand, loadOptions);
  		}	
  		if(isAnalyzeProductListEnabled(loadOptions)){
-	 		// analyzeProductList(brand, loadOptions);
+	 		analyzeProductList(brand, loadOptions);
  		}
  		
 		
@@ -287,7 +289,7 @@ public class BrandJDBCTemplateDAO extends SearchNamingServiceDAO implements Bran
 	 		extractProductRecommendationList(brand, loadOptions);
  		}	
  		if(isAnalyzeProductRecommendationListEnabled(loadOptions)){
-	 		// analyzeProductRecommendationList(brand, loadOptions);
+	 		analyzeProductRecommendationList(brand, loadOptions);
  		}
  		
 		

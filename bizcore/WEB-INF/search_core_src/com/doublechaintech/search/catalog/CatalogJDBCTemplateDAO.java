@@ -250,9 +250,10 @@ public class CatalogJDBCTemplateDAO extends SearchNamingServiceDAO implements Ca
  		return checkOptions(options,CatalogTokens.LEVEL_ONE_CATEGORY_LIST);
  	}
  	protected boolean isAnalyzeLevelOneCategoryListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,CatalogTokens.LEVEL_ONE_CATEGORY_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,CatalogTokens.LEVEL_ONE_CATEGORY_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveLevelOneCategoryListEnabled(Map<String,Object> options){
 		return checkOptions(options, CatalogTokens.LEVEL_ONE_CATEGORY_LIST);
 		
@@ -264,9 +265,10 @@ public class CatalogJDBCTemplateDAO extends SearchNamingServiceDAO implements Ca
  		return checkOptions(options,CatalogTokens.PRODUCT_LIST);
  	}
  	protected boolean isAnalyzeProductListEnabled(Map<String,Object> options){		
- 		return checkOptions(options,CatalogTokens.PRODUCT_LIST+".analyze");
+ 		return true;
+ 		//return checkOptions(options,CatalogTokens.PRODUCT_LIST+".analyze");
  	}
-
+	
 	protected boolean isSaveProductListEnabled(Map<String,Object> options){
 		return checkOptions(options, CatalogTokens.PRODUCT_LIST);
 		
@@ -308,7 +310,7 @@ public class CatalogJDBCTemplateDAO extends SearchNamingServiceDAO implements Ca
 	 		extractLevelOneCategoryList(catalog, loadOptions);
  		}	
  		if(isAnalyzeLevelOneCategoryListEnabled(loadOptions)){
-	 		// analyzeLevelOneCategoryList(catalog, loadOptions);
+	 		analyzeLevelOneCategoryList(catalog, loadOptions);
  		}
  		
 		
@@ -316,7 +318,7 @@ public class CatalogJDBCTemplateDAO extends SearchNamingServiceDAO implements Ca
 	 		extractProductList(catalog, loadOptions);
  		}	
  		if(isAnalyzeProductListEnabled(loadOptions)){
-	 		// analyzeProductList(catalog, loadOptions);
+	 		analyzeProductList(catalog, loadOptions);
  		}
  		
 		

@@ -4,9 +4,18 @@ import pathToRegexp from 'path-to-regexp'
 import { routerRedux } from 'dva/router'
 import { notification } from 'antd'
 import GlobalComponents from '../../custcomponents';
-
+import appLocaleName from '../../common/Locale.tool'
 import modeltool from '../../utils/modeltool'
 const {setupModel,hasError,handleClientError,handleServerError,keepValueWithKeySuffix}=modeltool
+
+const notifySuccess=(userContext)=>{
+
+	notification.success({
+        message: appLocaleName(userContext,'Success'),
+        description: appLocaleName(userContext,'Success'),
+      })
+
+}
 
 
 export default {
@@ -68,14 +77,15 @@ export default {
     },
     
     *doJob({ payload }, { call, put }) { 
+      const userContext = null
       const {TaskService} = GlobalComponents;
       //yield put({ type: 'showLoading', payload })      
       const {serviceNameToCall, id, parameters} = payload;
       if(!serviceNameToCall){
-      	handleClientError("没有提供后台服务的名字, 该服务没有注册")
+      	handleClientError(appLocaleName(userContext,'ServiceNotRegistered'))
       	return;
       }
-      
+      "react/dva_object_model.jsp"
       
       const data = yield call(serviceNameToCall, id, parameters)
       if(handleServerError(data)){
@@ -108,6 +118,7 @@ export default {
 
 
     *addSite({ payload }, { call, put }) {
+      const userContext = null
       const {PlatformService} = GlobalComponents;
 
       const { id, role, parameters, continueNext } = payload
@@ -120,19 +131,17 @@ export default {
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
       // yield put(routerRedux.push(`/platform/${id}/list/${role}CreateForm'))
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       if (continueNext) {
         return
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/platform/${id}/list/\SiteList/Site列表`, state: newState }
+      const location = { pathname: `/platform/${id}/list/\SiteList/Site+${appLocaleName(userContext,'List')}`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateSite({ payload }, { call, put }) {
+      const userContext = null
       const {PlatformService} = GlobalComponents;      
       const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
       console.log('get form parameters', parameters)
@@ -145,10 +154,7 @@ export default {
       
       const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
       yield put({ type: 'updateState', payload: newPlayload })
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       
       if (continueNext) {
         return
@@ -162,6 +168,7 @@ export default {
       yield put({ type: 'updateState', payload: newPlayload })
     },
     *removeSiteList({ payload }, { call, put }) {
+     const userContext = null
       const {PlatformService} = GlobalComponents; 
       const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
@@ -173,19 +180,14 @@ export default {
       const newPlayload = { ...payload, ...data }
 
       yield put({ type: 'updateState', payload: newPlayload })
-        
-     
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
-
+      notifySuccess(userContext)
     },
 
 
 
 
     *addProfile({ payload }, { call, put }) {
+      const userContext = null
       const {PlatformService} = GlobalComponents;
 
       const { id, role, parameters, continueNext } = payload
@@ -198,19 +200,17 @@ export default {
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
       // yield put(routerRedux.push(`/platform/${id}/list/${role}CreateForm'))
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       if (continueNext) {
         return
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/platform/${id}/list/\ProfileList/Profile列表`, state: newState }
+      const location = { pathname: `/platform/${id}/list/\ProfileList/Profile+${appLocaleName(userContext,'List')}`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateProfile({ payload }, { call, put }) {
+      const userContext = null
       const {PlatformService} = GlobalComponents;      
       const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
       console.log('get form parameters', parameters)
@@ -223,10 +223,7 @@ export default {
       
       const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
       yield put({ type: 'updateState', payload: newPlayload })
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       
       if (continueNext) {
         return
@@ -240,6 +237,7 @@ export default {
       yield put({ type: 'updateState', payload: newPlayload })
     },
     *removeProfileList({ payload }, { call, put }) {
+     const userContext = null
       const {PlatformService} = GlobalComponents; 
       const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
@@ -251,19 +249,14 @@ export default {
       const newPlayload = { ...payload, ...data }
 
       yield put({ type: 'updateState', payload: newPlayload })
-        
-     
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
-
+      notifySuccess(userContext)
     },
 
 
 
 
     *addUserOrder({ payload }, { call, put }) {
+      const userContext = null
       const {PlatformService} = GlobalComponents;
 
       const { id, role, parameters, continueNext } = payload
@@ -276,19 +269,17 @@ export default {
       const newPlayload = { ...payload, ...data }
       yield put({ type: 'updateState', payload: newPlayload })
       // yield put(routerRedux.push(`/platform/${id}/list/${role}CreateForm'))
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       if (continueNext) {
         return
       }
       const partialList = true
       const newState = {...data, partialList}
-      const location = { pathname: `/platform/${id}/list/\UserOrderList/User Order列表`, state: newState }
+      const location = { pathname: `/platform/${id}/list/\UserOrderList/User Order+${appLocaleName(userContext,'List')}`, state: newState }
       yield put(routerRedux.push(location))
     },
     *updateUserOrder({ payload }, { call, put }) {
+      const userContext = null
       const {PlatformService} = GlobalComponents;      
       const { id, type, parameters, continueNext, selectedRows, currentUpdateIndex } = payload
       console.log('get form parameters', parameters)
@@ -301,10 +292,7 @@ export default {
       
       const newPlayload = { ...payload, ...data, selectedRows, currentUpdateIndex,partialList }
       yield put({ type: 'updateState', payload: newPlayload })
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
+      notifySuccess(userContext)
       
       if (continueNext) {
         return
@@ -318,6 +306,7 @@ export default {
       yield put({ type: 'updateState', payload: newPlayload })
     },
     *removeUserOrderList({ payload }, { call, put }) {
+     const userContext = null
       const {PlatformService} = GlobalComponents; 
       const { id, role, parameters, continueNext } = payload
       console.log('get form parameters', parameters)
@@ -329,13 +318,7 @@ export default {
       const newPlayload = { ...payload, ...data }
 
       yield put({ type: 'updateState', payload: newPlayload })
-        
-     
-      notification.success({
-        message: '执行成功',
-        description: '执行成功',
-      })
-
+      notifySuccess(userContext)
     },
 
   },

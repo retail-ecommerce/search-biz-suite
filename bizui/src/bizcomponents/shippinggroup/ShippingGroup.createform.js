@@ -9,7 +9,7 @@ import styles from './ShippingGroup.createform.less'
 import {mapBackToImageValues, mapFromImageValues} from '../../axios/tools'
 import GlobalComponents from '../../custcomponents';
 import ShippingGroupBase from './ShippingGroup.base'
-
+import appLocaleName from '../../common/Locale.tool'
 const { Option } = Select
 const { RangePicker } = DatePicker
 const { TextArea } = Input
@@ -22,7 +22,7 @@ const testValues = {
   line2: 'Suite 555 - ',
   city: 'Century City - ',
   state: 'CA',
-  zipCode: '801004',
+  zipCode: '772634',
   country: 'US',
   userOrderId: 'UO000001',
 }
@@ -73,7 +73,7 @@ class ShippingGroupCreateForm extends Component {
   render() {
     const { form, dispatch, submitting, role } = this.props
     const { convertedImagesValues } = this.state
-
+	const userContext = null
     const { getFieldDecorator, validateFieldsAndScroll, getFieldsError } = form
     const {fieldLabels} = ShippingGroupBase
     const {ShippingGroupService} = GlobalComponents
@@ -122,9 +122,10 @@ class ShippingGroupCreateForm extends Component {
     
     const goback = () => {
       const { owner } = this.props
+     
       dispatch({
         type: `${owner.type}/goback`,
-        payload: { id: owner.id, type: 'shippingGroup',listName:'Shipping Group列表' },
+        payload: { id: owner.id, type: 'shippingGroup',listName:appLocaleName(userContext,"List") },
       })
     }
     const errors = getFieldsError()
@@ -155,7 +156,7 @@ class ShippingGroupCreateForm extends Component {
       return (
         <span className={styles.errorIcon}>
           <Popover
-            title="表单校验信息"
+            title={appLocaleName(userContext,"FieldValidateInfo")}
             content={errorList}
             overlayClassName={styles.errorPopover}
             trigger="click"
@@ -199,18 +200,18 @@ class ShippingGroupCreateForm extends Component {
     }
     return (
       <PageHeaderLayout
-        title="新建一个Shipping Group"
-        content="新建一个Shipping Group"
+        title={appLocaleName(userContext,"CreateNew")}
+        content={appLocaleName(userContext,"CreateNew")}
         wrapperClassName={styles.advancedForm}
       >
-        <Card title="基础信息" className={styles.card} bordered={false}>
+        <Card title={appLocaleName(userContext,"BasicInfo")} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
 
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.name} {...formItemLayout}>
                   {getFieldDecorator('name', {
-                    rules: [{ required: true, message: '请输入Name' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Name" />
                   )}
@@ -220,7 +221,7 @@ class ShippingGroupCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.line1} {...formItemLayout}>
                   {getFieldDecorator('line1', {
-                    rules: [{ required: true, message: '请输入Line1' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Line1" />
                   )}
@@ -230,7 +231,7 @@ class ShippingGroupCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.line2} {...formItemLayout}>
                   {getFieldDecorator('line2', {
-                    rules: [{ required: true, message: '请输入Line2' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Line2" />
                   )}
@@ -240,7 +241,7 @@ class ShippingGroupCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.city} {...formItemLayout}>
                   {getFieldDecorator('city', {
-                    rules: [{ required: true, message: '请输入City' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入City" />
                   )}
@@ -250,7 +251,7 @@ class ShippingGroupCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.state} {...formItemLayout}>
                   {getFieldDecorator('state', {
-                    rules: [{ required: true, message: '请输入State' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入State" />
                   )}
@@ -260,7 +261,7 @@ class ShippingGroupCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.zipCode} {...formItemLayout}>
                   {getFieldDecorator('zipCode', {
-                    rules: [{ required: true, message: '请输入Zip Code' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Zip Code" />
                   )}
@@ -270,7 +271,7 @@ class ShippingGroupCreateForm extends Component {
               <Col lg={12} md={12} sm={24}>
                 <Form.Item label={fieldLabels.country} {...formItemLayout}>
                   {getFieldDecorator('country', {
-                    rules: [{ required: true, message: '请输入Country' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                     <Input placeholder="请输入Country" />
                   )}
@@ -294,7 +295,7 @@ class ShippingGroupCreateForm extends Component {
 
 
 
-        <Card title="关联" className={styles.card} bordered={false}>
+        <Card title={appLocaleName(userContext,"Associate")} className={styles.card} bordered={false}>
           <Form >
             <Row gutter={16}>
 
@@ -302,7 +303,7 @@ class ShippingGroupCreateForm extends Component {
                 <Form.Item label={fieldLabels.userOrder} {...formItemLayout}>
                   {getFieldDecorator('userOrderId', {
                   	initialValue: tryinit('userOrder'),
-                    rules: [{ required: true, message: '请输入User Order' }],
+                    rules: [{ required: true, message: appLocaleName(userContext,"PleaseInput") }],
                   })(
                   
                   <SelectObject 
@@ -322,13 +323,13 @@ class ShippingGroupCreateForm extends Component {
         <FooterToolbar>
           {getErrorInfo()}
           <Button type="primary" onClick={submitCreateForm} loading={submitting} htmlType="submit">
-            提交
+            {appLocaleName(userContext,"Submit")}
           </Button>
           <Button type="primary" onClick={submitCreateFormAndContinue} loading={submitting}>
-            提交并建下一个
+            {appLocaleName(userContext,"SubmitAndContinue")}
           </Button>
           <Button type="danger" onClick={goback} loading={submitting}>
-            放弃
+            {appLocaleName(userContext,"Discard")}
           </Button>
         </FooterToolbar>
       </PageHeaderLayout>
