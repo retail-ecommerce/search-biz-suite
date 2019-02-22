@@ -27,36 +27,6 @@ public interface PlatformManager{
 	/*======================================================DATA MAINTENANCE===========================================================*/
 	
 
-	//public  SiteManager getSiteManager(SearchUserContext userContext, String platformId, String name, String introduction, String lastUpdateTime ,String [] tokensExpr)  throws Exception;
-	
-	public  Platform addSite(SearchUserContext userContext, String platformId, String name, String introduction, String lastUpdateTime , String [] tokensExpr)  throws Exception;
-	public  Platform removeSite(SearchUserContext userContext, String platformId, String siteId, int siteVersion,String [] tokensExpr)  throws Exception;
-	public  Platform updateSite(SearchUserContext userContext, String platformId, String siteId, int siteVersion, String property, String newValueExpr,String [] tokensExpr)  throws Exception;
-
-	/*
-
-	*/
-
-	//public  ProfileManager getProfileManager(SearchUserContext userContext, String platformId, String name, int age, String gender, String lastUpdateTime ,String [] tokensExpr)  throws Exception;
-	
-	public  Platform addProfile(SearchUserContext userContext, String platformId, String name, int age, String gender, String lastUpdateTime , String [] tokensExpr)  throws Exception;
-	public  Platform removeProfile(SearchUserContext userContext, String platformId, String profileId, int profileVersion,String [] tokensExpr)  throws Exception;
-	public  Platform updateProfile(SearchUserContext userContext, String platformId, String profileId, int profileVersion, String property, String newValueExpr,String [] tokensExpr)  throws Exception;
-
-	/*
-
-	*/
-
-	//public  UserOrderManager getUserOrderManager(SearchUserContext userContext, String platformId, String title, BigDecimal totalAdjustment, BigDecimal totalAmount, String userId, String lastUpdateTime ,String [] tokensExpr)  throws Exception;
-	
-	public  Platform addUserOrder(SearchUserContext userContext, String platformId, String title, BigDecimal totalAdjustment, BigDecimal totalAmount, String userId, String lastUpdateTime , String [] tokensExpr)  throws Exception;
-	public  Platform removeUserOrder(SearchUserContext userContext, String platformId, String userOrderId, int userOrderVersion,String [] tokensExpr)  throws Exception;
-	public  Platform updateUserOrder(SearchUserContext userContext, String platformId, String userOrderId, int userOrderVersion, String property, String newValueExpr,String [] tokensExpr)  throws Exception;
-
-	/*
-
-	*/
-
 
 
 }

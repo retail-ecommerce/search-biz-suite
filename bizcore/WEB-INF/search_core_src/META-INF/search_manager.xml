@@ -11,60 +11,6 @@
 	<bean id="platformManagerBase" class="com.doublechaintech.search.platform.PlatformManagerImpl"/>
 	<bean id="platformManager" class="com.doublechaintech.search.platform.PlatformCustomManagerImpl" parent="platformManagerBase" ></bean>
 	
-	<bean id="siteManagerBase" class="com.doublechaintech.search.site.SiteManagerImpl"/>
-	<bean id="siteManager" class="com.doublechaintech.search.site.SiteManagerImpl" parent="siteManagerBase" ></bean>
-	
-	<bean id="catalogManagerBase" class="com.doublechaintech.search.catalog.CatalogManagerImpl"/>
-	<bean id="catalogManager" class="com.doublechaintech.search.catalog.CatalogCustomManagerImpl" parent="catalogManagerBase" ></bean>
-	
-	<bean id="levelOneCategoryManagerBase" class="com.doublechaintech.search.levelonecategory.LevelOneCategoryManagerImpl"/>
-	<bean id="levelOneCategoryManager" class="com.doublechaintech.search.levelonecategory.LevelOneCategoryManagerImpl" parent="levelOneCategoryManagerBase" ></bean>
-	
-	<bean id="levelTwoCategoryManagerBase" class="com.doublechaintech.search.leveltwocategory.LevelTwoCategoryManagerImpl"/>
-	<bean id="levelTwoCategoryManager" class="com.doublechaintech.search.leveltwocategory.LevelTwoCategoryManagerImpl" parent="levelTwoCategoryManagerBase" ></bean>
-	
-	<bean id="levelNCategoryManagerBase" class="com.doublechaintech.search.levelncategory.LevelNCategoryManagerImpl"/>
-	<bean id="levelNCategoryManager" class="com.doublechaintech.search.levelncategory.LevelNCategoryManagerImpl" parent="levelNCategoryManagerBase" ></bean>
-	
-	<bean id="brandManagerBase" class="com.doublechaintech.search.brand.BrandManagerImpl"/>
-	<bean id="brandManager" class="com.doublechaintech.search.brand.BrandCustomManagerImpl" parent="brandManagerBase" ></bean>
-	
-	<bean id="productManagerBase" class="com.doublechaintech.search.product.ProductManagerImpl"/>
-	<bean id="productManager" class="com.doublechaintech.search.product.ProductCustomManagerImpl" parent="productManagerBase" ></bean>
-	
-	<bean id="productRecommendationManagerBase" class="com.doublechaintech.search.productrecommendation.ProductRecommendationManagerImpl"/>
-	<bean id="productRecommendationManager" class="com.doublechaintech.search.productrecommendation.ProductRecommendationManagerImpl" parent="productRecommendationManagerBase" ></bean>
-	
-	<bean id="skuManagerBase" class="com.doublechaintech.search.sku.SkuManagerImpl"/>
-	<bean id="skuManager" class="com.doublechaintech.search.sku.SkuManagerImpl" parent="skuManagerBase" ></bean>
-	
-	<bean id="profileManagerBase" class="com.doublechaintech.search.profile.ProfileManagerImpl"/>
-	<bean id="profileManager" class="com.doublechaintech.search.profile.ProfileManagerImpl" parent="profileManagerBase" ></bean>
-	
-	<bean id="shippingAddressManagerBase" class="com.doublechaintech.search.shippingaddress.ShippingAddressManagerImpl"/>
-	<bean id="shippingAddressManager" class="com.doublechaintech.search.shippingaddress.ShippingAddressCustomManagerImpl" parent="shippingAddressManagerBase" ></bean>
-	
-	<bean id="paymentMethodManagerBase" class="com.doublechaintech.search.paymentmethod.PaymentMethodManagerImpl"/>
-	<bean id="paymentMethodManager" class="com.doublechaintech.search.paymentmethod.PaymentMethodCustomManagerImpl" parent="paymentMethodManagerBase" ></bean>
-	
-	<bean id="userOrderManagerBase" class="com.doublechaintech.search.userorder.UserOrderManagerImpl"/>
-	<bean id="userOrderManager" class="com.doublechaintech.search.userorder.UserOrderCustomManagerImpl" parent="userOrderManagerBase" ></bean>
-	
-	<bean id="lineItemManagerBase" class="com.doublechaintech.search.lineitem.LineItemManagerImpl"/>
-	<bean id="lineItemManager" class="com.doublechaintech.search.lineitem.LineItemManagerImpl" parent="lineItemManagerBase" ></bean>
-	
-	<bean id="orderPromotionManagerBase" class="com.doublechaintech.search.orderpromotion.OrderPromotionManagerImpl"/>
-	<bean id="orderPromotionManager" class="com.doublechaintech.search.orderpromotion.OrderPromotionManagerImpl" parent="orderPromotionManagerBase" ></bean>
-	
-	<bean id="manualAdjustmentManagerBase" class="com.doublechaintech.search.manualadjustment.ManualAdjustmentManagerImpl"/>
-	<bean id="manualAdjustmentManager" class="com.doublechaintech.search.manualadjustment.ManualAdjustmentManagerImpl" parent="manualAdjustmentManagerBase" ></bean>
-	
-	<bean id="shippingGroupManagerBase" class="com.doublechaintech.search.shippinggroup.ShippingGroupManagerImpl"/>
-	<bean id="shippingGroupManager" class="com.doublechaintech.search.shippinggroup.ShippingGroupManagerImpl" parent="shippingGroupManagerBase" ></bean>
-	
-	<bean id="paymentGroupManagerBase" class="com.doublechaintech.search.paymentgroup.PaymentGroupManagerImpl"/>
-	<bean id="paymentGroupManager" class="com.doublechaintech.search.paymentgroup.PaymentGroupManagerImpl" parent="paymentGroupManagerBase" ></bean>
-	
 	<bean id="userDomainManagerBase" class="com.doublechaintech.search.userdomain.UserDomainManagerImpl"/>
 	<bean id="userDomainManager" class="com.doublechaintech.search.userdomain.UserDomainCustomManagerImpl" parent="userDomainManagerBase" ></bean>
 	
@@ -107,24 +53,6 @@
 
 	<bean id="managerGroupBase" class="com.doublechaintech.search.ManagerGroup">
 		<property name="platformManager" ref="platformManager"/>
-		<property name="siteManager" ref="siteManager"/>
-		<property name="catalogManager" ref="catalogManager"/>
-		<property name="levelOneCategoryManager" ref="levelOneCategoryManager"/>
-		<property name="levelTwoCategoryManager" ref="levelTwoCategoryManager"/>
-		<property name="levelNCategoryManager" ref="levelNCategoryManager"/>
-		<property name="brandManager" ref="brandManager"/>
-		<property name="productManager" ref="productManager"/>
-		<property name="productRecommendationManager" ref="productRecommendationManager"/>
-		<property name="skuManager" ref="skuManager"/>
-		<property name="profileManager" ref="profileManager"/>
-		<property name="shippingAddressManager" ref="shippingAddressManager"/>
-		<property name="paymentMethodManager" ref="paymentMethodManager"/>
-		<property name="userOrderManager" ref="userOrderManager"/>
-		<property name="lineItemManager" ref="lineItemManager"/>
-		<property name="orderPromotionManager" ref="orderPromotionManager"/>
-		<property name="manualAdjustmentManager" ref="manualAdjustmentManager"/>
-		<property name="shippingGroupManager" ref="shippingGroupManager"/>
-		<property name="paymentGroupManager" ref="paymentGroupManager"/>
 		<property name="userDomainManager" ref="userDomainManager"/>
 		<property name="userWhiteListManager" ref="userWhiteListManager"/>
 		<property name="secUserManager" ref="secUserManager"/>

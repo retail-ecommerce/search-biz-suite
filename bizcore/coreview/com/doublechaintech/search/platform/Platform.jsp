@@ -101,9 +101,6 @@
 	  <li class="active"><a data-toggle="tab" href="#summary" class="disabled"><i class="fa  fa-home"></i> ${userContext.localeMap['@summary']}</a></li>
 	 
 	<% Platform result = (Platform)request.getAttribute("result");  %>
-			<li><a data-toggle="tab" href="#siteList" class="disabled"> ${userContext.localeMap['site']}</a></li>
-			<li><a data-toggle="tab" href="#profileList" class="disabled"> ${userContext.localeMap['profile']}</a></li>
-			<li><a data-toggle="tab" href="#userOrderList" class="disabled"> ${userContext.localeMap['user_order']}</a></li>
  
 	</ul>
 	</div>
@@ -147,31 +144,7 @@
 
 	
 
-		<c:if test='${not empty userContext.accessTokens["siteList"] or ignoreListAccessControl}'>
-		<c:set var="siteList" value="${result.siteList}" scope="request"/>
-		<c:set var="siteListName" value="siteList" scope="request"/>
-		<div id="siteList" class="tab-pane fade sublist" refer-name="platform">
-			<sky:include page="com/doublechaintech/search/site/Site$List.jsp"
-					referName="platform"/>
-		</div>
-	</c:if>
-	<c:if test='${not empty userContext.accessTokens["profileList"] or ignoreListAccessControl}'>
-		<c:set var="profileList" value="${result.profileList}" scope="request"/>
-		<c:set var="profileListName" value="profileList" scope="request"/>
-		<div id="profileList" class="tab-pane fade sublist" refer-name="platform">
-			<sky:include page="com/doublechaintech/search/profile/Profile$List.jsp"
-					referName="platform"/>
-		</div>
-	</c:if>
-	<c:if test='${not empty userContext.accessTokens["userOrderList"] or ignoreListAccessControl}'>
-		<c:set var="userOrderList" value="${result.userOrderList}" scope="request"/>
-		<c:set var="userOrderListName" value="userOrderList" scope="request"/>
-		<div id="userOrderList" class="tab-pane fade sublist" refer-name="platform">
-			<sky:include page="com/doublechaintech/search/userorder/UserOrder$List.jsp"
-					referName="platform"/>
-		</div>
-	</c:if>
-
+	
 	
 
 </div><!--<div class="tab-content" style="padding-top: 10px">-->

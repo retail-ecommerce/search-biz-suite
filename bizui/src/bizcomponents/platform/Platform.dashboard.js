@@ -113,7 +113,7 @@ class PlatformDashboard extends Component {
 
   render() {
     // eslint-disable-next-line max-len
-    const { id,displayName, siteListMetaInfo, profileListMetaInfo, userOrderListMetaInfo, siteCount, profileCount, userOrderCount } = this.props.platform
+    const { id,displayName,  } = this.props.platform
     if(!this.props.platform.class){
       return null
     }
@@ -122,9 +122,6 @@ class PlatformDashboard extends Component {
     const cardsData = {cardsName:"Platform",cardsFor: "platform",
     	cardsSource: this.props.platform,returnURL,displayName,
   		subItems: [
-{name: 'siteList', displayName:'Site',type:'site',count:siteCount,addFunction: true, role: 'site', metaInfo: siteListMetaInfo},
-{name: 'profileList', displayName:'Profile',type:'profile',count:profileCount,addFunction: true, role: 'profile', metaInfo: profileListMetaInfo},
-{name: 'userOrderList', displayName:'User Order',type:'userOrder',count:userOrderCount,addFunction: true, role: 'userOrder', metaInfo: userOrderListMetaInfo},
     
       	],
   	};

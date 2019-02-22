@@ -109,51 +109,6 @@ public class BaseRelation{
 	{
 		
 		
-		String [] siteRelatedObjectNames = {"platform:Platform"};
-		addRelationIndex("Site",siteRelatedObjectNames);
-
-		String [] catalogRelatedObjectNames = {"site:Site"};
-		addRelationIndex("Catalog",catalogRelatedObjectNames);
-
-		String [] levelOneCategoryRelatedObjectNames = {"catalog:Catalog"};
-		addRelationIndex("LevelOneCategory",levelOneCategoryRelatedObjectNames);
-
-		String [] levelTwoCategoryRelatedObjectNames = {"parent_category:LevelOneCategory"};
-		addRelationIndex("LevelTwoCategory",levelTwoCategoryRelatedObjectNames);
-
-		String [] levelNCategoryRelatedObjectNames = {"parent_category:LevelTwoCategory"};
-		addRelationIndex("LevelNCategory",levelNCategoryRelatedObjectNames);
-
-		String [] productRelatedObjectNames = {"parent_category:LevelNCategory","brand:Brand","catalog:Catalog"};
-		addRelationIndex("Product",productRelatedObjectNames);
-
-		String [] productRecommendationRelatedObjectNames = {"brand:Brand","product:Product"};
-		addRelationIndex("ProductRecommendation",productRecommendationRelatedObjectNames);
-
-		String [] skuRelatedObjectNames = {"product:Product"};
-		addRelationIndex("Sku",skuRelatedObjectNames);
-
-		String [] profileRelatedObjectNames = {"platform:Platform"};
-		addRelationIndex("Profile",profileRelatedObjectNames);
-
-		String [] userOrderRelatedObjectNames = {"user:Profile","platform:Platform"};
-		addRelationIndex("UserOrder",userOrderRelatedObjectNames);
-
-		String [] lineItemRelatedObjectNames = {"user_order:UserOrder"};
-		addRelationIndex("LineItem",lineItemRelatedObjectNames);
-
-		String [] orderPromotionRelatedObjectNames = {"user_order:UserOrder"};
-		addRelationIndex("OrderPromotion",orderPromotionRelatedObjectNames);
-
-		String [] manualAdjustmentRelatedObjectNames = {"user_order:UserOrder"};
-		addRelationIndex("ManualAdjustment",manualAdjustmentRelatedObjectNames);
-
-		String [] shippingGroupRelatedObjectNames = {"user_order:UserOrder"};
-		addRelationIndex("ShippingGroup",shippingGroupRelatedObjectNames);
-
-		String [] paymentGroupRelatedObjectNames = {"user_order:UserOrder"};
-		addRelationIndex("PaymentGroup",paymentGroupRelatedObjectNames);
-
 		String [] userWhiteListRelatedObjectNames = {"domain:UserDomain"};
 		addRelationIndex("UserWhiteList",userWhiteListRelatedObjectNames);
 
@@ -204,25 +159,6 @@ public class BaseRelation{
 	//default for reading trust chain, the default sequence are MXWR, the order is not affect the result
 	protected void prepareRelation()
 	{
-		addGenericRelation("Site"                                  ,TRUST_CHAIN_READ,"platform");
-		addGenericRelation("Catalog"                               ,TRUST_CHAIN_READ,"site");
-		addGenericRelation("LevelOneCategory"                      ,TRUST_CHAIN_READ,"catalog");
-		addGenericRelation("LevelTwoCategory"                      ,TRUST_CHAIN_READ,"parentCategory");
-		addGenericRelation("LevelNCategory"                        ,TRUST_CHAIN_READ,"parentCategory");
-		addGenericRelation("Product"                               ,TRUST_CHAIN_READ,"parentCategory");
-		addGenericRelation("Product"                               ,TRUST_CHAIN_READ,"brand");
-		addGenericRelation("Product"                               ,TRUST_CHAIN_READ,"catalog");
-		addGenericRelation("ProductRecommendation"                 ,TRUST_CHAIN_READ,"brand");
-		addGenericRelation("ProductRecommendation"                 ,TRUST_CHAIN_READ,"product");
-		addGenericRelation("Sku"                                   ,TRUST_CHAIN_READ,"product");
-		addGenericRelation("Profile"                               ,TRUST_CHAIN_READ,"platform");
-		addGenericRelation("UserOrder"                             ,TRUST_CHAIN_READ,"user");
-		addGenericRelation("UserOrder"                             ,TRUST_CHAIN_READ,"platform");
-		addGenericRelation("LineItem"                              ,TRUST_CHAIN_READ,"userOrder");
-		addGenericRelation("OrderPromotion"                        ,TRUST_CHAIN_READ,"userOrder");
-		addGenericRelation("ManualAdjustment"                      ,TRUST_CHAIN_READ,"userOrder");
-		addGenericRelation("ShippingGroup"                         ,TRUST_CHAIN_READ,"userOrder");
-		addGenericRelation("PaymentGroup"                          ,TRUST_CHAIN_READ,"userOrder");
 		addGenericRelation("UserWhiteList"                         ,TRUST_CHAIN_READ,"domain");
 		addGenericRelation("SecUser"                               ,TRUST_CHAIN_READ,"domain");
 		addGenericRelation("UserApp"                               ,TRUST_CHAIN_READ,"secUser");

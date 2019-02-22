@@ -20,24 +20,6 @@ public class SearchNamingServiceDAO extends CommonJDBCTemplateDAO {
 	static {
 		namingTableMap = new HashMap<String, String[]>();
 		namingTableMap.put("Platform", new String[]{"platform_data","name"});
-		namingTableMap.put("Site", new String[]{"site_data","name"});
-		namingTableMap.put("Catalog", new String[]{"catalog_data","name"});
-		namingTableMap.put("LevelOneCategory", new String[]{"level_one_category_data","name"});
-		namingTableMap.put("LevelTwoCategory", new String[]{"level_two_category_data","name"});
-		namingTableMap.put("LevelNCategory", new String[]{"level_n_category_data","name"});
-		namingTableMap.put("Brand", new String[]{"brand_data","brand_name"});
-		namingTableMap.put("Product", new String[]{"product_data","name"});
-		namingTableMap.put("ProductRecommendation", new String[]{"product_recommendation_data","name"});
-		namingTableMap.put("Sku", new String[]{"sku_data","name"});
-		namingTableMap.put("Profile", new String[]{"profile_data","name"});
-		namingTableMap.put("ShippingAddress", new String[]{"shipping_address_data","name"});
-		namingTableMap.put("PaymentMethod", new String[]{"payment_method_data","name"});
-		namingTableMap.put("UserOrder", new String[]{"user_order_data","title"});
-		namingTableMap.put("LineItem", new String[]{"line_item_data","name"});
-		namingTableMap.put("OrderPromotion", new String[]{"order_promotion_data","name"});
-		namingTableMap.put("ManualAdjustment", new String[]{"manual_adjustment_data","name"});
-		namingTableMap.put("ShippingGroup", new String[]{"shipping_group_data","name"});
-		namingTableMap.put("PaymentGroup", new String[]{"payment_group_data","name"});
 		namingTableMap.put("UserDomain", new String[]{"user_domain_data","name"});
 		namingTableMap.put("UserWhiteList", new String[]{"user_white_list_data","user_identity"});
 		namingTableMap.put("SecUser", new String[]{"sec_user_data","login"});

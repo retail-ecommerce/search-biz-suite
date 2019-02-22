@@ -3,24 +3,6 @@ package com.doublechaintech.search;
 import java.util.Map;
 
 import com.doublechaintech.search.platform.Platform;
-import com.doublechaintech.search.site.Site;
-import com.doublechaintech.search.catalog.Catalog;
-import com.doublechaintech.search.levelonecategory.LevelOneCategory;
-import com.doublechaintech.search.leveltwocategory.LevelTwoCategory;
-import com.doublechaintech.search.levelncategory.LevelNCategory;
-import com.doublechaintech.search.brand.Brand;
-import com.doublechaintech.search.product.Product;
-import com.doublechaintech.search.productrecommendation.ProductRecommendation;
-import com.doublechaintech.search.sku.Sku;
-import com.doublechaintech.search.profile.Profile;
-import com.doublechaintech.search.shippingaddress.ShippingAddress;
-import com.doublechaintech.search.paymentmethod.PaymentMethod;
-import com.doublechaintech.search.userorder.UserOrder;
-import com.doublechaintech.search.lineitem.LineItem;
-import com.doublechaintech.search.orderpromotion.OrderPromotion;
-import com.doublechaintech.search.manualadjustment.ManualAdjustment;
-import com.doublechaintech.search.shippinggroup.ShippingGroup;
-import com.doublechaintech.search.paymentgroup.PaymentGroup;
 import com.doublechaintech.search.userdomain.UserDomain;
 import com.doublechaintech.search.userwhitelist.UserWhiteList;
 import com.doublechaintech.search.secuser.SecUser;
@@ -40,96 +22,6 @@ public class BeanFactoryImpl{
 
 	public Platform createPlatform(Map<String,Object> options){
 		return new Platform();
-	}
-
-
-	public Site createSite(Map<String,Object> options){
-		return new Site();
-	}
-
-
-	public Catalog createCatalog(Map<String,Object> options){
-		return new Catalog();
-	}
-
-
-	public LevelOneCategory createLevelOneCategory(Map<String,Object> options){
-		return new LevelOneCategory();
-	}
-
-
-	public LevelTwoCategory createLevelTwoCategory(Map<String,Object> options){
-		return new LevelTwoCategory();
-	}
-
-
-	public LevelNCategory createLevelNCategory(Map<String,Object> options){
-		return new LevelNCategory();
-	}
-
-
-	public Brand createBrand(Map<String,Object> options){
-		return new Brand();
-	}
-
-
-	public Product createProduct(Map<String,Object> options){
-		return new Product();
-	}
-
-
-	public ProductRecommendation createProductRecommendation(Map<String,Object> options){
-		return new ProductRecommendation();
-	}
-
-
-	public Sku createSku(Map<String,Object> options){
-		return new Sku();
-	}
-
-
-	public Profile createProfile(Map<String,Object> options){
-		return new Profile();
-	}
-
-
-	public ShippingAddress createShippingAddress(Map<String,Object> options){
-		return new ShippingAddress();
-	}
-
-
-	public PaymentMethod createPaymentMethod(Map<String,Object> options){
-		return new PaymentMethod();
-	}
-
-
-	public UserOrder createUserOrder(Map<String,Object> options){
-		return new UserOrder();
-	}
-
-
-	public LineItem createLineItem(Map<String,Object> options){
-		return new LineItem();
-	}
-
-
-	public OrderPromotion createOrderPromotion(Map<String,Object> options){
-		return new OrderPromotion();
-	}
-
-
-	public ManualAdjustment createManualAdjustment(Map<String,Object> options){
-		return new ManualAdjustment();
-	}
-
-
-	public ShippingGroup createShippingGroup(Map<String,Object> options){
-		return new ShippingGroup();
-	}
-
-
-	public PaymentGroup createPaymentGroup(Map<String,Object> options){
-		return new PaymentGroup();
 	}
 
 
