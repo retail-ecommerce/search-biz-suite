@@ -1,4 +1,4 @@
--- BUILD WITH MODEL TIME 190109T2342
+-- BUILD WITH MODEL TIME 190222T1349
 drop database  if exists search;
 create database search;
 alter  database search  character set = utf8mb4  collate = utf8mb4_unicode_ci; -- 支持表情符号
@@ -10,217 +10,6 @@ create table platform_data (
 	name                	varchar(92)                              comment 'Name',
 	introduction        	varchar(288)                             comment 'Introduction',
 	current_version     	varchar(16)                              comment 'Current Version',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists site_data;
-create table site_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	name                	varchar(92)                              comment 'Name',
-	introduction        	varchar(148)                             comment 'Introduction',
-	platform            	varchar(48)                              comment 'Platform',
-	last_update_time    	varchar(64)                              comment 'Last Update Time',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists catalog_data;
-create table catalog_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	name                	varchar(20)                              comment 'Name',
-	seller_id           	varchar(32)                              comment 'Seller Id',
-	site                	varchar(48)                              comment 'Site',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists level_one_category_data;
-create table level_one_category_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	catalog             	varchar(48)                              comment 'Catalog',
-	name                	varchar(52)                              comment 'Name',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists level_two_category_data;
-create table level_two_category_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	parent_category     	varchar(48)                              comment 'Parent Category',
-	name                	varchar(52)                              comment 'Name',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists level_n_category_data;
-create table level_n_category_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	parent_category     	varchar(48)                              comment 'Parent Category',
-	name                	varchar(44)                              comment 'Name',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists brand_data;
-create table brand_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	brand_name          	varchar(40)                              comment 'Brand Name',
-	logo                	varchar(512) CHARACTER SET ascii COLLATE ascii_general_ci                     comment 'Logo',
-	remark              	varchar(336)                             comment 'Remark',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists product_data;
-create table product_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	name                	varchar(20)                              comment 'Name',
-	parent_category     	varchar(48)                              comment 'Parent Category',
-	brand               	varchar(48)                              comment 'Brand',
-	origin              	varchar(24)                              comment 'Origin',
-	catalog             	varchar(48)                              comment 'Catalog',
-	remark              	varchar(336)                             comment 'Remark',
-	last_update_time    	varchar(64)                              comment 'Last Update Time',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists product_recommendation_data;
-create table product_recommendation_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	name                	varchar(20)                              comment 'Name',
-	brand               	varchar(48)                              comment 'Brand',
-	origin              	varchar(24)                              comment 'Origin',
-	product             	varchar(48)                              comment 'Product',
-	remark              	varchar(336)                             comment 'Remark',
-	last_update_time    	varchar(64)                              comment 'Last Update Time',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists sku_data;
-create table sku_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	name                	varchar(52)                              comment 'Name',
-	size                	varchar(24)                              comment 'Size',
-	product             	varchar(48)                              comment 'Product',
-	active              	tinyint                                  comment 'Active',
-	base_price          	numeric(7,2)                             comment 'Base Price',
-	last_update_time    	varchar(64)                              comment 'Last Update Time',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists profile_data;
-create table profile_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	name                	varchar(72)                              comment 'Name',
-	age                 	int                                      comment 'Age',
-	gender              	varchar(24)                              comment 'Gender',
-	last_update_time    	varchar(64)                              comment 'Last Update Time',
-	platform            	varchar(48)                              comment 'Platform',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists shipping_address_data;
-create table shipping_address_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	name                	varchar(24)                              comment 'Name',
-	line1               	varchar(100)                             comment 'Line1',
-	line2               	varchar(48)                              comment 'Line2',
-	city                	varchar(60)                              comment 'City',
-	state               	varchar(8)                               comment 'State',
-	zip_code            	int                                      comment 'Zip Code',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists payment_method_data;
-create table payment_method_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	name                	varchar(44)                              comment 'Name',
-	number              	varchar(52)                              comment 'Number',
-	line1               	varchar(88)                              comment 'Line1',
-	line2               	varchar(40)                              comment 'Line2',
-	city                	varchar(48)                              comment 'City',
-	expire_on           	date                                     comment 'Expire On',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists user_order_data;
-create table user_order_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	title               	varchar(64)                              comment 'Title',
-	total_adjustment    	numeric(7,2)                             comment 'Total Adjustment',
-	total_amount        	numeric(9,2)                             comment 'Total Amount',
-	user                	varchar(48)                              comment 'User',
-	platform            	varchar(48)                              comment 'Platform',
-	last_update_time    	varchar(64)                              comment 'Last Update Time',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists line_item_data;
-create table line_item_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	name                	varchar(52)                              comment 'Name',
-	quantity            	int                                      comment 'Quantity',
-	price               	numeric(7,2)                             comment 'Price',
-	discount_price      	numeric(6,2)                             comment 'Discount Price',
-	user_order          	varchar(48)                              comment 'User Order',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists order_promotion_data;
-create table order_promotion_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	name                	varchar(60)                              comment 'Name',
-	amount              	int                                      comment 'Amount',
-	thread_hold         	int                                      comment 'Thread Hold',
-	type                	varchar(44)                              comment 'Type',
-	user_order          	varchar(48)                              comment 'User Order',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists manual_adjustment_data;
-create table manual_adjustment_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	name                	varchar(60)                              comment 'Name',
-	amount              	int                                      comment 'Amount',
-	thread_hold         	int                                      comment 'Thread Hold',
-	type                	varchar(36)                              comment 'Type',
-	user_order          	varchar(48)                              comment 'User Order',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists shipping_group_data;
-create table shipping_group_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	name                	varchar(48)                              comment 'Name',
-	line1               	varchar(100)                             comment 'Line1',
-	line2               	varchar(48)                              comment 'Line2',
-	city                	varchar(60)                              comment 'City',
-	state               	varchar(8)                               comment 'State',
-	zip_code            	int                                      comment 'Zip Code',
-	country             	varchar(8)                               comment 'Country',
-	user_order          	varchar(48)                              comment 'User Order',
-	version             	int                                      comment 'Version',
-	primary key(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
-
-drop table  if exists payment_group_data;
-create table payment_group_data (
-	id                  	varchar(64)          not null            comment 'Id',
-	name                	varchar(52)                              comment 'Name',
-	amount              	numeric(7,2)                             comment 'Amount',
-	user_order          	varchar(48)                              comment 'User Order',
-	status              	varchar(28)                              comment 'Status',
 	version             	int                                      comment 'Version',
 	primary key(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE = utf8mb4_unicode_ci ;
@@ -405,488 +194,24 @@ create table form_action_data (
 insert into platform_data values ('P000001','Chain eComerce Platform','new generation of eCommerce platform based on opensource and modern tech','V1.0','1');
 
 	
-insert into site_data values ('S000001','The first customer site','The primary site for show the concept','P000001','lastUpdateTime()','1');
-insert into site_data values ('S000002','The first customer site0002','The primary site for show the concept0002','P000001','lastUpdateTime()0002','1');
-
-	
-insert into catalog_data values ('C000001','Cloth','SC000001','S000001','1');
-insert into catalog_data values ('C000002','Cloth0002','SC0000010002','S000001','1');
-insert into catalog_data values ('C000003','Cloth0003','SC0000010003','S000002','1');
-insert into catalog_data values ('C000004','Cloth0004','SC0000010004','S000002','1');
-
-	
-insert into level_one_category_data values ('LOC000001','C000001','Level One Cat','1');
-insert into level_one_category_data values ('LOC000002','C000001','Level One Cat0002','1');
-insert into level_one_category_data values ('LOC000003','C000002','Level One Cat0003','1');
-insert into level_one_category_data values ('LOC000004','C000002','Level One Cat0004','1');
-insert into level_one_category_data values ('LOC000005','C000003','Level One Cat0005','1');
-insert into level_one_category_data values ('LOC000006','C000003','Level One Cat0006','1');
-insert into level_one_category_data values ('LOC000007','C000004','Level One Cat0007','1');
-insert into level_one_category_data values ('LOC000008','C000004','Level One Cat0008','1');
-
-	
-insert into level_two_category_data values ('LTC000001','LOC000001','Level Two Cat','1');
-insert into level_two_category_data values ('LTC000002','LOC000001','Level Two Cat0002','1');
-insert into level_two_category_data values ('LTC000003','LOC000002','Level Two Cat0003','1');
-insert into level_two_category_data values ('LTC000004','LOC000002','Level Two Cat0004','1');
-insert into level_two_category_data values ('LTC000005','LOC000003','Level Two Cat0005','1');
-insert into level_two_category_data values ('LTC000006','LOC000003','Level Two Cat0006','1');
-insert into level_two_category_data values ('LTC000007','LOC000004','Level Two Cat0007','1');
-insert into level_two_category_data values ('LTC000008','LOC000004','Level Two Cat0008','1');
-insert into level_two_category_data values ('LTC000009','LOC000005','Level Two Cat0009','1');
-insert into level_two_category_data values ('LTC000010','LOC000005','Level Two Cat0010','1');
-insert into level_two_category_data values ('LTC000011','LOC000006','Level Two Cat0011','1');
-insert into level_two_category_data values ('LTC000012','LOC000006','Level Two Cat0012','1');
-insert into level_two_category_data values ('LTC000013','LOC000007','Level Two Cat0013','1');
-insert into level_two_category_data values ('LTC000014','LOC000007','Level Two Cat0014','1');
-insert into level_two_category_data values ('LTC000015','LOC000008','Level Two Cat0015','1');
-insert into level_two_category_data values ('LTC000016','LOC000008','Level Two Cat0016','1');
-
-	
-insert into level_n_category_data values ('LNC000001','LTC000001','Level N Cat','1');
-insert into level_n_category_data values ('LNC000002','LTC000001','Level N Cat0002','1');
-insert into level_n_category_data values ('LNC000003','LTC000002','Level N Cat0003','1');
-insert into level_n_category_data values ('LNC000004','LTC000002','Level N Cat0004','1');
-insert into level_n_category_data values ('LNC000005','LTC000003','Level N Cat0005','1');
-insert into level_n_category_data values ('LNC000006','LTC000003','Level N Cat0006','1');
-insert into level_n_category_data values ('LNC000007','LTC000004','Level N Cat0007','1');
-insert into level_n_category_data values ('LNC000008','LTC000004','Level N Cat0008','1');
-insert into level_n_category_data values ('LNC000009','LTC000005','Level N Cat0009','1');
-insert into level_n_category_data values ('LNC000010','LTC000005','Level N Cat0010','1');
-insert into level_n_category_data values ('LNC000011','LTC000006','Level N Cat0011','1');
-insert into level_n_category_data values ('LNC000012','LTC000006','Level N Cat0012','1');
-insert into level_n_category_data values ('LNC000013','LTC000007','Level N Cat0013','1');
-insert into level_n_category_data values ('LNC000014','LTC000007','Level N Cat0014','1');
-insert into level_n_category_data values ('LNC000015','LTC000008','Level N Cat0015','1');
-insert into level_n_category_data values ('LNC000016','LTC000008','Level N Cat0016','1');
-insert into level_n_category_data values ('LNC000017','LTC000009','Level N Cat0017','1');
-insert into level_n_category_data values ('LNC000018','LTC000009','Level N Cat0018','1');
-insert into level_n_category_data values ('LNC000019','LTC000010','Level N Cat0019','1');
-insert into level_n_category_data values ('LNC000020','LTC000010','Level N Cat0020','1');
-insert into level_n_category_data values ('LNC000021','LTC000011','Level N Cat0021','1');
-insert into level_n_category_data values ('LNC000022','LTC000011','Level N Cat0022','1');
-insert into level_n_category_data values ('LNC000023','LTC000012','Level N Cat0023','1');
-insert into level_n_category_data values ('LNC000024','LTC000012','Level N Cat0024','1');
-insert into level_n_category_data values ('LNC000025','LTC000013','Level N Cat0025','1');
-insert into level_n_category_data values ('LNC000026','LTC000013','Level N Cat0026','1');
-insert into level_n_category_data values ('LNC000027','LTC000014','Level N Cat0027','1');
-insert into level_n_category_data values ('LNC000028','LTC000014','Level N Cat0028','1');
-insert into level_n_category_data values ('LNC000029','LTC000015','Level N Cat0029','1');
-insert into level_n_category_data values ('LNC000030','LTC000015','Level N Cat0030','1');
-insert into level_n_category_data values ('LNC000031','LTC000016','Level N Cat0031','1');
-insert into level_n_category_data values ('LNC000032','LTC000016','Level N Cat0032','1');
-
-	
-insert into brand_data values ('B000001','Telsa Auto','https://demo.doublechaintech.com/demodata/imageManager/genImage/logo00/400/200/grey/','The brand a great that has Roadester, Model S and Model X, Model 3 is in development','1');
-
-	
-insert into product_data values ('P000001','Jeans','LNC000001','B000001','China','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development','lastUpdateTime()','1');
-insert into product_data values ('P000002','Jeans0002','LNC000001','B000001','US','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0002','lastUpdateTime()0002','1');
-insert into product_data values ('P000003','Jeans0003','LNC000002','B000001','Japan','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0003','lastUpdateTime()0003','1');
-insert into product_data values ('P000004','Jeans0004','LNC000002','B000001','French','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0004','lastUpdateTime()0004','1');
-insert into product_data values ('P000005','Jeans0005','LNC000003','B000001','China','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0005','lastUpdateTime()0005','1');
-insert into product_data values ('P000006','Jeans0006','LNC000003','B000001','US','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0006','lastUpdateTime()0006','1');
-insert into product_data values ('P000007','Jeans0007','LNC000004','B000001','Japan','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0007','lastUpdateTime()0007','1');
-insert into product_data values ('P000008','Jeans0008','LNC000004','B000001','French','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0008','lastUpdateTime()0008','1');
-insert into product_data values ('P000009','Jeans0009','LNC000005','B000001','China','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0009','lastUpdateTime()0009','1');
-insert into product_data values ('P000010','Jeans0010','LNC000005','B000001','US','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0010','lastUpdateTime()0010','1');
-insert into product_data values ('P000011','Jeans0011','LNC000006','B000001','Japan','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0011','lastUpdateTime()0011','1');
-insert into product_data values ('P000012','Jeans0012','LNC000006','B000001','French','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0012','lastUpdateTime()0012','1');
-insert into product_data values ('P000013','Jeans0013','LNC000007','B000001','China','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0013','lastUpdateTime()0013','1');
-insert into product_data values ('P000014','Jeans0014','LNC000007','B000001','US','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0014','lastUpdateTime()0014','1');
-insert into product_data values ('P000015','Jeans0015','LNC000008','B000001','Japan','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0015','lastUpdateTime()0015','1');
-insert into product_data values ('P000016','Jeans0016','LNC000008','B000001','French','C000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0016','lastUpdateTime()0016','1');
-insert into product_data values ('P000017','Jeans0017','LNC000009','B000001','China','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0017','lastUpdateTime()0017','1');
-insert into product_data values ('P000018','Jeans0018','LNC000009','B000001','US','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0018','lastUpdateTime()0018','1');
-insert into product_data values ('P000019','Jeans0019','LNC000010','B000001','Japan','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0019','lastUpdateTime()0019','1');
-insert into product_data values ('P000020','Jeans0020','LNC000010','B000001','French','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0020','lastUpdateTime()0020','1');
-insert into product_data values ('P000021','Jeans0021','LNC000011','B000001','China','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0021','lastUpdateTime()0021','1');
-insert into product_data values ('P000022','Jeans0022','LNC000011','B000001','US','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0022','lastUpdateTime()0022','1');
-insert into product_data values ('P000023','Jeans0023','LNC000012','B000001','Japan','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0023','lastUpdateTime()0023','1');
-insert into product_data values ('P000024','Jeans0024','LNC000012','B000001','French','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0024','lastUpdateTime()0024','1');
-insert into product_data values ('P000025','Jeans0025','LNC000013','B000001','China','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0025','lastUpdateTime()0025','1');
-insert into product_data values ('P000026','Jeans0026','LNC000013','B000001','US','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0026','lastUpdateTime()0026','1');
-insert into product_data values ('P000027','Jeans0027','LNC000014','B000001','Japan','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0027','lastUpdateTime()0027','1');
-insert into product_data values ('P000028','Jeans0028','LNC000014','B000001','French','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0028','lastUpdateTime()0028','1');
-insert into product_data values ('P000029','Jeans0029','LNC000015','B000001','China','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0029','lastUpdateTime()0029','1');
-insert into product_data values ('P000030','Jeans0030','LNC000015','B000001','US','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0030','lastUpdateTime()0030','1');
-insert into product_data values ('P000031','Jeans0031','LNC000016','B000001','Japan','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0031','lastUpdateTime()0031','1');
-insert into product_data values ('P000032','Jeans0032','LNC000016','B000001','French','C000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0032','lastUpdateTime()0032','1');
-insert into product_data values ('P000033','Jeans0033','LNC000017','B000001','China','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0033','lastUpdateTime()0033','1');
-insert into product_data values ('P000034','Jeans0034','LNC000017','B000001','US','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0034','lastUpdateTime()0034','1');
-insert into product_data values ('P000035','Jeans0035','LNC000018','B000001','Japan','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0035','lastUpdateTime()0035','1');
-insert into product_data values ('P000036','Jeans0036','LNC000018','B000001','French','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0036','lastUpdateTime()0036','1');
-insert into product_data values ('P000037','Jeans0037','LNC000019','B000001','China','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0037','lastUpdateTime()0037','1');
-insert into product_data values ('P000038','Jeans0038','LNC000019','B000001','US','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0038','lastUpdateTime()0038','1');
-insert into product_data values ('P000039','Jeans0039','LNC000020','B000001','Japan','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0039','lastUpdateTime()0039','1');
-insert into product_data values ('P000040','Jeans0040','LNC000020','B000001','French','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0040','lastUpdateTime()0040','1');
-insert into product_data values ('P000041','Jeans0041','LNC000021','B000001','China','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0041','lastUpdateTime()0041','1');
-insert into product_data values ('P000042','Jeans0042','LNC000021','B000001','US','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0042','lastUpdateTime()0042','1');
-insert into product_data values ('P000043','Jeans0043','LNC000022','B000001','Japan','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0043','lastUpdateTime()0043','1');
-insert into product_data values ('P000044','Jeans0044','LNC000022','B000001','French','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0044','lastUpdateTime()0044','1');
-insert into product_data values ('P000045','Jeans0045','LNC000023','B000001','China','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0045','lastUpdateTime()0045','1');
-insert into product_data values ('P000046','Jeans0046','LNC000023','B000001','US','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0046','lastUpdateTime()0046','1');
-insert into product_data values ('P000047','Jeans0047','LNC000024','B000001','Japan','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0047','lastUpdateTime()0047','1');
-insert into product_data values ('P000048','Jeans0048','LNC000024','B000001','French','C000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0048','lastUpdateTime()0048','1');
-insert into product_data values ('P000049','Jeans0049','LNC000025','B000001','China','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0049','lastUpdateTime()0049','1');
-insert into product_data values ('P000050','Jeans0050','LNC000025','B000001','US','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0050','lastUpdateTime()0050','1');
-insert into product_data values ('P000051','Jeans0051','LNC000026','B000001','Japan','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0051','lastUpdateTime()0051','1');
-insert into product_data values ('P000052','Jeans0052','LNC000026','B000001','French','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0052','lastUpdateTime()0052','1');
-insert into product_data values ('P000053','Jeans0053','LNC000027','B000001','China','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0053','lastUpdateTime()0053','1');
-insert into product_data values ('P000054','Jeans0054','LNC000027','B000001','US','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0054','lastUpdateTime()0054','1');
-insert into product_data values ('P000055','Jeans0055','LNC000028','B000001','Japan','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0055','lastUpdateTime()0055','1');
-insert into product_data values ('P000056','Jeans0056','LNC000028','B000001','French','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0056','lastUpdateTime()0056','1');
-insert into product_data values ('P000057','Jeans0057','LNC000029','B000001','China','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0057','lastUpdateTime()0057','1');
-insert into product_data values ('P000058','Jeans0058','LNC000029','B000001','US','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0058','lastUpdateTime()0058','1');
-insert into product_data values ('P000059','Jeans0059','LNC000030','B000001','Japan','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0059','lastUpdateTime()0059','1');
-insert into product_data values ('P000060','Jeans0060','LNC000030','B000001','French','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0060','lastUpdateTime()0060','1');
-insert into product_data values ('P000061','Jeans0061','LNC000031','B000001','China','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0061','lastUpdateTime()0061','1');
-insert into product_data values ('P000062','Jeans0062','LNC000031','B000001','US','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0062','lastUpdateTime()0062','1');
-insert into product_data values ('P000063','Jeans0063','LNC000032','B000001','Japan','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0063','lastUpdateTime()0063','1');
-insert into product_data values ('P000064','Jeans0064','LNC000032','B000001','French','C000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0064','lastUpdateTime()0064','1');
-
-	
-insert into product_recommendation_data values ('PR000001','Jeans','B000001','China','P000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development','lastUpdateTime()','1');
-insert into product_recommendation_data values ('PR000002','Jeans0002','B000001','US','P000001','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0002','lastUpdateTime()0002','1');
-insert into product_recommendation_data values ('PR000003','Jeans0003','B000001','Japan','P000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0003','lastUpdateTime()0003','1');
-insert into product_recommendation_data values ('PR000004','Jeans0004','B000001','French','P000002','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0004','lastUpdateTime()0004','1');
-insert into product_recommendation_data values ('PR000005','Jeans0005','B000001','China','P000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0005','lastUpdateTime()0005','1');
-insert into product_recommendation_data values ('PR000006','Jeans0006','B000001','US','P000003','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0006','lastUpdateTime()0006','1');
-insert into product_recommendation_data values ('PR000007','Jeans0007','B000001','Japan','P000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0007','lastUpdateTime()0007','1');
-insert into product_recommendation_data values ('PR000008','Jeans0008','B000001','French','P000004','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0008','lastUpdateTime()0008','1');
-insert into product_recommendation_data values ('PR000009','Jeans0009','B000001','China','P000005','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0009','lastUpdateTime()0009','1');
-insert into product_recommendation_data values ('PR000010','Jeans0010','B000001','US','P000005','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0010','lastUpdateTime()0010','1');
-insert into product_recommendation_data values ('PR000011','Jeans0011','B000001','Japan','P000006','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0011','lastUpdateTime()0011','1');
-insert into product_recommendation_data values ('PR000012','Jeans0012','B000001','French','P000006','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0012','lastUpdateTime()0012','1');
-insert into product_recommendation_data values ('PR000013','Jeans0013','B000001','China','P000007','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0013','lastUpdateTime()0013','1');
-insert into product_recommendation_data values ('PR000014','Jeans0014','B000001','US','P000007','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0014','lastUpdateTime()0014','1');
-insert into product_recommendation_data values ('PR000015','Jeans0015','B000001','Japan','P000008','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0015','lastUpdateTime()0015','1');
-insert into product_recommendation_data values ('PR000016','Jeans0016','B000001','French','P000008','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0016','lastUpdateTime()0016','1');
-insert into product_recommendation_data values ('PR000017','Jeans0017','B000001','China','P000009','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0017','lastUpdateTime()0017','1');
-insert into product_recommendation_data values ('PR000018','Jeans0018','B000001','US','P000009','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0018','lastUpdateTime()0018','1');
-insert into product_recommendation_data values ('PR000019','Jeans0019','B000001','Japan','P000010','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0019','lastUpdateTime()0019','1');
-insert into product_recommendation_data values ('PR000020','Jeans0020','B000001','French','P000010','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0020','lastUpdateTime()0020','1');
-insert into product_recommendation_data values ('PR000021','Jeans0021','B000001','China','P000011','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0021','lastUpdateTime()0021','1');
-insert into product_recommendation_data values ('PR000022','Jeans0022','B000001','US','P000011','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0022','lastUpdateTime()0022','1');
-insert into product_recommendation_data values ('PR000023','Jeans0023','B000001','Japan','P000012','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0023','lastUpdateTime()0023','1');
-insert into product_recommendation_data values ('PR000024','Jeans0024','B000001','French','P000012','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0024','lastUpdateTime()0024','1');
-insert into product_recommendation_data values ('PR000025','Jeans0025','B000001','China','P000013','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0025','lastUpdateTime()0025','1');
-insert into product_recommendation_data values ('PR000026','Jeans0026','B000001','US','P000013','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0026','lastUpdateTime()0026','1');
-insert into product_recommendation_data values ('PR000027','Jeans0027','B000001','Japan','P000014','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0027','lastUpdateTime()0027','1');
-insert into product_recommendation_data values ('PR000028','Jeans0028','B000001','French','P000014','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0028','lastUpdateTime()0028','1');
-insert into product_recommendation_data values ('PR000029','Jeans0029','B000001','China','P000015','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0029','lastUpdateTime()0029','1');
-insert into product_recommendation_data values ('PR000030','Jeans0030','B000001','US','P000015','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0030','lastUpdateTime()0030','1');
-insert into product_recommendation_data values ('PR000031','Jeans0031','B000001','Japan','P000016','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0031','lastUpdateTime()0031','1');
-insert into product_recommendation_data values ('PR000032','Jeans0032','B000001','French','P000016','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0032','lastUpdateTime()0032','1');
-insert into product_recommendation_data values ('PR000033','Jeans0033','B000001','China','P000017','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0033','lastUpdateTime()0033','1');
-insert into product_recommendation_data values ('PR000034','Jeans0034','B000001','US','P000017','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0034','lastUpdateTime()0034','1');
-insert into product_recommendation_data values ('PR000035','Jeans0035','B000001','Japan','P000018','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0035','lastUpdateTime()0035','1');
-insert into product_recommendation_data values ('PR000036','Jeans0036','B000001','French','P000018','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0036','lastUpdateTime()0036','1');
-insert into product_recommendation_data values ('PR000037','Jeans0037','B000001','China','P000019','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0037','lastUpdateTime()0037','1');
-insert into product_recommendation_data values ('PR000038','Jeans0038','B000001','US','P000019','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0038','lastUpdateTime()0038','1');
-insert into product_recommendation_data values ('PR000039','Jeans0039','B000001','Japan','P000020','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0039','lastUpdateTime()0039','1');
-insert into product_recommendation_data values ('PR000040','Jeans0040','B000001','French','P000020','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0040','lastUpdateTime()0040','1');
-insert into product_recommendation_data values ('PR000041','Jeans0041','B000001','China','P000021','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0041','lastUpdateTime()0041','1');
-insert into product_recommendation_data values ('PR000042','Jeans0042','B000001','US','P000021','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0042','lastUpdateTime()0042','1');
-insert into product_recommendation_data values ('PR000043','Jeans0043','B000001','Japan','P000022','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0043','lastUpdateTime()0043','1');
-insert into product_recommendation_data values ('PR000044','Jeans0044','B000001','French','P000022','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0044','lastUpdateTime()0044','1');
-insert into product_recommendation_data values ('PR000045','Jeans0045','B000001','China','P000023','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0045','lastUpdateTime()0045','1');
-insert into product_recommendation_data values ('PR000046','Jeans0046','B000001','US','P000023','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0046','lastUpdateTime()0046','1');
-insert into product_recommendation_data values ('PR000047','Jeans0047','B000001','Japan','P000024','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0047','lastUpdateTime()0047','1');
-insert into product_recommendation_data values ('PR000048','Jeans0048','B000001','French','P000024','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0048','lastUpdateTime()0048','1');
-insert into product_recommendation_data values ('PR000049','Jeans0049','B000001','China','P000025','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0049','lastUpdateTime()0049','1');
-insert into product_recommendation_data values ('PR000050','Jeans0050','B000001','US','P000025','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0050','lastUpdateTime()0050','1');
-insert into product_recommendation_data values ('PR000051','Jeans0051','B000001','Japan','P000026','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0051','lastUpdateTime()0051','1');
-insert into product_recommendation_data values ('PR000052','Jeans0052','B000001','French','P000026','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0052','lastUpdateTime()0052','1');
-insert into product_recommendation_data values ('PR000053','Jeans0053','B000001','China','P000027','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0053','lastUpdateTime()0053','1');
-insert into product_recommendation_data values ('PR000054','Jeans0054','B000001','US','P000027','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0054','lastUpdateTime()0054','1');
-insert into product_recommendation_data values ('PR000055','Jeans0055','B000001','Japan','P000028','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0055','lastUpdateTime()0055','1');
-insert into product_recommendation_data values ('PR000056','Jeans0056','B000001','French','P000028','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0056','lastUpdateTime()0056','1');
-insert into product_recommendation_data values ('PR000057','Jeans0057','B000001','China','P000029','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0057','lastUpdateTime()0057','1');
-insert into product_recommendation_data values ('PR000058','Jeans0058','B000001','US','P000029','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0058','lastUpdateTime()0058','1');
-insert into product_recommendation_data values ('PR000059','Jeans0059','B000001','Japan','P000030','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0059','lastUpdateTime()0059','1');
-insert into product_recommendation_data values ('PR000060','Jeans0060','B000001','French','P000030','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0060','lastUpdateTime()0060','1');
-insert into product_recommendation_data values ('PR000061','Jeans0061','B000001','China','P000031','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0061','lastUpdateTime()0061','1');
-insert into product_recommendation_data values ('PR000062','Jeans0062','B000001','US','P000031','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0062','lastUpdateTime()0062','1');
-insert into product_recommendation_data values ('PR000063','Jeans0063','B000001','Japan','P000032','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0063','lastUpdateTime()0063','1');
-insert into product_recommendation_data values ('PR000064','Jeans0064','B000001','French','P000032','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0064','lastUpdateTime()0064','1');
-insert into product_recommendation_data values ('PR000065','Jeans0065','B000001','China','P000033','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0065','lastUpdateTime()0065','1');
-insert into product_recommendation_data values ('PR000066','Jeans0066','B000001','US','P000033','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0066','lastUpdateTime()0066','1');
-insert into product_recommendation_data values ('PR000067','Jeans0067','B000001','Japan','P000034','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0067','lastUpdateTime()0067','1');
-insert into product_recommendation_data values ('PR000068','Jeans0068','B000001','French','P000034','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0068','lastUpdateTime()0068','1');
-insert into product_recommendation_data values ('PR000069','Jeans0069','B000001','China','P000035','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0069','lastUpdateTime()0069','1');
-insert into product_recommendation_data values ('PR000070','Jeans0070','B000001','US','P000035','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0070','lastUpdateTime()0070','1');
-insert into product_recommendation_data values ('PR000071','Jeans0071','B000001','Japan','P000036','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0071','lastUpdateTime()0071','1');
-insert into product_recommendation_data values ('PR000072','Jeans0072','B000001','French','P000036','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0072','lastUpdateTime()0072','1');
-insert into product_recommendation_data values ('PR000073','Jeans0073','B000001','China','P000037','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0073','lastUpdateTime()0073','1');
-insert into product_recommendation_data values ('PR000074','Jeans0074','B000001','US','P000037','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0074','lastUpdateTime()0074','1');
-insert into product_recommendation_data values ('PR000075','Jeans0075','B000001','Japan','P000038','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0075','lastUpdateTime()0075','1');
-insert into product_recommendation_data values ('PR000076','Jeans0076','B000001','French','P000038','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0076','lastUpdateTime()0076','1');
-insert into product_recommendation_data values ('PR000077','Jeans0077','B000001','China','P000039','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0077','lastUpdateTime()0077','1');
-insert into product_recommendation_data values ('PR000078','Jeans0078','B000001','US','P000039','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0078','lastUpdateTime()0078','1');
-insert into product_recommendation_data values ('PR000079','Jeans0079','B000001','Japan','P000040','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0079','lastUpdateTime()0079','1');
-insert into product_recommendation_data values ('PR000080','Jeans0080','B000001','French','P000040','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0080','lastUpdateTime()0080','1');
-insert into product_recommendation_data values ('PR000081','Jeans0081','B000001','China','P000041','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0081','lastUpdateTime()0081','1');
-insert into product_recommendation_data values ('PR000082','Jeans0082','B000001','US','P000041','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0082','lastUpdateTime()0082','1');
-insert into product_recommendation_data values ('PR000083','Jeans0083','B000001','Japan','P000042','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0083','lastUpdateTime()0083','1');
-insert into product_recommendation_data values ('PR000084','Jeans0084','B000001','French','P000042','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0084','lastUpdateTime()0084','1');
-insert into product_recommendation_data values ('PR000085','Jeans0085','B000001','China','P000043','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0085','lastUpdateTime()0085','1');
-insert into product_recommendation_data values ('PR000086','Jeans0086','B000001','US','P000043','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0086','lastUpdateTime()0086','1');
-insert into product_recommendation_data values ('PR000087','Jeans0087','B000001','Japan','P000044','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0087','lastUpdateTime()0087','1');
-insert into product_recommendation_data values ('PR000088','Jeans0088','B000001','French','P000044','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0088','lastUpdateTime()0088','1');
-insert into product_recommendation_data values ('PR000089','Jeans0089','B000001','China','P000045','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0089','lastUpdateTime()0089','1');
-insert into product_recommendation_data values ('PR000090','Jeans0090','B000001','US','P000045','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0090','lastUpdateTime()0090','1');
-insert into product_recommendation_data values ('PR000091','Jeans0091','B000001','Japan','P000046','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0091','lastUpdateTime()0091','1');
-insert into product_recommendation_data values ('PR000092','Jeans0092','B000001','French','P000046','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0092','lastUpdateTime()0092','1');
-insert into product_recommendation_data values ('PR000093','Jeans0093','B000001','China','P000047','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0093','lastUpdateTime()0093','1');
-insert into product_recommendation_data values ('PR000094','Jeans0094','B000001','US','P000047','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0094','lastUpdateTime()0094','1');
-insert into product_recommendation_data values ('PR000095','Jeans0095','B000001','Japan','P000048','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0095','lastUpdateTime()0095','1');
-insert into product_recommendation_data values ('PR000096','Jeans0096','B000001','French','P000048','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0096','lastUpdateTime()0096','1');
-insert into product_recommendation_data values ('PR000097','Jeans0097','B000001','China','P000049','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0097','lastUpdateTime()0097','1');
-insert into product_recommendation_data values ('PR000098','Jeans0098','B000001','US','P000049','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0098','lastUpdateTime()0098','1');
-insert into product_recommendation_data values ('PR000099','Jeans0099','B000001','Japan','P000050','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0099','lastUpdateTime()0099','1');
-insert into product_recommendation_data values ('PR000100','Jeans0100','B000001','French','P000050','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0100','lastUpdateTime()0100','1');
-insert into product_recommendation_data values ('PR000101','Jeans0101','B000001','China','P000051','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0101','lastUpdateTime()0101','1');
-insert into product_recommendation_data values ('PR000102','Jeans0102','B000001','US','P000051','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0102','lastUpdateTime()0102','1');
-insert into product_recommendation_data values ('PR000103','Jeans0103','B000001','Japan','P000052','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0103','lastUpdateTime()0103','1');
-insert into product_recommendation_data values ('PR000104','Jeans0104','B000001','French','P000052','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0104','lastUpdateTime()0104','1');
-insert into product_recommendation_data values ('PR000105','Jeans0105','B000001','China','P000053','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0105','lastUpdateTime()0105','1');
-insert into product_recommendation_data values ('PR000106','Jeans0106','B000001','US','P000053','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0106','lastUpdateTime()0106','1');
-insert into product_recommendation_data values ('PR000107','Jeans0107','B000001','Japan','P000054','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0107','lastUpdateTime()0107','1');
-insert into product_recommendation_data values ('PR000108','Jeans0108','B000001','French','P000054','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0108','lastUpdateTime()0108','1');
-insert into product_recommendation_data values ('PR000109','Jeans0109','B000001','China','P000055','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0109','lastUpdateTime()0109','1');
-insert into product_recommendation_data values ('PR000110','Jeans0110','B000001','US','P000055','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0110','lastUpdateTime()0110','1');
-insert into product_recommendation_data values ('PR000111','Jeans0111','B000001','Japan','P000056','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0111','lastUpdateTime()0111','1');
-insert into product_recommendation_data values ('PR000112','Jeans0112','B000001','French','P000056','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0112','lastUpdateTime()0112','1');
-insert into product_recommendation_data values ('PR000113','Jeans0113','B000001','China','P000057','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0113','lastUpdateTime()0113','1');
-insert into product_recommendation_data values ('PR000114','Jeans0114','B000001','US','P000057','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0114','lastUpdateTime()0114','1');
-insert into product_recommendation_data values ('PR000115','Jeans0115','B000001','Japan','P000058','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0115','lastUpdateTime()0115','1');
-insert into product_recommendation_data values ('PR000116','Jeans0116','B000001','French','P000058','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0116','lastUpdateTime()0116','1');
-insert into product_recommendation_data values ('PR000117','Jeans0117','B000001','China','P000059','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0117','lastUpdateTime()0117','1');
-insert into product_recommendation_data values ('PR000118','Jeans0118','B000001','US','P000059','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0118','lastUpdateTime()0118','1');
-insert into product_recommendation_data values ('PR000119','Jeans0119','B000001','Japan','P000060','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0119','lastUpdateTime()0119','1');
-insert into product_recommendation_data values ('PR000120','Jeans0120','B000001','French','P000060','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0120','lastUpdateTime()0120','1');
-insert into product_recommendation_data values ('PR000121','Jeans0121','B000001','China','P000061','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0121','lastUpdateTime()0121','1');
-insert into product_recommendation_data values ('PR000122','Jeans0122','B000001','US','P000061','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0122','lastUpdateTime()0122','1');
-insert into product_recommendation_data values ('PR000123','Jeans0123','B000001','Japan','P000062','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0123','lastUpdateTime()0123','1');
-insert into product_recommendation_data values ('PR000124','Jeans0124','B000001','French','P000062','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0124','lastUpdateTime()0124','1');
-insert into product_recommendation_data values ('PR000125','Jeans0125','B000001','China','P000063','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0125','lastUpdateTime()0125','1');
-insert into product_recommendation_data values ('PR000126','Jeans0126','B000001','US','P000063','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0126','lastUpdateTime()0126','1');
-insert into product_recommendation_data values ('PR000127','Jeans0127','B000001','Japan','P000064','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0127','lastUpdateTime()0127','1');
-insert into product_recommendation_data values ('PR000128','Jeans0128','B000001','French','P000064','The brand a great that has Roadester, Model S and Model X, Model 3 is in development0128','lastUpdateTime()0128','1');
-
-	
-insert into sku_data values ('S000001','Jeans - Large','Large','P000001',1,'102.33','lastUpdateTime()','1');
-insert into sku_data values ('S000002','Jeans - Large0002','Small','P000001',1,'101.18','lastUpdateTime()0002','1');
-insert into sku_data values ('S000003','Jeans - Large0003','Medium','P000002',1,'82.54','lastUpdateTime()0003','1');
-insert into sku_data values ('S000004','Jeans - Large0004','Large','P000002',1,'96.54','lastUpdateTime()0004','1');
-insert into sku_data values ('S000005','Jeans - Large0005','Small','P000003',1,'87.35','lastUpdateTime()0005','1');
-insert into sku_data values ('S000006','Jeans - Large0006','Medium','P000003',1,'101.97','lastUpdateTime()0006','1');
-insert into sku_data values ('S000007','Jeans - Large0007','Large','P000004',1,'80.52','lastUpdateTime()0007','1');
-insert into sku_data values ('S000008','Jeans - Large0008','Small','P000004',1,'99.73','lastUpdateTime()0008','1');
-insert into sku_data values ('S000009','Jeans - Large0009','Medium','P000005',1,'94.35','lastUpdateTime()0009','1');
-insert into sku_data values ('S000010','Jeans - Large0010','Large','P000005',1,'97.48','lastUpdateTime()0010','1');
-insert into sku_data values ('S000011','Jeans - Large0011','Small','P000006',1,'91.54','lastUpdateTime()0011','1');
-insert into sku_data values ('S000012','Jeans - Large0012','Medium','P000006',1,'82.81','lastUpdateTime()0012','1');
-insert into sku_data values ('S000013','Jeans - Large0013','Large','P000007',1,'92.69','lastUpdateTime()0013','1');
-insert into sku_data values ('S000014','Jeans - Large0014','Small','P000007',1,'99.75','lastUpdateTime()0014','1');
-insert into sku_data values ('S000015','Jeans - Large0015','Medium','P000008',1,'82.61','lastUpdateTime()0015','1');
-insert into sku_data values ('S000016','Jeans - Large0016','Large','P000008',1,'98.68','lastUpdateTime()0016','1');
-insert into sku_data values ('S000017','Jeans - Large0017','Small','P000009',1,'96.11','lastUpdateTime()0017','1');
-insert into sku_data values ('S000018','Jeans - Large0018','Medium','P000009',1,'80.16','lastUpdateTime()0018','1');
-insert into sku_data values ('S000019','Jeans - Large0019','Large','P000010',1,'73.77','lastUpdateTime()0019','1');
-insert into sku_data values ('S000020','Jeans - Large0020','Small','P000010',1,'73.68','lastUpdateTime()0020','1');
-insert into sku_data values ('S000021','Jeans - Large0021','Medium','P000011',1,'89.57','lastUpdateTime()0021','1');
-insert into sku_data values ('S000022','Jeans - Large0022','Large','P000011',1,'87.26','lastUpdateTime()0022','1');
-insert into sku_data values ('S000023','Jeans - Large0023','Small','P000012',1,'90.06','lastUpdateTime()0023','1');
-insert into sku_data values ('S000024','Jeans - Large0024','Medium','P000012',1,'77.10','lastUpdateTime()0024','1');
-insert into sku_data values ('S000025','Jeans - Large0025','Large','P000013',1,'93.18','lastUpdateTime()0025','1');
-insert into sku_data values ('S000026','Jeans - Large0026','Small','P000013',1,'89.92','lastUpdateTime()0026','1');
-insert into sku_data values ('S000027','Jeans - Large0027','Medium','P000014',1,'81.95','lastUpdateTime()0027','1');
-insert into sku_data values ('S000028','Jeans - Large0028','Large','P000014',1,'102.00','lastUpdateTime()0028','1');
-insert into sku_data values ('S000029','Jeans - Large0029','Small','P000015',1,'75.97','lastUpdateTime()0029','1');
-insert into sku_data values ('S000030','Jeans - Large0030','Medium','P000015',1,'95.37','lastUpdateTime()0030','1');
-insert into sku_data values ('S000031','Jeans - Large0031','Large','P000016',1,'86.06','lastUpdateTime()0031','1');
-insert into sku_data values ('S000032','Jeans - Large0032','Small','P000016',1,'83.05','lastUpdateTime()0032','1');
-insert into sku_data values ('S000033','Jeans - Large0033','Medium','P000017',1,'81.67','lastUpdateTime()0033','1');
-insert into sku_data values ('S000034','Jeans - Large0034','Large','P000017',1,'74.94','lastUpdateTime()0034','1');
-insert into sku_data values ('S000035','Jeans - Large0035','Small','P000018',1,'94.70','lastUpdateTime()0035','1');
-insert into sku_data values ('S000036','Jeans - Large0036','Medium','P000018',1,'75.31','lastUpdateTime()0036','1');
-insert into sku_data values ('S000037','Jeans - Large0037','Large','P000019',1,'87.48','lastUpdateTime()0037','1');
-insert into sku_data values ('S000038','Jeans - Large0038','Small','P000019',1,'90.09','lastUpdateTime()0038','1');
-insert into sku_data values ('S000039','Jeans - Large0039','Medium','P000020',1,'73.50','lastUpdateTime()0039','1');
-insert into sku_data values ('S000040','Jeans - Large0040','Large','P000020',1,'89.44','lastUpdateTime()0040','1');
-insert into sku_data values ('S000041','Jeans - Large0041','Small','P000021',1,'97.78','lastUpdateTime()0041','1');
-insert into sku_data values ('S000042','Jeans - Large0042','Medium','P000021',1,'93.28','lastUpdateTime()0042','1');
-insert into sku_data values ('S000043','Jeans - Large0043','Large','P000022',1,'94.22','lastUpdateTime()0043','1');
-insert into sku_data values ('S000044','Jeans - Large0044','Small','P000022',1,'78.75','lastUpdateTime()0044','1');
-insert into sku_data values ('S000045','Jeans - Large0045','Medium','P000023',1,'92.54','lastUpdateTime()0045','1');
-insert into sku_data values ('S000046','Jeans - Large0046','Large','P000023',1,'84.12','lastUpdateTime()0046','1');
-insert into sku_data values ('S000047','Jeans - Large0047','Small','P000024',1,'86.61','lastUpdateTime()0047','1');
-insert into sku_data values ('S000048','Jeans - Large0048','Medium','P000024',1,'89.33','lastUpdateTime()0048','1');
-insert into sku_data values ('S000049','Jeans - Large0049','Large','P000025',1,'81.05','lastUpdateTime()0049','1');
-insert into sku_data values ('S000050','Jeans - Large0050','Small','P000025',1,'79.75','lastUpdateTime()0050','1');
-insert into sku_data values ('S000051','Jeans - Large0051','Medium','P000026',1,'88.74','lastUpdateTime()0051','1');
-insert into sku_data values ('S000052','Jeans - Large0052','Large','P000026',1,'72.30','lastUpdateTime()0052','1');
-insert into sku_data values ('S000053','Jeans - Large0053','Small','P000027',1,'84.01','lastUpdateTime()0053','1');
-insert into sku_data values ('S000054','Jeans - Large0054','Medium','P000027',1,'74.35','lastUpdateTime()0054','1');
-insert into sku_data values ('S000055','Jeans - Large0055','Large','P000028',1,'102.57','lastUpdateTime()0055','1');
-insert into sku_data values ('S000056','Jeans - Large0056','Small','P000028',1,'82.40','lastUpdateTime()0056','1');
-insert into sku_data values ('S000057','Jeans - Large0057','Medium','P000029',1,'85.76','lastUpdateTime()0057','1');
-insert into sku_data values ('S000058','Jeans - Large0058','Large','P000029',1,'92.90','lastUpdateTime()0058','1');
-insert into sku_data values ('S000059','Jeans - Large0059','Small','P000030',1,'88.63','lastUpdateTime()0059','1');
-insert into sku_data values ('S000060','Jeans - Large0060','Medium','P000030',1,'89.95','lastUpdateTime()0060','1');
-insert into sku_data values ('S000061','Jeans - Large0061','Large','P000031',1,'87.82','lastUpdateTime()0061','1');
-insert into sku_data values ('S000062','Jeans - Large0062','Small','P000031',1,'82.24','lastUpdateTime()0062','1');
-insert into sku_data values ('S000063','Jeans - Large0063','Medium','P000032',1,'90.32','lastUpdateTime()0063','1');
-insert into sku_data values ('S000064','Jeans - Large0064','Large','P000032',1,'80.42','lastUpdateTime()0064','1');
-insert into sku_data values ('S000065','Jeans - Large0065','Small','P000033',1,'77.04','lastUpdateTime()0065','1');
-insert into sku_data values ('S000066','Jeans - Large0066','Medium','P000033',1,'92.40','lastUpdateTime()0066','1');
-insert into sku_data values ('S000067','Jeans - Large0067','Large','P000034',1,'99.66','lastUpdateTime()0067','1');
-insert into sku_data values ('S000068','Jeans - Large0068','Small','P000034',1,'89.45','lastUpdateTime()0068','1');
-insert into sku_data values ('S000069','Jeans - Large0069','Medium','P000035',1,'80.45','lastUpdateTime()0069','1');
-insert into sku_data values ('S000070','Jeans - Large0070','Large','P000035',1,'102.22','lastUpdateTime()0070','1');
-insert into sku_data values ('S000071','Jeans - Large0071','Small','P000036',1,'85.87','lastUpdateTime()0071','1');
-insert into sku_data values ('S000072','Jeans - Large0072','Medium','P000036',1,'97.42','lastUpdateTime()0072','1');
-insert into sku_data values ('S000073','Jeans - Large0073','Large','P000037',1,'89.41','lastUpdateTime()0073','1');
-insert into sku_data values ('S000074','Jeans - Large0074','Small','P000037',1,'85.00','lastUpdateTime()0074','1');
-insert into sku_data values ('S000075','Jeans - Large0075','Medium','P000038',1,'95.82','lastUpdateTime()0075','1');
-insert into sku_data values ('S000076','Jeans - Large0076','Large','P000038',1,'80.10','lastUpdateTime()0076','1');
-insert into sku_data values ('S000077','Jeans - Large0077','Small','P000039',1,'77.59','lastUpdateTime()0077','1');
-insert into sku_data values ('S000078','Jeans - Large0078','Medium','P000039',1,'95.59','lastUpdateTime()0078','1');
-insert into sku_data values ('S000079','Jeans - Large0079','Large','P000040',1,'82.43','lastUpdateTime()0079','1');
-insert into sku_data values ('S000080','Jeans - Large0080','Small','P000040',1,'82.38','lastUpdateTime()0080','1');
-insert into sku_data values ('S000081','Jeans - Large0081','Medium','P000041',1,'92.75','lastUpdateTime()0081','1');
-insert into sku_data values ('S000082','Jeans - Large0082','Large','P000041',1,'76.42','lastUpdateTime()0082','1');
-insert into sku_data values ('S000083','Jeans - Large0083','Small','P000042',1,'81.58','lastUpdateTime()0083','1');
-insert into sku_data values ('S000084','Jeans - Large0084','Medium','P000042',1,'95.44','lastUpdateTime()0084','1');
-insert into sku_data values ('S000085','Jeans - Large0085','Large','P000043',1,'91.82','lastUpdateTime()0085','1');
-insert into sku_data values ('S000086','Jeans - Large0086','Small','P000043',1,'98.30','lastUpdateTime()0086','1');
-insert into sku_data values ('S000087','Jeans - Large0087','Medium','P000044',1,'73.44','lastUpdateTime()0087','1');
-insert into sku_data values ('S000088','Jeans - Large0088','Large','P000044',1,'84.91','lastUpdateTime()0088','1');
-insert into sku_data values ('S000089','Jeans - Large0089','Small','P000045',1,'80.02','lastUpdateTime()0089','1');
-insert into sku_data values ('S000090','Jeans - Large0090','Medium','P000045',1,'94.57','lastUpdateTime()0090','1');
-insert into sku_data values ('S000091','Jeans - Large0091','Large','P000046',1,'97.68','lastUpdateTime()0091','1');
-insert into sku_data values ('S000092','Jeans - Large0092','Small','P000046',1,'96.34','lastUpdateTime()0092','1');
-insert into sku_data values ('S000093','Jeans - Large0093','Medium','P000047',1,'82.22','lastUpdateTime()0093','1');
-insert into sku_data values ('S000094','Jeans - Large0094','Large','P000047',1,'100.21','lastUpdateTime()0094','1');
-insert into sku_data values ('S000095','Jeans - Large0095','Small','P000048',1,'83.47','lastUpdateTime()0095','1');
-insert into sku_data values ('S000096','Jeans - Large0096','Medium','P000048',1,'100.96','lastUpdateTime()0096','1');
-insert into sku_data values ('S000097','Jeans - Large0097','Large','P000049',1,'78.06','lastUpdateTime()0097','1');
-insert into sku_data values ('S000098','Jeans - Large0098','Small','P000049',1,'77.40','lastUpdateTime()0098','1');
-insert into sku_data values ('S000099','Jeans - Large0099','Medium','P000050',1,'79.05','lastUpdateTime()0099','1');
-insert into sku_data values ('S000100','Jeans - Large0100','Large','P000050',1,'99.07','lastUpdateTime()0100','1');
-insert into sku_data values ('S000101','Jeans - Large0101','Small','P000051',1,'73.56','lastUpdateTime()0101','1');
-insert into sku_data values ('S000102','Jeans - Large0102','Medium','P000051',1,'89.18','lastUpdateTime()0102','1');
-insert into sku_data values ('S000103','Jeans - Large0103','Large','P000052',1,'75.96','lastUpdateTime()0103','1');
-insert into sku_data values ('S000104','Jeans - Large0104','Small','P000052',1,'90.46','lastUpdateTime()0104','1');
-insert into sku_data values ('S000105','Jeans - Large0105','Medium','P000053',1,'84.76','lastUpdateTime()0105','1');
-insert into sku_data values ('S000106','Jeans - Large0106','Large','P000053',1,'92.15','lastUpdateTime()0106','1');
-insert into sku_data values ('S000107','Jeans - Large0107','Small','P000054',1,'84.69','lastUpdateTime()0107','1');
-insert into sku_data values ('S000108','Jeans - Large0108','Medium','P000054',1,'102.86','lastUpdateTime()0108','1');
-insert into sku_data values ('S000109','Jeans - Large0109','Large','P000055',1,'88.37','lastUpdateTime()0109','1');
-insert into sku_data values ('S000110','Jeans - Large0110','Small','P000055',1,'88.08','lastUpdateTime()0110','1');
-insert into sku_data values ('S000111','Jeans - Large0111','Medium','P000056',1,'83.76','lastUpdateTime()0111','1');
-insert into sku_data values ('S000112','Jeans - Large0112','Large','P000056',1,'93.59','lastUpdateTime()0112','1');
-insert into sku_data values ('S000113','Jeans - Large0113','Small','P000057',1,'82.84','lastUpdateTime()0113','1');
-insert into sku_data values ('S000114','Jeans - Large0114','Medium','P000057',1,'75.54','lastUpdateTime()0114','1');
-insert into sku_data values ('S000115','Jeans - Large0115','Large','P000058',1,'80.39','lastUpdateTime()0115','1');
-insert into sku_data values ('S000116','Jeans - Large0116','Small','P000058',1,'96.05','lastUpdateTime()0116','1');
-insert into sku_data values ('S000117','Jeans - Large0117','Medium','P000059',1,'84.64','lastUpdateTime()0117','1');
-insert into sku_data values ('S000118','Jeans - Large0118','Large','P000059',1,'97.94','lastUpdateTime()0118','1');
-insert into sku_data values ('S000119','Jeans - Large0119','Small','P000060',1,'95.27','lastUpdateTime()0119','1');
-insert into sku_data values ('S000120','Jeans - Large0120','Medium','P000060',1,'86.26','lastUpdateTime()0120','1');
-insert into sku_data values ('S000121','Jeans - Large0121','Large','P000061',1,'87.25','lastUpdateTime()0121','1');
-insert into sku_data values ('S000122','Jeans - Large0122','Small','P000061',1,'72.47','lastUpdateTime()0122','1');
-insert into sku_data values ('S000123','Jeans - Large0123','Medium','P000062',1,'88.41','lastUpdateTime()0123','1');
-insert into sku_data values ('S000124','Jeans - Large0124','Large','P000062',1,'102.49','lastUpdateTime()0124','1');
-insert into sku_data values ('S000125','Jeans - Large0125','Small','P000063',1,'84.60','lastUpdateTime()0125','1');
-insert into sku_data values ('S000126','Jeans - Large0126','Medium','P000063',1,'100.64','lastUpdateTime()0126','1');
-insert into sku_data values ('S000127','Jeans - Large0127','Large','P000064',1,'88.63','lastUpdateTime()0127','1');
-insert into sku_data values ('S000128','Jeans - Large0128','Small','P000064',1,'74.33','lastUpdateTime()0128','1');
-
-	
-insert into profile_data values ('P000001','Philip Zhang','32','male','lastUpdateTime()','P000001','1');
-insert into profile_data values ('P000002','Naveen Kumar R ','34','female','lastUpdateTime()0002','P000001','1');
-insert into profile_data values ('P000003','VENKATESH GADUPUTI','34','male','lastUpdateTime()0003','P000001','1');
-
-	
-insert into shipping_address_data values ('SA000001','Home','1900 AVE OF THE STARTS - ','Suite 555 - ','Century City - ','CA','932887','1');
-insert into shipping_address_data values ('SA000002','Office','1900 AVE OF THE STARTS - 0002','Suite 555 - 0002','Century City - 0002','VA','792076','1');
-
-	
-insert into payment_method_data values ('PM000001','Credit Card','4100987733939','1900 AVE OF THE STARTS','Suite 555 ','Century City','2018-05-02','1');
-insert into payment_method_data values ('PM000002','GiftCard','4100987733939','1900 AVE OF THE STARTS0002','Suite 555 0002','Century City0002','2016-03-03','1');
-
-	
-insert into user_order_data values ('UO000001','a consumer order','80.02','9586.72','P000001','P000001','lastUpdateTime()','1');
-insert into user_order_data values ('UO000002','a consumer order0002','91.05','7852.52','P000001','P000001','lastUpdateTime()0002','1');
-insert into user_order_data values ('UO000003','a consumer order0003','82.80','9075.10','P000002','P000001','lastUpdateTime()0003','1');
-insert into user_order_data values ('UO000004','a consumer order0004','77.45','7090.09','P000003','P000001','lastUpdateTime()0004','1');
-
-	
-insert into line_item_data values ('LI000001','Jeans - Large','11','88.19','9.02','UO000001','1');
-insert into line_item_data values ('LI000002','Jeans - Large0002','12','75.18','8.94','UO000001','1');
-insert into line_item_data values ('LI000003','Jeans - Large0003','9','75.31','10.76','UO000002','1');
-insert into line_item_data values ('LI000004','Jeans - Large0004','9','76.87','10.35','UO000002','1');
-insert into line_item_data values ('LI000005','Jeans - Large0005','12','91.54','8.39','UO000003','1');
-insert into line_item_data values ('LI000006','Jeans - Large0006','10','72.63','10.77','UO000003','1');
-insert into line_item_data values ('LI000007','Jeans - Large0007','12','79.11','11.00','UO000004','1');
-insert into line_item_data values ('LI000008','Jeans - Large0008','12','81.43','10.82','UO000004','1');
-
-	
-insert into order_promotion_data values ('OP000001','Promo For Total','1035','1142','PERCENT_OFF','UO000001','1');
-insert into order_promotion_data values ('OP000002','Promo For Total0002','1085','1183','FIX_PRICE','UO000001','1');
-insert into order_promotion_data values ('OP000003','Promo For Total0003','994','976','PERCENT_OFF','UO000002','1');
-insert into order_promotion_data values ('OP000004','Promo For Total0004','1220','1087','FIX_PRICE','UO000002','1');
-insert into order_promotion_data values ('OP000005','Promo For Total0005','953','1130','PERCENT_OFF','UO000003','1');
-insert into order_promotion_data values ('OP000006','Promo For Total0006','1228','877','FIX_PRICE','UO000003','1');
-insert into order_promotion_data values ('OP000007','Promo For Total0007','983','1228','PERCENT_OFF','UO000004','1');
-insert into order_promotion_data values ('OP000008','Promo For Total0008','1136','950','FIX_PRICE','UO000004','1');
-
-	
-insert into manual_adjustment_data values ('MA000001','Promo For Total','1049','986','OFF','UO000001','1');
-insert into manual_adjustment_data values ('MA000002','Promo For Total0002','1056','1166','FIX_PRICE','UO000001','1');
-insert into manual_adjustment_data values ('MA000003','Promo For Total0003','899','985','OFF','UO000002','1');
-insert into manual_adjustment_data values ('MA000004','Promo For Total0004','1129','870','FIX_PRICE','UO000002','1');
-insert into manual_adjustment_data values ('MA000005','Promo For Total0005','950','1142','OFF','UO000003','1');
-insert into manual_adjustment_data values ('MA000006','Promo For Total0006','945','1051','FIX_PRICE','UO000003','1');
-insert into manual_adjustment_data values ('MA000007','Promo For Total0007','1199','1142','OFF','UO000004','1');
-insert into manual_adjustment_data values ('MA000008','Promo For Total0008','1017','960','FIX_PRICE','UO000004','1');
-
-	
-insert into shipping_group_data values ('SG000001','Ship To Home','1900 AVE OF THE STARTS - ','Suite 555 - ','Century City - ','CA','866348','US','UO000001','1');
-insert into shipping_group_data values ('SG000002','Ship To Home0002','1900 AVE OF THE STARTS - 0002','Suite 555 - 0002','Century City - 0002','VA','824673','US','UO000001','1');
-insert into shipping_group_data values ('SG000003','Ship To Home0003','1900 AVE OF THE STARTS - 0003','Suite 555 - 0003','Century City - 0003','MA','932856','US','UO000002','1');
-insert into shipping_group_data values ('SG000004','Ship To Home0004','1900 AVE OF THE STARTS - 0004','Suite 555 - 0004','Century City - 0004','PA','699693','US','UO000002','1');
-insert into shipping_group_data values ('SG000005','Ship To Home0005','1900 AVE OF THE STARTS - 0005','Suite 555 - 0005','Century City - 0005','WA','812301','US','UO000003','1');
-insert into shipping_group_data values ('SG000006','Ship To Home0006','1900 AVE OF THE STARTS - 0006','Suite 555 - 0006','Century City - 0006','LA','810447','US','UO000003','1');
-insert into shipping_group_data values ('SG000007','Ship To Home0007','1900 AVE OF THE STARTS - 0007','Suite 555 - 0007','Century City - 0007','CA','751396','US','UO000004','1');
-insert into shipping_group_data values ('SG000008','Ship To Home0008','1900 AVE OF THE STARTS - 0008','Suite 555 - 0008','Century City - 0008','VA','979678','US','UO000004','1');
-
-	
-insert into payment_group_data values ('PG000001','Pay for order','111.10','UO000001','PAID','1');
-insert into payment_group_data values ('PG000002','Pay for order0002','91.33','UO000001','PENDING','1');
-insert into payment_group_data values ('PG000003','Pay for order0003','89.20','UO000002','FAIL','1');
-insert into payment_group_data values ('PG000004','Pay for order0004','88.10','UO000002','PAID','1');
-insert into payment_group_data values ('PG000005','Pay for order0005','97.95','UO000003','PENDING','1');
-insert into payment_group_data values ('PG000006','Pay for order0006','101.35','UO000003','FAIL','1');
-insert into payment_group_data values ('PG000007','Pay for order0007','114.08','UO000004','PAID','1');
-insert into payment_group_data values ('PG000008','Pay for order0008','93.97','UO000004','PENDING','1');
-
-	
 insert into user_domain_data values ('UD000001','用户区域','1');
 
 	
 insert into user_white_list_data values ('UWL000001','clariones','tester;ios-spokesperson','UD000001','1');
 insert into user_white_list_data values ('UWL000002','13808188512','tester;ios-spokesperson0002','UD000001','1');
+insert into user_white_list_data values ('UWL000003','clariones','tester;ios-spokesperson0003','UD000002','1');
+insert into user_white_list_data values ('UWL000004','13808188512','tester;ios-spokesperson0004','UD000002','1');
+insert into user_white_list_data values ('UWL000005','clariones','tester;ios-spokesperson0005','UD000003','1');
 
 	
-insert into sec_user_data values ('SU000001','login','13900000001','','C183EC89F92A462CF45B95504792EC4625E847C90536EEFE512D1C9DB8602E95','0','2019-02-06 13:47:40','2019-02-14 03:05:49','UD000001',NULL,'BLOCKED','1');
-insert into sec_user_data values ('SU000002','login0002','13900000002','suddy_chang@163.com','AC2F95628244C6975EB2C36942EA879ED93D93F5895EF3157733E4629FA86B92','9999999','2019-02-15 03:13:41','2019-02-06 09:02:23','UD000001',NULL,'BLOCKED0002','1');
+insert into sec_user_data values ('SU000001','login','13900000001','','C183EC89F92A462CF45B95504792EC4625E847C90536EEFE512D1C9DB8602E95','0','2019-02-03 11:01:33','2019-02-19 12:25:20','UD000001',NULL,'BLOCKED','1');
+insert into sec_user_data values ('SU000002','login0002','13900000002','suddy_chang@163.com','AC2F95628244C6975EB2C36942EA879ED93D93F5895EF3157733E4629FA86B92','9999999','2019-02-19 13:03:34','2019-02-07 22:19:56','UD000001',NULL,'BLOCKED0002','1');
+insert into sec_user_data values ('SU000003','login0003','13900000003','','1A39AE05E011CF4B6ADE19307698831F4303CEB3FF5A9E21EEC0B21FB19B1050','0','2019-02-18 23:23:48','2019-02-16 07:36:03','UD000002',NULL,'BLOCKED0003','1');
+insert into sec_user_data values ('SU000004','login0004','13900000004','suddy_chang@163.com','331D0B81C261072AB3E01D2D09A3D1F9B03F1E5F095D6BF7284F32BF85135D59','9999999','2019-02-05 21:55:10','2019-02-13 12:04:43','UD000002',NULL,'BLOCKED0004','1');
+insert into sec_user_data values ('SU000005','login0005','13900000005','','CBDC109937F570CA1D5F223EC59F5368AF9380F9DBF7E553124132BB402ED457','0','2019-02-07 06:06:50','2019-02-21 18:38:53','UD000003',NULL,'BLOCKED0005','1');
 
 	
-insert into sec_user_blocking_data values ('SUB000001','currentUser()','2019-02-06 00:00:52','这个用户多次发送违反社区的帖子，现在把他给屏蔽了','1');
+insert into sec_user_blocking_data values ('SUB000001','currentUser()','2019-02-10 07:32:22','这个用户多次发送违反社区的帖子，现在把他给屏蔽了','1');
 
 	
 insert into user_app_data values ('UA000001','审车平台','SU000001','users',1,'MXWR','CarInspectionPlatform','CIP000001','/link/to/app','1');
@@ -895,6 +220,25 @@ insert into user_app_data values ('UA000003','接车公司','SU000001','wechat',
 insert into user_app_data values ('UA000004','审车公司','SU000002','bar-chart',1,'MXWR','CarInspectionServiceCompany','CISC000001','/link/to/app0004','1');
 insert into user_app_data values ('UA000005','维修公司','SU000002','user',1,'MXWR','CarRepairingServiceCompany','CRSC000001','/link/to/app0005','1');
 insert into user_app_data values ('UA000006','顾客','SU000002','users',1,'MXWR','CustomerInfo','CI000001','/link/to/app0006','1');
+insert into user_app_data values ('UA000007','审车平台','SU000003','users',1,'MXWR','CarInspectionPlatform','CIP000001','/link/to/app0007','1');
+insert into user_app_data values ('UA000008','账户管理','SU000003','bank',1,'MXWR','UserDomain','UD000001','/link/to/app0008','1');
+insert into user_app_data values ('UA000009','接车公司','SU000003','wechat',1,'MXWR','CarReceivingServiceCompany','CRSC000001','/link/to/app0009','1');
+insert into user_app_data values ('UA000010','审车公司','SU000004','bar-chart',1,'MXWR','CarInspectionServiceCompany','CISC000001','/link/to/app0010','1');
+insert into user_app_data values ('UA000011','维修公司','SU000004','user',1,'MXWR','CarRepairingServiceCompany','CRSC000001','/link/to/app0011','1');
+insert into user_app_data values ('UA000012','顾客','SU000004','users',1,'MXWR','CustomerInfo','CI000001','/link/to/app0012','1');
+insert into user_app_data values ('UA000013','审车平台','SU000005','users',1,'MXWR','CarInspectionPlatform','CIP000001','/link/to/app0013','1');
+insert into user_app_data values ('UA000014','账户管理','SU000005','bank',1,'MXWR','UserDomain','UD000001','/link/to/app0014','1');
+insert into user_app_data values ('UA000015','接车公司','SU000005','wechat',1,'MXWR','CarReceivingServiceCompany','CRSC000001','/link/to/app0015','1');
+insert into user_app_data values ('UA000016','审车公司','SU000006','bar-chart',1,'MXWR','CarInspectionServiceCompany','CISC000001','/link/to/app0016','1');
+insert into user_app_data values ('UA000017','维修公司','SU000006','user',1,'MXWR','CarRepairingServiceCompany','CRSC000001','/link/to/app0017','1');
+insert into user_app_data values ('UA000018','顾客','SU000006','users',1,'MXWR','CustomerInfo','CI000001','/link/to/app0018','1');
+insert into user_app_data values ('UA000019','审车平台','SU000007','users',1,'MXWR','CarInspectionPlatform','CIP000001','/link/to/app0019','1');
+insert into user_app_data values ('UA000020','账户管理','SU000007','bank',1,'MXWR','UserDomain','UD000001','/link/to/app0020','1');
+insert into user_app_data values ('UA000021','接车公司','SU000007','wechat',1,'MXWR','CarReceivingServiceCompany','CRSC000001','/link/to/app0021','1');
+insert into user_app_data values ('UA000022','审车公司','SU000008','bar-chart',1,'MXWR','CarInspectionServiceCompany','CISC000001','/link/to/app0022','1');
+insert into user_app_data values ('UA000023','维修公司','SU000008','user',1,'MXWR','CarRepairingServiceCompany','CRSC000001','/link/to/app0023','1');
+insert into user_app_data values ('UA000024','顾客','SU000008','users',1,'MXWR','CustomerInfo','CI000001','/link/to/app0024','1');
+insert into user_app_data values ('UA000025','审车平台','SU000009','users',1,'MXWR','CarInspectionPlatform','CIP000001','/link/to/app0025','1');
 
 	
 insert into list_access_data values ('LA000001','列表','levelOneCategoryList',1,1,1,1,1,'UA000001','1');
@@ -905,6 +249,123 @@ insert into list_access_data values ('LA000005','列表0005','levelOneCategoryLi
 insert into list_access_data values ('LA000006','列表0006','levelOneCategoryList0006',1,1,1,1,1,'UA000004','1');
 insert into list_access_data values ('LA000007','列表0007','levelOneCategoryList0007',1,1,1,1,1,'UA000005','1');
 insert into list_access_data values ('LA000008','列表0008','levelOneCategoryList0008',1,1,1,1,1,'UA000006','1');
+insert into list_access_data values ('LA000009','列表0009','levelOneCategoryList0009',1,1,1,1,1,'UA000007','1');
+insert into list_access_data values ('LA000010','列表0010','levelOneCategoryList0010',1,1,1,1,1,'UA000007','1');
+insert into list_access_data values ('LA000011','列表0011','levelOneCategoryList0011',1,1,1,1,1,'UA000008','1');
+insert into list_access_data values ('LA000012','列表0012','levelOneCategoryList0012',1,1,1,1,1,'UA000009','1');
+insert into list_access_data values ('LA000013','列表0013','levelOneCategoryList0013',1,1,1,1,1,'UA000010','1');
+insert into list_access_data values ('LA000014','列表0014','levelOneCategoryList0014',1,1,1,1,1,'UA000010','1');
+insert into list_access_data values ('LA000015','列表0015','levelOneCategoryList0015',1,1,1,1,1,'UA000011','1');
+insert into list_access_data values ('LA000016','列表0016','levelOneCategoryList0016',1,1,1,1,1,'UA000012','1');
+insert into list_access_data values ('LA000017','列表0017','levelOneCategoryList0017',1,1,1,1,1,'UA000013','1');
+insert into list_access_data values ('LA000018','列表0018','levelOneCategoryList0018',1,1,1,1,1,'UA000013','1');
+insert into list_access_data values ('LA000019','列表0019','levelOneCategoryList0019',1,1,1,1,1,'UA000014','1');
+insert into list_access_data values ('LA000020','列表0020','levelOneCategoryList0020',1,1,1,1,1,'UA000015','1');
+insert into list_access_data values ('LA000021','列表0021','levelOneCategoryList0021',1,1,1,1,1,'UA000016','1');
+insert into list_access_data values ('LA000022','列表0022','levelOneCategoryList0022',1,1,1,1,1,'UA000016','1');
+insert into list_access_data values ('LA000023','列表0023','levelOneCategoryList0023',1,1,1,1,1,'UA000017','1');
+insert into list_access_data values ('LA000024','列表0024','levelOneCategoryList0024',1,1,1,1,1,'UA000018','1');
+insert into list_access_data values ('LA000025','列表0025','levelOneCategoryList0025',1,1,1,1,1,'UA000019','1');
+insert into list_access_data values ('LA000026','列表0026','levelOneCategoryList0026',1,1,1,1,1,'UA000019','1');
+insert into list_access_data values ('LA000027','列表0027','levelOneCategoryList0027',1,1,1,1,1,'UA000020','1');
+insert into list_access_data values ('LA000028','列表0028','levelOneCategoryList0028',1,1,1,1,1,'UA000021','1');
+insert into list_access_data values ('LA000029','列表0029','levelOneCategoryList0029',1,1,1,1,1,'UA000022','1');
+insert into list_access_data values ('LA000030','列表0030','levelOneCategoryList0030',1,1,1,1,1,'UA000022','1');
+insert into list_access_data values ('LA000031','列表0031','levelOneCategoryList0031',1,1,1,1,1,'UA000023','1');
+insert into list_access_data values ('LA000032','列表0032','levelOneCategoryList0032',1,1,1,1,1,'UA000024','1');
+insert into list_access_data values ('LA000033','列表0033','levelOneCategoryList0033',1,1,1,1,1,'UA000025','1');
+insert into list_access_data values ('LA000034','列表0034','levelOneCategoryList0034',1,1,1,1,1,'UA000025','1');
+insert into list_access_data values ('LA000035','列表0035','levelOneCategoryList0035',1,1,1,1,1,'UA000026','1');
+insert into list_access_data values ('LA000036','列表0036','levelOneCategoryList0036',1,1,1,1,1,'UA000027','1');
+insert into list_access_data values ('LA000037','列表0037','levelOneCategoryList0037',1,1,1,1,1,'UA000028','1');
+insert into list_access_data values ('LA000038','列表0038','levelOneCategoryList0038',1,1,1,1,1,'UA000028','1');
+insert into list_access_data values ('LA000039','列表0039','levelOneCategoryList0039',1,1,1,1,1,'UA000029','1');
+insert into list_access_data values ('LA000040','列表0040','levelOneCategoryList0040',1,1,1,1,1,'UA000030','1');
+insert into list_access_data values ('LA000041','列表0041','levelOneCategoryList0041',1,1,1,1,1,'UA000031','1');
+insert into list_access_data values ('LA000042','列表0042','levelOneCategoryList0042',1,1,1,1,1,'UA000031','1');
+insert into list_access_data values ('LA000043','列表0043','levelOneCategoryList0043',1,1,1,1,1,'UA000032','1');
+insert into list_access_data values ('LA000044','列表0044','levelOneCategoryList0044',1,1,1,1,1,'UA000033','1');
+insert into list_access_data values ('LA000045','列表0045','levelOneCategoryList0045',1,1,1,1,1,'UA000034','1');
+insert into list_access_data values ('LA000046','列表0046','levelOneCategoryList0046',1,1,1,1,1,'UA000034','1');
+insert into list_access_data values ('LA000047','列表0047','levelOneCategoryList0047',1,1,1,1,1,'UA000035','1');
+insert into list_access_data values ('LA000048','列表0048','levelOneCategoryList0048',1,1,1,1,1,'UA000036','1');
+insert into list_access_data values ('LA000049','列表0049','levelOneCategoryList0049',1,1,1,1,1,'UA000037','1');
+insert into list_access_data values ('LA000050','列表0050','levelOneCategoryList0050',1,1,1,1,1,'UA000037','1');
+insert into list_access_data values ('LA000051','列表0051','levelOneCategoryList0051',1,1,1,1,1,'UA000038','1');
+insert into list_access_data values ('LA000052','列表0052','levelOneCategoryList0052',1,1,1,1,1,'UA000039','1');
+insert into list_access_data values ('LA000053','列表0053','levelOneCategoryList0053',1,1,1,1,1,'UA000040','1');
+insert into list_access_data values ('LA000054','列表0054','levelOneCategoryList0054',1,1,1,1,1,'UA000040','1');
+insert into list_access_data values ('LA000055','列表0055','levelOneCategoryList0055',1,1,1,1,1,'UA000041','1');
+insert into list_access_data values ('LA000056','列表0056','levelOneCategoryList0056',1,1,1,1,1,'UA000042','1');
+insert into list_access_data values ('LA000057','列表0057','levelOneCategoryList0057',1,1,1,1,1,'UA000043','1');
+insert into list_access_data values ('LA000058','列表0058','levelOneCategoryList0058',1,1,1,1,1,'UA000043','1');
+insert into list_access_data values ('LA000059','列表0059','levelOneCategoryList0059',1,1,1,1,1,'UA000044','1');
+insert into list_access_data values ('LA000060','列表0060','levelOneCategoryList0060',1,1,1,1,1,'UA000045','1');
+insert into list_access_data values ('LA000061','列表0061','levelOneCategoryList0061',1,1,1,1,1,'UA000046','1');
+insert into list_access_data values ('LA000062','列表0062','levelOneCategoryList0062',1,1,1,1,1,'UA000046','1');
+insert into list_access_data values ('LA000063','列表0063','levelOneCategoryList0063',1,1,1,1,1,'UA000047','1');
+insert into list_access_data values ('LA000064','列表0064','levelOneCategoryList0064',1,1,1,1,1,'UA000048','1');
+insert into list_access_data values ('LA000065','列表0065','levelOneCategoryList0065',1,1,1,1,1,'UA000049','1');
+insert into list_access_data values ('LA000066','列表0066','levelOneCategoryList0066',1,1,1,1,1,'UA000049','1');
+insert into list_access_data values ('LA000067','列表0067','levelOneCategoryList0067',1,1,1,1,1,'UA000050','1');
+insert into list_access_data values ('LA000068','列表0068','levelOneCategoryList0068',1,1,1,1,1,'UA000051','1');
+insert into list_access_data values ('LA000069','列表0069','levelOneCategoryList0069',1,1,1,1,1,'UA000052','1');
+insert into list_access_data values ('LA000070','列表0070','levelOneCategoryList0070',1,1,1,1,1,'UA000052','1');
+insert into list_access_data values ('LA000071','列表0071','levelOneCategoryList0071',1,1,1,1,1,'UA000053','1');
+insert into list_access_data values ('LA000072','列表0072','levelOneCategoryList0072',1,1,1,1,1,'UA000054','1');
+insert into list_access_data values ('LA000073','列表0073','levelOneCategoryList0073',1,1,1,1,1,'UA000055','1');
+insert into list_access_data values ('LA000074','列表0074','levelOneCategoryList0074',1,1,1,1,1,'UA000055','1');
+insert into list_access_data values ('LA000075','列表0075','levelOneCategoryList0075',1,1,1,1,1,'UA000056','1');
+insert into list_access_data values ('LA000076','列表0076','levelOneCategoryList0076',1,1,1,1,1,'UA000057','1');
+insert into list_access_data values ('LA000077','列表0077','levelOneCategoryList0077',1,1,1,1,1,'UA000058','1');
+insert into list_access_data values ('LA000078','列表0078','levelOneCategoryList0078',1,1,1,1,1,'UA000058','1');
+insert into list_access_data values ('LA000079','列表0079','levelOneCategoryList0079',1,1,1,1,1,'UA000059','1');
+insert into list_access_data values ('LA000080','列表0080','levelOneCategoryList0080',1,1,1,1,1,'UA000060','1');
+insert into list_access_data values ('LA000081','列表0081','levelOneCategoryList0081',1,1,1,1,1,'UA000061','1');
+insert into list_access_data values ('LA000082','列表0082','levelOneCategoryList0082',1,1,1,1,1,'UA000061','1');
+insert into list_access_data values ('LA000083','列表0083','levelOneCategoryList0083',1,1,1,1,1,'UA000062','1');
+insert into list_access_data values ('LA000084','列表0084','levelOneCategoryList0084',1,1,1,1,1,'UA000063','1');
+insert into list_access_data values ('LA000085','列表0085','levelOneCategoryList0085',1,1,1,1,1,'UA000064','1');
+insert into list_access_data values ('LA000086','列表0086','levelOneCategoryList0086',1,1,1,1,1,'UA000064','1');
+insert into list_access_data values ('LA000087','列表0087','levelOneCategoryList0087',1,1,1,1,1,'UA000065','1');
+insert into list_access_data values ('LA000088','列表0088','levelOneCategoryList0088',1,1,1,1,1,'UA000066','1');
+insert into list_access_data values ('LA000089','列表0089','levelOneCategoryList0089',1,1,1,1,1,'UA000067','1');
+insert into list_access_data values ('LA000090','列表0090','levelOneCategoryList0090',1,1,1,1,1,'UA000067','1');
+insert into list_access_data values ('LA000091','列表0091','levelOneCategoryList0091',1,1,1,1,1,'UA000068','1');
+insert into list_access_data values ('LA000092','列表0092','levelOneCategoryList0092',1,1,1,1,1,'UA000069','1');
+insert into list_access_data values ('LA000093','列表0093','levelOneCategoryList0093',1,1,1,1,1,'UA000070','1');
+insert into list_access_data values ('LA000094','列表0094','levelOneCategoryList0094',1,1,1,1,1,'UA000070','1');
+insert into list_access_data values ('LA000095','列表0095','levelOneCategoryList0095',1,1,1,1,1,'UA000071','1');
+insert into list_access_data values ('LA000096','列表0096','levelOneCategoryList0096',1,1,1,1,1,'UA000072','1');
+insert into list_access_data values ('LA000097','列表0097','levelOneCategoryList0097',1,1,1,1,1,'UA000073','1');
+insert into list_access_data values ('LA000098','列表0098','levelOneCategoryList0098',1,1,1,1,1,'UA000073','1');
+insert into list_access_data values ('LA000099','列表0099','levelOneCategoryList0099',1,1,1,1,1,'UA000074','1');
+insert into list_access_data values ('LA000100','列表0100','levelOneCategoryList0100',1,1,1,1,1,'UA000075','1');
+insert into list_access_data values ('LA000101','列表0101','levelOneCategoryList0101',1,1,1,1,1,'UA000076','1');
+insert into list_access_data values ('LA000102','列表0102','levelOneCategoryList0102',1,1,1,1,1,'UA000076','1');
+insert into list_access_data values ('LA000103','列表0103','levelOneCategoryList0103',1,1,1,1,1,'UA000077','1');
+insert into list_access_data values ('LA000104','列表0104','levelOneCategoryList0104',1,1,1,1,1,'UA000078','1');
+insert into list_access_data values ('LA000105','列表0105','levelOneCategoryList0105',1,1,1,1,1,'UA000079','1');
+insert into list_access_data values ('LA000106','列表0106','levelOneCategoryList0106',1,1,1,1,1,'UA000079','1');
+insert into list_access_data values ('LA000107','列表0107','levelOneCategoryList0107',1,1,1,1,1,'UA000080','1');
+insert into list_access_data values ('LA000108','列表0108','levelOneCategoryList0108',1,1,1,1,1,'UA000081','1');
+insert into list_access_data values ('LA000109','列表0109','levelOneCategoryList0109',1,1,1,1,1,'UA000082','1');
+insert into list_access_data values ('LA000110','列表0110','levelOneCategoryList0110',1,1,1,1,1,'UA000082','1');
+insert into list_access_data values ('LA000111','列表0111','levelOneCategoryList0111',1,1,1,1,1,'UA000083','1');
+insert into list_access_data values ('LA000112','列表0112','levelOneCategoryList0112',1,1,1,1,1,'UA000084','1');
+insert into list_access_data values ('LA000113','列表0113','levelOneCategoryList0113',1,1,1,1,1,'UA000085','1');
+insert into list_access_data values ('LA000114','列表0114','levelOneCategoryList0114',1,1,1,1,1,'UA000085','1');
+insert into list_access_data values ('LA000115','列表0115','levelOneCategoryList0115',1,1,1,1,1,'UA000086','1');
+insert into list_access_data values ('LA000116','列表0116','levelOneCategoryList0116',1,1,1,1,1,'UA000087','1');
+insert into list_access_data values ('LA000117','列表0117','levelOneCategoryList0117',1,1,1,1,1,'UA000088','1');
+insert into list_access_data values ('LA000118','列表0118','levelOneCategoryList0118',1,1,1,1,1,'UA000088','1');
+insert into list_access_data values ('LA000119','列表0119','levelOneCategoryList0119',1,1,1,1,1,'UA000089','1');
+insert into list_access_data values ('LA000120','列表0120','levelOneCategoryList0120',1,1,1,1,1,'UA000090','1');
+insert into list_access_data values ('LA000121','列表0121','levelOneCategoryList0121',1,1,1,1,1,'UA000091','1');
+insert into list_access_data values ('LA000122','列表0122','levelOneCategoryList0122',1,1,1,1,1,'UA000091','1');
+insert into list_access_data values ('LA000123','列表0123','levelOneCategoryList0123',1,1,1,1,1,'UA000092','1');
+insert into list_access_data values ('LA000124','列表0124','levelOneCategoryList0124',1,1,1,1,1,'UA000093','1');
+insert into list_access_data values ('LA000125','列表0125','levelOneCategoryList0125',1,1,1,1,1,'UA000094','1');
 
 	
 insert into object_access_data values ('OA000001','控制访问列表1','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000001','1');
@@ -915,12 +376,150 @@ insert into object_access_data values ('OA000005','控制访问列表10005','Fra
 insert into object_access_data values ('OA000006','控制访问列表10006','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000004','1');
 insert into object_access_data values ('OA000007','控制访问列表10007','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000005','1');
 insert into object_access_data values ('OA000008','控制访问列表10008','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000006','1');
+insert into object_access_data values ('OA000009','控制访问列表10009','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000007','1');
+insert into object_access_data values ('OA000010','控制访问列表10010','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000007','1');
+insert into object_access_data values ('OA000011','控制访问列表10011','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000008','1');
+insert into object_access_data values ('OA000012','控制访问列表10012','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000009','1');
+insert into object_access_data values ('OA000013','控制访问列表10013','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000010','1');
+insert into object_access_data values ('OA000014','控制访问列表10014','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000010','1');
+insert into object_access_data values ('OA000015','控制访问列表10015','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000011','1');
+insert into object_access_data values ('OA000016','控制访问列表10016','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000012','1');
+insert into object_access_data values ('OA000017','控制访问列表10017','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000013','1');
+insert into object_access_data values ('OA000018','控制访问列表10018','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000013','1');
+insert into object_access_data values ('OA000019','控制访问列表10019','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000014','1');
+insert into object_access_data values ('OA000020','控制访问列表10020','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000015','1');
+insert into object_access_data values ('OA000021','控制访问列表10021','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000016','1');
+insert into object_access_data values ('OA000022','控制访问列表10022','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000016','1');
+insert into object_access_data values ('OA000023','控制访问列表10023','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000017','1');
+insert into object_access_data values ('OA000024','控制访问列表10024','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000018','1');
+insert into object_access_data values ('OA000025','控制访问列表10025','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000019','1');
+insert into object_access_data values ('OA000026','控制访问列表10026','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000019','1');
+insert into object_access_data values ('OA000027','控制访问列表10027','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000020','1');
+insert into object_access_data values ('OA000028','控制访问列表10028','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000021','1');
+insert into object_access_data values ('OA000029','控制访问列表10029','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000022','1');
+insert into object_access_data values ('OA000030','控制访问列表10030','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000022','1');
+insert into object_access_data values ('OA000031','控制访问列表10031','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000023','1');
+insert into object_access_data values ('OA000032','控制访问列表10032','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000024','1');
+insert into object_access_data values ('OA000033','控制访问列表10033','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000025','1');
+insert into object_access_data values ('OA000034','控制访问列表10034','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000025','1');
+insert into object_access_data values ('OA000035','控制访问列表10035','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000026','1');
+insert into object_access_data values ('OA000036','控制访问列表10036','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000027','1');
+insert into object_access_data values ('OA000037','控制访问列表10037','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000028','1');
+insert into object_access_data values ('OA000038','控制访问列表10038','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000028','1');
+insert into object_access_data values ('OA000039','控制访问列表10039','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000029','1');
+insert into object_access_data values ('OA000040','控制访问列表10040','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000030','1');
+insert into object_access_data values ('OA000041','控制访问列表10041','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000031','1');
+insert into object_access_data values ('OA000042','控制访问列表10042','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000031','1');
+insert into object_access_data values ('OA000043','控制访问列表10043','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000032','1');
+insert into object_access_data values ('OA000044','控制访问列表10044','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000033','1');
+insert into object_access_data values ('OA000045','控制访问列表10045','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000034','1');
+insert into object_access_data values ('OA000046','控制访问列表10046','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000034','1');
+insert into object_access_data values ('OA000047','控制访问列表10047','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000035','1');
+insert into object_access_data values ('OA000048','控制访问列表10048','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000036','1');
+insert into object_access_data values ('OA000049','控制访问列表10049','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000037','1');
+insert into object_access_data values ('OA000050','控制访问列表10050','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000037','1');
+insert into object_access_data values ('OA000051','控制访问列表10051','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000038','1');
+insert into object_access_data values ('OA000052','控制访问列表10052','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000039','1');
+insert into object_access_data values ('OA000053','控制访问列表10053','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000040','1');
+insert into object_access_data values ('OA000054','控制访问列表10054','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000040','1');
+insert into object_access_data values ('OA000055','控制访问列表10055','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000041','1');
+insert into object_access_data values ('OA000056','控制访问列表10056','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000042','1');
+insert into object_access_data values ('OA000057','控制访问列表10057','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000043','1');
+insert into object_access_data values ('OA000058','控制访问列表10058','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000043','1');
+insert into object_access_data values ('OA000059','控制访问列表10059','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000044','1');
+insert into object_access_data values ('OA000060','控制访问列表10060','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000045','1');
+insert into object_access_data values ('OA000061','控制访问列表10061','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000046','1');
+insert into object_access_data values ('OA000062','控制访问列表10062','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000046','1');
+insert into object_access_data values ('OA000063','控制访问列表10063','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000047','1');
+insert into object_access_data values ('OA000064','控制访问列表10064','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000048','1');
+insert into object_access_data values ('OA000065','控制访问列表10065','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000049','1');
+insert into object_access_data values ('OA000066','控制访问列表10066','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000049','1');
+insert into object_access_data values ('OA000067','控制访问列表10067','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000050','1');
+insert into object_access_data values ('OA000068','控制访问列表10068','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000051','1');
+insert into object_access_data values ('OA000069','控制访问列表10069','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000052','1');
+insert into object_access_data values ('OA000070','控制访问列表10070','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000052','1');
+insert into object_access_data values ('OA000071','控制访问列表10071','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000053','1');
+insert into object_access_data values ('OA000072','控制访问列表10072','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000054','1');
+insert into object_access_data values ('OA000073','控制访问列表10073','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000055','1');
+insert into object_access_data values ('OA000074','控制访问列表10074','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000055','1');
+insert into object_access_data values ('OA000075','控制访问列表10075','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000056','1');
+insert into object_access_data values ('OA000076','控制访问列表10076','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000057','1');
+insert into object_access_data values ('OA000077','控制访问列表10077','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000058','1');
+insert into object_access_data values ('OA000078','控制访问列表10078','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000058','1');
+insert into object_access_data values ('OA000079','控制访问列表10079','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000059','1');
+insert into object_access_data values ('OA000080','控制访问列表10080','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000060','1');
+insert into object_access_data values ('OA000081','控制访问列表10081','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000061','1');
+insert into object_access_data values ('OA000082','控制访问列表10082','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000061','1');
+insert into object_access_data values ('OA000083','控制访问列表10083','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000062','1');
+insert into object_access_data values ('OA000084','控制访问列表10084','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000063','1');
+insert into object_access_data values ('OA000085','控制访问列表10085','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000064','1');
+insert into object_access_data values ('OA000086','控制访问列表10086','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000064','1');
+insert into object_access_data values ('OA000087','控制访问列表10087','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000065','1');
+insert into object_access_data values ('OA000088','控制访问列表10088','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000066','1');
+insert into object_access_data values ('OA000089','控制访问列表10089','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000067','1');
+insert into object_access_data values ('OA000090','控制访问列表10090','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000067','1');
+insert into object_access_data values ('OA000091','控制访问列表10091','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000068','1');
+insert into object_access_data values ('OA000092','控制访问列表10092','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000069','1');
+insert into object_access_data values ('OA000093','控制访问列表10093','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000070','1');
+insert into object_access_data values ('OA000094','控制访问列表10094','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000070','1');
+insert into object_access_data values ('OA000095','控制访问列表10095','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000071','1');
+insert into object_access_data values ('OA000096','控制访问列表10096','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000072','1');
+insert into object_access_data values ('OA000097','控制访问列表10097','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000073','1');
+insert into object_access_data values ('OA000098','控制访问列表10098','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000073','1');
+insert into object_access_data values ('OA000099','控制访问列表10099','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000074','1');
+insert into object_access_data values ('OA000100','控制访问列表10100','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000075','1');
+insert into object_access_data values ('OA000101','控制访问列表10101','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000076','1');
+insert into object_access_data values ('OA000102','控制访问列表10102','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000076','1');
+insert into object_access_data values ('OA000103','控制访问列表10103','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000077','1');
+insert into object_access_data values ('OA000104','控制访问列表10104','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000078','1');
+insert into object_access_data values ('OA000105','控制访问列表10105','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000079','1');
+insert into object_access_data values ('OA000106','控制访问列表10106','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000079','1');
+insert into object_access_data values ('OA000107','控制访问列表10107','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000080','1');
+insert into object_access_data values ('OA000108','控制访问列表10108','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000081','1');
+insert into object_access_data values ('OA000109','控制访问列表10109','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000082','1');
+insert into object_access_data values ('OA000110','控制访问列表10110','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000082','1');
+insert into object_access_data values ('OA000111','控制访问列表10111','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000083','1');
+insert into object_access_data values ('OA000112','控制访问列表10112','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000084','1');
+insert into object_access_data values ('OA000113','控制访问列表10113','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000085','1');
+insert into object_access_data values ('OA000114','控制访问列表10114','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000085','1');
+insert into object_access_data values ('OA000115','控制访问列表10115','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000086','1');
+insert into object_access_data values ('OA000116','控制访问列表10116','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000087','1');
+insert into object_access_data values ('OA000117','控制访问列表10117','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000088','1');
+insert into object_access_data values ('OA000118','控制访问列表10118','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000088','1');
+insert into object_access_data values ('OA000119','控制访问列表10119','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000089','1');
+insert into object_access_data values ('OA000120','控制访问列表10120','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000090','1');
+insert into object_access_data values ('OA000121','控制访问列表10121','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000091','1');
+insert into object_access_data values ('OA000122','控制访问列表10122','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000091','1');
+insert into object_access_data values ('OA000123','控制访问列表10123','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000092','1');
+insert into object_access_data values ('OA000124','控制访问列表10124','AccountSet','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','levelOneCategoryList','UA000093','1');
+insert into object_access_data values ('OA000125','控制访问列表10125','FranchiseeStoreCountryCenter','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','catalogList','UA000094','1');
 
 	
-insert into login_history_data values ('LH000001','2019-02-14 10:13:50','192.168.1.1','登陆成功','SU000001','1');
-insert into login_history_data values ('LH000002','2019-02-21 12:58:08','192.168.1.2','登陆成功0002','SU000001','1');
-insert into login_history_data values ('LH000003','2019-02-13 03:00:26','192.168.1.1','登陆成功0003','SU000002','1');
-insert into login_history_data values ('LH000004','2019-02-09 21:51:35','192.168.1.2','登陆成功0004','SU000002','1');
+insert into login_history_data values ('LH000001','2019-02-20 05:18:11','192.168.1.1','登陆成功','SU000001','1');
+insert into login_history_data values ('LH000002','2019-02-07 02:05:10','192.168.1.2','登陆成功0002','SU000001','1');
+insert into login_history_data values ('LH000003','2019-02-16 18:42:56','192.168.1.1','登陆成功0003','SU000002','1');
+insert into login_history_data values ('LH000004','2019-02-15 22:39:08','192.168.1.2','登陆成功0004','SU000002','1');
+insert into login_history_data values ('LH000005','2019-02-15 08:55:28','192.168.1.1','登陆成功0005','SU000003','1');
+insert into login_history_data values ('LH000006','2019-02-21 09:08:11','192.168.1.2','登陆成功0006','SU000003','1');
+insert into login_history_data values ('LH000007','2019-02-01 08:07:18','192.168.1.1','登陆成功0007','SU000004','1');
+insert into login_history_data values ('LH000008','2019-02-22 05:04:40','192.168.1.2','登陆成功0008','SU000004','1');
+insert into login_history_data values ('LH000009','2019-02-07 10:03:18','192.168.1.1','登陆成功0009','SU000005','1');
+insert into login_history_data values ('LH000010','2019-02-15 19:13:43','192.168.1.2','登陆成功0010','SU000005','1');
+insert into login_history_data values ('LH000011','2019-02-11 10:02:36','192.168.1.1','登陆成功0011','SU000006','1');
+insert into login_history_data values ('LH000012','2019-02-08 04:51:43','192.168.1.2','登陆成功0012','SU000006','1');
+insert into login_history_data values ('LH000013','2019-02-01 21:16:41','192.168.1.1','登陆成功0013','SU000007','1');
+insert into login_history_data values ('LH000014','2019-02-08 07:21:24','192.168.1.2','登陆成功0014','SU000007','1');
+insert into login_history_data values ('LH000015','2019-02-01 18:14:40','192.168.1.1','登陆成功0015','SU000008','1');
+insert into login_history_data values ('LH000016','2019-02-22 08:44:02','192.168.1.2','登陆成功0016','SU000008','1');
+insert into login_history_data values ('LH000017','2019-02-17 19:39:17','192.168.1.1','登陆成功0017','SU000009','1');
+insert into login_history_data values ('LH000018','2019-02-09 14:07:50','192.168.1.2','登陆成功0018','SU000009','1');
+insert into login_history_data values ('LH000019','2019-02-04 12:32:08','192.168.1.1','登陆成功0019','SU000010','1');
+insert into login_history_data values ('LH000020','2019-02-02 06:11:57','192.168.1.2','登陆成功0020','SU000010','1');
+insert into login_history_data values ('LH000021','2019-02-19 10:02:38','192.168.1.1','登陆成功0021','SU000011','1');
+insert into login_history_data values ('LH000022','2019-02-13 00:58:59','192.168.1.2','登陆成功0022','SU000011','1');
+insert into login_history_data values ('LH000023','2019-02-20 08:12:52','192.168.1.1','登陆成功0023','SU000012','1');
+insert into login_history_data values ('LH000024','2019-02-06 09:37:53','192.168.1.2','登陆成功0024','SU000012','1');
+insert into login_history_data values ('LH000025','2019-02-05 10:19:32','192.168.1.1','登陆成功0025','SU000013','1');
 
 	
 insert into generic_form_data values ('GF000001','登记输入单','姓名就是你身份证上的名字','1');
@@ -928,20 +527,30 @@ insert into generic_form_data values ('GF000001','登记输入单','姓名就是
 	
 insert into form_message_data values ('FM000001','字段组合错误','GF000001','success','1');
 insert into form_message_data values ('FM000002','字段组合错误0002','GF000001','info','1');
+insert into form_message_data values ('FM000003','字段组合错误0003','GF000002','warning','1');
+insert into form_message_data values ('FM000004','字段组合错误0004','GF000002','danger','1');
+insert into form_message_data values ('FM000005','字段组合错误0005','GF000003','success','1');
 
 	
 insert into form_field_message_data values ('FFM000001','输入错误','name','GF000001','success','1');
 insert into form_field_message_data values ('FFM000002','输入错误0002','name0002','GF000001','info','1');
+insert into form_field_message_data values ('FFM000003','输入错误0003','name0003','GF000002','warning','1');
+insert into form_field_message_data values ('FFM000004','输入错误0004','name0004','GF000002','danger','1');
+insert into form_field_message_data values ('FFM000005','输入错误0005','name0005','GF000003','success','1');
 
 	
 insert into form_field_data values ('FF000001','姓名','name','name','text','GF000001','姓名就是你身份证上的名字','李一一','姓名就是你身份证上的名字','基础信息','maybe any value','a value expression',true,true,0,'','','1');
 insert into form_field_data values ('FF000002','年龄','age','name0002','longtext','GF000001','姓名就是你身份证上的名字0002','李一一0002','姓名就是你身份证上的名字0002','扩展信息','maybe any value0002','a value expression0002',false,false,0,'','','1');
 insert into form_field_data values ('FF000003','出生地','birth_place','name0003','date','GF000001','姓名就是你身份证上的名字0003','李一一0003','姓名就是你身份证上的名字0003','基础信息','maybe any value0003','a value expression0003',true,true,0,'','','1');
 insert into form_field_data values ('FF000004','国籍','country','name0004','date_time','GF000001','姓名就是你身份证上的名字0004','李一一0004','姓名就是你身份证上的名字0004','扩展信息','maybe any value0004','a value expression0004',false,false,0,'男,女','男,女','1');
+insert into form_field_data values ('FF000005','姓名','name','name0005','money','GF000002','姓名就是你身份证上的名字0005','李一一0005','姓名就是你身份证上的名字0005','基础信息','maybe any value0005','a value expression0005',true,true,0,'高,矮','高,矮','1');
 
 	
 insert into form_action_data values ('FA000001','功能','name','save','default','genericFormManager/name/name0002/name0003/','GF000001','1');
 insert into form_action_data values ('FA000002','功能0002','name0002','update','warning','genericFormManager/name/name0002/name0003/0002','GF000001','1');
+insert into form_action_data values ('FA000003','功能0003','name0003','remove','danger','genericFormManager/name/name0002/name0003/0003','GF000002','1');
+insert into form_action_data values ('FA000004','功能0004','name0004','save','primary','genericFormManager/name/name0002/name0003/0004','GF000002','1');
+insert into form_action_data values ('FA000005','功能0005','name0005','update','default','genericFormManager/name/name0002/name0003/0005','GF000003','1');
 
 /*
 Mysql innodb's foreign key has index automatically
@@ -950,80 +559,6 @@ Mysql innodb's foreign key has index automatically
 
 create unique index idx_platform_version on platform_data(id, version);
 
-create unique index idx_site_version on site_data(id, version);
-
-alter table site_data add constraint site4platform_fk
-	foreign key(platform) references platform_data(id) on delete cascade on update cascade;
-create unique index idx_catalog_version on catalog_data(id, version);
-
-alter table catalog_data add constraint catalog4site_fk
-	foreign key(site) references site_data(id) on delete cascade on update cascade;
-create unique index idx_level_one_category_version on level_one_category_data(id, version);
-
-alter table level_one_category_data add constraint level_one_category4catalog_fk
-	foreign key(catalog) references catalog_data(id) on delete cascade on update cascade;
-create unique index idx_level_two_category_version on level_two_category_data(id, version);
-
-alter table level_two_category_data add constraint level_two_category4parent_category_fk
-	foreign key(parent_category) references level_one_category_data(id) on delete cascade on update cascade;
-create unique index idx_level_n_category_version on level_n_category_data(id, version);
-
-alter table level_n_category_data add constraint level_n_category4parent_category_fk
-	foreign key(parent_category) references level_two_category_data(id) on delete cascade on update cascade;
-create unique index idx_brand_version on brand_data(id, version);
-
-create unique index idx_product_version on product_data(id, version);
-
-alter table product_data add constraint product4parent_category_fk
-	foreign key(parent_category) references level_n_category_data(id) on delete cascade on update cascade;
-alter table product_data add constraint product4brand_fk
-	foreign key(brand) references brand_data(id) on delete cascade on update cascade;
-alter table product_data add constraint product4catalog_fk
-	foreign key(catalog) references catalog_data(id) on delete cascade on update cascade;
-create unique index idx_product_recommendation_version on product_recommendation_data(id, version);
-
-alter table product_recommendation_data add constraint product_recommendation4brand_fk
-	foreign key(brand) references brand_data(id) on delete cascade on update cascade;
-alter table product_recommendation_data add constraint product_recommendation4product_fk
-	foreign key(product) references product_data(id) on delete cascade on update cascade;
-create unique index idx_sku_version on sku_data(id, version);
-
-alter table sku_data add constraint sku4product_fk
-	foreign key(product) references product_data(id) on delete cascade on update cascade;
-create unique index idx_profile_version on profile_data(id, version);
-
-alter table profile_data add constraint profile4platform_fk
-	foreign key(platform) references platform_data(id) on delete cascade on update cascade;
-create unique index idx_shipping_address_version on shipping_address_data(id, version);
-
-create unique index idx_payment_method_version on payment_method_data(id, version);
-
-create unique index idx_user_order_version on user_order_data(id, version);
-
-alter table user_order_data add constraint user_order4user_fk
-	foreign key(user) references profile_data(id) on delete cascade on update cascade;
-alter table user_order_data add constraint user_order4platform_fk
-	foreign key(platform) references platform_data(id) on delete cascade on update cascade;
-create unique index idx_line_item_version on line_item_data(id, version);
-
-alter table line_item_data add constraint line_item4user_order_fk
-	foreign key(user_order) references user_order_data(id) on delete cascade on update cascade;
-create unique index idx_order_promotion_version on order_promotion_data(id, version);
-
-alter table order_promotion_data add constraint order_promotion4user_order_fk
-	foreign key(user_order) references user_order_data(id) on delete cascade on update cascade;
-create unique index idx_manual_adjustment_version on manual_adjustment_data(id, version);
-
-alter table manual_adjustment_data add constraint manual_adjustment4user_order_fk
-	foreign key(user_order) references user_order_data(id) on delete cascade on update cascade;
-create unique index idx_shipping_group_version on shipping_group_data(id, version);
-
-alter table shipping_group_data add constraint shipping_group4user_order_fk
-	foreign key(user_order) references user_order_data(id) on delete cascade on update cascade;
-create unique index idx_payment_group_version on payment_group_data(id, version);
-
-alter table payment_group_data add constraint payment_group4user_order_fk
-	foreign key(user_order) references user_order_data(id) on delete cascade on update cascade;
 create unique index idx_user_domain_version on user_domain_data(id, version);
 
 create unique index idx_user_white_list_version on user_white_list_data(id, version);
@@ -1075,40 +610,6 @@ alter table form_action_data add constraint form_action4form_fk
 -- create extra index for time, number and mobile phone
 
 create index platform4version_idx on platform_data(version);
-create index site4version_idx on site_data(version);
-create index catalog4seller_id_idx on catalog_data(seller_id);
-create index catalog4version_idx on catalog_data(version);
-create index level_one_category4version_idx on level_one_category_data(version);
-create index level_two_category4version_idx on level_two_category_data(version);
-create index level_n_category4version_idx on level_n_category_data(version);
-create index brand4version_idx on brand_data(version);
-create index product4version_idx on product_data(version);
-create index product_recommendation4version_idx on product_recommendation_data(version);
-create index sku4base_price_idx on sku_data(base_price);
-create index sku4version_idx on sku_data(version);
-create index profile4age_idx on profile_data(age);
-create index profile4version_idx on profile_data(version);
-create index shipping_address4zip_code_idx on shipping_address_data(zip_code);
-create index shipping_address4version_idx on shipping_address_data(version);
-create index payment_method4expire_on_idx on payment_method_data(expire_on);
-create index payment_method4version_idx on payment_method_data(version);
-create index user_order4total_adjustment_idx on user_order_data(total_adjustment);
-create index user_order4total_amount_idx on user_order_data(total_amount);
-create index user_order4version_idx on user_order_data(version);
-create index line_item4quantity_idx on line_item_data(quantity);
-create index line_item4price_idx on line_item_data(price);
-create index line_item4discount_price_idx on line_item_data(discount_price);
-create index line_item4version_idx on line_item_data(version);
-create index order_promotion4amount_idx on order_promotion_data(amount);
-create index order_promotion4thread_hold_idx on order_promotion_data(thread_hold);
-create index order_promotion4version_idx on order_promotion_data(version);
-create index manual_adjustment4amount_idx on manual_adjustment_data(amount);
-create index manual_adjustment4thread_hold_idx on manual_adjustment_data(thread_hold);
-create index manual_adjustment4version_idx on manual_adjustment_data(version);
-create index shipping_group4zip_code_idx on shipping_group_data(zip_code);
-create index shipping_group4version_idx on shipping_group_data(version);
-create index payment_group4amount_idx on payment_group_data(amount);
-create index payment_group4version_idx on payment_group_data(version);
 create index user_domain4version_idx on user_domain_data(version);
 create index user_white_list4version_idx on user_white_list_data(version);
 create index sec_user4mobile_idx on sec_user_data(mobile);
@@ -1164,26 +665,14 @@ delete from user_app_data;
 */
 
 insert into sec_user_data values('SU000001','User000001','13900000001','1000001@qq.com','258D9BB89BBC1F2A6CDDD3A4CB300E6CD9B83F3FC9984619DF1A59F6051F1F44','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
-insert into user_app_data values('UA000001','Platform','SU000001','at',1,'MXWR','Platform','P000001','/link/to/app','1'); -- REFER COUNT: 3
-insert into user_app_data values('UA000002','My Account','SU000001','lock',1,'MXWR','SecUser','SU000001','/link/to/app','1'); -- REFER COUNT: 3
+insert into user_app_data values('UA000001','Platform','SU000001','at',1,'MXWR','Platform','P000001','/link/to/app','1'); -- REFER COUNT: 0
+insert into user_app_data values('UA000002','My Account','SU000001','lock',1,'MXWR','SecUser','SU000001','/link/to/app','1'); -- REFER COUNT: 0
 insert into sec_user_data values('SU000002','User000002','13900000002','1000002@qq.com','7FEABCC19D638787655F9FFC2C22755D5771184D85D000147D643D22F6617F7B','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
-insert into user_app_data values('UA000003','Brand','SU000002','address-card',1,'MXWR','Brand','B000001','/link/to/app','1'); -- REFER COUNT: 2
+insert into user_app_data values('UA000003','User Domain','SU000002','user',1,'MXWR','UserDomain','UD000001','/link/to/app','1'); -- REFER COUNT: 2
 insert into user_app_data values('UA000004','My Account','SU000002','lock',1,'MXWR','SecUser','SU000002','/link/to/app','1'); -- REFER COUNT: 2
 insert into sec_user_data values('SU000003','User000003','13900000003','1000003@qq.com','8169C17063461B0B0CC210CE5EF682E9517A19170F7DCA3C76170229D765DE7A','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
-insert into user_app_data values('UA000005','Shipping Address','SU000003','ad',1,'MXWR','ShippingAddress','SA000001','/link/to/app','1'); -- REFER COUNT: 0
-insert into user_app_data values('UA000006','My Account','SU000003','lock',1,'MXWR','SecUser','SU000003','/link/to/app','1'); -- REFER COUNT: 0
-insert into sec_user_data values('SU000004','User000004','13900000004','1000004@qq.com','025745F4A4EA0C11059911E40714470F323C42836B1137D66AD3F85210A725CF','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
-insert into user_app_data values('UA000007','Payment Method','SU000004','th',1,'MXWR','PaymentMethod','PM000001','/link/to/app','1'); -- REFER COUNT: 0
-insert into user_app_data values('UA000008','My Account','SU000004','lock',1,'MXWR','SecUser','SU000004','/link/to/app','1'); -- REFER COUNT: 0
-insert into sec_user_data values('SU000005','User000005','13900000005','1000005@qq.com','F8D472FBE8716BFB66C0A9BC73208FE4C5971051D240D9AC3B5EBCEF05CD5FFA','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
-insert into user_app_data values('UA000009','User Order','SU000005','user',1,'MXWR','UserOrder','UO000001','/link/to/app','1'); -- REFER COUNT: 5
-insert into user_app_data values('UA000010','My Account','SU000005','lock',1,'MXWR','SecUser','SU000005','/link/to/app','1'); -- REFER COUNT: 5
-insert into sec_user_data values('SU000006','User000006','13900000006','1000006@qq.com','FEE10F101DD4B9D2C98FAA1A672821DF22B9FA662528ED5B885B60C0979E6530','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
-insert into user_app_data values('UA000011','User Domain','SU000006','user',1,'MXWR','UserDomain','UD000001','/link/to/app','1'); -- REFER COUNT: 2
-insert into user_app_data values('UA000012','My Account','SU000006','lock',1,'MXWR','SecUser','SU000006','/link/to/app','1'); -- REFER COUNT: 2
-insert into sec_user_data values('SU000007','User000007','13900000007','1000007@qq.com','016B4A47737559D64FC1369AA4D8CFD0B47E11F4C6219E80946C0E47A4C1C74B','9292993','2019-09-09 09:09:09','2019-09-09 09:09:09','UD000001',NULL,'INIT',1);
-insert into user_app_data values('UA000013','Sec User Blocking','SU000007','user',1,'MXWR','SecUserBlocking','SUB000001','/link/to/app','1'); -- REFER COUNT: 1
-insert into user_app_data values('UA000014','My Account','SU000007','lock',1,'MXWR','SecUser','SU000007','/link/to/app','1'); -- REFER COUNT: 1
+insert into user_app_data values('UA000005','Sec User Blocking','SU000003','user',1,'MXWR','SecUserBlocking','SUB000001','/link/to/app','1'); -- REFER COUNT: 1
+insert into user_app_data values('UA000006','My Account','SU000003','lock',1,'MXWR','SecUser','SU000003','/link/to/app','1'); -- REFER COUNT: 1
 
 
 
@@ -1192,12 +681,8 @@ insert into user_app_data values('UA000014','My Account','SU000007','lock',1,'MX
 | 角色        | 用户名           | 密码         |
 | ------------- |:-------------:|:-------------------:|
 |Platform|13900000001|DoubleChain!y1|
-|Brand|13900000002|DoubleChain!y1|
-|Shipping Address|13900000003|DoubleChain!y1|
-|Payment Method|13900000004|DoubleChain!y1|
-|User Order|13900000005|DoubleChain!y1|
-|User Domain|13900000006|DoubleChain!y1|
-|Sec User Blocking|13900000007|DoubleChain!y1|
+|User Domain|13900000002|DoubleChain!y1|
+|Sec User Blocking|13900000003|DoubleChain!y1|
 
 
 */
